@@ -1,0 +1,14 @@
+.DS_Store
+*.zip
+# render intermediates
+*/out/full.mp4
+*/out/p[0-9].mp4
+*/out/p[0-9].log
+*/out/ffmpeg2pass*
+*/out/mix.f32
+*/out/sh/
+*/out/chk/
+*.f32
+__pycache__/
+# reference videos (large)
+research/reference_styles/videos/

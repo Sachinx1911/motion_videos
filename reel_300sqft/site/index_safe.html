@@ -1,0 +1,84 @@
+<!doctype html><html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:P;font-weight:400;src:url(a/Poppins-Regular.ttf)}
+@font-face{font-family:P;font-weight:500;src:url(a/Poppins-Medium.ttf)}
+@font-face{font-family:P;font-weight:600;src:url(a/Poppins-SemiBold.ttf)}
+@font-face{font-family:P;font-weight:700;src:url(a/Poppins-Bold.ttf)}
+@font-face{font-family:P;font-weight:800;src:url(a/Poppins-ExtraBold.ttf)}
+@font-face{font-family:P;font-weight:900;src:url(a/Poppins-Black.ttf)}
+html,body{margin:0;background:#000}
+#root{width:1080px;height:1920px;position:relative;overflow:hidden;font-family:P,sans-serif;
+ background:radial-gradient(ellipse 90% 60% at 50% 38%,#1b2a45 0%,#0d1729 50%,#060b16 100%)}
+#grid{position:absolute;inset:-200px;opacity:.07;background-image:linear-gradient(rgba(232,207,159,.6) 1px,transparent 1px),linear-gradient(90deg,rgba(232,207,159,.6) 1px,transparent 1px);background-size:90px 90px;
+ -webkit-mask-image:radial-gradient(ellipse 60% 50% at 50% 50%,#000 30%,transparent 80%)}
+#spot{position:absolute;left:50%;top:-300px;width:1400px;height:1900px;margin-left:-700px;background:radial-gradient(ellipse 40% 60% at 50% 0%,rgba(232,207,159,.22),rgba(232,207,159,0) 70%);pointer-events:none}
+#bgs{position:absolute;inset:0;overflow:hidden}
+.bg{position:absolute;inset:-2px;background-size:cover;background-position:center;transform-origin:50% 50%}
+#tint{position:absolute;inset:0;pointer-events:none}
+canvas{position:absolute;left:0;top:0}
+#cam{position:absolute;inset:0;transform-origin:50% 45%}
+#stage{position:absolute;inset:0}
+.item{position:absolute;transform-origin:50% 50%;will-change:transform}
+.item img{display:block}
+.item>img{filter:drop-shadow(0 30px 40px rgba(0,0,0,.5))}
+.noshadow img{filter:none}
+.shinewrap{position:absolute;inset:0;overflow:hidden;pointer-events:none;border-radius:inherit}
+.shine{position:absolute;inset:0;pointer-events:none;background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.6) 50%,transparent 70%);mix-blend-mode:screen;opacity:0}
+.gl{background:linear-gradient(145deg,rgba(255,255,255,.15),rgba(255,255,255,.04));backdrop-filter:blur(22px) saturate(140%);-webkit-backdrop-filter:blur(22px) saturate(140%);
+ border:2px solid rgba(232,207,159,.35);border-radius:36px;box-shadow:0 30px 70px rgba(0,0,0,.45),inset 0 2px 0 rgba(255,255,255,.3),inset 0 -20px 40px rgba(0,0,0,.15);color:#fff;overflow:hidden}
+.gl.w{background:linear-gradient(145deg,rgba(250,247,242,.97),rgba(238,232,222,.92));color:#0d1729;border-color:rgba(255,255,255,.9)}
+.gl.dk{background:linear-gradient(145deg,rgba(13,23,41,.82),rgba(6,11,22,.72))}
+.gold{background:linear-gradient(180deg,#fff7e6 0%,#ecd6aa 38%,#b8935f 62%,#f2dfb6 100%);-webkit-background-clip:text;background-clip:text;color:transparent;padding:.12em .04em .02em}
+.red{background:linear-gradient(180deg,#ff7a6b,#e0392b 55%,#a3150e);-webkit-background-clip:text;background-clip:text;color:transparent;padding:.12em .04em .02em}
+.grn{color:#3fd47a}
+.lab{font:600 32px/1.3 P;color:rgba(255,255,255,.72);letter-spacing:1px}
+.pill{display:inline-block;font:700 40px/1 P;padding:20px 38px 16px;border-radius:999px;white-space:nowrap}
+.p-gold{background:linear-gradient(180deg,#f2dfb6,#c9a66f);color:#1a1206;box-shadow:0 14px 34px rgba(201,166,111,.45),inset 0 2px 0 rgba(255,255,255,.6)}
+.p-red{background:linear-gradient(180deg,#ff6a5c,#c92a1e);color:#fff;box-shadow:0 14px 34px rgba(201,42,30,.5),inset 0 2px 0 rgba(255,255,255,.4)}
+.p-grn{background:linear-gradient(180deg,#4fe08a,#1f9a52);color:#fff;box-shadow:0 14px 34px rgba(31,154,82,.45),inset 0 2px 0 rgba(255,255,255,.4)}
+.p-glass{background:rgba(13,23,41,.55);border:2px solid rgba(232,207,159,.5);color:#fff;backdrop-filter:blur(14px)}
+.chipw{text-align:center}
+.stampbox{display:inline-block;border:10px solid currentColor;border-radius:22px;padding:18px 40px 10px;font:900 96px/1.1 P;letter-spacing:2px;text-transform:uppercase;box-shadow:inset 0 0 0 4px rgba(0,0,0,.08)}
+#flash{position:absolute;inset:0;opacity:0;pointer-events:none}
+#grain{mix-blend-mode:overlay;opacity:.06}
+#vig{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 45%,rgba(0,0,0,0) 50%,rgba(0,0,0,.6) 100%);pointer-events:none}
+</style></head><body>
+<div id="root">
+ <div id="grid"></div><div id="spot"></div>
+ <div id="bgs"></div><div id="tint"></div>
+ <canvas id="fxb" width="1080" height="1920"></canvas>
+ <div id="vig"></div>
+ <div id="cam"><div id="stage"></div><canvas id="fx" width="1080" height="1920"></canvas></div>
+ <div id="hud" style="position:absolute;inset:0;pointer-events:none"></div>
+ <div id="flash"></div>
+ <canvas id="grain" width="1080" height="1920"></canvas>
+</div>
+<script src="engine.js"></script><script src="fx.js"></script><script src="lib.js"></script><script>window.SAFE_GUIDE=1</script><script src="scenes.js"></script>
+<script>
+let fxb,fx,gr;const TINTS=[];
+function TINT(t0,t1,css,fade=.4){TINTS.push({t0,t1,css,fade})}
+function seek(t){
+  const c=camAt(t);document.getElementById('cam').style.transform=`translate(${c.x*.5}px,${c.y*.5}px) rotate(${c.r}deg) scale(${c.s})`;
+  document.getElementById('bgs').style.transform=`translate(${c.x*.25}px,${c.y*.25}px) scale(${1+(c.s-1)*.5})`;
+  document.getElementById('grid').style.transform=`translate(${(t*6)%90}px,${(t*9)%90}px)`;
+  for(const b of BGS)renderBG(b,t);
+  let tc='',to=0;for(const k of TINTS){if(t>=k.t0-k.fade&&t<=k.t1+k.fade){tc=k.css;to=Math.min(clamp((t-k.t0+k.fade)/k.fade),clamp((k.t1+k.fade-t)/k.fade))}}
+  const ti=document.getElementById('tint');ti.style.background=tc;ti.style.opacity=to;
+  for(const o of ITEMS)renderItem(o,t);
+  for(const h of HOOKS)h(t);
+  fx.clearRect(0,0,W,H);drawParts(fx,t);
+  fxb.clearRect(0,0,W,H);drawBokeh(fxb,t);drawSpeed(fxb,t);
+  let fo=0,fcol='#fff';for(const f of FLASH){const d=t-f.t;if(d>=0&&d<.6){const v=f.a*Math.exp(-d*7);if(v>fo){fo=v;fcol=f.c}}}
+  const fl=document.getElementById('flash');fl.style.opacity=fo;fl.style.background=fcol;
+  const g=grains[Math.floor(t*24)%grains.length];gr.clearRect(0,0,W,H);gr.drawImage(g,0,0,1080,1920);
+}
+async function init(){
+  fxb=document.getElementById('fxb').getContext('2d');fx=document.getElementById('fx').getContext('2d');gr=document.getElementById('grain').getContext('2d');
+  makeGrain();buildScenes();
+  for(const w of [400,500,600,700,800,900]){await document.fonts.load(w+' 50px P','अआक्ष123')}await document.fonts.ready;
+  await Promise.all([...document.images].map(i=>i.decode().catch(()=>0)));
+  const bgi=[...new Set(BGS.map(b=>b.img))];await Promise.all(bgi.map(s=>{const i=new Image();i.src='a/'+s;return i.decode().catch(()=>0)}));
+  window.READY=true;
+}
+init();
+</script></body></html>
