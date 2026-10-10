@@ -77,7 +77,7 @@ shake(10.1,10);
 // ================= 3 CIDCO PLOT TENDER title =================
 TILES(T.tender);
 TINT(T.tender,T.use,'linear-gradient(180deg,#0d1729,#162644)',.05);
-A({t0:T.tender+.1,t1:T.use,x:540,y:860,w:960,cls:'noshadow',html:`<div style="text-align:center"><div style="font:600 40px/1.2 P;color:#cfd6e4">सिडकोचा</div><div style="font:800 128px/1.05 P;color:#e8cf9f;text-shadow:0 0 50px rgba(232,207,159,.5)">प्लॉट टेंडर</div><div style="display:inline-block;margin-top:26px;font:600 34px/1 P;color:#0d1729;background:#e8cf9f;border-radius:999px;padding:16px 30px 12px">e-Tender + e-Auction</div></div>`,enter:'zoom',din:.4,sfx:'impact',sfxv:.6,z:50,float:.1,shine:[13.9]});
+A({t0:T.tender+.1,t1:T.use,x:540,y:860,w:960,cls:'noshadow',html:`<div style="text-align:center"><div style="font:600 44px/1.4 P;color:#cfd6e4;margin-bottom:34px">सिडकोचा</div><div style="font:800 120px/1.45 P;color:#e8cf9f;text-shadow:0 0 50px rgba(232,207,159,.5)">प्लॉट टेंडर</div><div style="display:inline-block;margin-top:30px;font:600 34px/1 P;color:#0d1729;background:#e8cf9f;border-radius:999px;padding:16px 30px 12px">e-Tender + e-Auction</div></div>`,enter:'zoom',din:.4,sfx:'impact',sfxv:.6,z:50,float:.1,shine:[13.9]});
 PART({type:'sparks',t0:13.89,t1:14.1,n:60,seed:5,x:540,y:820,speed:800,color:GOLD});
 
 // ================= 4 USES : fast cuts =================
