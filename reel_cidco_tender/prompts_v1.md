@@ -63,7 +63,7 @@ Size 2:3 vertical. Authentic product photograph of a black desktop calculator wi
 | 21-24.4 s | सरळ बोलीने, 5 स्टेप्स | 8 | 1-5 timeline draw होते |
 | 24.4-29.8 s | स्टेप 1 registration | 8 + 9 | screen वर form, PAN / आधार / बँक pills |
 | 29.8-35.3 s | स्टेप 2 booklet | 10 + 11 | layout वर plot highlight, आकार / जागा / बेस प्राइस |
-| 35.3-42.7 s | स्टेप 3 fee + EMD, उशीर नको | 12 | "EMD = बयाणा रक्कम" card, लाल "उशीर = बोली नाही" |
+| 35.3-42.7 s | स्टेप 3 fee + EMD, उशीर नको | 12 | "EMD = अनामत रक्कम" card, लाल "उशीर = बोली नाही" |
 | 42.8-48 s | स्टेप 4 closed bid | 13 | lock icon, "बंद लिफाफा बोली" |
 | 48-53.8 s | स्टेप 5 e-auction, +₹1,000/चौ.मी. | 14 | rising counter, gavel hit + shake |
 | 53.8-60.3 s | हरलात तर EMD परत, माघार = जप्त | 15 | green "परत ✅" vs red "जप्त ❌" split |
