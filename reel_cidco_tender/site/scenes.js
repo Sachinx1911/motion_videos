@@ -96,7 +96,7 @@ BG({img:'B08_navy_desk.jpg',t0:T.bid,t1:T.emd+.05,s0:1.06,s1:1.0,fade:.2});
 A({t0:T.bid+.1,t1:22.8,x:540,y:860,w:900,cls:'noshadow',html:`<div style="text-align:center;font:800 92px/1.15 P;color:#faf7f2">सरळ <span style="color:#e8cf9f">बोलीने!</span></div>`,enter:'zoom',din:.4,sfx:'impact',sfxv:.5,z:50,float:.1});
 // step tracker (persistent through the steps)
 const ST=[T.s1,T.s2,T.s3,T.s4,T.s5],SL=['नोंदणी','बुकलेट','फी + EMD','क्लोज्ड बिड','ई-ऑक्शन'];
-A({t0:22.84,t1:T.emd,x:540,y:480,w:900,cls:'noshadow',html:`<svg viewBox="0 0 900 150" width="900"><line class="ln" x1="90" y1="50" x2="810" y2="50" stroke="#e8cf9f" stroke-width="5" stroke-dasharray="720" stroke-dashoffset="720"/>${ST.map((s,i)=>`<g class="d" transform="translate(${90+i*180},50)"><circle r="40" fill="#0d1729" stroke="#e8cf9f" stroke-width="5"/><text y="15" text-anchor="middle" font-family="P" font-weight="800" font-size="40" fill="#e8cf9f">${i+1}</text><text y="88" text-anchor="middle" font-family="P" font-weight="600" font-size="22" fill="#cfd6e4">${SL[i]}</text></g>`).join('')}</svg>`,enter:'fade',din:.2,sfx:'swoosh',z:80,float:0,
+A({t0:22.84,t1:T.emd,x:540,y:480,w:900,cls:'noshadow',html:`<svg viewBox="0 0 900 175" width="900" style="overflow:visible"><line class="ln" x1="90" y1="50" x2="810" y2="50" stroke="#e8cf9f" stroke-width="5" stroke-dasharray="720" stroke-dashoffset="720"/>${ST.map((s,i)=>`<g class="d" transform="translate(${90+i*180},50)"><circle r="40" fill="#0d1729" stroke="#e8cf9f" stroke-width="5"/><text y="15" text-anchor="middle" font-family="P" font-weight="800" font-size="40" fill="#e8cf9f">${i+1}</text><text y="88" text-anchor="middle" font-family="P" font-weight="600" font-size="22" fill="#cfd6e4">${SL[i]}</text></g>`).join('')}</svg>`,enter:'fade',din:.2,sfx:'swoosh',z:80,float:0,
   draw:(t,lt,oo)=>{oo.el.querySelector('.ln').style.strokeDashoffset=720*(1-E.inout(clamp(lt/1.2)));
     let cur=-1;ST.forEach((s,i)=>{if(t>=s)cur=i});
     oo.el.querySelectorAll('.d').forEach((g,i)=>{const pin=E.back(clamp((lt-i*.2)/.4));const act=i===cur;const done=i<cur;
@@ -115,10 +115,11 @@ A({t0:26.2,t1:T.s2,x:500,y:880,w:480,cls:'noshadow',html:`<div style="text-align
 
 // --- STEP 2 : scheme booklet ---
 STEPT(T.s2,T.s3,`स्कीम <span style="color:#e8cf9f">बुकलेट</span> डाउनलोड करा`);
-OBJ(30.37,31.9,540,1020,640,'O10_booklet.png',{enter:'left',exit:'left'});
-CARD(31.9,T.s3,540,1110,400,640,'O11_layout.jpg',{enter:'right',rot:2});
-A({t0:32.35,t1:T.s3,x:540,y:1100,w:400,cls:'noshadow',html:`<div class="hl" style="position:relative;left:100px;top:0;width:120px;height:86px;border:6px solid #e8cf9f;border-radius:6px;box-shadow:0 0 30px #e8cf9f,inset 0 0 20px rgba(232,207,159,.5);background:rgba(232,207,159,.25)"></div>`,enter:'pop',din:.35,sfx:'pop',z:45,float:0,pulse:1});
-[['📐 आकार',32.35,1290],['📍 जागा',32.97,1370],['₹ बेस प्राइस',33.59,1450]].forEach(([s,t0,y],i)=>LBL(t0,T.s3,i%2?790:280,y-60,s,{bg:'#faf7f2',col:NAVY,fs:36,w:330}));
+OBJ(30.37,32.25,540,1060,560,'O10_booklet.png',{enter:'left',exit:'left',shine:[30.9]});
+LBL(30.6,32.25,540,1440,'* प्रतीकात्मक चित्र',{bg:'rgba(255,253,249,.85)',col:'#3d3a35',fs:22,w:300,sfx:null});
+CARD(32.25,T.s3,540,1050,440,700,'O11_layout.jpg',{enter:'right',rot:2});
+A({t0:32.35,t1:T.s3,x:540,y:1030,w:440,cls:'noshadow',html:`<div class="hl" style="position:relative;left:100px;top:0;width:120px;height:86px;border:6px solid #e8cf9f;border-radius:6px;box-shadow:0 0 30px #e8cf9f,inset 0 0 20px rgba(232,207,159,.5);background:rgba(232,207,159,.25)"></div>`,enter:'pop',din:.35,sfx:'pop',z:45,float:0,pulse:1});
+[['📐 आकार',32.35,250],['📍 जागा',32.97,540],['₹ बेस प्राइस',33.59,790]].forEach(([s,t0,x],i)=>LBL(t0,T.s3,x,1450,s,{bg:'#faf7f2',col:NAVY,fs:34,w:300}));
 
 // --- STEP 3 : fee + EMD before deadline ---
 STEPT(T.s3,T.s4,`डॉक्युमेंट फी + <span style="color:#e8cf9f">EMD</span>`);
