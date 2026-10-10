@@ -42,6 +42,7 @@ const H2=(t0,t1,y,html,o={})=>PANEL(t0,t1,540,y,o.w||800,`<div style="font:700 $
 const CHK=(t0,t1,x,y,txt,ok,o={})=>A(Object.assign({t0,t1,x,y,w:o.w||620,cls:'noshadow',html:`<div style="display:flex;align-items:center;gap:20px;background:rgba(255,253,249,.97);border-radius:26px;padding:18px 26px 14px;box-shadow:0 18px 44px rgba(0,0,0,.22);border-left:12px solid ${ok?'#1f9a52':RED}"><div style="width:74px;flex:none">${ok?IC.check:IC.cross}</div><div style="font:700 40px/1.3 P;text-align:left">${txt}</div></div>`,enter:'left',din:.45,sfx:ok?'ding':'buzz',sfxv:.6,z:62,float:.1},o));
 
 function buildScenes(){
+const PLOT=window.PLOT_IMG||'B02_empty_plot.jpg';
 const END=81.4;
 const T={twist:5.82,tender:11.47,use:14.31,bid:21.0,s1:24.4,s2:29.97,s3:35.33,s4:43.38,s5:46.8,emd:54.36,cost:60.95,cta:72.22,out:77.8};
 const SEC=[0,T.twist,T.tender,T.use,T.bid,T.s1,T.s2,T.s3,T.s4,T.s5,T.emd,T.cost,T.cta,T.out,END];
@@ -52,21 +53,36 @@ const CUT=t=>{flash(t,.35,'#fffaf0');sfx(t-.15,'whoosh',.5);punch(t,.03)};
 A({t0:0,t1:T.out,x:205,y:300,w:170,cls:'noshadow',html:`<div style="background:rgba(255,253,249,.92);border-radius:16px;padding:8px 12px;box-shadow:0 8px 20px rgba(0,0,0,.15)"><img src="a/logo_gold.png" style="width:100%;filter:none"></div>`,enter:'fade',din:.5,float:0,z:600});
 
 // ================= 1 HOOK : 1 plot, 2,125 crore =================
-BG({img:'B01_navi_mumbai_aerial.jpg',t0:0,t1:T.twist+.05,s0:1.18,s1:1.0,y0:-60,y1:0,fade:.2});
-TINT(0,T.twist,'linear-gradient(180deg,rgba(0,0,0,.25),rgba(0,0,0,0) 35%,rgba(0,0,0,0) 65%,rgba(0,0,0,.35))',.2);
-{const tp=1.5;
- A({t0:tp,t1:T.twist,x:700,y:1090,w:110,cls:'noshadow',html:`<svg viewBox="0 0 60 80" width="100%" style="filter:drop-shadow(0 10px 12px rgba(0,0,0,.45))"><path d="M30 2C15 2 4 13 4 28c0 20 26 50 26 50s26-30 26-50C56 13 45 2 30 2z" fill="#d6342a"/><circle cx="30" cy="28" r="10" fill="#fff"/></svg>`,enter:'drop',din:.6,sfx:'thud',sfxd:.2,sfxv:.6,z:55,float:0,over:1,
-   fn:(t,lt)=>({dy:lt>.6?-Math.abs(Math.sin((lt-.6)*3.2))*24:0})});
- A({t0:tp+.5,t1:T.twist,x:700,y:1150,w:200,cls:'noshadow',html:`<div class="rg" style="width:200px;height:64px;border-radius:50%;border:5px solid #ff3b2f;box-sizing:border-box"></div>`,enter:'fade',din:.05,float:0,z:50,over:1,
-   draw:(t,lt,oo)=>{const q=(lt%1)/1;const r=oo.el.querySelector('.rg');r.style.transform=`scale(${.2+q})`;r.style.opacity=1-q}});
- LBL(tp+.3,T.twist,700,1235,'1 प्लॉट',{bg:'#fff',fs:38,w:240});}
+// --- 0-1.7s: real satellite map, Maharashtra -> zoom to Navi Mumbai (Kharghar) ---
+const MAPEND=1.75, KH=[188.1,904.0], MUM=[126.3,898.4];
+TINT(0,MAPEND,'#060b16',.05);
+A({t0:0,t1:MAPEND,x:540,y:960,w:1080,cls:'noshadow',html:`<div style="position:relative;width:1080px;height:1920px;overflow:hidden"><div class="mc" style="position:absolute;left:0;top:0;width:${MH.W}px;height:${MH.H}px;transform-origin:0 0">
+  <img src="a/bm_mh_hi.jpg" style="position:absolute;left:0;top:0;width:${MH.W}px;height:${MH.H}px;filter:saturate(1.15) brightness(1.05)">
+  <svg viewBox="0 0 ${MH.W} ${MH.H}" style="position:absolute;left:0;top:0;width:${MH.W}px;height:${MH.H}px;overflow:visible"><defs><mask id="mkh"><rect width="${MH.W}" height="${MH.H}" fill="#fff"/><path d="${MH.state}" fill="#000"/></mask></defs>
+   <rect x="-4000" y="-4000" width="12000" height="12000" fill="rgba(6,11,22,.55)" mask="url(#mkh)"/>
+   <path class="st" d="${MH.state}" fill="none" stroke="#f2dfb6" stroke-width="5" stroke-linejoin="round" style="filter:drop-shadow(0 0 8px #e8cf9f)"/></svg>
+  <div class="lb" data-x="${MUM[0]}" data-y="${MUM[1]}" style="position:absolute;left:${MUM[0]}px;top:${MUM[1]}px"><div style="transform:translate(-100%,-50%);padding-right:22px;font:700 40px/1 P;color:#fff;text-shadow:0 3px 12px rgba(0,0,0,.9);white-space:nowrap">मुंबई</div></div>
+  <div class="lb" data-x="${KH[0]}" data-y="${KH[1]}" style="position:absolute;left:${KH[0]}px;top:${KH[1]}px"><div class="kp" style="transform:translate(-50%,-50%)"><div class="rg" style="position:absolute;left:50%;top:50%;width:120px;height:120px;margin:-60px;border-radius:50%;border:5px solid #e8cf9f"></div><div style="width:26px;height:26px;border-radius:50%;background:#d6342a;border:5px solid #fff;box-shadow:0 0 20px #d6342a"></div></div>
+   <div class="kl" style="position:absolute;left:40px;top:-46px;white-space:nowrap;background:rgba(13,23,41,.9);border:2px solid #e8cf9f;border-radius:18px;padding:12px 20px 8px;text-align:left"><div style="font:800 46px/1.1 P;color:#e8cf9f">नवी मुंबई</div><div style="font:600 26px/1.3 P;color:#cfd6e4">खारघर</div></div></div>
+ </div></div>`,enter:'fade',din:.01,exit:'fade',dout:.25,float:0,z:5,over:1,
+ draw:(t,lt,oo)=>{const p=E.inout(clamp((t-.15)/1.25));const s0=1000/MH.W,s1=3.2;const s=s0*Math.pow(s1/s0,p);
+   const cx=lerp(1230,KH[0],p),cy=lerp(960,KH[1],p);
+   oo.el.querySelector('.mc').style.transform=`translate(${540-cx*s}px,${900-cy*s}px) scale(${s})`;
+   const st=oo.el.querySelector('.st');if(!oo.SL)oo.SL=st.getTotalLength();st.style.strokeDasharray=oo.SL;st.style.strokeDashoffset=oo.SL*(1-E.out(clamp(lt/.7)));st.style.strokeWidth=3/s;
+   oo.el.querySelectorAll('.lb').forEach((l,k)=>{l.style.transform=`scale(${1/s})`;l.style.opacity=clamp((t-(k?0.9:0.7))/.25)});
+   const q=(t*1.1)%1;const rg=oo.el.querySelector('.rg');rg.style.transform=`scale(${.3+q})`;rg.style.opacity=1-q}});
+sfx(.05,'whoosh',.7);sfx(.9,'pop',.6);sfx(1.0,'ding',.4);
+// --- 1.7s+: CIDCO plot ---
+BG({img:PLOT,t0:MAPEND-.1,t1:T.tender+.05,s0:1.12,s1:1.0,fade:.2});
+CUT(MAPEND-.05);
+TINT(MAPEND,T.twist,'linear-gradient(180deg,rgba(0,0,0,.25),rgba(0,0,0,0) 35%,rgba(0,0,0,0) 65%,rgba(0,0,0,.35))',.2);
+LBL(1.85,T.twist,540,1330,'📍 सिडकोचा प्लॉट - खारघर',{bg:'#fff',fs:36,w:620});
 A({t0:2.3,t1:T.twist,x:540,y:640,w:900,cls:'noshadow',html:`<div style="text-align:center;background:rgba(13,23,41,.82);border:2px solid rgba(232,207,159,.6);border-radius:30px;padding:26px 30px 22px;box-shadow:0 30px 70px rgba(0,0,0,.45)"><div style="font:600 34px/1.2 P;color:#cfd6e4">बोली लागली तब्बल</div><div class="v" style="font:800 118px/1.1 P;color:#e8cf9f;text-shadow:0 0 40px rgba(232,207,159,.45)">₹0 कोटी</div><div style="font:500 24px/1.3 P;color:#aab3c4;margin-top:4px">खारघर, सेक्टर 23 - 41,994 चौ.मी. प्लॉट</div></div>`,enter:'zoom',din:.4,sfx:'riser',sfxv:.5,z:60,float:.1,shine:[5.3],
   draw:(t,lt,oo)=>{const v=Math.round(2125*E.out(clamp((t-2.9)/2.2)));oo.el.querySelector('.v').textContent='₹'+v.toLocaleString('en-IN')+' कोटी'}});
 sfx(2.9,'ticks',.5);punch(5.12,.08);sfx(5.12,'impact',.8);PART({type:'sparks',t0:5.12,t1:5.4,n:80,seed:3,x:540,y:660,speed:900,color:GOLD});
 
 // ================= 2 TWIST : not sold, leased =================
 CUT(T.twist);
-BG({img:'B02_empty_plot.jpg',t0:T.twist,t1:T.tender+.05,s0:1.0,s1:1.1,fade:.2});
 H2(T.twist+.1,T.tender,560,`पण गंमत अशी... हा प्लॉट <span style="color:${RED}">विकलाच</span> गेला नाही!`,{w:820});
 OBJ(9.35,T.tender,300,1180,240,'O15_pillar.png',{enter:'drop',din:.55,sfx:null,fn:(t,lt)=>({dy:lt>.55&&lt<.75?Math.sin((lt-.55)/.2*Math.PI)*-10:0})});
 {const tl=9.35+.2;sfx(tl,'thud',1);sfx(tl,'impact',.5);shake(tl,16);punch(tl,.04);PART({type:'soil',t0:tl,t1:tl+.02,n:150,seed:17,x:300,y:1335,life:1.8});}
