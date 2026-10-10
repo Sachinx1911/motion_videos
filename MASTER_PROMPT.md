@@ -116,7 +116,7 @@ Before any building, think it through like a senior creative director and delive
 10. Build `site/` (copy `engine.js`, `fx.js`, `lib.js`, `index.html` from the latest reel, fonts + logos into `site/a/`), write `site/scenes.js` with every beat on exact word times.
 11. Preview: `python3 ../tools/render.py shots 1.5,4.9,... x out/sh` then `python3 ../tools/sheet.py 6` and **Read `out/sheet.jpg`**. Then run `python3 ../tools/overlap.py 0.1 <END>` - **no text/object may cross another during any animation** (user rule, 10 Oct 2026); fix every reported pair (mark intended overlays like text on a laptop screen with `over:1`). Fix overlaps, clipped labels, empty frames, bad Marathi grammar.
 12. Sound: `python3 ../tools/render.py sfx 0 0 out/sfx.json` then `END=<length> python3 ../tools/audio.py`.
-13. Render in parallel parts (`render.py video a b out/pN.mp4`) - 4 on the Mac, 6-8 on the 16-core Windows laptop, concat, 2-pass x264 at the bitrate that lands at about 27-28 MB (2700k for ~80 s), mux `out/mix.m4a`.
+13. Render in parallel parts (`render.py video a b out/pN.mp4`) - 4 on the Mac, 6-8 on the 16-core Windows laptop, concat, 2-pass x264 at the bitrate that lands at about 27-28 MB (2600k for ~80 s), mux `out/mix.m4a`. **Always add `-vf "scale=in_range=full:out_range=tv,format=yuv420p" -color_range tv`** - the render parts are full-range (yuvj420p) and that file does not open in the app preview / some players (10 Oct 2026).
 14. Spot-check frames from FINAL.mp4, then deliver: path + short Marathi summary of what each section shows + corrections at the end. Name the file `out/<Brand>_<Topic>.mp4`.
 
 ## 7. Two machines - Mac and Windows (I work on both)
