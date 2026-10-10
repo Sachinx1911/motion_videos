@@ -1,0 +1,78 @@
+<!doctype html><html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:P;font-weight:400;src:url(a/Poppins-Regular.ttf)}
+@font-face{font-family:P;font-weight:500;src:url(a/Poppins-Medium.ttf)}
+@font-face{font-family:P;font-weight:600;src:url(a/Poppins-SemiBold.ttf)}
+@font-face{font-family:P;font-weight:700;src:url(a/Poppins-Bold.ttf)}
+@font-face{font-family:P;font-weight:800;src:url(a/Poppins-ExtraBold.ttf)}
+@font-face{font-family:P;font-weight:900;src:url(a/Poppins-Black.ttf)}
+@font-face{font-family:S;font-style:italic;font-weight:400 900;src:url(a/PlayfairDisplay-Italic.ttf)}
+:root{--bg:#f4f1ec;--ink:#151515;--mute:#6b6b6b;--gold:#b8935f;--gold2:#8a6a3c;--red:#d6342a;--navy:#0d1729}
+html,body{margin:0;background:#000}
+#root{width:1080px;height:1920px;position:relative;overflow:hidden;font-family:P,sans-serif;color:var(--ink);
+ background:radial-gradient(ellipse 85% 60% at 50% 42%,#fbf9f6 0%,#f1ede7 55%,#e2ddd4 100%)}
+#grid{position:absolute;inset:-200px;opacity:.55;background-image:linear-gradient(rgba(0,0,0,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,.05) 1px,transparent 1px);background-size:54px 54px;
+ -webkit-mask-image:radial-gradient(ellipse 60% 55% at 50% 48%,#000 25%,transparent 85%)}
+#arc{position:absolute;left:50%;top:50%;width:2200px;height:2200px;margin:-1100px 0 0 -1100px;border-radius:50%;border:230px solid rgba(0,0,0,.018);pointer-events:none}
+#bgs{position:absolute;inset:0;overflow:hidden}
+.bg{position:absolute;inset:-2px;background-size:cover;background-position:center;transform-origin:50% 50%}
+#tint{position:absolute;inset:0;pointer-events:none}
+canvas{position:absolute;left:0;top:0}
+#cam{position:absolute;inset:0;transform-origin:50% 45%}
+#stage{position:absolute;inset:0}
+.item{position:absolute;transform-origin:50% 50%;will-change:transform}
+.item img{display:block}
+.noshadow img{filter:none}
+.shinewrap{position:absolute;inset:0;overflow:hidden;pointer-events:none;border-radius:inherit}
+.shine{position:absolute;inset:0;pointer-events:none;background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.7) 50%,transparent 70%);mix-blend-mode:screen;opacity:0}
+.big{font:900 150px/1 P;letter-spacing:-2px;color:var(--ink)}
+.ser{font-family:S;font-style:italic;font-weight:600}
+.lead{font:500 34px/1.2 P;color:var(--mute)}
+.acc{color:var(--red)} .gd{color:var(--gold)}
+.chip{display:inline-block;font:700 34px/1 P;padding:16px 28px 12px;border-radius:999px;border:2px solid var(--ink);background:rgba(255,255,255,.6)}
+.chip.dk{background:var(--ink);color:#fff}
+.mul img{mix-blend-mode:multiply}
+.gl{background:rgba(255,255,255,.75);border:1.5px solid rgba(0,0,0,.12);border-radius:28px;box-shadow:0 30px 60px rgba(0,0,0,.08);overflow:hidden}
+.w{word-spacing:0} .wd{display:inline-block;will-change:filter,opacity,transform}
+#flash{position:absolute;inset:0;opacity:0;pointer-events:none}
+#grain{mix-blend-mode:multiply;opacity:.06}
+</style></head><body>
+<div id="root">
+ <div id="grid"></div><div id="arc"></div>
+ <div id="bgs"></div><div id="tint"></div>
+ <canvas id="fxb" width="1080" height="1920"></canvas>
+ <div id="cam"><div id="stage"></div><canvas id="fx" width="1080" height="1920"></canvas></div>
+ <div id="flash"></div>
+ <canvas id="grain" width="1080" height="1920"></canvas>
+</div>
+<script src="engine.js"></script><script src="fx.js"></script><script src="lib.js"></script><script>window.SAFE_GUIDE=1</script><script src="cues.js"></script><script src="scenes.js"></script>
+<script>
+let fxb,fx,gr;const TINTS=[];
+function TINT(t0,t1,css,fade=.4){TINTS.push({t0,t1,css,fade})}
+function seek(t){
+  const c=camAt(t);document.getElementById('cam').style.transform=`translate(${c.x*.5}px,${c.y*.5}px) rotate(${c.r}deg) scale(${c.s})`;
+  document.getElementById('bgs').style.transform=`translate(${c.x*.25}px,${c.y*.25}px) scale(${1+(c.s-1)*.5})`;
+  document.getElementById('grid').style.transform=`translate(${(t*5)%54}px,${(t*7)%54}px)`;
+  document.getElementById('arc').style.transform=`translate(${Math.sin(t*.15)*260}px,${Math.cos(t*.12)*180}px) rotate(${t*6}deg)`;
+  for(const b of BGS)renderBG(b,t);
+  let tc='',to=0;for(const k of TINTS){if(t>=k.t0-k.fade&&t<=k.t1+k.fade){tc=k.css;to=Math.min(clamp((t-k.t0+k.fade)/k.fade),clamp((k.t1+k.fade-t)/k.fade))}}
+  const ti=document.getElementById('tint');ti.style.background=tc;ti.style.opacity=to;
+  for(const o of ITEMS)renderItem(o,t);
+  for(const h of HOOKS)h(t);
+  fx.clearRect(0,0,W,H);drawParts(fx,t);
+  fxb.clearRect(0,0,W,H);
+  let fo=0,fcol='#fff';for(const f of FLASH){const d=t-f.t;if(d>=0&&d<.6){const v=f.a*Math.exp(-d*7);if(v>fo){fo=v;fcol=f.c}}}
+  const fl=document.getElementById('flash');fl.style.opacity=fo;fl.style.background=fcol;
+  const g=grains[Math.floor(t*24)%grains.length];gr.clearRect(0,0,W,H);gr.drawImage(g,0,0,1080,1920);
+}
+async function init(){
+  fxb=document.getElementById('fxb').getContext('2d');fx=document.getElementById('fx').getContext('2d');gr=document.getElementById('grain').getContext('2d');
+  makeGrain();buildScenes();
+  for(const w of [400,500,600,700,800,900]){await document.fonts.load(w+' 50px P','अआक्ष123')}await document.fonts.load('italic 600 50px S','Carpet');await document.fonts.ready;
+  await Promise.all([...document.images].map(i=>i.decode().catch(()=>0)));
+  const bgi=[...new Set(BGS.map(b=>b.img))];await Promise.all(bgi.map(s=>{const i=new Image();i.src='a/'+s;return i.decode().catch(()=>0)}));
+  if(window.PRELOAD)await Promise.all(window.PRELOAD);
+  window.READY=true;
+}
+init();
+</script></body></html>

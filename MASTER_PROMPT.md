@@ -98,6 +98,7 @@ Before any building, think it through like a senior creative director and delive
 
 ## 5. Image prompts (when I ask "prompt de")
 - Complete, copy-ready prompts, all at once, numbered, one Marathi line above each.
+- Group the prompts **category-wise** (backgrounds / buildings and places / objects / documents ...) and add a **separate list of cut-outs** (`O09_laptop.png` ...). I make those cut-outs myself and send proper transparent PNGs; use them directly (ISNet/keycut only as fallback).
 - First line "Size 9:16 vertical." (backgrounds) or "Size 2:3 vertical." (objects / cut-outs, on "pure plain white background").
 - Photoreal style: "Authentic photograph ... Shot on <camera> with <lens>, f/8 ... Realistic ... no CGI look."
 - Always end with "No text, no labels, no logo, no watermark."
