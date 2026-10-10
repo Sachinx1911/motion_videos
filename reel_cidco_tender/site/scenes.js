@@ -87,8 +87,8 @@ CUT(T.twist);
 H2(T.twist+.1,T.tender,560,`पण गंमत अशी... हा प्लॉट <span style="color:${RED}">विकलाच</span> गेला नाही!`,{w:820});
 OBJ(9.35,T.tender,335,1180,190,'O15_pillar.png',{enter:'drop',din:.55,sfx:null,fn:(t,lt)=>({dy:lt>.55&&lt<.75?Math.sin((lt-.55)/.2*Math.PI)*-10:0})});
 {const tl=9.35+.2;sfx(tl,'thud',1);sfx(tl,'impact',.5);shake(tl,16);punch(tl,.04);PART({type:'soil',t0:tl,t1:tl+.02,n:150,seed:17,x:335,y:1300,life:1.8});}
-STAMP(9.95,T.tender,650,960,'विक्री ❌',RED,{fs:60,w:420,rot:-5});
-STAMP(10.71,T.tender,650,1180,'LEASE ✅',GOLD,{fs:60,w:420,rot:-4});
+STAMP(9.95,T.tender,665,950,'विक्री ❌',RED,{fs:60,w:420,rot:-5});
+STAMP(10.71,T.tender,665,1180,'LEASE ✅',GOLD,{fs:60,w:420,rot:-4});
 shake(10.1,10);
 
 // ================= 3 CIDCO PLOT TENDER title =================
