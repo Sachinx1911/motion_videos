@@ -35,6 +35,12 @@ function drawParts(ctx,t){
         else{ctx.scale(1,Math.cos(a*(3+p.r2*4)));ctx.fillStyle=cols[Math.floor(p.r4*cols.length)];ctx.beginPath();ctx.ellipse(0,0,9+p.r3*7,16+p.r1*8,0,0,7);ctx.fill();
           ctx.fillStyle='rgba(255,255,255,.25)';ctx.beginPath();ctx.ellipse(-3,-4,3,7,0,0,7);ctx.fill()}
         ctx.restore();}
+      else if(o.type==='soil'){const life=o.life||1.6;if(a>life)continue; // ground impact: soil clumps + dust puffs
+        const side=p.r1<.5?-1:1;
+        if(p.r5<.68){const vx=side*(250+p.r2*650),vy=-(250+p.r3*700);const x=o.x+side*p.r4*60+vx*a,y=o.y+vy*a+1300*a*a;if(y>o.y+30)continue;
+          ctx.globalAlpha=clamp(1-a/life);ctx.fillStyle=['#6b4a2b','#8a6440','#a37c52','#4e3520'][Math.floor(p.r4*4)];ctx.beginPath();ctx.ellipse(x,y,3+p.r3*7,2+p.r2*5,a*4,0,7);ctx.fill();}
+        else{const x=o.x+side*(40+p.r2*260)*(1-Math.exp(-a*3)),y=o.y-10-p.r3*90*(1-Math.exp(-a*2)),r=30+p.r4*70+a*90;
+          const g=ctx.createRadialGradient(x,y,0,x,y,r);g.addColorStop(0,`rgba(176,146,108,${.5*clamp(1-a/life)})`);g.addColorStop(1,'rgba(176,146,108,0)');ctx.globalAlpha=1;ctx.fillStyle=g;ctx.beginPath();ctx.arc(x,y,r,0,7);ctx.fill();}}
       else if(o.type==='dust'){const life=o.life||6;if(a>life)continue;
         const x=(p.r1*1200-60)+Math.sin(a*.6+p.r2*9)*40, y=1980-(a*(60+p.r3*80))-p.r4*1900;
         ctx.globalAlpha=Math.sin(Math.PI*a/life)*.55*(o.alpha||1);ctx.fillStyle=o.color||'#fff3c8';ctx.beginPath();ctx.arc(x,(y%2000+2000)%2000,1.5+p.r5*3.5,0,7);ctx.fill();}

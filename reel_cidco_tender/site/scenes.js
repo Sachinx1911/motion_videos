@@ -50,7 +50,7 @@ const CUT=t=>{flash(t,.35,'#fffaf0');sfx(t-.15,'whoosh',.5);punch(t,.03)};
 
 // ---------- HUD ----------
 A({t0:0,t1:T.out,x:205,y:300,w:170,cls:'noshadow',html:`<div style="background:rgba(255,253,249,.92);border-radius:16px;padding:8px 12px;box-shadow:0 8px 20px rgba(0,0,0,.15)"><img src="a/logo_gold.png" style="width:100%;filter:none"></div>`,enter:'fade',din:.5,float:0,z:600});
-A({t0:.5,t1:T.out,x:620,y:300,w:500,cls:'noshadow',html:`<div style="text-align:left"><span style="display:inline-block;font:600 19px/1.35 P;color:#3d3a35;background:rgba(255,253,249,.9);border-radius:12px;padding:8px 14px 6px;white-space:nowrap">* माहितीसाठी - अटी प्रत्येक स्कीम बुकलेटनुसार बदलतात</span></div>`,enter:'fade',din:.5,float:0,z:600});
+A({t0:.5,t1:T.out,x:540,y:1462,w:900,cls:'noshadow',html:`<div style="text-align:center"><span style="display:inline-block;font:600 19px/1.35 P;color:#3d3a35;background:rgba(255,253,249,.9);border-radius:12px;padding:8px 14px 6px;white-space:nowrap">* माहितीसाठी - अटी प्रत्येक स्कीम बुकलेटनुसार बदलतात</span></div>`,enter:'fade',din:.5,float:0,z:600});
 
 // ================= 1 HOOK : 1 plot, 2,125 crore =================
 BG({img:'B01_navi_mumbai_aerial.jpg',t0:0,t1:T.twist+.05,s0:1.18,s1:1.0,y0:-60,y1:0,fade:.2});
@@ -60,7 +60,7 @@ TINT(0,T.twist,'linear-gradient(180deg,rgba(0,0,0,.25),rgba(0,0,0,0) 35%,rgba(0,
    fn:(t,lt)=>({dy:lt>.6?-Math.abs(Math.sin((lt-.6)*3.2))*24:0})});
  A({t0:tp+.5,t1:T.twist,x:700,y:1150,w:200,cls:'noshadow',html:`<div class="rg" style="width:200px;height:64px;border-radius:50%;border:5px solid #ff3b2f;box-sizing:border-box"></div>`,enter:'fade',din:.05,float:0,z:50,
    draw:(t,lt,oo)=>{const q=(lt%1)/1;const r=oo.el.querySelector('.rg');r.style.transform=`scale(${.2+q})`;r.style.opacity=1-q}});
- LBL(tp+.3,T.twist,700,980,'1 प्लॉट',{bg:'#fff',fs:38,w:240});}
+ LBL(tp+.3,T.twist,700,1235,'1 प्लॉट',{bg:'#fff',fs:38,w:240});}
 A({t0:2.3,t1:T.twist,x:540,y:640,w:900,cls:'noshadow',html:`<div style="text-align:center;background:rgba(13,23,41,.82);border:2px solid rgba(232,207,159,.6);border-radius:30px;padding:26px 30px 22px;box-shadow:0 30px 70px rgba(0,0,0,.45)"><div style="font:600 34px/1.2 P;color:#cfd6e4">बोली लागली तब्बल</div><div class="v" style="font:800 118px/1.1 P;color:#e8cf9f;text-shadow:0 0 40px rgba(232,207,159,.45)">₹0 कोटी</div><div style="font:500 24px/1.3 P;color:#aab3c4;margin-top:4px">खारघर, सेक्टर 23 - 41,994 चौ.मी. प्लॉट</div></div>`,enter:'zoom',din:.4,sfx:'riser',sfxv:.5,z:60,float:.1,shine:[5.3],
   draw:(t,lt,oo)=>{const v=Math.round(2125*E.out(clamp((t-2.9)/2.2)));oo.el.querySelector('.v').textContent='₹'+v.toLocaleString('en-IN')+' कोटी'}});
 sfx(2.9,'ticks',.5);punch(5.12,.08);sfx(5.12,'impact',.8);PART({type:'sparks',t0:5.12,t1:5.4,n:80,seed:3,x:540,y:660,speed:900,color:GOLD});
@@ -69,7 +69,8 @@ sfx(2.9,'ticks',.5);punch(5.12,.08);sfx(5.12,'impact',.8);PART({type:'sparks',t0
 CUT(T.twist);
 BG({img:'B02_empty_plot.jpg',t0:T.twist,t1:T.tender+.05,s0:1.0,s1:1.1,fade:.2});
 H2(T.twist+.1,T.tender,560,`पण गंमत अशी... हा प्लॉट <span style="color:${RED}">विकलाच</span> गेला नाही!`,{w:820});
-OBJ(9.35,T.tender,300,1180,240,'O15_pillar.png',{enter:'rise'});
+OBJ(9.35,T.tender,300,1180,240,'O15_pillar.png',{enter:'drop',din:.55,sfx:null,fn:(t,lt)=>({dy:lt>.55&&lt<.75?Math.sin((lt-.55)/.2*Math.PI)*-10:0})});
+{const tl=9.35+.2;sfx(tl,'thud',1);sfx(tl,'impact',.5);shake(tl,16);punch(tl,.04);PART({type:'soil',t0:tl,t1:tl+.02,n:150,seed:17,x:300,y:1335,life:1.8});}
 STAMP(9.95,T.tender,640,960,'विक्री ❌',RED,{fs:76,w:560,rot:-6});
 STAMP(10.71,T.tender,640,1200,'LEASE ✅',GOLD,{fs:80,w:560,rot:-4});
 shake(10.1,10);
@@ -104,41 +105,43 @@ A({t0:22.84,t1:T.emd,x:540,y:480,w:900,cls:'noshadow',html:`<svg viewBox="0 0 90
       const c=g.querySelector('circle');c.setAttribute('fill',act?'#e8cf9f':done?'#1b2a45':'#0d1729');g.querySelector('text').setAttribute('fill',act?'#0d1729':'#e8cf9f');g.style.opacity=done?.6:1})}});
 A({t0:22.84,t1:T.s1,x:540,y:960,w:900,cls:'noshadow',html:`<div style="text-align:center;font:700 62px/1.25 P;color:#faf7f2">प्रोसेस ऐका -<br><span style="color:#e8cf9f;font-size:96px;font-weight:800">5 स्टेप्स</span></div>`,enter:'up',din:.4,z:50,float:.1});
 ST.forEach(s=>{sfx(s,'ding',.5);punch(s,.03)});
-const STEPT=(t0,t1,txt)=>A({t0,t1,x:540,y:660,w:900,cls:'noshadow',html:`<div style="text-align:center;font:700 54px/1.2 P;color:#faf7f2">${txt}</div>`,enter:'down',din:.4,z:70,float:.08,sfx:'whoosh',sfxv:.5});
+const SCX=470,SCY=850;
+const STEPT=(t0,t1,txt)=>A({t0,t1,x:540,y:640,w:900,cls:'noshadow',html:`<div style="text-align:center;font:700 54px/1.2 P;color:#faf7f2">${txt}</div>`,enter:'down',din:.4,z:70,float:.08,sfx:'whoosh',sfxv:.5});
 
 // --- STEP 1 : registration ---
 STEPT(T.s1,T.s2,`<span style="color:#e8cf9f">e-Auction</span> वेबसाइटवर नोंदणी`);
-OBJ(T.s1+.1,T.s2,540,1010,820,'O09_laptop.png',{enter:'rise',din:.55});
-A({t0:26.2,t1:T.s2,x:500,y:880,w:480,cls:'noshadow',html:`<div style="text-align:left;font:600 22px/1 P;color:#151515">${['नाव / पत्ता','PAN','आधार','बँक IFSC'].map(s=>`<div style="margin:0 0 12px"><div style="margin-bottom:6px">${s}</div><div class="f" style="height:22px;border-radius:6px;background:#eef0f4;border:1.5px solid #cfd4dd"></div></div>`).join('')}</div>`,enter:'fade',din:.3,z:60,float:0,rot:-1,
-  draw:(t,lt,oo)=>{oo.el.querySelectorAll('.f').forEach((f,i)=>{const p=clamp((t-(27+i*.7))/.5);f.style.background=`linear-gradient(90deg,#c9a66f ${p*100}%,#eef0f4 ${p*100}%)`})}});
-[['PAN',27.48,300],['आधार',28.14,540],['बँक डिटेल्स',28.83,790]].forEach(([s,t0,x])=>LBL(t0,T.s2,x,1360,s,{bg:'#faf7f2',col:NAVY,fs:38,w:320}));
+OBJ(T.s1+.1,T.s2,540,935,560,'O09_laptop.png',{enter:'rise',din:.55});
+A({t0:T.s1+.5,t1:T.s2,x:SCX,y:SCY,w:300,cls:'noshadow',html:`<div style="text-align:center;font:700 26px/1.3 P;color:${NAVY}">e-Auction<div style="font:600 20px/1.3 P;color:#6b6b6b">Bidder Registration</div></div>`,enter:'fade',din:.3,z:60,float:0});
+A({t0:26.88,t1:T.s2,x:520,y:1320,w:700,cls:'noshadow',html:`<div style="background:rgba(255,253,249,.97);border-radius:26px;padding:20px 30px 14px;box-shadow:0 24px 60px rgba(0,0,0,.35)">${['PAN','आधार','बँक डिटेल्स'].map(s=>`<div class="rw" style="display:flex;align-items:center;gap:18px;margin:0 0 12px"><div style="width:210px;text-align:left;font:700 32px/1.2 P;color:${NAVY}">${s}</div><div style="flex:1;height:26px;border-radius:8px;background:#eef0f4;border:1.5px solid #cfd4dd;overflow:hidden"><div class="f" style="height:100%;width:0;background:linear-gradient(90deg,#e8cf9f,#b8935f)"></div></div><div class="ok" style="width:44px;opacity:0">${IC.check}</div></div>`).join('')}</div>`,enter:'up',din:.45,sfx:'whoosh',sfxv:.5,z:62,float:0,
+  draw:(t,lt,oo)=>{const ts=[27.48,28.14,28.83];oo.el.querySelectorAll('.rw').forEach((r,i)=>{const p=E.out(clamp((t-ts[i])/.5));r.querySelector('.f').style.width=(p*100)+'%';r.querySelector('.ok').style.opacity=clamp((t-ts[i]-.45)/.2)})}});
+[27.48,28.14,28.83].forEach(k=>{sfx(k,'pen',.4);sfx(k+.5,'ding',.35)});
 
 // --- STEP 2 : scheme booklet ---
 STEPT(T.s2,T.s3,`स्कीम <span style="color:#e8cf9f">बुकलेट</span> डाउनलोड करा`);
-OBJ(30.37,32.25,540,1060,560,'O10_booklet.png',{enter:'left',exit:'left',shine:[30.9]});
-LBL(30.6,32.25,540,1440,'* प्रतीकात्मक चित्र',{bg:'rgba(255,253,249,.85)',col:'#3d3a35',fs:22,w:300,sfx:null});
-CARD(32.25,T.s3,540,1050,440,700,'O11_layout.jpg',{enter:'right',rot:2});
-A({t0:32.35,t1:T.s3,x:540,y:1030,w:440,cls:'noshadow',html:`<div class="hl" style="position:relative;left:100px;top:0;width:120px;height:86px;border:6px solid #e8cf9f;border-radius:6px;box-shadow:0 0 30px #e8cf9f,inset 0 0 20px rgba(232,207,159,.5);background:rgba(232,207,159,.25)"></div>`,enter:'pop',din:.35,sfx:'pop',z:45,float:0,pulse:1});
-[['📐 आकार',32.35,250],['📍 जागा',32.97,540],['₹ बेस प्राइस',33.59,790]].forEach(([s,t0,x],i)=>LBL(t0,T.s3,x,1450,s,{bg:'#faf7f2',col:NAVY,fs:34,w:300}));
+OBJ(30.37,32.25,540,1075,470,'O10_booklet.png',{enter:'left',exit:'left',shine:[30.9]});
+LBL(30.6,32.25,540,1405,'* प्रतीकात्मक चित्र',{bg:'rgba(255,253,249,.85)',col:'#3d3a35',fs:22,w:300,sfx:null});
+CARD(32.25,T.s3,540,1030,470,660,'O11_layout_plan.jpg',{enter:'right',rot:1.5});
+A({t0:32.35,t1:T.s3,x:540,y:1030,w:470,cls:'noshadow',html:`<div style="position:relative;width:470px;height:660px"><div style="position:absolute;left:150px;top:300px;width:92px;height:70px;border:5px solid #b8935f;border-radius:4px;background:rgba(232,207,159,.55);box-shadow:0 0 0 4px rgba(255,255,255,.9),0 0 34px #e8cf9f"></div><div style="position:absolute;left:110px;top:225px;white-space:nowrap;font:700 26px/1 P;color:#fff;background:${NAVY};border-radius:999px;padding:10px 16px 7px">📍 तुमचा प्लॉट</div></div>`,enter:'pop',din:.35,sfx:'pop',z:45,float:0,rot:1.5,pulse:1});
+[['📐 आकार',32.35,250],['📍 जागा',32.97,540],['₹ बेस प्राइस',33.59,790]].forEach(([s,t0,x],i)=>LBL(t0,T.s3,x,1395,s,{bg:'#faf7f2',col:NAVY,fs:34,w:300}));
 
 // --- STEP 3 : fee + EMD before deadline ---
 STEPT(T.s3,T.s4,`डॉक्युमेंट फी + <span style="color:#e8cf9f">EMD</span>`);
-OBJ(T.s3+.1,T.s4,730,1060,280,'O12_hourglass.png',{enter:'drop',din:.6,sfx:'thud',sfxd:.5,
+OBJ(T.s3+.1,T.s4,730,1110,270,'O12_hourglass.png',{enter:'drop',din:.6,sfx:'thud',sfxd:.5,
   fn:(t)=>({r:t>39.6?Math.sin((t-39.6)*2.2)*4:0})});
-A({t0:37.09,t1:T.s4,x:360,y:900,w:520,cls:'noshadow',html:`<div style="background:rgba(255,253,249,.97);border-radius:28px;padding:22px 24px 18px;box-shadow:0 24px 60px rgba(0,0,0,.35);text-align:center"><div style="font:800 64px/1 P;color:${NAVY}">EMD</div><div style="font:600 28px/1.2 P;color:#6b6b6b;margin:8px 0 6px">म्हणजे</div><div style="font:800 46px/1.2 P;color:${GOLD}">अनामत रक्कम</div></div>`,enter:'flip',din:.5,sfx:'whoosh',z:62,float:.12});
-A({t0:39.64,t1:T.s4,x:360,y:1170,w:520,cls:'chipw',html:`<span style="display:inline-flex;align-items:center;gap:14px;background:#faf7f2;color:#151515;border-radius:999px;padding:14px 26px 10px;font:700 34px/1 P;box-shadow:0 12px 30px rgba(0,0,0,.3)">${IC.cal(46)}ठरलेल्या तारखेआधी</span>`,enter:'up',din:.4,sfx:'clock',sfxv:.6,z:64,float:0});
-STAMP(41.2,T.s4,540,1380,'उशीर = बोली नाही ❌',RED,{fs:54,w:900,rot:-3});
+A({t0:37.09,t1:T.s4,x:360,y:940,w:520,cls:'noshadow',html:`<div style="background:rgba(255,253,249,.97);border-radius:28px;padding:22px 24px 18px;box-shadow:0 24px 60px rgba(0,0,0,.35);text-align:center"><div style="font:800 64px/1 P;color:${NAVY}">EMD</div><div style="font:600 28px/1.2 P;color:#6b6b6b;margin:8px 0 6px">म्हणजे</div><div style="font:800 46px/1.2 P;color:${GOLD}">अनामत रक्कम</div></div>`,enter:'flip',din:.5,sfx:'whoosh',z:62,float:.12});
+A({t0:39.64,t1:T.s4,x:360,y:1200,w:520,cls:'chipw',html:`<span style="display:inline-flex;align-items:center;gap:14px;background:#faf7f2;color:#151515;border-radius:999px;padding:14px 26px 10px;font:700 34px/1 P;box-shadow:0 12px 30px rgba(0,0,0,.3)">${IC.cal(46)}ठरलेल्या तारखेआधी</span>`,enter:'up',din:.4,sfx:'clock',sfxv:.6,z:64,float:0});
+STAMP(41.2,T.s4,540,1350,'उशीर = बोली नाही ❌',RED,{fs:54,w:900,rot:-3});
 shake(41.4,12);
 
 // --- STEP 4 : closed bid ---
 STEPT(T.s4,T.s5,`आधी <span style="color:#e8cf9f">क्लोज्ड बिड</span>`);
-OBJ(T.s4+.1,T.s5,540,1060,440,'O13_tender_box.png',{enter:'drop',din:.65,sfx:'thud',sfxd:.55});
-LBL(45.66,T.s5,540,1420,'🔒 किंमत बंद लिफाफ्यात',{bg:'#faf7f2',col:NAVY,fs:42,w:640});
+OBJ(T.s4+.1,T.s5,540,1040,360,'O13_tender_box.png',{enter:'drop',din:.65,sfx:'thud',sfxd:.55});
+LBL(45.66,T.s5,540,1395,'🔒 किंमत बंद लिफाफ्यात',{bg:'#faf7f2',col:NAVY,fs:42,w:640});
 sfx(46.0,'click',.7);
 
 // --- STEP 5 : live e-auction ---
 STEPT(T.s5,T.emd,`मग <span style="color:#e8cf9f">लाईव्ह ई-ऑक्शन</span>`);
-A({t0:47.84,t1:T.emd,x:540,y:760,w:300,cls:'chipw',html:`<span style="display:inline-flex;align-items:center;gap:12px;background:${RED};color:#fff;border-radius:12px;padding:12px 22px 8px;font:800 34px/1 P"><span class="dot" style="width:18px;height:18px;border-radius:50%;background:#fff"></span>LIVE</span>`,enter:'pop',din:.3,sfx:'alert',sfxv:.4,z:70,float:0,
+A({t0:47.84,t1:T.emd,x:540,y:770,w:300,cls:'chipw',html:`<span style="display:inline-flex;align-items:center;gap:12px;background:${RED};color:#fff;border-radius:12px;padding:12px 22px 8px;font:800 34px/1 P"><span class="dot" style="width:18px;height:18px;border-radius:50%;background:#fff"></span>LIVE</span>`,enter:'pop',din:.3,sfx:'alert',sfxv:.4,z:70,float:0,
   draw:(t,lt,oo)=>{oo.el.querySelector('.dot').style.opacity=Math.sin(lt*8)>0?1:.25}});
 OBJ(T.s5+.1,T.emd,320,1150,420,'O14_gavel.png',{enter:'left',
   fn:(t)=>{const h=[50.0,51.3,53.82];let r=0;for(const k of h){const d=t-k;if(d>-.25&&d<.35)r+=d<0?lerp(0,-22,(d+.25)/.25):lerp(-22,0,E.out(clamp(d/.35)))}return {r}}});
@@ -147,7 +150,7 @@ OBJ(T.s5+.1,T.emd,320,1150,420,'O14_gavel.png',{enter:'left',
 A({t0:48.96,t1:T.emd,x:720,y:1100,w:240,cls:'noshadow',html:`<div style="position:relative;width:200px;height:560px;margin:0 auto;border-radius:24px;background:rgba(255,255,255,.08);border:2px solid rgba(232,207,159,.5);overflow:hidden"><div class="bar" style="position:absolute;left:0;right:0;bottom:0;height:10%;background:linear-gradient(180deg,#f2dfb6,#b8935f)"></div></div><div style="text-align:center;font:600 24px/1.3 P;color:#cfd6e4;margin-top:10px">बोली / चौ.मी.</div>`,enter:'up',din:.4,z:60,float:0,
   draw:(t,lt,oo)=>{oo.el.querySelector('.bar').style.height=(10+85*E.inout(clamp((t-49.2)/4.4)))+'%'}});
 [49.4,50.3,51.1,51.9,52.7].forEach((k,i)=>A({t0:k,t1:k+1.1,x:720,y:1240-i*90,w:300,cls:'chipw',html:`<span style="display:inline-block;background:#1f9a52;color:#fff;border-radius:999px;padding:10px 20px 6px;font:800 32px/1 P">+ ₹1,000</span>`,enter:'pop',din:.25,sfx:'coin',sfxv:.4,z:72,float:0,fn:(t,lt)=>({dy:-lt*60,o:1-clamp((lt-.7)/.4)})}));
-STAMP(53.82,T.emd,540,1420,'सर्वात जास्त बोली = प्लॉट! 🏆',GOLD,{fs:46,w:940,rot:-2});
+STAMP(53.82,T.emd,540,1370,'सर्वात जास्त बोली = प्लॉट! 🏆',GOLD,{fs:46,w:940,rot:-2});
 shake(53.9,14);flash(53.82,.4,'#fff4dc');
 
 // ================= 6 EMD : refund vs forfeit =================
@@ -165,8 +168,8 @@ H2(T.cost+.1,T.cta,560,`लक्षात ठेवा - <span style="color:${R
 OBJ(T.cost+.2,T.cta,740,1180,280,'O16_calculator.png',{enter:'right'});
 const ROWS=[['बोलीची रक्कम',61.97,NAVY],['+ GST',63.21,'#151515'],['+ स्टॅम्प ड्युटी',63.81,'#151515'],['+ रजिस्ट्रेशन',64.89,'#151515'],['+ लीज रेंट',65.8,'#151515']];
 ROWS.forEach(([s,t0,c],i)=>A({t0,t1:T.cta,x:360,y:760+i*110,w:560,cls:'noshadow',html:`<div style="background:rgba(255,253,249,.97);border-radius:20px;padding:16px 24px 12px;box-shadow:0 12px 30px rgba(0,0,0,.14);font:700 38px/1.2 P;color:${c};text-align:left;border-left:10px solid ${i?GOLD:NAVY}">${s}</div>`,enter:'left',din:.4,sfx:'pop',sfxv:.5,z:60+i,float:.06}));
-A({t0:70.52,t1:T.cta,x:360,y:1340,w:560,cls:'noshadow',html:`<div style="border-top:5px solid #151515;padding-top:14px;font:800 46px/1.2 P;text-align:left">= <span style="color:${RED}">एकूण खर्च</span></div>`,enter:'up',din:.4,sfx:'impact',sfxv:.5,z:66,float:0});
-LBL(68.96,T.cta,540,1450,'📖 बिडआधी बुकलेट नीट वाचा',{bg:NAVY,col:'#e8cf9f',fs:36,w:700});
+A({t0:70.52,t1:T.cta,x:360,y:1310,w:560,cls:'noshadow',html:`<div style="border-top:5px solid #151515;padding-top:14px;font:800 46px/1.2 P;text-align:left">= <span style="color:${RED}">एकूण खर्च</span></div>`,enter:'up',din:.4,sfx:'impact',sfxv:.5,z:66,float:0});
+LBL(68.96,T.cta,540,1395,'📖 बिडआधी बुकलेट नीट वाचा',{bg:NAVY,col:'#e8cf9f',fs:36,w:700});
 punch(70.52,.05);
 
 // ================= 8 CTA : what will you build? =================
