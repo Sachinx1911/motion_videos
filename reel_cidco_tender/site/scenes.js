@@ -50,7 +50,6 @@ const CUT=t=>{flash(t,.35,'#fffaf0');sfx(t-.15,'whoosh',.5);punch(t,.03)};
 
 // ---------- HUD ----------
 A({t0:0,t1:T.out,x:205,y:300,w:170,cls:'noshadow',html:`<div style="background:rgba(255,253,249,.92);border-radius:16px;padding:8px 12px;box-shadow:0 8px 20px rgba(0,0,0,.15)"><img src="a/logo_gold.png" style="width:100%;filter:none"></div>`,enter:'fade',din:.5,float:0,z:600});
-A({t0:.5,t1:T.out,x:540,y:1462,w:900,cls:'noshadow',html:`<div style="text-align:center"><span style="display:inline-block;font:600 19px/1.35 P;color:#3d3a35;background:rgba(255,253,249,.9);border-radius:12px;padding:8px 14px 6px;white-space:nowrap">* माहितीसाठी - अटी प्रत्येक स्कीम बुकलेटनुसार बदलतात</span></div>`,enter:'fade',din:.5,float:0,z:600});
 
 // ================= 1 HOOK : 1 plot, 2,125 crore =================
 BG({img:'B01_navi_mumbai_aerial.jpg',t0:0,t1:T.twist+.05,s0:1.18,s1:1.0,y0:-60,y1:0,fade:.2});
