@@ -1,5 +1,5 @@
 import numpy as np, json, re, unicodedata
-words=open('script.txt').read().split()
+words=open('script.txt',encoding='utf-8').read().split()
 def wt(w):
     core=re.sub(r'[!?,.]','',w)
     # count aksharas: consonants+independent vowels not preceded by virama
@@ -55,4 +55,4 @@ for (s,e),(a,b) in zip(segs,ch):
     for k in range(s,e):
         d=(b-a)*W[k]/tot; out.append({'w':words[k],'s':round(t,3),'e':round(t+d,3)}); t+=d
     print(f'{a:6.2f}-{b:6.2f} ({b-a:4.2f} exp {(cum[e]-cum[s])/rate:4.2f}) '+' '.join(words[s:e]))
-json.dump(out,open('words.json','w'),ensure_ascii=False)
+json.dump(out,open('words.json','w',encoding='utf-8'),ensure_ascii=False)

@@ -1,4 +1,4 @@
-import asyncio, sys, subprocess, json, os
+import asyncio, sys, subprocess, json, os, pathlib
 from playwright.async_api import async_playwright
 async def main(mode, a, b, out, fps=30, step=None):
     async with async_playwright() as p:
@@ -6,11 +6,11 @@ async def main(mode, a, b, out, fps=30, step=None):
         pg=await br.new_page(viewport={'width':1080,'height':1920})
         pg.on('console', lambda m: print('CONSOLE',m.text))
         pg.on('pageerror', lambda e: print('PAGEERR',e))
-        await pg.goto('file://'+os.path.abspath(os.environ.get('PAGE','site/index.html')))
+        await pg.goto(pathlib.Path(os.environ.get('PAGE','site/index.html')).resolve().as_uri())
         await pg.wait_for_function('window.READY===true',timeout=60000)
         await pg.evaluate('seek(0.5)'); await pg.wait_for_timeout(1500); await pg.screenshot(type='jpeg')
         if mode=='sfx':
-            s=await pg.evaluate('JSON.stringify(SFX)'); open(out,'w').write(s); await br.close(); return
+            s=await pg.evaluate('JSON.stringify(SFX)'); open(out,'w',encoding='utf-8').write(s); await br.close(); return
         if mode=='shots':
             for t in [float(x) for x in a.split(',')]:
                 await pg.evaluate(f'seek({t})'); await pg.screenshot(path=f'{out}/s_{t:07.2f}.jpg',type='jpeg',quality=80)

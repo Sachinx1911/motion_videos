@@ -137,7 +137,7 @@ def S(name):
     return np.zeros(100)
 import os; END=float(os.environ.get("END","93.8")); N=int(END*SR)
 fx=np.zeros(N)
-for e in json.load(open('out/sfx.json')):
+for e in json.load(open('out/sfx.json',encoding='utf-8')):
     s=S(e['type'])*e['vol']; o=int(e['t']*SR)
     if o<0: s=s[-o:]; o=0
     m=min(len(s),N-o); fx[o:o+m]+=s[:m]

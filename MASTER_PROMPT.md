@@ -29,6 +29,8 @@ Then reply in Marathi with a 3-line summary of what you understood and ask me fo
   ✅ बरोबर काय हवे - ..., सर.
   ```
 - I send images without numbers. Identify each one yourself, map it to its prompt, and report missing / defective ones (stray text, wrong shape, ✦ watermark, duplicates).
+- When I say "पहिल्यापासून व्यवस्थित दे", re-send the complete numbered list from item 1, every item complete.
+- If my list misses an obvious item, add it and tell me you added it.
 
 ## 2. Brands / channels
 - **SRS Dwell** (current): real-estate information reels. Logo files in `brand/` (`srs_dwell_logo.png` gold, `srs_dwell_logo_white.png` white). Palette: champagne gold `#e8cf9f / #c9a66f / #b8935f`, navy `#0d1729 / #1b2a45`, ivory `#faf7f2`.
@@ -41,16 +43,21 @@ Then reply in Marathi with a 3-line summary of what you understood and ask me fo
 ## 3. Content rules (all channels)
 - Only facts you are sure of. Research online (several sources) before writing a script about news/GRs; save research to `reel_<topic>/research.md` with source links, and flag disagreements between sources at the end.
 - Never: political / caste / religious / violent content, accusations like "भ्रष्टाचार" against government bodies.
-- Strong energetic hook in the first 2 seconds (never "अरे थांबा!"). Stay on topic.
+- Strong energetic hook in the first 2 seconds (never "अरे थांबा!"). Stay on topic. Every script has a hook, a twist and a climax, and should be save-worthy.
 - **Voice-script number rules (ElevenLabs):** round hundreds in WORDS ("शंभर", "तीनशे", "पाचशे") - digits like "100" get read as "एकशे"; decimals as "27 पॉइंट 87" (never "27.87", it is read as "बिंदू"); regulation numbers as "7 पॉइंट 6 पॉइंट 1"; "%" as "टक्के"; "sq.ft" as "स्क्वेअर फूट", "sq.m" as "चौरस मीटर"; no ** or em dashes. On-screen text keeps normal digits (27.87, 7.6.1, 30%).
 - Script length 75-95 s. Write it with ElevenLabs v3 emotion tags (`[excited]`, `[curious]`, `[serious]`, `[confident]`, `[warmly]`). Numbers as digits in the script I record.
+- **Never** use `[whispers]` or any soft/quiet tag - the voice stays clear and energetic throughout.
+- If the voice changes after the scenes are built (intro cut, a line re-recorded and spliced), **time-warp** the animation and SFX (map new time -> old time) instead of rebuilding the scenes.
 
 ## 4. Visual and audio rules (learned from my feedback)
 - Visuals must **explain**, not decorate: show the process happening (maps with real boundaries, counters filling, timelines drawing, stamps landing, arrows moving).
 - Real objects/places come from my AI images; code only draws overlays. Maps = NASA satellite image + real boundaries (`brand/geo/` has Maharashtra; recipe in section 7).
 - Never let a section sit still; a new transition style per reel (SWEEP, BARS, RINGT, BLINDS, paper-tear, iris, etc. - make new ones too).
 - **Instagram safe area** - official 1080x1920 template: top 220 px and bottom 420 px are covered, safe box 1010x1280, right-side buttons cover x > 890 from y 860 down; real phones also crop ~100 px on each side. Our stricter rule: logo top-left at x 205, y 300 (w ~170); all key text/graphics inside y 250-1480 and x 110-970; between y 880-1700 nothing right of x 860; no important text below y 1480 (footer/disclaimer goes under the logo row, y ~370). Check with a safe-area guide overlay (`site/index_safe.html`) before rendering, and show the user a storyboard (contact sheet of key frames) before the full render.
-- Font **Poppins** (covers Devanagari). **No subtitles.** Only key words and numbers on screen.
+- Font **Poppins** (covers Devanagari), Medium/SemiBold weights, about 20% smaller than first instinct, generous spacing - "premium feel". Logo text stays bold. Long Marathi lines auto-shrink to fit their card - text never spills outside. **No subtitles.** Only key words and numbers on screen.
+- "AI सारखं वाटलं नाही पाहिजे": prefer real-photo-style images over code-drawn icons. Code icons are only placeholders until my images arrive (exception: never show real ID cards / government documents - use glass pills or a neutral photo).
+- Quality benchmark = professional Premiere Pro edits. When I send a reference video, match its quality and pacing.
+- **True 3D when I ask for 3D**: extruded regions, 3D camera orbit/tilt, self-drawing glowing lines, 3D arrows and 3D text, dotted-leader labels - not a flat image just tilted. Good fits: plot layouts, Navi Mumbai nodes, building cutaways, floor plans.
 - Audio: my ElevenLabs voice + synthesized SFX, **no background music**, voice clearly louder than SFX (`vo*1.0 + fx*0.16*duck`). Target about -15 LUFS.
 - Output: 1080x1920, 30 fps, H.264 + AAC, **under 29 MB** (2-pass encode).
 
@@ -83,7 +90,7 @@ Always: PROFESSIONAL premium look (never cartoon/sticker/neo-brutal). Show a ren
 
 ## 4c. Storyboard-first process (user rule, 9 Oct 2026) - EVERY video
 Before any building, think it through like a senior creative director and deliver a PROPER STORYBOARD:
-1. Pick the best 2-4 storyboard types (section 4b) and 1-3 reference styles from `research/reference_styles/STYLE_LIBRARY.md`; say why in one line.
+1. Pick the best 2-4 storyboard types (section 4b) and 1-3 reference styles from `research/reference_styles/STYLE_LIBRARY.md`; say why in one line. For a brand-new look, first render 2-3 still style frames and get my OK.
 2. Scene table, one row per ~3-6 s beat timed to the voice: # | time | voice line | visual (image or 3D asset) | on-screen text (Marathi, exact) | animation + transition | SFX.
 3. Render the storyboard as actual frames (key frame per scene, safe-area checked) and show the contact sheet - not just text.
 4. List the exact images needed (plain Marathi names) with complete prompts in the reference styles (architectural viz, location-pin map, corkboard timeline, B&W documentary cut-outs, etc.).
@@ -101,23 +108,39 @@ Before any building, think it through like a senior creative director and delive
 ## 6. Pipeline (each topic gets its own folder `reel_<topic>/`)
 1. Idea + hook -> 2. Script (wait for approval) -> 3. Image prompts -> 4. Receive & check images -> `raw/` with scene names (`B01_...` backgrounds, `O05_...` objects).
 5. Voice: copy MP3 to `reel_<topic>/vo.mp3`, run `python3 ../tools/trim.py` (caps pauses).
-6. **Verify what was actually spoken** with mlx-whisper (`whisper-large-v3-turbo`, language `mr`). Whisper writes years wrongly - re-check numbers on isolated snippets in `mr`/`hi` before telling me something is wrong.
+6. **Verify what was actually spoken** with Whisper (`whisper-large-v3-turbo`, language `mr`): mlx-whisper on Mac, faster-whisper on Windows. Whisper writes years wrongly - re-check numbers on isolated snippets in `mr`/`hi` before telling me something is wrong.
 7. Timing: write `script.txt` (numbers and English words spelled in Devanagari) and run `../tools/align.py`. **Always cross-check align.py against whisper `word_timestamps=True`** - align.py can shift by one chunk. If they disagree, use the whisper word times (`cue_words.json`).
 8. If a word must be cut from the voice (risky word, mistake): cut at a silence dip with a 10 ms crossfade, re-transcribe to confirm, and shift every later cue time by the cut length.
 9. Cut-outs: `../tools/isnet.py NAME...` (ISNet). For objects on white where ISNet fails (kraft paper, screens, tripods) use `../tools/keycut.py [--all-white] NAME...`. Always look at a contact sheet on dark navy.
 10. Build `site/` (copy `engine.js`, `fx.js`, `lib.js`, `index.html` from the latest reel, fonts + logos into `site/a/`), write `site/scenes.js` with every beat on exact word times.
-11. Preview: `python3 ../tools/render.py shots 1.5,4.9,... x out/sh` then `python3 ../tools/sheet.py 6` and **Read `/tmp/sheet.jpg`**. Fix overlaps, clipped labels, empty frames, bad Marathi grammar.
+11. Preview: `python3 ../tools/render.py shots 1.5,4.9,... x out/sh` then `python3 ../tools/sheet.py 6` and **Read `out/sheet.jpg`**. Fix overlaps, clipped labels, empty frames, bad Marathi grammar.
 12. Sound: `python3 ../tools/render.py sfx 0 0 out/sfx.json` then `END=<length> python3 ../tools/audio.py`.
-13. Render in 4 parallel parts (`render.py video a b out/pN.mp4`), concat, 2-pass x264 at the bitrate that lands at about 27-28 MB (2700k for ~80 s), mux `out/mix.m4a`.
+13. Render in parallel parts (`render.py video a b out/pN.mp4`) - 4 on the Mac, 6-8 on the 16-core Windows laptop, concat, 2-pass x264 at the bitrate that lands at about 27-28 MB (2700k for ~80 s), mux `out/mix.m4a`.
 14. Spot-check frames from FINAL.mp4, then deliver: path + short Marathi summary of what each section shows + corrections at the end. Name the file `out/<Brand>_<Topic>.mp4`.
 
-## 7. Machine setup (first time on a new Mac)
+## 7. Two machines - Mac and Windows (I work on both)
+- The GitHub repo `Sachinx1911/motion_videos` is the single source of truth. **Start of every session: `git pull`. End of every step (script, prompts, images, voice, final video): commit and push**, so the other machine can continue exactly from there.
+- Before starting, check which machine you are on (`uname` / platform) and use its commands: `python3` on Mac, `python` on Windows; `/tmp` does not exist on Windows - tools write inside the reel folder instead.
+- Text files stay LF on both machines (`.gitattributes`); always read/write Marathi files with `encoding='utf-8'` (Windows default is not UTF-8).
+- Never commit render intermediates (see `.gitignore`); raw images, voice files and the final MP4 are committed.
+
+**Mac setup (first time):**
 ```
 brew install ffmpeg
 python3 -m pip install numpy scipy pillow opencv-python onnxruntime shapely fonttools pypdf playwright mlx-whisper
 python3 -m playwright install chromium
 mkdir -p ~/.u2net && curl -L -o ~/.u2net/isnet.onnx https://github.com/danielgatis/rembg/releases/download/v0.0.0/isnet-general-use.onnx
 ```
+
+**Windows laptop (D:\website projects\Motion Video\motion_videos)** - Python 3.12 and ffmpeg are already installed:
+```
+python -m pip install numpy scipy pillow opencv-python onnxruntime shapely fonttools pypdf playwright faster-whisper
+python -m playwright install chromium
+mkdir %USERPROFILE%\.u2net
+curl -L -o %USERPROFILE%\.u2net\isnet.onnx https://github.com/danielgatis/rembg/releases/download/v0.0.0/isnet-general-use.onnx
+```
+- Use `python` (not `python3`), and start the parallel render parts with PowerShell `Start-Process` instead of `setsid nohup`.
+
 - Tools in `tools/` use paths relative to the reel folder (run them from inside `reel_<topic>/`). `render.py` opens `site/index.html` (or `PAGE=` env).
 - Poppins fonts: `brand/fonts/` (from github.com/google/fonts/ofl/poppins).
 - Satellite map: NASA GIBS WMS `BlueMarble_NextGeneration` (EPSG:4326 bbox), boundaries from `udit-001/india-maps-data` geojson; build script pattern = `brand/geo/mh_geo.js` + `mh_sat.jpg`.
@@ -128,6 +151,7 @@ mkdir -p ~/.u2net && curl -L -o ~/.u2net/isnet.onnx https://github.com/danielgat
 - `A({t0,t1,x,y,w,img|html,enter,din,exit,dout,z,float,moves,fn,draw,shine,count,sfx})`; enters: pop, flip, drop, up, down, left, right, stamp, zoom, fade, rise, spin, wipe.
 - `BG({img,t0,t1,s0,s1,x0,x1,y0,y1,filter})`, `TINT(t0,t1,css)`, `punch(t,a)`, `shake(t,a)`, `flash(t,a,c)`, `PART({type:'sparks'|'confetti'|...})`, `sfx(t,name,vol)`.
 - lib helpers: `GL` glass card, `PILL`, `TXT`, `IMG`, `SWEEP`, `BARS`, `RINGT`, `BLINDS`, `IC` icons, `BOOK3D` (in `reel_udcpr_intro/site/scenes.js`), `MAP` satellite map with district paths and pins (same file), `.stampbox` stamps, `.gold` text.
+- To add when first needed: `PHOTO({img,t0,t1,s0,s1,y0,y1,enter,exit})` full-frame photo with drift; text auto-shrink for long Marathi lines; 3D map kit from the old स्पर्धा टाइम्स chat (`cam(t,dur,V(lon,lat,zoom,tilt,rot),ease)`, `rmv` raise/colour regions, `ln` self-drawing glowing lines, `PIN` labels, `w3` 3D words) - rebuild it for CIDCO nodes / plot layouts.
 - Gotchas: decode big JPGs before READY; canvas inside items needs `position:relative`; labels near the map edge get clipped (`overflow:hidden`) - keep pins away from edges.
 
 ## 9. Finished work so far (for reference)
