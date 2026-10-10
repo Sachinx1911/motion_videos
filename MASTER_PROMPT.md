@@ -107,7 +107,7 @@ Before any building, think it through like a senior creative director and delive
 - My images may arrive in chat **or** in `~/Downloads` with descriptive names (png/webp). Check both (`ls -t ~/Downloads | head`). Remove the ✦ watermark (bottom-right) by patching nearby texture, never by blurry inpaint.
 
 ## 6. Pipeline (each topic gets its own folder `reel_<topic>/`)
-1. Idea + hook -> 2. Script (wait for approval) -> 3. Image prompts -> 4. Receive & check images -> `raw/` with scene names (`B01_...` backgrounds, `O05_...` objects).
+1. Idea + hook -> 2. Script (wait for approval; save the approved script to `reel_<topic>/script.md` AND add it at the top of `FINAL_SCRIPTS.md` (index + section), then push) -> 3. Image prompts -> 4. Receive & check images -> `raw/` with scene names (`B01_...` backgrounds, `O05_...` objects).
 5. Voice: copy MP3 to `reel_<topic>/vo.mp3`, run `python3 ../tools/trim.py` (caps pauses).
 6. **Verify what was actually spoken** with Whisper (`whisper-large-v3-turbo`, language `mr`): mlx-whisper on Mac, faster-whisper on Windows. Whisper writes years wrongly - re-check numbers on isolated snippets in `mr`/`hi` before telling me something is wrong.
 7. Timing: write `script.txt` (numbers and English words spelled in Devanagari) and run `../tools/align.py`. **Always cross-check align.py against whisper `word_timestamps=True`** - align.py can shift by one chunk. If they disagree, use the whisper word times (`cue_words.json`).
