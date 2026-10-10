@@ -42,7 +42,7 @@ const H2=(t0,t1,y,html,o={})=>PANEL(t0,t1,540,y,o.w||800,`<div style="font:700 $
 const CHK=(t0,t1,x,y,txt,ok,o={})=>A(Object.assign({t0,t1,x,y,w:o.w||620,cls:'noshadow',html:`<div style="display:flex;align-items:center;gap:20px;background:rgba(255,253,249,.97);border-radius:26px;padding:18px 26px 14px;box-shadow:0 18px 44px rgba(0,0,0,.22);border-left:12px solid ${ok?'#1f9a52':RED}"><div style="width:74px;flex:none">${ok?IC.check:IC.cross}</div><div style="font:700 40px/1.3 P;text-align:left">${txt}</div></div>`,enter:'left',din:.45,sfx:ok?'ding':'buzz',sfxv:.6,z:62,float:.1},o));
 
 function buildScenes(){
-const PLOT=window.PLOT_IMG||'B02_empty_plot.jpg';
+const PLOT='B10_cidco_plot_board.jpg';
 const END=81.4;
 const T={twist:5.82,tender:11.47,use:14.31,bid:21.0,s1:24.4,s2:29.97,s3:35.33,s4:43.38,s5:46.8,emd:54.36,cost:60.95,cta:72.22,out:77.8};
 const SEC=[0,T.twist,T.tender,T.use,T.bid,T.s1,T.s2,T.s3,T.s4,T.s5,T.emd,T.cost,T.cta,T.out,END];
@@ -73,21 +73,22 @@ A({t0:0,t1:MAPEND,x:540,y:960,w:1080,cls:'noshadow',html:`<div style="position:r
    const q=(t*1.1)%1;const rg=oo.el.querySelector('.rg');rg.style.transform=`scale(${.3+q})`;rg.style.opacity=1-q}});
 sfx(.05,'whoosh',.7);sfx(.9,'pop',.6);sfx(1.0,'ding',.4);
 // --- 1.7s+: CIDCO plot ---
-BG({img:PLOT,t0:MAPEND-.1,t1:T.tender+.05,s0:1.12,s1:1.0,fade:.2});
+BG({img:PLOT,t0:MAPEND-.1,t1:T.twist+.05,s0:1.08,s1:1.0,fade:.2});
+BG({img:PLOT,t0:T.twist,t1:T.tender+.05,s0:1.65,s1:1.68,x0:-350,x1:-360,y0:-40,y1:-40,fade:.05});
 CUT(MAPEND-.05);
 TINT(MAPEND,T.twist,'linear-gradient(180deg,rgba(0,0,0,.25),rgba(0,0,0,0) 35%,rgba(0,0,0,0) 65%,rgba(0,0,0,.35))',.2);
 LBL(1.85,T.twist,540,1330,'📍 सिडकोचा प्लॉट - खारघर',{bg:'#fff',fs:36,w:620});
-A({t0:2.3,t1:T.twist,x:540,y:640,w:900,cls:'noshadow',html:`<div style="text-align:center;background:rgba(13,23,41,.82);border:2px solid rgba(232,207,159,.6);border-radius:30px;padding:26px 30px 22px;box-shadow:0 30px 70px rgba(0,0,0,.45)"><div style="font:600 34px/1.2 P;color:#cfd6e4">बोली लागली तब्बल</div><div class="v" style="font:800 118px/1.1 P;color:#e8cf9f;text-shadow:0 0 40px rgba(232,207,159,.45)">₹0 कोटी</div><div style="font:500 24px/1.3 P;color:#aab3c4;margin-top:4px">खारघर, सेक्टर 23 - 41,994 चौ.मी. प्लॉट</div></div>`,enter:'zoom',din:.4,sfx:'riser',sfxv:.5,z:60,float:.1,shine:[5.3],
+A({t0:2.3,t1:T.twist,x:560,y:515,w:760,cls:'noshadow',html:`<div style="text-align:center;background:rgba(13,23,41,.82);border:2px solid rgba(232,207,159,.6);border-radius:30px;padding:26px 30px 22px;box-shadow:0 30px 70px rgba(0,0,0,.45)"><div style="font:600 34px/1.2 P;color:#cfd6e4">बोली लागली तब्बल</div><div class="v" style="font:800 118px/1.1 P;color:#e8cf9f;text-shadow:0 0 40px rgba(232,207,159,.45)">₹0 कोटी</div><div style="font:500 24px/1.3 P;color:#aab3c4;margin-top:4px">खारघर, सेक्टर 23 - 41,994 चौ.मी. प्लॉट</div></div>`,enter:'zoom',din:.4,sfx:'riser',sfxv:.5,z:60,float:.1,shine:[5.3],
   draw:(t,lt,oo)=>{const v=Math.round(2125*E.out(clamp((t-2.9)/2.2)));oo.el.querySelector('.v').textContent='₹'+v.toLocaleString('en-IN')+' कोटी'}});
 sfx(2.9,'ticks',.5);punch(5.12,.08);sfx(5.12,'impact',.8);PART({type:'sparks',t0:5.12,t1:5.4,n:80,seed:3,x:540,y:660,speed:900,color:GOLD});
 
 // ================= 2 TWIST : not sold, leased =================
 CUT(T.twist);
 H2(T.twist+.1,T.tender,560,`पण गंमत अशी... हा प्लॉट <span style="color:${RED}">विकलाच</span> गेला नाही!`,{w:820});
-OBJ(9.35,T.tender,300,1180,240,'O15_pillar.png',{enter:'drop',din:.55,sfx:null,fn:(t,lt)=>({dy:lt>.55&&lt<.75?Math.sin((lt-.55)/.2*Math.PI)*-10:0})});
-{const tl=9.35+.2;sfx(tl,'thud',1);sfx(tl,'impact',.5);shake(tl,16);punch(tl,.04);PART({type:'soil',t0:tl,t1:tl+.02,n:150,seed:17,x:300,y:1335,life:1.8});}
-STAMP(9.95,T.tender,680,960,'विक्री ❌',RED,{fs:64,w:440,rot:-5});
-STAMP(10.71,T.tender,680,1180,'LEASE ✅',GOLD,{fs:64,w:440,rot:-4});
+OBJ(9.35,T.tender,335,1180,190,'O15_pillar.png',{enter:'drop',din:.55,sfx:null,fn:(t,lt)=>({dy:lt>.55&&lt<.75?Math.sin((lt-.55)/.2*Math.PI)*-10:0})});
+{const tl=9.35+.2;sfx(tl,'thud',1);sfx(tl,'impact',.5);shake(tl,16);punch(tl,.04);PART({type:'soil',t0:tl,t1:tl+.02,n:150,seed:17,x:335,y:1300,life:1.8});}
+STAMP(9.95,T.tender,650,960,'विक्री ❌',RED,{fs:60,w:420,rot:-5});
+STAMP(10.71,T.tender,650,1180,'LEASE ✅',GOLD,{fs:60,w:420,rot:-4});
 shake(10.1,10);
 
 // ================= 3 CIDCO PLOT TENDER title =================
@@ -189,7 +190,7 @@ punch(70.52,.05);
 
 // ================= 8 CTA : what will you build? =================
 CUT(T.cta);
-BG({img:'B01_navi_mumbai_aerial.jpg',t0:T.cta,t1:T.out+.05,s0:1.0,s1:1.1,fade:.2,filter:'brightness(.8)'});
+BG({img:'B09_kharghar_aerial.jpg',t0:T.cta,t1:T.out+.05,s0:1.0,s1:1.1,fade:.2,filter:'brightness(.8)'});
 H2(T.cta+.05,T.out,560,`प्लॉट मिळाला तर तुम्ही <span style="color:${GOLD}">काय बांधाल?</span>`,{w:840});
 [['B04_residential.jpg','घर',75.34,260],['B03_bungalow.jpg','बंगलो',75.98,540],['B05_shops.jpg','दुकान',76.68,820]].forEach(([img,s,t0,x])=>A({t0,t1:T.out,x,y:960,w:250,cls:'noshadow',html:`<div style="background:#faf7f2;border-radius:24px;padding:10px 10px 14px;box-shadow:0 20px 50px rgba(0,0,0,.4);text-align:center"><div style="height:260px;border-radius:16px;background:url(a/${img}) center/cover"></div><div style="font:800 40px/1 P;margin-top:14px">${s}</div></div>`,enter:'pop',din:.4,sfx:'pop',sfxv:.6,z:60,float:.12}));
 A({t0:77.18,t1:T.out,x:540,y:1290,w:820,cls:'chipw',html:`<div style="display:inline-flex;align-items:center;gap:18px;background:${NAVY};color:#fff;border-radius:999px;padding:20px 36px 16px;font:700 40px/1 P;box-shadow:0 18px 44px rgba(0,0,0,.35)"><svg viewBox="0 0 24 24" width="46"><path d="M4 4h16v12H8l-4 4z" fill="#e8cf9f"/></svg>Comment करा 👇</div>`,enter:'up',din:.4,sfx:'pop',sfxv:.8,z:66,float:0});
