@@ -89,11 +89,8 @@ sfx(2.9,'ticks',.5);punch(5.12,.08);sfx(5.12,'impact',.8);PART({type:'sparks',t0
 // ================= 2 TWIST : not sold, leased =================
 sfx(T.twist-.1,'whoosh',.5);
 H2(T.twist+.1,TE,560,`पण गंमत अशी... हा प्लॉट <span style="color:${RED}">विकलाच</span> गेला नाही!`,{w:820,dout:.4});
-A({dout:.4,t0:9.4,t1:TE,x:430,y:1462,w:300,cls:'noshadow',html:`<div style="width:300px;height:46px;border-radius:50%;background:radial-gradient(ellipse at 50% 50%,rgba(20,12,5,.55),rgba(20,12,5,0) 70%)"></div>`,enter:'fade',din:.2,float:0,z:33,over:1,fn:(t,lt)=>({s:.6+.4*E.out(clamp(lt/.25))})});
-OBJ(9.35,TE,430,1244,200,'O15_pillar.png',{dout:.4,enter:'drop',din:.55,sfx:null,float:0,z:34,fn:(t,lt)=>({dy:lt>.55&&lt<.75?Math.sin((lt-.55)/.2*Math.PI)*-10:0})});
-{const tl=9.35+.2;sfx(tl,'thud',1);sfx(tl,'impact',.5);shake(tl,16);punch(tl,.04);PART({type:'soil',t0:tl,t1:tl+.02,n:150,seed:17,x:430,y:1462,life:1.8});}
-STAMP(9.95,TE,600,755,'विक्री ❌',RED,{dout:.4,fs:60,w:420,rot:-5});
-STAMP(10.71,TE,600,935,'LEASE ✅',GOLD,{dout:.4,fs:60,w:420,rot:-4});
+STAMP(9.95,TE,540,880,'विक्री ❌',RED,{dout:.4,fs:60,w:420,rot:-5});
+STAMP(10.71,TE,540,1070,'LEASE ✅',GOLD,{dout:.4,fs:60,w:420,rot:-4});
 shake(10.1,10);
 
 // ================= 3 CIDCO PLOT TENDER title =================
