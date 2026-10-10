@@ -59,6 +59,8 @@ Then reply in Marathi with a 3-line summary of what you understood and ask me fo
 - Quality benchmark = professional Premiere Pro edits. When I send a reference video, match its quality and pacing.
 - **True 3D when I ask for 3D**: extruded regions, 3D camera orbit/tilt, self-drawing glowing lines, 3D arrows and 3D text, dotted-leader labels - not a flat image just tilted. Good fits: plot layouts, Navi Mumbai nodes, building cutaways, floor plans.
 - Audio: my ElevenLabs voice + synthesized SFX, **no background music**, voice clearly louder than SFX, but SFX must be clearly audible: `FXG=0.24 DUCK=0.4 END=<len> python3 ../tools/audio.py` (the old 0.16 was too quiet - user, 10 Oct 2026). Target about -15 LUFS.
+- SFX rules (user, 10 Oct 2026): **no bell-type sounds** (ding, chime, bell, coin, reveal, alert, sparkle); **one sound per beat** (never two sounds within 0.15 s); every sound lands exactly on its spoken word, and the matching visual (tick, pop, stamp) lands on the same frame.
+- Transitions must have a reason (continue the camera move, zoom-dissolve into the next scene); never drop in a random transition. Titles appear word-by-word exactly when the voice says them.
 - Output: 1080x1920, 30 fps, H.264 + AAC, **under 29 MB** (2-pass encode).
 
 
