@@ -73,8 +73,11 @@ A({t0:0,t1:MAPEND,x:540,y:960,w:1080,cls:'noshadow',html:`<div style="position:r
    const q=(t*1.1)%1;const rg=oo.el.querySelector('.rg');rg.style.transform=`scale(${.3+q})`;rg.style.opacity=1-q}});
 sfx(.05,'whoosh',.7);sfx(.9,'pop',.6);sfx(1.0,'ding',.4);
 // --- 1.7s+: CIDCO plot ---
-BG({img:PLOT,t0:MAPEND-.1,t1:T.twist+.05,s0:1.08,s1:1.0,fade:.2});
-BG({img:PLOT,t0:T.twist,t1:T.tender+.05,s0:1.65,s1:1.68,x0:-350,x1:-360,y0:-40,y1:-40,fade:.05});
+// one continuous shot: slow push-in on the CIDCO board, then a smooth zoom into the open field for the twist (no cut)
+{const el=document.createElement('div');el.className='bg';el.style.backgroundImage=`url(a/${PLOT})`;document.getElementById('bgs').appendChild(el);BGS.push({img:PLOT,el,t0:-1,t1:-1,s0:1,s1:1,x0:0,x1:0,y0:0,y1:0,fade:0,filter:''});
+ const K=[[MAPEND-.1,1.0,0,0],[T.twist-.1,1.08,0,0],[T.twist+.9,1.65,-350,-40],[T.tender,1.7,-365,-40]];
+ HOOKS.push(t=>{if(t<MAPEND-.35||t>T.tender+.1){el.style.display='none';return}el.style.display='block';
+  const v=i=>KF(t,K.map(k=>[k[0],k[i]]));el.style.opacity=clamp((t-(MAPEND-.35))/.25);el.style.transform=`translate(${v(2)}px,${v(3)}px) scale(${v(1)})`})}
 CUT(MAPEND-.05);
 TINT(MAPEND,T.twist,'linear-gradient(180deg,rgba(0,0,0,.25),rgba(0,0,0,0) 35%,rgba(0,0,0,0) 65%,rgba(0,0,0,.35))',.2);
 LBL(1.85,T.twist,540,1330,'📍 सिडकोचा प्लॉट - खारघर',{bg:'#fff',fs:36,w:620});
@@ -83,12 +86,13 @@ A({t0:2.3,t1:T.twist,x:560,y:515,w:760,cls:'noshadow',html:`<div style="text-ali
 sfx(2.9,'ticks',.5);punch(5.12,.08);sfx(5.12,'impact',.8);PART({type:'sparks',t0:5.12,t1:5.4,n:80,seed:3,x:540,y:660,speed:900,color:GOLD});
 
 // ================= 2 TWIST : not sold, leased =================
-CUT(T.twist);
+sfx(T.twist-.1,'whoosh',.5);
 H2(T.twist+.1,T.tender,560,`पण गंमत अशी... हा प्लॉट <span style="color:${RED}">विकलाच</span> गेला नाही!`,{w:820});
-OBJ(9.35,T.tender,335,1180,190,'O15_pillar.png',{enter:'drop',din:.55,sfx:null,fn:(t,lt)=>({dy:lt>.55&&lt<.75?Math.sin((lt-.55)/.2*Math.PI)*-10:0})});
-{const tl=9.35+.2;sfx(tl,'thud',1);sfx(tl,'impact',.5);shake(tl,16);punch(tl,.04);PART({type:'soil',t0:tl,t1:tl+.02,n:150,seed:17,x:335,y:1300,life:1.8});}
-STAMP(9.95,T.tender,665,950,'विक्री ❌',RED,{fs:60,w:420,rot:-5});
-STAMP(10.71,T.tender,665,1180,'LEASE ✅',GOLD,{fs:60,w:420,rot:-4});
+A({t0:9.4,t1:T.tender,x:430,y:1462,w:300,cls:'noshadow',html:`<div style="width:300px;height:46px;border-radius:50%;background:radial-gradient(ellipse at 50% 50%,rgba(20,12,5,.55),rgba(20,12,5,0) 70%)"></div>`,enter:'fade',din:.2,float:0,z:33,fn:(t,lt)=>({s:.6+.4*E.out(clamp(lt/.25))})});
+OBJ(9.35,T.tender,430,1244,200,'O15_pillar.png',{enter:'drop',din:.55,sfx:null,float:0,z:34,fn:(t,lt)=>({dy:lt>.55&&lt<.75?Math.sin((lt-.55)/.2*Math.PI)*-10:0})});
+{const tl=9.35+.2;sfx(tl,'thud',1);sfx(tl,'impact',.5);shake(tl,16);punch(tl,.04);PART({type:'soil',t0:tl,t1:tl+.02,n:150,seed:17,x:430,y:1462,life:1.8});}
+STAMP(9.95,T.tender,600,770,'विक्री ❌',RED,{fs:60,w:420,rot:-5});
+STAMP(10.71,T.tender,600,915,'LEASE ✅',GOLD,{fs:60,w:420,rot:-4});
 shake(10.1,10);
 
 // ================= 3 CIDCO PLOT TENDER title =================
