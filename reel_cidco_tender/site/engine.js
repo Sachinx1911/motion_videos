@@ -49,12 +49,12 @@ function renderItem(o,t){
     if(en==='pop'){s*=lerp(.15,1,E.back2(pi));op*=clamp(pi*3)}
     else if(en==='flip'){ry+=lerp(-110,0,E.back(pi));op*=clamp(pi*4);s*=lerp(.7,1,E.out(pi))}
     else if(en==='flipx'){rx+=lerp(100,0,E.back(pi));op*=clamp(pi*4)}
-    else if(en==='drop'){dy+=lerp(-1100,0,E.bounce(pi))}
+    else if(en==='drop'){dy+=lerp(-300,0,E.bounce(pi));op*=clamp(pi*5)}
     else if(en==='up'){dy+=lerp(280,0,E.back(pi));op*=clamp(pi*3)}
     else if(en==='down'){dy+=lerp(-280,0,E.back(pi));op*=clamp(pi*3)}
     else if(en==='left'){dx+=lerp(-1000,0,E.back(pi));r+=lerp(-15,0,E.out(pi))}
     else if(en==='right'){dx+=lerp(1000,0,E.back(pi));r+=lerp(15,0,E.out(pi))}
-    else if(en==='stamp'){s*=lerp(3.2,1,E.out(pi));op*=clamp(pi*2.5);r+=lerp(-14,0,E.out(pi))}
+    else if(en==='stamp'){s*=lerp(1.45,1,E.out(pi));op*=clamp(pi*2.5);r+=lerp(-14,0,E.out(pi))}
     else if(en==='zoom'){s*=lerp(1.9,1,E.out(pi));op*=clamp(pi*3)}
     else if(en==='fade'){op*=pi}
     else if(en==='rise'){dy+=lerp(700,0,E.out(pi));s*=lerp(.6,1,E.back(pi));op*=clamp(pi*2)}
@@ -80,6 +80,7 @@ function renderItem(o,t){
   if(o.float){const f=o.float;dy+=Math.sin(lt*1.7+o.ph)*7*f;rx+=Math.sin(lt*1.1+o.ph)*5*f;ry+=Math.cos(lt*.9+o.ph)*7*f}
   if(o.coin){ry+=Math.sin(lt*2.2+o.ph)*38}
   if(o.pulse){s*=1+Math.max(0,Math.sin(lt*6))*.04*o.pulse}
+  if(o.over)o.allowOver=1;
   if(o.fn){const z=o.fn(t,lt,o);if(z){dx+=z.dx||0;dy+=z.dy||0;s*=z.s||1;r+=z.r||0;op*=(z.o===undefined?1:z.o);if(z.ry)ry+=z.ry;if(z.filter)fF=z.filter}}
   el.style.left=x+'px';el.style.top=y+'px';
   el.style.transform=`translate(-50%,-50%) translate(${dx}px,${dy}px) perspective(1400px) rotateX(${rx}deg) rotateY(${ry}deg) rotate(${r}deg) scale(${s})`;
