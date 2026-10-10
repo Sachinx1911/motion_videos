@@ -182,8 +182,9 @@ vo=np.fromfile('vo_t.f32',np.float32).astype(np.float64)
 vo=np.resize(np.concatenate([vo,np.zeros(max(0,N-len(vo)))]),N) if len(vo)<N else vo[:N]
 # sidechain duck music under VO
 envv=np.convolve(np.abs(vo),np.ones(2205)/2205,'same'); duck=1-0.45*np.clip(envv*12,0,1)
-fxd=1-0.5*np.clip(envv*12,0,1)
-mix=vo*1.0+fx*0.16*fxd
+FXG=float(os.environ.get('FXG','0.16')); DUCK=float(os.environ.get('DUCK','0.5'))  # SFX gain / duck depth under voice
+fxd=1-DUCK*np.clip(envv*12,0,1)
+mix=vo*1.0+fx*FXG*fxd
 sp=np.abs(vo)>0.02
 g=0.17/np.sqrt((mix[sp]**2).mean()); mix*=g
 th=0.8; a=np.abs(mix); over=a>th

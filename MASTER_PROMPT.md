@@ -58,7 +58,7 @@ Then reply in Marathi with a 3-line summary of what you understood and ask me fo
 - "AI सारखं वाटलं नाही पाहिजे": prefer real-photo-style images over code-drawn icons. Code icons are only placeholders until my images arrive (exception: never show real ID cards / government documents - use glass pills or a neutral photo).
 - Quality benchmark = professional Premiere Pro edits. When I send a reference video, match its quality and pacing.
 - **True 3D when I ask for 3D**: extruded regions, 3D camera orbit/tilt, self-drawing glowing lines, 3D arrows and 3D text, dotted-leader labels - not a flat image just tilted. Good fits: plot layouts, Navi Mumbai nodes, building cutaways, floor plans.
-- Audio: my ElevenLabs voice + synthesized SFX, **no background music**, voice clearly louder than SFX (`vo*1.0 + fx*0.16*duck`). Target about -15 LUFS.
+- Audio: my ElevenLabs voice + synthesized SFX, **no background music**, voice clearly louder than SFX, but SFX must be clearly audible: `FXG=0.32 DUCK=0.35 END=<len> python3 ../tools/audio.py` (the old 0.16 was too quiet - user, 10 Oct 2026). Target about -15 LUFS.
 - Output: 1080x1920, 30 fps, H.264 + AAC, **under 29 MB** (2-pass encode).
 
 
