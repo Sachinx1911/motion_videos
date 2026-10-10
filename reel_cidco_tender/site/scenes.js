@@ -42,6 +42,7 @@ const H2=(t0,t1,y,html,o={})=>PANEL(t0,t1,540,y,o.w||800,`<div style="font:700 $
 const CHK=(t0,t1,x,y,txt,ok,o={})=>A(Object.assign({t0,t1,x,y,w:o.w||620,cls:'noshadow',html:`<div style="display:flex;align-items:center;gap:20px;background:rgba(255,253,249,.97);border-radius:26px;padding:18px 26px 14px;box-shadow:0 18px 44px rgba(0,0,0,.22);border-left:12px solid ${ok?'#1f9a52':RED}"><div style="width:74px;flex:none">${ok?IC.check:IC.cross}</div><div style="font:700 40px/1.3 P;text-align:left">${txt}</div></div>`,enter:'left',din:.45,sfx:ok?'ding':'buzz',sfxv:.6,z:62,float:.1},o));
 
 function buildScenes(){
+window.ANIM_SLOW=1.45;  // user: animations were too fast
 const PLOT='B10_cidco_plot_board.jpg';
 const END=81.4;
 const T={twist:5.82,tender:12.35,use:14.31,bid:21.0,s1:24.4,s2:29.97,s3:35.33,s4:43.38,s5:46.8,emd:54.36,cost:60.95,cta:72.22,out:77.8};
@@ -54,25 +55,15 @@ const CUT=t=>{flash(t,.35,'#fffaf0');sfx(t-.15,'whoosh',.5);punch(t,.03)};
 A({t0:0,t1:T.out,x:205,y:300,w:170,cls:'noshadow',html:`<div style="background:rgba(255,253,249,.92);border-radius:16px;padding:8px 12px;box-shadow:0 8px 20px rgba(0,0,0,.15)"><img src="a/logo_gold.png" style="width:100%;filter:none"></div>`,enter:'fade',din:.5,float:0,z:600});
 
 // ================= 1 HOOK : 1 plot, 2,125 crore =================
-// --- 0-1.7s: real satellite map, Maharashtra -> zoom to Navi Mumbai (Kharghar) ---
-const MAPEND=1.75, KH=[188.1,904.0], MUM=[126.3,898.4];
-TINT(0,MAPEND,'#060b16',.05);
-A({t0:0,t1:MAPEND,x:540,y:960,w:1080,cls:'noshadow',html:`<div style="position:relative;width:1080px;height:1920px;overflow:hidden"><div class="mc" style="position:absolute;left:0;top:0;width:${MH.W}px;height:${MH.H}px;transform-origin:0 0">
-  <img src="a/bm_mh_hi.jpg" style="position:absolute;left:0;top:0;width:${MH.W}px;height:${MH.H}px;filter:saturate(1.15) brightness(1.05)">
-  <svg viewBox="0 0 ${MH.W} ${MH.H}" style="position:absolute;left:0;top:0;width:${MH.W}px;height:${MH.H}px;overflow:visible"><defs><mask id="mkh"><rect width="${MH.W}" height="${MH.H}" fill="#fff"/><path d="${MH.state}" fill="#000"/></mask></defs>
-   <rect x="-4000" y="-4000" width="12000" height="12000" fill="rgba(6,11,22,.55)" mask="url(#mkh)"/>
-   <path class="st" d="${MH.state}" fill="none" stroke="#f2dfb6" stroke-width="5" stroke-linejoin="round" style="filter:drop-shadow(0 0 8px #e8cf9f)"/></svg>
-  <div class="lb" data-x="${MUM[0]}" data-y="${MUM[1]}" style="position:absolute;left:${MUM[0]}px;top:${MUM[1]}px"><div style="transform:translate(-100%,-50%);padding-right:22px;font:700 40px/1 P;color:#fff;text-shadow:0 3px 12px rgba(0,0,0,.9);white-space:nowrap">मुंबई</div></div>
-  <div class="lb" data-x="${KH[0]}" data-y="${KH[1]}" style="position:absolute;left:${KH[0]}px;top:${KH[1]}px"><div class="kp" style="transform:translate(-50%,-50%)"><div class="rg" style="position:absolute;left:50%;top:50%;width:120px;height:120px;margin:-60px;border-radius:50%;border:5px solid #e8cf9f"></div><div style="width:26px;height:26px;border-radius:50%;background:#d6342a;border:5px solid #fff;box-shadow:0 0 20px #d6342a"></div></div>
-   <div class="kl" style="position:absolute;left:40px;top:-46px;white-space:nowrap;background:rgba(13,23,41,.9);border:2px solid #e8cf9f;border-radius:18px;padding:12px 20px 8px;text-align:left"><div style="font:800 46px/1.1 P;color:#e8cf9f">नवी मुंबई</div><div style="font:600 26px/1.3 P;color:#cfd6e4">खारघर</div></div></div>
+// --- 0-1.75s: simple Navi Mumbai map, gentle zoom to Kharghar ---
+const MAPEND=1.75, KX=736, KY=1020;
+A({t0:0,t1:MAPEND,x:540,y:960,w:1080,cls:'noshadow',html:`<div style="position:relative;width:1080px;height:1920px;overflow:hidden"><div class="mc" style="position:absolute;inset:0;transform-origin:${KX}px ${KY}px">
+  <img src="a/B11_navi_mumbai_map.jpg" style="position:absolute;left:0;top:0;width:1080px;height:1919px;filter:none">
+  <div style="position:absolute;left:${KX}px;top:${KY}px"><div class="rg" style="position:absolute;left:-55px;top:-55px;width:110px;height:110px;border-radius:50%;border:6px solid #d6342a;box-sizing:border-box"></div><div style="position:absolute;left:-15px;top:-15px;width:30px;height:30px;border-radius:50%;background:#d6342a;border:5px solid #fff;box-sizing:border-box;box-shadow:0 4px 12px rgba(0,0,0,.35)"></div></div>
  </div></div>`,enter:'fade',din:.01,exit:'fade',dout:.25,float:0,z:5,over:1,
- draw:(t,lt,oo)=>{const p=E.inout(clamp((t-.15)/1.25));const s0=1000/MH.W,s1=3.2;const s=s0*Math.pow(s1/s0,p);
-   const cx=lerp(1230,KH[0],p),cy=lerp(960,KH[1],p);
-   oo.el.querySelector('.mc').style.transform=`translate(${540-cx*s}px,${900-cy*s}px) scale(${s})`;
-   const st=oo.el.querySelector('.st');if(!oo.SL)oo.SL=st.getTotalLength();st.style.strokeDasharray=oo.SL;st.style.strokeDashoffset=oo.SL*(1-E.out(clamp(lt/.7)));st.style.strokeWidth=3/s;
-   oo.el.querySelectorAll('.lb').forEach((l,k)=>{l.style.transform=`scale(${1/s})`;l.style.opacity=clamp((t-(k?0.9:0.7))/.25)});
-   const q=(t*1.1)%1;const rg=oo.el.querySelector('.rg');rg.style.transform=`scale(${.3+q})`;rg.style.opacity=1-q}});
-sfx(.05,'whoosh',.7);sfx(.9,'pop',.6);sfx(1.0,'ding',.4);
+ draw:(t,lt,oo)=>{const p=E.inout(clamp(t/MAPEND));oo.el.querySelector('.mc').style.transform=`scale(${1+.45*p})`;
+   const q=(t*1.1)%1;const rg=oo.el.querySelector('.rg');rg.style.transform=`scale(${.4+q})`;rg.style.opacity=(1-q)*clamp((t-.3)/.2)}});
+sfx(.3,'pop',.5);
 // --- 1.7s+: CIDCO plot ---
 // one continuous shot: slow push-in on the CIDCO board, then a smooth zoom into the open field for the twist (no cut)
 {const el=document.createElement('div');el.className='bg';el.style.backgroundImage=`url(a/${PLOT})`;document.getElementById('bgs').appendChild(el);BGS.push({img:PLOT,el,t0:-1,t1:-1,s0:1,s1:1,x0:0,x1:0,y0:0,y1:0,fade:0,filter:''});
@@ -97,9 +88,10 @@ shake(10.1,10);
 // (twist overlays end at TE, just before the dissolve)
 // zoom-dissolve from the plot into navy (continues the same camera push, no separate transition)
 TINT(T.tender,T.use,'linear-gradient(180deg,#0d1729,#162644)',.55);sfx(T.tender-.45,'whoosh',.45);
-A({t0:12.55,t1:T.use,x:540,y:860,w:960,cls:'noshadow',html:`<div style="text-align:center"><div class="w1" style="font:600 44px/1.4 P;color:#cfd6e4;margin-bottom:34px">सिडकोचा</div><div class="w2" style="font:800 120px/1.45 P;color:#e8cf9f;text-shadow:0 0 50px rgba(232,207,159,.5)">प्लॉट टेंडर</div><div class="w3" style="display:inline-block;margin-top:30px;font:600 34px/1 P;color:#0d1729;background:#e8cf9f;border-radius:999px;padding:16px 30px 12px">e-Tender + e-Auction</div></div>`,enter:'fade',din:.01,z:50,float:.08,shine:[14.0],
-  draw:(t,lt,oo)=>{[[ '.w1',12.6],['.w2',13.5],['.w3',14.0]].forEach(([c,k])=>{const e=oo.el.querySelector(c),p=E.out(clamp((t-k)/.35));e.style.opacity=p;e.style.filter=`blur(${(1-p)*10}px)`;e.style.transform=`translateY(${(1-p)*18}px) scale(${c=='.w2'?lerp(1.15,1,p):1})`})}});
-sfx(12.6,'swoosh',.4);sfx(13.5,'impact',.55);punch(13.5,.05);sfx(14.0,'pop',.5);
+A({t0:12.55,t1:14.5,x:540,y:860,w:960,cls:'noshadow',html:`<div style="text-align:center"><div class="w1" style="font:600 44px/1.4 P;color:#cfd6e4;margin-bottom:34px">सिडकोचा</div><div class="w2" style="font:800 120px/1.45 P;color:#e8cf9f;text-shadow:0 0 50px rgba(232,207,159,.5)">प्लॉट टेंडर</div><div class="w3" style="display:inline-block;margin-top:30px;font:600 34px/1 P;color:#0d1729;background:#e8cf9f;border-radius:999px;padding:16px 30px 12px">e-Tender + e-Auction</div></div>`,enter:'fade',din:.01,z:50,float:.08,exit:'fade',dout:.12,
+  draw:(t,lt,oo)=>{[[ '.w1',12.6],['.w2',13.5],['.w3',13.7]].forEach(([c,k])=>{const e=oo.el.querySelector(c),p=E.out(clamp((t-k)/.35));e.style.opacity=p;e.style.filter=`blur(${(1-p)*10}px)`;e.style.transform=`translateY(${(1-p)*18}px) scale(${c=='.w2'?lerp(1.15,1,p):1})`});const m=E.inout(clamp((t-14.0)/.42));oo.el.querySelector('.w3').style.opacity*=1-clamp(m*3);return}, fn:(t)=>{const m=E.inout(clamp((t-14.0)/.42));return {dx:lerp(0,95,m),dy:lerp(0,-575,m),s:lerp(1,.3,m)}}});
+sfx(12.6,'swoosh',.4);sfx(14.0,'whoosh',.35);
+A({t0:14.4,t1:T.out,x:635,y:300,w:520,cls:'noshadow',html:`<div style="text-align:left"><span style="display:inline-block;background:rgba(13,23,41,.88);border:1.5px solid rgba(232,207,159,.6);border-radius:14px;padding:10px 18px 6px;font:600 22px/1.2 P;color:#cfd6e4">सिडकोचा <b style="font-weight:800;font-size:32px;color:#e8cf9f">प्लॉट टेंडर</b></span></div>`,enter:'fade',din:.08,float:0,z:600});sfx(13.5,'impact',.55);punch(13.5,.05);
 PART({type:'sparks',t0:13.55,t1:13.75,n:60,seed:5,x:540,y:860,speed:800,color:GOLD});
 
 // ================= 4 USES : fast cuts =================

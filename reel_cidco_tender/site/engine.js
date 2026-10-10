@@ -40,7 +40,7 @@ function renderItem(o,t){
   const el=o.el;
   if(t<o.t0-0.001||t>o.t1){el.style.display='none';return}
   el.style.display='block';
-  let pi=clamp((t-o.t0)/o.din), po=clamp((t-(o.t1-o.dout))/o.dout);
+  const SLW=window.ANIM_SLOW||1;let pi=clamp((t-o.t0)/(o.din*SLW)), po=clamp((t-(o.t1-o.dout*SLW))/(o.dout*SLW));
   let fF='';let x=+o.x,y=+o.y,w=o.w,s=1,r=o.rot||0,rx=0,ry=0,op=1,blur=0,dx=0,dy=0;
   if(o.moves){x=kfval(o.moves,t,'x',o.x);y=kfval(o.moves,t,'y',o.y);s*=kfval(o.moves,t,'s',1);r=kfval(o.moves,t,'r',r);op*=kfval(o.moves,t,'o',1)}
   // enter
