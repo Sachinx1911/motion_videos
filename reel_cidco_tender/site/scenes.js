@@ -44,7 +44,8 @@ const CHK=(t0,t1,x,y,txt,ok,o={})=>A(Object.assign({t0,t1,x,y,w:o.w||620,cls:'no
 function buildScenes(){
 const PLOT='B10_cidco_plot_board.jpg';
 const END=81.4;
-const T={twist:5.82,tender:11.47,use:14.31,bid:21.0,s1:24.4,s2:29.97,s3:35.33,s4:43.38,s5:46.8,emd:54.36,cost:60.95,cta:72.22,out:77.8};
+const T={twist:5.82,tender:12.35,use:14.31,bid:21.0,s1:24.4,s2:29.97,s3:35.33,s4:43.38,s5:46.8,emd:54.36,cost:60.95,cta:72.22,out:77.8};
+const TE=T.tender-.3;
 const SEC=[0,T.twist,T.tender,T.use,T.bid,T.s1,T.s2,T.s3,T.s4,T.s5,T.emd,T.cost,T.cta,T.out,END];
 HOOKS.push(t=>{let i=0;while(i<SEC.length-2&&t>=SEC[i+1])i++;const p=clamp((t-SEC[i])/(SEC[i+1]-SEC[i]));document.getElementById('stage').style.transform=`scale(${1+.03*E.inout(p)})`});
 const CUT=t=>{flash(t,.35,'#fffaf0');sfx(t-.15,'whoosh',.5);punch(t,.03)};
@@ -75,9 +76,9 @@ sfx(.05,'whoosh',.7);sfx(.9,'pop',.6);sfx(1.0,'ding',.4);
 // --- 1.7s+: CIDCO plot ---
 // one continuous shot: slow push-in on the CIDCO board, then a smooth zoom into the open field for the twist (no cut)
 {const el=document.createElement('div');el.className='bg';el.style.backgroundImage=`url(a/${PLOT})`;document.getElementById('bgs').appendChild(el);BGS.push({img:PLOT,el,t0:-1,t1:-1,s0:1,s1:1,x0:0,x1:0,y0:0,y1:0,fade:0,filter:''});
- const K=[[MAPEND-.1,1.0,0,0],[T.twist-.1,1.08,0,0],[T.twist+.9,1.65,-350,-40],[T.tender,1.7,-365,-40]];
- HOOKS.push(t=>{if(t<MAPEND-.35||t>T.tender+.1){el.style.display='none';return}el.style.display='block';
-  const v=i=>KF(t,K.map(k=>[k[0],k[i]]));el.style.opacity=clamp((t-(MAPEND-.35))/.25);el.style.transform=`translate(${v(2)}px,${v(3)}px) scale(${v(1)})`})}
+ const K=[[MAPEND-.1,1.0,0,0],[T.twist-.1,1.08,0,0],[T.twist+.9,1.65,-350,-40],[T.tender-.6,1.7,-365,-40],[T.tender,2.2,-470,-55]];
+ HOOKS.push(t=>{if(t<MAPEND-.35||t>T.tender+.3){el.style.display='none';return}el.style.display='block';
+  const v=i=>KF(t,K.map(k=>[k[0],k[i]]));el.style.opacity=clamp((t-(MAPEND-.35))/.25);el.style.transform=`translate(${v(2)}px,${v(3)}px) scale(${v(1)})`;el.style.filter=`blur(${clamp((t-(T.tender-.45))/.45)*8}px)`})}
 CUT(MAPEND-.05);
 TINT(MAPEND,T.twist,'linear-gradient(180deg,rgba(0,0,0,.25),rgba(0,0,0,0) 35%,rgba(0,0,0,0) 65%,rgba(0,0,0,.35))',.2);
 LBL(1.85,T.twist,540,1330,'📍 सिडकोचा प्लॉट - खारघर',{bg:'#fff',fs:36,w:620});
@@ -87,19 +88,22 @@ sfx(2.9,'ticks',.5);punch(5.12,.08);sfx(5.12,'impact',.8);PART({type:'sparks',t0
 
 // ================= 2 TWIST : not sold, leased =================
 sfx(T.twist-.1,'whoosh',.5);
-H2(T.twist+.1,T.tender,560,`पण गंमत अशी... हा प्लॉट <span style="color:${RED}">विकलाच</span> गेला नाही!`,{w:820});
-A({t0:9.4,t1:T.tender,x:430,y:1462,w:300,cls:'noshadow',html:`<div style="width:300px;height:46px;border-radius:50%;background:radial-gradient(ellipse at 50% 50%,rgba(20,12,5,.55),rgba(20,12,5,0) 70%)"></div>`,enter:'fade',din:.2,float:0,z:33,over:1,fn:(t,lt)=>({s:.6+.4*E.out(clamp(lt/.25))})});
-OBJ(9.35,T.tender,430,1244,200,'O15_pillar.png',{enter:'drop',din:.55,sfx:null,float:0,z:34,fn:(t,lt)=>({dy:lt>.55&&lt<.75?Math.sin((lt-.55)/.2*Math.PI)*-10:0})});
+H2(T.twist+.1,TE,560,`पण गंमत अशी... हा प्लॉट <span style="color:${RED}">विकलाच</span> गेला नाही!`,{w:820,dout:.4});
+A({dout:.4,t0:9.4,t1:TE,x:430,y:1462,w:300,cls:'noshadow',html:`<div style="width:300px;height:46px;border-radius:50%;background:radial-gradient(ellipse at 50% 50%,rgba(20,12,5,.55),rgba(20,12,5,0) 70%)"></div>`,enter:'fade',din:.2,float:0,z:33,over:1,fn:(t,lt)=>({s:.6+.4*E.out(clamp(lt/.25))})});
+OBJ(9.35,TE,430,1244,200,'O15_pillar.png',{dout:.4,enter:'drop',din:.55,sfx:null,float:0,z:34,fn:(t,lt)=>({dy:lt>.55&&lt<.75?Math.sin((lt-.55)/.2*Math.PI)*-10:0})});
 {const tl=9.35+.2;sfx(tl,'thud',1);sfx(tl,'impact',.5);shake(tl,16);punch(tl,.04);PART({type:'soil',t0:tl,t1:tl+.02,n:150,seed:17,x:430,y:1462,life:1.8});}
-STAMP(9.95,T.tender,600,755,'विक्री ❌',RED,{fs:60,w:420,rot:-5});
-STAMP(10.71,T.tender,600,935,'LEASE ✅',GOLD,{fs:60,w:420,rot:-4});
+STAMP(9.95,TE,600,755,'विक्री ❌',RED,{dout:.4,fs:60,w:420,rot:-5});
+STAMP(10.71,TE,600,935,'LEASE ✅',GOLD,{dout:.4,fs:60,w:420,rot:-4});
 shake(10.1,10);
 
 // ================= 3 CIDCO PLOT TENDER title =================
-TILES(T.tender);
-TINT(T.tender,T.use,'linear-gradient(180deg,#0d1729,#162644)',.05);
-A({t0:T.tender+.1,t1:T.use,x:540,y:860,w:960,cls:'noshadow',html:`<div style="text-align:center"><div style="font:600 44px/1.4 P;color:#cfd6e4;margin-bottom:34px">सिडकोचा</div><div style="font:800 120px/1.45 P;color:#e8cf9f;text-shadow:0 0 50px rgba(232,207,159,.5)">प्लॉट टेंडर</div><div style="display:inline-block;margin-top:30px;font:600 34px/1 P;color:#0d1729;background:#e8cf9f;border-radius:999px;padding:16px 30px 12px">e-Tender + e-Auction</div></div>`,enter:'zoom',din:.4,sfx:'impact',sfxv:.6,z:50,float:.1,shine:[13.9]});
-PART({type:'sparks',t0:13.89,t1:14.1,n:60,seed:5,x:540,y:820,speed:800,color:GOLD});
+// (twist overlays end at TE, just before the dissolve)
+// zoom-dissolve from the plot into navy (continues the same camera push, no separate transition)
+TINT(T.tender,T.use,'linear-gradient(180deg,#0d1729,#162644)',.55);sfx(T.tender-.45,'whoosh',.45);
+A({t0:12.55,t1:T.use,x:540,y:860,w:960,cls:'noshadow',html:`<div style="text-align:center"><div class="w1" style="font:600 44px/1.4 P;color:#cfd6e4;margin-bottom:34px">सिडकोचा</div><div class="w2" style="font:800 120px/1.45 P;color:#e8cf9f;text-shadow:0 0 50px rgba(232,207,159,.5)">प्लॉट टेंडर</div><div class="w3" style="display:inline-block;margin-top:30px;font:600 34px/1 P;color:#0d1729;background:#e8cf9f;border-radius:999px;padding:16px 30px 12px">e-Tender + e-Auction</div></div>`,enter:'fade',din:.01,z:50,float:.08,shine:[14.0],
+  draw:(t,lt,oo)=>{[[ '.w1',12.6],['.w2',13.5],['.w3',14.0]].forEach(([c,k])=>{const e=oo.el.querySelector(c),p=E.out(clamp((t-k)/.35));e.style.opacity=p;e.style.filter=`blur(${(1-p)*10}px)`;e.style.transform=`translateY(${(1-p)*18}px) scale(${c=='.w2'?lerp(1.15,1,p):1})`})}});
+sfx(12.6,'swoosh',.4);sfx(13.5,'impact',.55);punch(13.5,.05);sfx(14.0,'pop',.5);
+PART({type:'sparks',t0:13.55,t1:13.75,n:60,seed:5,x:540,y:860,speed:800,color:GOLD});
 
 // ================= 4 USES : fast cuts =================
 [['B03_bungalow.jpg','बंगलो',14.31],['B04_residential.jpg','घर',15.11],['B05_shops.jpg','दुकान',15.67],['B06_office.jpg','ऑफिस',16.33],['B07_warehouse.jpg','वेअरहाउस',16.97]].forEach(([img,lbl,t0],i,arr)=>{
@@ -132,9 +136,9 @@ const STEPT=(t0,t1,txt)=>A({t0,t1,x:540,y:640,w:900,cls:'noshadow',html:`<div st
 STEPT(T.s1,T.s2,`<span style="color:#e8cf9f">e-Auction</span> वेबसाइटवर नोंदणी`);
 OBJ(T.s1+.1,T.s2,540,920,480,'O09_laptop.png',{enter:'rise',din:.55});
 A({t0:T.s1+.5,t1:T.s2,x:SCX,y:SCY,w:260,cls:'noshadow',over:1,html:`<div style="text-align:center;font:700 23px/1.3 P;color:${NAVY}">e-Auction<div style="font:600 17px/1.3 P;color:#6b6b6b">Bidder Registration</div></div>`,enter:'fade',din:.3,z:60,float:0});
-A({t0:26.88,t1:T.s2,x:520,y:1320,w:700,cls:'noshadow',html:`<div style="background:rgba(255,253,249,.97);border-radius:26px;padding:20px 30px 14px;box-shadow:0 24px 60px rgba(0,0,0,.35)">${['PAN','आधार','बँक डिटेल्स'].map(s=>`<div class="rw" style="display:flex;align-items:center;gap:18px;margin:0 0 12px"><div style="width:210px;text-align:left;font:700 32px/1.2 P;color:${NAVY}">${s}</div><div style="flex:1;height:26px;border-radius:8px;background:#eef0f4;border:1.5px solid #cfd4dd;overflow:hidden"><div class="f" style="height:100%;width:0;background:linear-gradient(90deg,#e8cf9f,#b8935f)"></div></div><div class="ok" style="width:44px;opacity:0">${IC.check}</div></div>`).join('')}</div>`,enter:'up',din:.45,sfx:'whoosh',sfxv:.5,z:62,float:0,
-  draw:(t,lt,oo)=>{const ts=[27.48,28.14,28.83];oo.el.querySelectorAll('.rw').forEach((r,i)=>{const p=E.out(clamp((t-ts[i])/.5));r.querySelector('.f').style.width=(p*100)+'%';r.querySelector('.ok').style.opacity=clamp((t-ts[i]-.45)/.2)})}});
-[27.48,28.14,28.83].forEach(k=>{sfx(k,'pen',.4);sfx(k+.5,'ding',.35)});
+A({t0:26.88,t1:T.s2,x:520,y:1320,w:700,sfxv:.35,cls:'noshadow',html:`<div style="background:rgba(255,253,249,.97);border-radius:26px;padding:20px 30px 14px;box-shadow:0 24px 60px rgba(0,0,0,.35)">${['PAN','आधार','बँक डिटेल्स'].map(s=>`<div class="rw" style="display:flex;align-items:center;gap:18px;margin:0 0 12px"><div style="width:210px;text-align:left;font:700 32px/1.2 P;color:${NAVY}">${s}</div><div style="flex:1;height:26px;border-radius:8px;background:#eef0f4;border:1.5px solid #cfd4dd;overflow:hidden"><div class="f" style="height:100%;width:0;background:linear-gradient(90deg,#e8cf9f,#b8935f)"></div></div><div class="ok" style="width:44px;opacity:0">${IC.check}</div></div>`).join('')}</div>`,enter:'up',din:.45,sfx:'whoosh',sfxv:.5,z:62,float:0,
+  draw:(t,lt,oo)=>{const ts=[27.48,28.14,28.83];oo.el.querySelectorAll('.rw').forEach((r,i)=>{const p=E.out(clamp((t-ts[i]+.3)/.3));r.querySelector('.f').style.width=(p*100)+'%';const q=clamp((t-ts[i])/.12);const ok=r.querySelector('.ok');ok.style.opacity=q;ok.style.transform=`scale(${lerp(1.6,1,E.out(q))})`})}});
+[27.48,28.14,28.83].forEach(k=>sfx(k,'click',.7));  // one sound per row, on the spoken word
 
 // --- STEP 2 : scheme booklet ---
 STEPT(T.s2,T.s3,`स्कीम <span style="color:#e8cf9f">बुकलेट</span> डाउनलोड करा`);
@@ -206,6 +210,11 @@ A({t0:T.out+.4,t1:END+1,x:540,y:900,w:560,cls:'noshadow',html:`<div style="backg
 const FT=80.6;
 A({t0:80.0,t1:END+1,x:500,y:1260,w:760,cls:'chipw',html:`<span style="display:inline-block;background:${GOLD};color:#111;font:700 42px/1 P;padding:22px 40px 16px;border-radius:999px">आमच्या पेज ला Follow करा ➜</span>`,enter:'up',din:.4,sfx:'pop',sfxv:.8,z:54,float:0,fn:t=>({s:(t>FT+.3&&t<FT+.5?.93:1)})});
 sfx(FT+.35,'click',.9);PART({type:'confetti',t0:FT+.4,t1:FT+.7,n:90,seed:41,x:540,y:-40,burst:1,life:2.5,colors:[GOLD,'#ffffff','#f2dfb6',RED]});
+const NOBELL={ding:'pop',chime:'pop',bell:'thud',coin:'click',reveal:'whoosh',alert:'pop',question:'pop',sparkle:null};
+for(let i=SFX.length-1;i>=0;i--){const m=NOBELL[SFX[i].type];if(m===undefined)continue;if(m===null)SFX.splice(i,1);else SFX[i].type=m}
+// one sound per beat: within 0.15 s keep only the strongest (user: extra sounds)
+{const PR={stamp:9,impact:8,thud:7,buzz:6,click:5,pop:4,riser:3,ticks:3,clock:3,whoosh:2,swoosh:1};SFX.sort((x,y)=>x.t-y.t);const keep=[];
+ for(const e of SFX){const l=keep[keep.length-1];if(l&&e.t-l.t<.15){if((PR[e.type]||0)>(PR[l.type]||0))keep[keep.length-1]=e}else keep.push(e)}SFX.length=0;SFX.push(...keep)}
 }
 if(window.SAFE_GUIDE){const g=document.createElement('div');g.style.cssText='position:absolute;inset:0;pointer-events:none;z-index:9999';
  g.innerHTML=`<div style="position:absolute;left:0;right:0;top:0;height:220px;background:rgba(255,0,0,.2);border-bottom:3px solid #ff4040"></div><div style="position:absolute;left:0;right:0;bottom:0;height:420px;background:rgba(255,0,0,.2);border-top:3px solid #ff4040"></div><div style="position:absolute;left:890px;right:35px;top:860px;bottom:420px;background:rgba(255,140,0,.3)"></div>`;
