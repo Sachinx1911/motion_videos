@@ -101,7 +101,7 @@ Before any building, think it through like a senior creative director and delive
 ## 5. Image prompts (when I ask "prompt de")
 - Complete, copy-ready prompts, all at once, numbered, one Marathi line above each.
 - Group the prompts **category-wise** (backgrounds / buildings and places / objects / documents ...) and add a **separate list of cut-outs** (`O09_laptop.png` ...). I make those cut-outs myself and send proper transparent PNGs; use them directly (ISNet/keycut only as fallback).
-- First line "Size 9:16 vertical." (backgrounds) or "Size 2:3 vertical." (objects / cut-outs, on "pure plain white background").
+- I generate images in **Google Flow (Nano Banana)**, which offers only **16:9, 4:3, 1:1, 3:4, 9:16** (user, 14 Oct 2026). Use only these sizes: first line "Size 9:16 vertical." (backgrounds), "Size 3:4 vertical." (objects / cut-outs, on "pure plain white background"), "Size 1:1 square." for round/compact objects, 16:9 only for wide panoramas. Never 2:3 or other ratios. Write the size in the Marathi heading too (e.g. "B01 - ... [9:16]") so I can pick it at a glance.
 - Photoreal style: "Authentic photograph ... Shot on <camera> with <lens>, f/8 ... Realistic ... no CGI look."
 - Always end with "No text, no labels, no logo, no watermark."
 - **Every video gets its own NEW images** (no reuse of earlier images) so each reel looks unique. Add "no emblem, no national symbol" to prompts with books/documents.
