@@ -81,14 +81,14 @@ A({t0:0,t1:T.out,x:205,y:300,w:170,cls:'noshadow',html:`<div style="background:r
 PB('N01_hook_sign.jpg',0,T.prev+.05,{s0:1.0,s1:1.16,y0:0,y1:40});SHADE(0,T.prev);
 A({t0:.05,t1:T.prev,x:430,y:560,w:720,cls:'noshadow',html:`<div style="background:rgba(255,255,255,.96);border-radius:30px;padding:24px 34px 20px;box-shadow:0 20px 50px rgba(0,0,0,.35);text-align:left"><div style="font:800 50px/1.15 P;color:#111">तुमच्या Society चा</div><div style="font:800 76px/1.1 P;color:${RED}">Redevelopment</div><div style="font:800 50px/1.15 P;color:#111">होतोय?</div></div>`,enter:'left',din:.5,sfx:'whoosh',sfxv:.6,z:66,float:.05});
 BAN(C('सही',5.06),T.prev,1080,'सही करू नका!',{icon:'warn',fs:80,is:96,rot:-5,w:880});
-CHIP(C('गोष्टी',3.86),T.prev,560,1250,'या 7 गोष्टी नसतील तर...',{bg:'#fff',fs:40,w:560});
+CHIP(C('गोष्टी',3.86),T.prev,560,1275,'या 7 गोष्टी नसतील तर...',{bg:'#fff',fs:40,w:560});
 A({t0:C('नाही',6.2),t1:T.prev,x:540,y:1400,w:880,cls:'chipw',html:`<span style="display:inline-block;background:${NAVY};color:#fff;font:800 44px/1 P;padding:20px 34px 16px;border-radius:18px;box-shadow:0 14px 34px rgba(0,0,0,.4)">नाहीतर घरही जाईल आणि <span style="color:#f2dfb6">भाडंही!</span></span>`,enter:'up',din:.4,sfx:'thud',sfxv:.5,z:70,float:0});
 shake(C('सही',5.06)+.1,9);
 
 // ---- PREV VIDEO : meeting ----
 PB('N02_meeting.jpg',T.prev,T.today+.05);SHADE(T.prev,T.today);
 A({t0:T.prev+.05,t1:T.today,x:540,y:1180,w:840,cls:'noshadow',html:`<div style="background:rgba(255,255,255,.97);border-radius:28px;padding:24px 30px 20px;box-shadow:0 20px 50px rgba(0,0,0,.35);text-align:center;font:800 46px/1.3 P;color:#111">मागच्या video मध्ये<br>आपण <span style="color:${RED}">सभेचे नवे नियम</span> पाहिले.</div>`,enter:'up',din:.45,sfx:'whoosh',sfxv:.5,z:66,float:.05});
-A({t0:C('नवे',10.3),t1:T.today,x:540,y:1390,w:120,cls:'noshadow',html:`<div style="text-align:center;font:900 90px/1 P;color:#fff;text-shadow:0 6px 16px rgba(0,0,0,.5)">↓</div>`,enter:'down',din:.35,z:66,float:0});
+A({t0:C('नवे',10.3),t1:T.today,x:540,y:1425,w:120,cls:'noshadow',html:`<div style="text-align:center;font:900 90px/1 P;color:#fff;text-shadow:0 6px 16px rgba(0,0,0,.5)">↓</div>`,enter:'down',din:.35,z:66,float:0});
 
 // ---- TODAY : Development Agreement book ----
 PB('N03_book.jpg',T.today,T.p1+.05,{s0:1.05,s1:1.15});TINT(T.today,T.p1,'linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,0) 35%)',.2);
@@ -100,8 +100,8 @@ PB('B03_empty_flat.jpg',T.p1,T.p2+.05);
 HN(1,T.p1+.05,T.p2,`नवीन घराचा <span style="color:#b8935f">Carpet Area</span>`,{});
 CHIP(C('अंदाजे',17.66),T.p2,700,660,'अंदाजे',{col:RED,ic:'cross',fs:46,w:330});
 CHIP(C('सुमारे',18.7),T.p2,700,780,'सुमारे',{col:RED,ic:'cross',fs:46,w:330});
-A({t0:C('नेमका',19.48)-.4,t1:T.p2,x:330,y:1130,w:440,cls:'noshadow',html:`<div style="position:relative;width:420px;height:560px;border-radius:14px;background:url(a/N11_floorplan.jpg) center/cover;border:5px solid #fff;box-shadow:0 20px 44px rgba(0,0,0,.35)"><div class="hl" style="position:absolute;left:95px;top:375px;width:110px;height:120px;background:rgba(247,206,70,.65);outline:4px solid #e6a800;opacity:0"></div></div>`,enter:'rise',din:.5,sfx:'swoosh',sfxv:.5,z:55,float:.04,draw:(t,lt,oo)=>{oo.el.querySelector('.hl').style.opacity=clamp((t-C('नेमका',19.48))/.3)}});
-A({t0:C('नेमका',19.48),t1:T.p2,x:700,y:1060,w:400,cls:'noshadow',html:`<div style="background:#fff;border-radius:26px;padding:20px 24px 18px;box-shadow:0 18px 44px rgba(0,0,0,.3);text-align:center"><div style="font:800 46px/1.15 P;color:#111">नेमके<br>Carpet Area</div><div style="font:700 34px/1.4 P;color:#444">(उदा. 650 sq.ft.)</div><div style="width:64px;margin:6px auto 0">${ICO.tick}</div></div>`,enter:'right',din:.45,sfx:'pop',sfxv:.6,z:66,float:.05});
+A({t0:C('नेमका',19.48)-.4,t1:T.p2,x:290,y:1100,w:440,cls:'noshadow',html:`<div style="position:relative;width:420px;height:520px;border-radius:14px;background:url(a/N11_floorplan.jpg) center/cover;border:5px solid #fff;box-shadow:0 20px 44px rgba(0,0,0,.35)"><div class="hl" style="position:absolute;left:95px;top:375px;width:110px;height:120px;background:rgba(247,206,70,.65);outline:4px solid #e6a800;opacity:0"></div></div>`,enter:'rise',din:.5,sfx:'swoosh',sfxv:.5,z:55,float:.04,draw:(t,lt,oo)=>{oo.el.querySelector('.hl').style.opacity=clamp((t-C('नेमका',19.48))/.3)}});
+A({t0:C('नेमका',19.48),t1:T.p2,x:740,y:1040,w:380,cls:'noshadow',html:`<div style="background:#fff;border-radius:26px;padding:20px 24px 18px;box-shadow:0 18px 44px rgba(0,0,0,.3);text-align:center"><div style="font:800 46px/1.15 P;color:#111">नेमके<br>Carpet Area</div><div style="font:700 34px/1.4 P;color:#444">(उदा. 650 sq.ft.)</div><div style="width:64px;margin:6px auto 0">${ICO.tick}</div></div>`,enter:'right',din:.45,sfx:'pop',sfxv:.6,z:66,float:.05});
 CHIP(C('रेरा',21.42),T.p2,540,1440,'RERA Carpet नुसार',{bg:NAVY,col:'#fff',fs:42,w:500,ic:'tick'});
 
 // ---- 2 RENT ----
@@ -119,7 +119,7 @@ HN(3,T.p3+.05,T.p4,`<span style="color:#b8935f">Corpus Fund</span>`);
 IC2(C('रक्कम',36.88),T.p4,880,'coins','रक्कम किती?',{w:600});
 IC2(C('कधी',38.1),T.p4,1040,'cal','कधी मिळणार?',{w:600});
 IC2(C('पक्क',39.6),T.p4,1200,'doc','करारात अटी स्पष्ट',{w:600});
-BAN(C('शक्यतर',40.5),T.p4,1390,'शक्य तर घर सोडण्याआधीच!',{fs:46,w:800,rot:-2});
+BAN(C('शक्यतर',40.5),T.p4,1415,'शक्य तर घर सोडण्याआधीच!',{fs:46,w:800,rot:-2});
 
 // ---- 4 BANK GUARANTEE ----
 PB('B05_vault.jpg',T.p4,T.p5+.05,{filter:'brightness(.75)'});SHADE(T.p4,T.p5);
@@ -134,15 +134,15 @@ PB('B06_construction.jpg',T.p5,T.p6+.05);SHADE(T.p5,T.p6);
 HN(5,T.p5+.05,T.p6,`बांधकामाची मुदत`);
 IC2(C('दोन',54.3),T.p6,760,'clock','2 वर्षांत पूर्ण करणे',{w:700,bg:NAVY,end:`<div style="width:62px;flex:none;margin-left:auto">${ICO.tick}</div>`});
 IC2(C('अपवादाने',55.46),T.p6,930,'cal',`<span style="font-size:34px;color:#444">अपवादात्मक परिस्थितीत</span><br><span style="color:${RED}">कमाल 3 वर्षांपर्यंत</span>`,{w:700,bg:`linear-gradient(145deg,#e2463b,#b8261d)`});
-BAN(C('उशीर',58.0),T.p6,1140,'उशीर झाल्यास<br>करारात दंडाची अट!',{icon:'warn',fs:46,is:84,w:780,rot:-2});
+BAN(C('उशीर',58.0),T.p6,1165,'उशीर झाल्यास<br>करारात दंडाची अट!',{icon:'warn',fs:46,is:84,w:780,rot:-2});
 OBJ(C('कलॉज',59.86),T.p6,300,1360,200,'O03_calendar.png',{enter:'rise',din:.45,z:60});
 
 // ---- 6 PARKING + AMENITIES : 2x2 photo tiles ----
 PB('B07_podium.jpg',T.p6,T.p7+.05,{filter:'brightness(.55) blur(3px)'});
 HN(6,T.p6+.05,T.p7,`Parking आणि सुविधा`);
 [['N06_parking.jpg','Parking',C('पार्किंग',62.0),330,760],['N07_lift.jpg','Lift',C('लिफ्ट',63.4),690,760],['N08_gym.jpg','Gym',C('जिम',64.7),330,1080],['N09_materials.jpg','वापरायचे साहित्य',C('सहीत्ते',65.6),690,1080]].forEach(([img,lb,t0,x,y])=>{
- PHOTO(t0,T.p7,x,y,330,280,img,{});
- CHIP(t0+.15,T.p7,x,y+130,lb,{fs:34,ic:'tick',w:330,z:69});});
+ PHOTO(t0,T.p7,x,y,330,280,img,{allowOver:1});
+ CHIP(t0+.15,T.p7,x,y+130,lb,{fs:34,ic:'tick',w:330,z:69,allowOver:1});});
 CHIP(C('तोंडी',68.6),T.p7,330,1360,'तोंडी आश्वासन',{col:RED,ic:'cross',fs:40,w:400,enter:'stamp',sfx:'buzz'});
 CHIP(C('तोंडी',68.6)+.5,T.p7,690,1360,'लेखी करार',{col:GRN,ic:'tick',fs:40,w:320});
 
