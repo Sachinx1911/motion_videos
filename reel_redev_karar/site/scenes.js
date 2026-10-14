@@ -40,129 +40,145 @@ const ROW=(t0,t1,y,txt,o={})=>A(Object.assign({t0,t1,x:540,y,w:720,cls:'noshadow
 const NO=(t0,t1,x,y,txt)=>A({t0,t1,x,y,w:380,cls:'chipw',html:`<span style="display:inline-block;font:700 42px/1 P;padding:18px 30px 14px;border-radius:999px;background:#fff;color:${RED};box-shadow:0 12px 30px rgba(0,0,0,.25)"><s>${txt}</s> ✗</span>`,enter:'pop',din:.35,sfx:'buzz',sfxv:.5,z:65,float:.1});
 const CURSOR=`<svg viewBox="0 0 120 140" width="100%"><path d="M45 10c8 0 12 6 12 13v40l6-2c6-1 11 3 11 3l5-1c6-1 10 3 11 4l5-1c7 0 12 5 12 12v22c0 18-12 32-32 32H62c-12 0-20-6-26-14L12 85c-4-6-2-13 4-15 5-2 10 0 13 4l6 8V23c0-7 4-13 10-13z" fill="#fff" stroke="#222" stroke-width="5"/></svg>`;
 
+// ===== v2 : reference-board style (photo bg + white icon cards + navy number pills + red banners) =====
+const GRN='#1f9a52';
+const G=(d,c='#fff')=>`<svg viewBox="0 0 24 24" width="100%" fill="${c}">${d}</svg>`;
+const ICO={
+ home:G('<path d="M12 3 2.5 11.2h2.8V21h5.2v-6h3v6h5.2v-9.8h2.8z"/>'),
+ cal:G('<rect x="3" y="5" width="18" height="16" rx="2.5"/><rect x="7" y="2.5" width="2.2" height="5" rx="1"/><rect x="14.8" y="2.5" width="2.2" height="5" rx="1"/><g fill="#0d1729"><rect x="5.5" y="10" width="13" height="1.4"/><rect x="6.5" y="13" width="2.6" height="2.4"/><rect x="10.7" y="13" width="2.6" height="2.4"/><rect x="14.9" y="13" width="2.6" height="2.4"/><rect x="6.5" y="17" width="2.6" height="2.4"/><rect x="10.7" y="17" width="2.6" height="2.4"/></g>'),
+ chart:G('<rect x="3" y="13" width="4.5" height="8" rx="1"/><rect x="9.75" y="8" width="4.5" height="13" rx="1"/><rect x="16.5" y="3" width="4.5" height="18" rx="1"/>'),
+ coins:G('<ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 8.5c0 1.7 3.6 3 8 3s8-1.3 8-3V11c0 1.7-3.6 3-8 3s-8-1.3-8-3zM4 13.5c0 1.7 3.6 3 8 3s8-1.3 8-3V16c0 1.7-3.6 3-8 3s-8-1.3-8-3z"/>'),
+ doc:G('<path d="M6 2h8.5L19 6.5V22H6z"/><g fill="#0d1729"><rect x="8.5" y="9" width="8" height="1.4"/><rect x="8.5" y="12.2" width="8" height="1.4"/><rect x="8.5" y="15.4" width="5.5" height="1.4"/></g>'),
+ warn:G('<path d="M12 2 23 21H1z"/><g fill="#d6342a"><rect x="10.8" y="8" width="2.4" height="7.5" rx="1"/><circle cx="12" cy="18" r="1.4"/></g>'),
+ clock:G('<circle cx="12" cy="12" r="10"/><path d="M11 6h2v6.2l4 2.4-1 1.7-5-3z" fill="#0d1729"/>'),
+ people:G('<circle cx="12" cy="7" r="3.3"/><circle cx="5" cy="9" r="2.6"/><circle cx="19" cy="9" r="2.6"/><path d="M5.5 21c0-4 2.9-7.2 6.5-7.2s6.5 3.2 6.5 7.2zM0 20c0-3 2-5.5 5-5.5 1 0 1.8.2 2.5.6C5.8 16.5 4.8 18.2 4.6 20zM24 20c0-3-2-5.5-5-5.5-1 0-1.8.2-2.5.6 1.7 1.4 2.7 3.1 2.9 4.9z"/>'),
+ helmet:G('<path d="M3 16a9 9 0 0 1 18 0zM1.5 17h21v2.5h-21z"/><rect x="10.8" y="4.5" width="2.4" height="6" rx="1" fill="#0d1729"/>'),
+ chat:G('<path d="M3 4h18v12H8l-5 4z"/>'),
+ wa:G('<path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/><path d="M8.6 7.4c.3-.6.6-.6 1-.6l.7 1.6c.1.3 0 .5-.2.8l-.5.6c.6 1.3 1.7 2.4 3 3l.6-.6c.2-.2.5-.3.8-.2l1.6.8c0 .5-.2 1-.6 1.3-.7.6-1.7.7-2.6.3-2-.8-3.7-2.5-4.4-4.5-.3-.9 0-2 .6-2.6z" fill="#1f9a52"/>'),
+ tick:G('<circle cx="12" cy="12" r="11" fill="#1f9a52"/><path d="M6.5 12.5 10.3 16 17.5 8.5" fill="none" stroke="#fff" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>'),
+ cross:G('<circle cx="12" cy="12" r="11" fill="#d6342a"/><path d="M8 8l8 8M16 8l-8 8" stroke="#fff" stroke-width="2.8" stroke-linecap="round"/>'),
+};
+const TILE=(k,bg=`linear-gradient(145deg,#d9b67a,#a9824c)`,s=84)=>`<div style="width:${s}px;height:${s}px;flex:none;border-radius:${s*.26}px;background:${bg};padding:${s*.18}px;box-sizing:border-box;box-shadow:0 6px 14px rgba(0,0,0,.18)">${ICO[k]}</div>`;
+// number header pill like the board: navy circle + bold title
+const HN=(n,t0,t1,html,o={})=>A(Object.assign({t0,t1,x:540,y:o.y||470,w:900,cls:'noshadow',html:`<div style="display:flex;justify-content:center"><div style="display:inline-flex;align-items:center;gap:22px;background:#fff;border-radius:999px;padding:12px 40px 10px 12px;box-shadow:0 16px 40px rgba(0,0,0,.28)"><div style="width:96px;height:96px;border-radius:50%;background:${NAVY};color:#fff;font:800 58px/100px P;text-align:center">${n}</div><div style="font:800 54px/1.15 P;color:#111">${html}</div></div></div>`,enter:'down',din:.45,sfx:'whoosh',sfxv:.55,z:70,float:.06},o));
+// white icon card (one line or two)
+const IC2=(t0,t1,y,icon,html,o={})=>A(Object.assign({t0,t1,x:o.x||500,y,w:o.w||700,cls:'noshadow',html:`<div style="display:flex;align-items:center;gap:24px;background:rgba(255,255,255,.97);border-radius:28px;padding:18px 30px 16px 18px;box-shadow:0 18px 44px rgba(0,0,0,.28)">${TILE(icon,o.bg)}<div style="font:800 ${o.fs||44}px/1.2 P;color:#111;text-align:left">${html}</div>${o.end||''}</div>`,enter:'left',din:.45,sfx:'pop',sfxv:.6,z:66,float:.06},o));
+const BAN=(t0,t1,y,html,o={})=>A(Object.assign({t0,t1,x:o.x||540,y,w:o.w||860,cls:'noshadow',html:`<div style="display:flex;align-items:center;gap:22px;justify-content:center;background:linear-gradient(180deg,#e2463b,#b8261d);border:5px solid #fff;border-radius:26px;padding:20px 30px 16px;box-shadow:0 20px 46px rgba(0,0,0,.4);transform:rotate(${o.rot||0}deg)">${o.icon?`<div style="width:${o.is||80}px;flex:none">${ICO[o.icon]}</div>`:''}<div style="font:800 ${o.fs||54}px/1.15 P;color:#fff;text-align:${o.icon?'left':'center'}">${html}</div></div>`,enter:'stamp',din:.35,sfx:'stamp',sfxv:.8,z:72,float:0},o));
+const CHIP=(t0,t1,x,y,html,o={})=>A(Object.assign({t0,t1,x,y,w:o.w||420,cls:'chipw',html:`<span style="display:inline-flex;align-items:center;gap:12px;font:800 ${o.fs||42}px/1 P;padding:16px 26px 13px;border-radius:999px;background:${o.bg||'#fff'};color:${o.col||'#111'};box-shadow:0 12px 30px rgba(0,0,0,.28);white-space:nowrap">${html}${o.ic?`<span style="width:${o.fs||42}px;display:inline-block">${ICO[o.ic]}</span>`:''}</span>`,enter:'pop',din:.35,sfx:'pop',sfxv:.55,z:68,float:.08},o));
+const PHOTO=(t0,t1,x,y,w,h,img,o={})=>A(Object.assign({t0,t1,x,y,w:w+12,cls:'noshadow',html:`<div style="width:${w}px;height:${h}px;border-radius:24px;background:url(a/${img}) center/cover;border:6px solid #fff;box-shadow:0 18px 40px rgba(0,0,0,.35)"></div>`,enter:'pop',din:.45,sfx:'swoosh',sfxv:.5,z:50,float:.06},o));
+const PB=(img,t0,t1,o={})=>BG(Object.assign({img,t0,t1,s0:1.0,s1:1.1,fade:.25},o));
+const SHADE=(t0,t1)=>TINT(t0,t1,'linear-gradient(180deg,rgba(0,0,0,.28),rgba(0,0,0,0) 30%,rgba(0,0,0,0) 62%,rgba(0,0,0,.42))',.2);
+
 function buildScenes(){
 const END=95.0;
-const T={p0:0,prev:C('मागचे',8.4),today:C('आज',11.2),p1:C('एक',15.42),p2:C('दोन',23.74),p3:C('3',35.56),p4:C('4',42.44),p5:C('पाच',51.42),p6:C('सहा',61.3),p7:C('साथ',70.16),law:C('आणि',77.1),cm:C('तुमचा',82.3),out:C('अणि',90.4)};
+const T={prev:C('मागचे',8.4),today:C('आज',11.2),p1:C('एक',15.42),p2:C('दोन',23.74),p3:C('3',35.56),p4:C('4',42.44),p5:C('पाच',51.42),p6:C('सहा',61.3),p7:C('साथ',70.16),law:C('आणि',77.1),cm:C('तुमचा',82.3),out:C('अणि',90.4)};
 const SEC=[0,T.prev,T.today,T.p1,T.p2,T.p3,T.p4,T.p5,T.p6,T.p7,T.law,T.cm,T.out,END];
-HOOKS.push(t=>{let i=0;while(i<SEC.length-2&&t>=SEC[i+1])i++;const p=clamp((t-SEC[i])/(SEC[i+1]-SEC[i]));document.getElementById('stage').style.transform=`scale(${1+.03*E.inout(p)})`});
-const CUT=t=>{flash(t,.3,'#fffaf0');sfx(t-.12,'whoosh',.5);punch(t,.03)};
+const CUT=t=>{flash(t,.3,'#fffaf0');sfx(t-.12,'whoosh',.5);punch(t,.035)};
 SEC.slice(1,-1).forEach(CUT);
+A({t0:0,t1:T.out,x:205,y:300,w:170,cls:'noshadow',html:`<div style="background:rgba(255,253,249,.95);border-radius:16px;padding:8px 12px;box-shadow:0 8px 20px rgba(0,0,0,.2)"><img src="a/logo_gold.png" style="width:100%;filter:none"></div>`,enter:'fade',din:.5,float:0,z:600});
 
-// ---------- HUD : logo + 7-step progress ----------
-A({t0:0,t1:T.out,x:205,y:300,w:170,cls:'noshadow',html:`<div style="background:rgba(255,253,249,.92);border-radius:16px;padding:8px 12px;box-shadow:0 8px 20px rgba(0,0,0,.15)"><img src="a/logo_gold.png" style="width:100%;filter:none"></div>`,enter:'fade',din:.5,float:0,z:600});
-const PT=[T.p1,T.p2,T.p3,T.p4,T.p5,T.p6,T.p7];
-A({t0:T.p1,t1:T.law,x:650,y:300,w:460,cls:'noshadow',html:`<div style="display:flex;gap:12px;align-items:center;background:rgba(13,23,41,.85);border-radius:999px;padding:10px 16px">${PT.map((_,i)=>`<div class="d" style="width:46px;height:46px;border-radius:50%;font:700 24px/48px P;text-align:center;background:rgba(255,255,255,.15);color:#cfd6e4">${i+1}</div>`).join('')}</div>`,enter:'fade',din:.4,float:0,z:600,
-  draw:(t,lt,oo)=>{oo.el.querySelectorAll('.d').forEach((d,i)=>{const on=t>=PT[i];const cur=on&&(i==6||t<PT[i+1]);d.style.background=cur?'#e8cf9f':on?'rgba(232,207,159,.45)':'rgba(255,255,255,.15)';d.style.color=cur?NAVY:on?'#fff':'#cfd6e4';d.style.transform=`scale(${cur?1.12:1})`})}});
+// ---- HOOK : hand signing in front of old society ----
+PB('N01_hook_sign.jpg',0,T.prev+.05,{s0:1.0,s1:1.16,y0:0,y1:40});SHADE(0,T.prev);
+A({t0:.05,t1:T.prev,x:430,y:560,w:720,cls:'noshadow',html:`<div style="background:rgba(255,255,255,.96);border-radius:30px;padding:24px 34px 20px;box-shadow:0 20px 50px rgba(0,0,0,.35);text-align:left"><div style="font:800 50px/1.15 P;color:#111">तुमच्या Society चा</div><div style="font:800 76px/1.1 P;color:${RED}">Redevelopment</div><div style="font:800 50px/1.15 P;color:#111">होतोय?</div></div>`,enter:'left',din:.5,sfx:'whoosh',sfxv:.6,z:66,float:.05});
+BAN(C('सही',5.06),T.prev,1080,'सही करू नका!',{icon:'warn',fs:80,is:96,rot:-5,w:880});
+CHIP(C('गोष्टी',3.86),T.prev,560,1250,'या 7 गोष्टी नसतील तर...',{bg:'#fff',fs:40,w:560});
+A({t0:C('नाही',6.2),t1:T.prev,x:540,y:1400,w:880,cls:'chipw',html:`<span style="display:inline-block;background:${NAVY};color:#fff;font:800 44px/1 P;padding:20px 34px 16px;border-radius:18px;box-shadow:0 14px 34px rgba(0,0,0,.4)">नाहीतर घरही जाईल आणि <span style="color:#f2dfb6">भाडंही!</span></span>`,enter:'up',din:.4,sfx:'thud',sfxv:.5,z:70,float:0});
+shake(C('सही',5.06)+.1,9);
 
-// ================= HOOK : old society, agreement + pen, stamp =================
-BG({img:'B01_old_society.jpg',t0:0,t1:T.prev+.05,s0:1.0,s1:1.1,fade:.2});
-TINT(0,T.prev,'linear-gradient(180deg,rgba(0,0,0,.25),rgba(0,0,0,0) 35%,rgba(0,0,0,.15) 70%,rgba(0,0,0,.4))',.2);
-H2(.05,T.prev,520,`Redevelopment करारात<br>या <span style="color:${GOLD}">7 गोष्टी</span> नसतील, तर...`,{w:820});
-OBJ(.3,T.prev,540,1010,440,'O01_agreement.png',{enter:'rise',din:.6,allowOver:1});
-OBJ(C('बिल्डरचा',2.3),C('सही',5.06)+.1,720,950,260,'O02_pen.png',{enter:'right',din:.5,allowOver:1,fn:(t,lt)=>({dy:Math.sin(lt*3)*14,r:-8})});
-STAMP(C('सही',5.06),T.prev,540,1020,'सही करू नका!',RED,{fs:62,w:720,allowOver:1});
-shake(C('सही',5.06)+.1,10);
-NO(C('घर',6.62),T.prev,330,1400,'घर');NO(C('भाड़',7.66),T.prev,750,1400,'भाडं');
+// ---- PREV VIDEO : meeting ----
+PB('N02_meeting.jpg',T.prev,T.today+.05);SHADE(T.prev,T.today);
+A({t0:T.prev+.05,t1:T.today,x:540,y:1180,w:840,cls:'noshadow',html:`<div style="background:rgba(255,255,255,.97);border-radius:28px;padding:24px 30px 20px;box-shadow:0 20px 50px rgba(0,0,0,.35);text-align:center;font:800 46px/1.3 P;color:#111">मागच्या video मध्ये<br>आपण <span style="color:${RED}">सभेचे नवे नियम</span> पाहिले.</div>`,enter:'up',din:.45,sfx:'whoosh',sfxv:.5,z:66,float:.05});
+A({t0:C('नवे',10.3),t1:T.today,x:540,y:1390,w:120,cls:'noshadow',html:`<div style="text-align:center;font:900 90px/1 P;color:#fff;text-shadow:0 6px 16px rgba(0,0,0,.5)">↓</div>`,enter:'down',din:.35,z:66,float:0});
 
-// ================= PREV VIDEO : meeting hall =================
-BG({img:'B02_meeting_hall.jpg',t0:T.prev,t1:T.today+.05,s0:1.0,s1:1.08,fade:.25});
-LBL(T.prev+.05,T.today,540,430,'भाग 1 - मागचा video',{bg:NAVY,col:'#e8cf9f',fs:34,w:460});
-H2(T.prev+.2,T.today,610,`सभेचे <span style="color:${GOLD}">नवे नियम</span> ✓`,{w:640});
-ROW(C('सभेचे',9.7),T.today,800,'51% सभासद प्रत्यक्ष हजर');ROW(C('नवे',10.3),T.today,935,'किमान 3 निविदा');ROW(C('नियम',10.6),T.today,1070,'सभेचं Video recording');
+// ---- TODAY : Development Agreement book ----
+PB('N03_book.jpg',T.today,T.p1+.05,{s0:1.05,s1:1.15});TINT(T.today,T.p1,'linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,0) 35%)',.2);
+A({t0:C('डेवलप्मेंट',12.5),t1:T.p1,x:520,y:1150,w:900,cls:'noshadow',html:`<div style="transform:rotate(-21deg) skewX(8deg);text-align:center;font:800 64px/1.05 P;letter-spacing:3px;background:linear-gradient(180deg,#f7e2b0,#c9a66f 55%,#9c7a45);-webkit-background-clip:text;color:transparent;filter:drop-shadow(0 2px 2px rgba(0,0,0,.6))">DEVELOPMENT<br>AGREEMENT<div style="font:700 40px/1.4 P;letter-spacing:0">Builder सोबतचा करार</div></div>`,enter:'fade',din:.6,sfx:'whoosh',sfxv:.5,z:40,float:0,shine:[C('बिल्डर',14.08)]});
+A({t0:T.today+.05,t1:T.p1,x:540,y:520,w:760,cls:'noshadow',html:`<div style="background:rgba(255,255,255,.97);border:5px solid #c9a66f;border-radius:28px;padding:20px 30px 16px;box-shadow:0 20px 50px rgba(0,0,0,.4);text-align:center"><div style="font:700 40px/1.2 P;color:#444">आज पुढचा टप्पा -</div><div style="font:800 64px/1.1 P;color:#111">Development Agreement!</div></div>`,enter:'down',din:.45,sfx:'whoosh',sfxv:.5,z:66,float:.05});
 
-// ================= TODAY : Development Agreement =================
-TINT(T.today,T.p1,'linear-gradient(180deg,#0d1729,#162644)',.2);
-A({t0:T.today+.05,t1:T.p1,x:540,y:560,w:900,cls:'noshadow',html:`<div style="text-align:center;font:600 44px/1.3 P;color:#cfd6e4">आज पुढचा टप्पा</div>`,enter:'fade',din:.35,z:50,float:.08});
-A({t0:C('डेवलप्मेंट',12.5)-.1,t1:T.p1,x:540,y:690,w:960,cls:'noshadow',html:`<div style="text-align:center;font:700 74px/1.1 P;color:#e8cf9f">Development<br>Agreement</div>`,enter:'fade',din:.4,sfx:'impact',sfxv:.5,z:50,float:.08});
-A({t0:C('बिल्डर',14.08),t1:T.p1,x:540,y:860,w:900,cls:'noshadow',html:`<div style="text-align:center;font:600 42px/1.3 P;color:#fff">= builder सोबतचा करार</div>`,enter:'up',din:.4,sfx:'swoosh',sfxv:.5,z:50,float:.08});
-OBJ(T.today+.4,T.p1,540,1230,330,'O01_agreement.png',{enter:'rise',din:.6});
+// ---- 1 CARPET ----
+PB('B03_empty_flat.jpg',T.p1,T.p2+.05);
+HN(1,T.p1+.05,T.p2,`नवीन घराचा <span style="color:#b8935f">Carpet Area</span>`,{});
+CHIP(C('अंदाजे',17.66),T.p2,700,660,'अंदाजे',{col:RED,ic:'cross',fs:46,w:330});
+CHIP(C('सुमारे',18.7),T.p2,700,780,'सुमारे',{col:RED,ic:'cross',fs:46,w:330});
+A({t0:C('नेमका',19.48)-.4,t1:T.p2,x:330,y:1130,w:440,cls:'noshadow',html:`<div style="position:relative;width:420px;height:560px;border-radius:14px;background:url(a/N11_floorplan.jpg) center/cover;border:5px solid #fff;box-shadow:0 20px 44px rgba(0,0,0,.35)"><div class="hl" style="position:absolute;left:95px;top:375px;width:110px;height:120px;background:rgba(247,206,70,.65);outline:4px solid #e6a800;opacity:0"></div></div>`,enter:'rise',din:.5,sfx:'swoosh',sfxv:.5,z:55,float:.04,draw:(t,lt,oo)=>{oo.el.querySelector('.hl').style.opacity=clamp((t-C('नेमका',19.48))/.3)}});
+A({t0:C('नेमका',19.48),t1:T.p2,x:700,y:1060,w:400,cls:'noshadow',html:`<div style="background:#fff;border-radius:26px;padding:20px 24px 18px;box-shadow:0 18px 44px rgba(0,0,0,.3);text-align:center"><div style="font:800 46px/1.15 P;color:#111">नेमके<br>Carpet Area</div><div style="font:700 34px/1.4 P;color:#444">(उदा. 650 sq.ft.)</div><div style="width:64px;margin:6px auto 0">${ICO.tick}</div></div>`,enter:'right',din:.45,sfx:'pop',sfxv:.6,z:66,float:.05});
+CHIP(C('रेरा',21.42),T.p2,540,1440,'RERA Carpet नुसार',{bg:NAVY,col:'#fff',fs:42,w:500,ic:'tick'});
 
-// ================= 1 CARPET : empty flat =================
-BG({img:'B03_empty_flat.jpg',t0:T.p1,t1:T.p2+.05,s0:1.0,s1:1.06,fade:.25});
-HEAD(1,T.p1+.05,T.p2,`नवीन घराचा <span style="color:${GOLD}">Carpet Area</span>`);
-A({t0:C('कारपेट',16.9),t1:T.p2,x:540,y:960,w:1080,cls:'noshadow',html:`<svg viewBox="0 0 1080 1920" width="1080" height="1920"><polygon class="fp" points="300,1210 800,1210 1010,1700 70,1700" fill="rgba(232,207,159,.18)" stroke="#e8cf9f" stroke-width="7" stroke-dasharray="3000" stroke-dashoffset="3000" style="filter:drop-shadow(0 0 10px #e8cf9f)"/></svg>`,enter:'fade',din:.1,float:0,z:30,
-  draw:(t,lt,oo)=>{oo.el.querySelector('.fp').style.strokeDashoffset=3000*(1-E.inout(clamp(lt/1.1)))}});
-NO(C('अंदाजे',17.66),T.p2,330,720,'अंदाजे');NO(C('सुमारे',18.7),T.p2,750,720,'सुमारे');
-NUM(C('नेमका',19.48),T.p2,540,920,'नेमके sq.ft ✓','अचूक आकडा करारात',{w:560,fs:64});
-LBL(C('रेरा',21.42),T.p2,540,1100,'RERA Carpet नुसार ✓',{bg:GOLD,col:'#111',fs:40,w:480});
+// ---- 2 RENT ----
+PB('B04_moving_boxes.jpg',T.p2,T.p3+.05);SHADE(T.p2,T.p3);
+HN(2,T.p2+.05,T.p3,`भाडं किंवा पर्यायी घर`);
+CHIP(C('बंधन',28.6),T.p3,540,630,'Builder ला बंधनकारक',{bg:NAVY,col:'#f2dfb6',fs:40,w:520});
+IC2(C('दर',29.9),T.p3,800,'home','मासिक भाडं किती?');
+IC2(C('आगाउ',31.5)-.3,T.p3,960,'cal','किती महिने आगाऊ?');
+IC2(C('वर्षी',32.8)-.3,T.p3,1120,'chart','दरवर्षी किती वाढ?');
+BAN(C('करारात',34.46),T.p3,1320,'करारात लिहून घ्या!',{fs:52,w:700,rot:-3});
 
-// ================= 2 RENT : moving boxes =================
-BG({img:'B04_moving_boxes.jpg',t0:T.p2,t1:T.p3+.05,s0:1.0,s1:1.08,fade:.25});
-HEAD(2,T.p2+.05,T.p3,`भाडं किंवा <span style="color:${GOLD}">पर्यायी घर</span>`);
-LBL(C('बंधन',28.6),T.p3,540,680,'Builder ला बंधनकारक',{bg:NAVY,col:'#fff',fs:40,w:500});
-ROW(C('दर',29.9),T.p3,820,'दर महिन्याला किती?');ROW(C('आगाउ',31.5)-.3,T.p3,955,'किती महिने आगाऊ?');ROW(C('वर्षी',32.8)-.3,T.p3,1090,'दरवर्षी किती वाढ?');
-PANEL(C('करारात',34.46),T.p3,540,1270,700,`<div style="font:700 42px/1.25 P">करारात <span style="color:${GOLD}">लिहून घ्या!</span></div>`,{pad:'18px 26px'});
+// ---- 3 CORPUS ----
+PB('N04_corpus.jpg',T.p3,T.p4+.05,{s0:1.0,s1:1.12});SHADE(T.p3,T.p4);
+HN(3,T.p3+.05,T.p4,`<span style="color:#b8935f">Corpus Fund</span>`);
+IC2(C('रक्कम',36.88),T.p4,880,'coins','रक्कम किती?',{w:600});
+IC2(C('कधी',38.1),T.p4,1040,'cal','कधी मिळणार?',{w:600});
+IC2(C('पक्क',39.6),T.p4,1200,'doc','करारात अटी स्पष्ट',{w:600});
+BAN(C('शक्यतर',40.5),T.p4,1390,'शक्य तर घर सोडण्याआधीच!',{fs:46,w:800,rot:-2});
 
-// ================= 3 CORPUS : coins =================
-TINT(T.p3,T.p4,'radial-gradient(ellipse 80% 60% at 50% 50%,#fbf7f0,#e9e1d4)',.2);
-HEAD(3,T.p3+.05,T.p4,`<span style="color:${GOLD}">Corpus Fund</span>`);
-OBJ(C('कॉर्पस',36.1),T.p4,540,1060,560,'O04_coins.png',{enter:'rise',din:.6,fn:(t)=>({s:t>C('पक्क',39.6)&&t<C('पक्क',39.6)+.35?1.06:1})});
-LBL(C('रक्कम',36.88),T.p4,330,1340,'रक्कम किती?',{bg:'#fff',fs:42,w:340});
-LBL(C('कधी',38.1),T.p4,750,1340,'कधी मिळणार?',{bg:'#fff',fs:42,w:340});
-PANEL(C('शक्यतर',40.5),T.p4,540,700,760,`<div style="font:700 42px/1.25 P">शक्य तर <span style="color:${RED}">घर सोडण्याआधीच!</span></div>`,{pad:'16px 24px'});
+// ---- 4 BANK GUARANTEE ----
+PB('B05_vault.jpg',T.p4,T.p5+.05,{filter:'brightness(.75)'});SHADE(T.p4,T.p5);
+HN(4,T.p4+.05,T.p5,`बँक गॅरंटी`);
+A({t0:T.p4+.3,t1:T.p5,x:400,y:880,w:420,cls:'noshadow',html:`<div style="position:relative;width:400px;height:520px;border-radius:10px;background:url(a/N12_page.jpg) center/cover;box-shadow:0 22px 46px rgba(0,0,0,.45);transform:rotate(-8deg)"><div style="position:absolute;left:0;right:0;top:46px;text-align:center;font:800 36px/1.1 P;color:${NAVY};letter-spacing:1px;background:#fff;padding:8px 0">BANK GUARANTEE</div></div>`,enter:'rise',din:.55,sfx:'swoosh',sfxv:.5,z:50,float:.05});
+OBJ(C('बैंक',43.2),T.p5,690,930,300,'O10_shield.png',{enter:'stamp',din:.4,sfx:'thud',sfxv:.6,z:56,float:.08,allowOver:1});
+A({t0:C('अर्धवट',44.7)-.2,t1:T.p5,x:540,y:1260,w:860,cls:'noshadow',html:`<div style="background:linear-gradient(180deg,rgba(13,23,41,.95),rgba(27,42,69,.95));border:3px solid #c9a66f;border-radius:26px;padding:20px 28px 16px;box-shadow:0 20px 50px rgba(0,0,0,.45);text-align:center;color:#fff"><div style="font:700 40px/1.25 P">प्रकल्प अर्धवट सोडला तर</div><div style="font:800 52px/1.2 P"><span style="color:#f2dfb6">बँक Society ला पैसे देते</span></div></div>`,enter:'up',din:.45,sfx:'whoosh',sfxv:.5,z:66,float:.04});
+CHIP(C('नव्या',47.5),T.p5,540,1440,'नवा नियम: प्रकल्प किमतीच्या प्रमाणात',{bg:'#f2dfb6',col:NAVY,fs:34,w:720});
 
-// ================= 4 BANK GUARANTEE : vault =================
-BG({img:'B05_vault.jpg',t0:T.p4,t1:T.p5+.05,s0:1.0,s1:1.08,fade:.25});
-HEAD(4,T.p4+.05,T.p5,`<span style="color:${GOLD}">बँक गॅरंटी</span>`);
-LBL(C('अर्धवट',44.7)-.3,T.p5,540,690,'प्रकल्प अर्धवट सोडला तर?',{bg:RED,col:'#fff',fs:40,w:600});
-PANEL(C('बैंक',45.88),T.p5,540,860,720,`<div style="display:flex;align-items:center;gap:18px;justify-content:center"><div style="width:70px">${IC.shield(70)}</div><div style="font:700 42px/1.25 P;text-align:left">बँक society ला<br><span style="color:#1f9a52">पैसे देते</span></div></div>`,{pad:'16px 24px'});
-PANEL(C('नव्या',47.5),T.p5,540,1240,820,`<div style="font:600 34px/1.3 P;color:#6b6b6b">नवा नियम (30 सप्टेंबर 2026)</div><div style="font:700 40px/1.3 P">प्रकल्प किमतीच्या प्रमाणात <span style="color:${GOLD}">बँक गॅरंटी</span></div>`,{pad:'18px 26px'});
+// ---- 5 TIMELINE ----
+PB('B06_construction.jpg',T.p5,T.p6+.05);SHADE(T.p5,T.p6);
+HN(5,T.p5+.05,T.p6,`बांधकामाची मुदत`);
+IC2(C('दोन',54.3),T.p6,760,'clock','2 वर्षांत पूर्ण करणे',{w:700,bg:NAVY,end:`<div style="width:62px;flex:none;margin-left:auto">${ICO.tick}</div>`});
+IC2(C('अपवादाने',55.46),T.p6,930,'cal',`<span style="font-size:34px;color:#444">अपवादात्मक परिस्थितीत</span><br><span style="color:${RED}">कमाल 3 वर्षांपर्यंत</span>`,{w:700,bg:`linear-gradient(145deg,#e2463b,#b8261d)`});
+BAN(C('उशीर',58.0),T.p6,1140,'उशीर झाल्यास<br>करारात दंडाची अट!',{icon:'warn',fs:46,is:84,w:780,rot:-2});
+OBJ(C('कलॉज',59.86),T.p6,300,1360,200,'O03_calendar.png',{enter:'rise',din:.45,z:60});
 
-// ================= 5 TIMELINE : construction =================
-BG({img:'B06_construction.jpg',t0:T.p5,t1:T.p6+.05,s0:1.0,s1:1.08,fade:.25});
-HEAD(5,T.p5+.05,T.p6,`<span style="color:${GOLD}">मुदत</span> - बांधकाम किती वर्षात?`);
-{const t2=C('दोन',54.3),t3=C('तीन',57.0);
-A({t0:C('बांधकाम',53.8),t1:T.p6,x:540,y:830,w:880,cls:'noshadow',html:`<div style="background:rgba(255,253,249,.96);border-radius:28px;padding:26px 34px 22px;box-shadow:0 22px 56px rgba(0,0,0,.25)"><div style="position:relative;height:30px;border-radius:15px;background:#e2ddd4;overflow:hidden"><div class="g" style="position:absolute;left:0;top:0;bottom:0;width:0;background:${GOLD}"></div><div class="r" style="position:absolute;left:66.6%;top:0;bottom:0;width:0;background:repeating-linear-gradient(45deg,${RED} 0 12px,#f08a82 12px 24px)"></div></div><div style="display:flex;justify-content:space-between;font:600 30px/1.4 P;margin-top:12px;color:#6b6b6b"><span>Plinth</span><span class="l2" style="color:#151515;font-weight:700;opacity:0">2 वर्षं ✓</span><span class="l3" style="color:${RED};font-weight:700;opacity:0">कमाल 3</span></div></div>`,enter:'up',din:.45,sfx:'swoosh',sfxv:.5,z:60,float:.06,
-  draw:(t,lt,oo)=>{oo.el.querySelector('.g').style.width=(66.6*E.inout(clamp((t-t2)/.9)))+'%';oo.el.querySelector('.r').style.width=(33.4*E.inout(clamp((t-t3)/.6)))+'%';oo.el.querySelector('.l2').style.opacity=clamp((t-t2-.6)/.3);oo.el.querySelector('.l3').style.opacity=clamp((t-t3-.3)/.3)}});
-sfx(t2+.8,'thud',.4);sfx(t3+.5,'thud',.4);}
-OBJ(C('उशीर',58.0),T.p6,290,1240,240,'O03_calendar.png',{enter:'rise',din:.5});
-LBL(C('दंड',58.86),T.p6,700,1180,'उशीर = दंड किती?',{bg:RED,col:'#fff',fs:40,w:440});
-LBL(C('कलॉज',59.86),T.p6,700,1310,'Clause करारात हवाच',{bg:GOLD,col:'#111',fs:38,w:440});
+// ---- 6 PARKING + AMENITIES : 2x2 photo tiles ----
+PB('B07_podium.jpg',T.p6,T.p7+.05,{filter:'brightness(.55) blur(3px)'});
+HN(6,T.p6+.05,T.p7,`Parking आणि सुविधा`);
+[['N06_parking.jpg','Parking',C('पार्किंग',62.0),330,760],['N07_lift.jpg','Lift',C('लिफ्ट',63.4),690,760],['N08_gym.jpg','Gym',C('जिम',64.7),330,1080],['N09_materials.jpg','वापरायचे साहित्य',C('सहीत्ते',65.6),690,1080]].forEach(([img,lb,t0,x,y])=>{
+ PHOTO(t0,T.p7,x,y,330,280,img,{});
+ CHIP(t0+.15,T.p7,x,y+130,lb,{fs:34,ic:'tick',w:330,z:69});});
+CHIP(C('तोंडी',68.6),T.p7,330,1360,'तोंडी आश्वासन',{col:RED,ic:'cross',fs:40,w:400,enter:'stamp',sfx:'buzz'});
+CHIP(C('तोंडी',68.6)+.5,T.p7,690,1360,'लेखी करार',{col:GRN,ic:'tick',fs:40,w:320});
 
-// ================= 6 PARKING + AMENITIES : podium =================
-BG({img:'B07_podium.jpg',t0:T.p6,t1:T.p7+.05,s0:1.0,s1:1.06,fade:.25});
-HEAD(6,T.p6+.05,T.p7,`Parking आणि <span style="color:${GOLD}">सुविधा</span>`);
-[['Lift',C('लिफ्ट',63.4),330,700],['Parking',C('पार्किंग',63.98),750,700],['Gym',C('जिम',64.7),330,820],['साहित्य',C('सहीत्ते',65.6),750,820]].forEach(([s,t0,x,y])=>LBL(t0,T.p7,x,y,s+' ✓',{bg:'#fff',fs:42,w:340}));
-PANEL(C('यादी',67.2),T.p7,540,1010,760,`<div style="font:700 42px/1.25 P">सगळं <span style="color:${GOLD}">यादीसह</span> लिहून घ्या</div>`,{pad:'16px 24px'});
-STAMP(C('तोंडी',68.6),T.p7,540,1250,'तोंडी आश्वासन ✗',RED,{fs:52,w:680});
-
-// ================= 7 REGISTRATION : two agreements + stamp =================
-TINT(T.p7,T.law,'radial-gradient(ellipse 80% 60% at 50% 50%,#fbf7f0,#e9e1d4)',.2);
-HEAD(7,T.p7+.05,T.law,`<span style="color:${GOLD}">नोंदणी</span> - दोन्ही करार`);
-OBJ(C('सोसाइटीचा',71.5),T.law,300,900,290,'O01_agreement.png',{enter:'left',din:.5});
-OBJ(C('प्रत्येक',72.9),T.law,770,900,290,'O01_agreement.png',{enter:'right',din:.5});
-LBL(C('सोसाइटीचा',71.5)+.3,T.law,300,1230,'Society चा करार',{bg:NAVY,col:'#fff',fs:34,w:380});
-LBL(C('प्रत्येक',72.9)+.3,T.law,770,1230,'सभासदाचा करार',{bg:NAVY,col:'#fff',fs:34,w:360});
+// ---- 7 REGISTRATION ----
+TINT(T.p7,T.law,'radial-gradient(ellipse 80% 60% at 50% 50%,#fbf7f0,#e3d9c9)',.2);
+HN(7,T.p7+.05,T.law,`नोंदणी`);
+[['Society<br>Development<br>Agreement',C('सोसाइटीचा',71.5),300,'Society चा करार'],['सभासदाचा<br>पर्यायी घराचा करार<br>(PAAA)',C('प्रत्येक',72.9),780,'प्रत्येक सभासदाचा']].forEach(([ttl,t0,x,lb])=>{
+ A({t0,t1:T.law,x,y:930,w:420,cls:'noshadow',html:`<div style="position:relative;width:400px;height:530px;border-radius:8px;background:url(a/N12_page.jpg) center 60%/cover;box-shadow:0 20px 44px rgba(0,0,0,.3)"><div style="position:absolute;left:0;right:0;top:24px;background:#fff;padding:12px 10px;text-align:center;font:800 32px/1.2 P;color:#111">${ttl}</div></div>`,enter:x<540?'left':'right',din:.5,sfx:'swoosh',sfxv:.5,z:50,float:.04});
+ CHIP(t0+.3,T.law,x,1260,lb,{bg:NAVY,col:'#fff',fs:32,w:400});});
 {const s1=C('दोन',75.3),s2=C('नोंदर्नी',76.1);
- OBJ(s1-.6,T.law,300,560,170,'O06_stamp.png',{enter:'fade',din:.2,allowOver:1,z:80,float:0,
-   fn:(t)=>{const x=t<s2-.3?300:lerp(300,770,E.inout(clamp((t-(s2-.3))/.3)));const hit=(a)=>{const d=t-a;return d>-.25&&d<.12?-Math.abs(d)*0:(d>-.6&&d<=-.25?(-.6-d)*0:0)};const bob=(a)=>{const d=t-a;return d<-.25?-40:d<0?lerp(-40,120,(q=>q*q)(clamp((d+.25)/.25))):d<.25?lerp(120,-40,E.out(clamp(d/.25))):-40};return {dx:x-300,dy:(t<s2-.3?bob(s1):bob(s2))+120}}});
- STAMP(s1,T.law,300,930,'नोंदणीकृत ✓','#1f9a52',{fs:30,w:300,allowOver:1,rot:-8});
- STAMP(s2,T.law,770,930,'नोंदणीकृत ✓','#1f9a52',{fs:30,w:300,allowOver:1,rot:-8});}
+ [[s1,300],[s2,780]].forEach(([s,x])=>{
+  OBJ(s-.45,s+.35,x,900,170,'O06_stamp.png',{enter:'fade',din:.1,exit:'fade',dout:.15,allowOver:1,z:80,float:0,fn:t=>{const d=t-s;return {dy:d<0?lerp(-160,40,E.inout(clamp((d+.45)/.45))):lerp(40,-160,E.inout(clamp(d/.35)))}}});
+  A({t0:s,t1:T.law,x,y:1060,w:400,cls:'noshadow',html:`<div style="transform:rotate(-14deg);display:inline-block;border:7px solid ${RED};border-radius:14px;padding:10px 20px 6px;font:800 50px/1 P;color:${RED};letter-spacing:2px;background:rgba(255,255,255,.75)">REGISTERED</div>`,enter:'stamp',din:.25,sfx:'stamp',sfxv:.8,z:70,float:0,allowOver:1});});}
 
-// ================= LAWYER + PMC =================
-BG({img:'B08_lawyer_desk.jpg',t0:T.law,t1:T.cm+.05,s0:1.0,s1:1.08,fade:.25});
-H2(C('सही',77.4),T.cm,520,`सही करण्या<span style="color:${RED}">आधी</span>`,{w:620});
-LBL(C('वकील',79.6),T.cm,330,720,'स्वतंत्र वकील',{bg:NAVY,col:'#fff',fs:40,w:400});
-LBL(C('पीमसी',80.4),T.cm,760,720,'PMC',{bg:GOLD,col:'#111',fs:40,w:200});
-PANEL(C('तपा',81.5)-.3,T.cm,540,900,700,`<div style="font:700 42px/1.25 P">करार <span style="color:#1f9a52">तपासून घ्या ✓</span></div>`,{pad:'16px 24px'});
+// ---- LAWYER + PMC ----
+PB('N05_lawyer_pmc.jpg',T.law,T.cm+.05,{s0:1.0,s1:1.08});SHADE(T.law,T.cm);
+A({t0:C('सही',77.4),t1:T.cm,x:540,y:470,w:700,cls:'noshadow',html:`<div style="text-align:center"><span style="display:inline-block;background:#fff;border-radius:999px;padding:16px 40px 12px;font:800 52px/1 P;color:#111;box-shadow:0 16px 40px rgba(0,0,0,.3)">सही करण्याआधी...</span></div>`,enter:'down',din:.45,sfx:'whoosh',sfxv:.5,z:70,float:.04});
+IC2(C('वकील',79.6),T.cm,1110,'people','Society चा स्वतंत्र वकील',{w:720,fs:38,end:`<div style="width:56px;flex:none;margin-left:auto">${ICO.tick}</div>`});
+IC2(C('पीमसी',80.4),T.cm,1260,'helmet','PMC कडून करार तपासणी',{w:720,fs:38,end:`<div style="width:56px;flex:none;margin-left:auto">${ICO.tick}</div>`});
+IC2(C('तपा',81.5),T.cm,1410,'doc','सर्व clauses तपासा',{w:720,fs:38,end:`<div style="width:56px;flex:none;margin-left:auto">${ICO.tick}</div>`});
 
-// ================= CTA : new tower =================
-BG({img:'B09_new_tower.jpg',t0:T.cm,t1:T.out+.05,s0:1.0,s1:1.08,y0:0,y1:-30,fade:.25});
-TINT(T.cm,T.out,'linear-gradient(180deg,rgba(13,23,41,.35),rgba(13,23,41,0) 45%,rgba(0,0,0,0) 70%,rgba(0,0,0,.35))',.2);
-H2(T.cm+.05,T.out,540,`तुमच्या society चा redevelopment<br><span style="color:${GOLD}">कोणत्या टप्प्यावर?</span>`,{w:860,fs:42});
-[['1','चर्चा',C('चर्चा',85.0),740],['2','Builder निवड',C('बिल्डर',85.8),850],['3','करार',C('करार',86.7),960]].forEach(([n,s,t0,y])=>A({t0,t1:T.out,x:540,y,w:440,cls:'noshadow',html:`<div style="display:flex;align-items:center;gap:16px;background:rgba(255,253,249,.97);border-radius:999px;padding:10px 26px 8px 10px;box-shadow:0 12px 30px rgba(0,0,0,.25)"><div style="width:62px;height:62px;border-radius:50%;background:${NAVY};color:#e8cf9f;font:700 34px/64px P;text-align:center">${n}</div><div style="font:700 38px/1 P">${s}</div></div>`,enter:'left',din:.4,sfx:'pop',sfxv:.55,z:60,float:.08}));
+// ---- CTA ----
+PB('B09_new_tower.jpg',T.cm,T.out+.05,{y0:0,y1:-30});TINT(T.cm,T.out,'linear-gradient(180deg,rgba(13,23,41,.5),rgba(13,23,41,.1) 50%,rgba(0,0,0,.4))',.2);
+A({t0:T.cm+.05,t1:T.out,x:540,y:540,w:860,cls:'noshadow',html:`<div style="background:rgba(255,255,255,.97);border-radius:28px;padding:22px 30px 18px;box-shadow:0 20px 50px rgba(0,0,0,.4);text-align:center;font:800 50px/1.25 P;color:#111">तुमच्या Society चा redevelopment<br><span style="color:${RED}">कोणत्या टप्प्यावर आहे?</span></div>`,enter:'down',din:.45,sfx:'whoosh',sfxv:.5,z:66,float:.04});
+[['people','चर्चा',C('चर्चा',85.0),300],['helmet','Builder निवड',C('बिल्डर',85.8),540],['doc','करार',C('करार',86.7),780]].forEach(([ic,s,t0,x])=>A({t0,t1:T.out,x,y:830,w:220,cls:'noshadow',html:`<div style="width:210px;height:200px;border-radius:26px;background:linear-gradient(160deg,#1b2a45,#0d1729);border:3px solid #c9a66f;box-shadow:0 18px 40px rgba(0,0,0,.45);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px"><div style="width:76px">${ICO[ic]}</div><div style="font:800 34px/1.1 P;color:#fff;text-align:center">${s}</div></div>`,enter:'pop',din:.4,sfx:'pop',sfxv:.6,z:62,float:.06}));
 {const tc=C('कमेंट',87.2);
-A({t0:tc,t1:T.out,x:540,y:1130,w:760,cls:'chipw',html:`<div style="display:inline-flex;align-items:center;gap:16px;background:${NAVY};color:#fff;border-radius:999px;padding:18px 34px 14px;font:700 40px/1 P;box-shadow:0 18px 44px rgba(0,0,0,.35)"><svg viewBox="0 0 24 24" width="44"><path d="M4 4h16v12H8l-4 4z" fill="#e8cf9f"/></svg>Comment करा 👇</div>`,enter:'up',din:.4,sfx:'pop',sfxv:.7,z:66,float:0,fn:t=>({s:(t>tc+.7&&t<tc+.9?.94:1)})});
-A({t0:tc+.3,t1:C('हा',87.8)+.4,x:690,y:1200,w:90,cls:'noshadow',html:CURSOR,enter:'up',din:.35,z:67,float:0,allowOver:1});
-sfx(tc+.75,'click',.8);}
-A({t0:C('शेयर',89.8)-.4,t1:T.out,x:540,y:1290,w:820,cls:'chipw',html:`<div style="display:inline-flex;align-items:center;gap:16px;background:#1f9a52;color:#fff;border-radius:999px;padding:18px 32px 14px;font:700 38px/1 P;box-shadow:0 18px 44px rgba(0,0,0,.35)"><div style="width:44px">${IC.share(44)}</div>Society group वर share करा</div>`,enter:'up',din:.4,sfx:'swoosh',sfxv:.6,z:66,float:0});
+ CHIP(tc,T.out,540,1060,'Comment करा!',{bg:NAVY,col:'#fff',fs:46,w:480,ic:'chat',fn:t=>({s:(t>tc+.7&&t<tc+.9?.93:1)})});
+ A({t0:tc+.3,t1:C('हा',87.8)+.5,x:700,y:1120,w:90,cls:'noshadow',html:CURSOR,enter:'up',din:.35,z:75,float:0,allowOver:1});sfx(tc+.75,'click',.8);}
+A({t0:C('शेयर',89.8)-.5,t1:T.out,x:540,y:1240,w:760,cls:'noshadow',html:`<div style="display:flex;justify-content:center"><div style="display:inline-flex;align-items:center;gap:20px;background:${GRN};border:4px solid #fff;color:#fff;border-radius:999px;padding:16px 36px 14px 18px;box-shadow:0 18px 44px rgba(0,0,0,.4)"><div style="width:70px">${ICO.wa}</div><div style="font:800 40px/1.15 P;text-align:left">Society group वर<br>Share करा!</div></div></div>`,enter:'up',din:.45,sfx:'swoosh',sfxv:.6,z:66,float:0});
 
-// ================= OUTRO =================
+// ---- OUTRO ----
 TINT(T.out,END+1,'linear-gradient(180deg,#0d1729,#162644)',.25);
-WORDS(T.out+.05,END+1,540,560,860,[['अशाच',C('अशाच',90.7),''],['real',C('रियल',91.1),'ser gd'],['estate',C('एस्टेट',91.4),'ser gd'],['माहितीसाठी',C('महिती',91.6),'']],{st:'font:700 56px/1.3 P;color:#fff'});
+WORDS(T.out+.05,END+1,540,560,860,[['अशाच',C('अशाच',90.7),''],['real',C('रियल',91.1),'ser gd'],['estate',C('एस्टेट',91.4),'ser gd'],['माहितीसाठी',C('महिती',91.6),'']],{st:'font:800 58px/1.3 P;color:#fff'});
 A({t0:T.out+.4,t1:END+1,x:540,y:900,w:560,cls:'noshadow',html:`<div style="background:#faf7f2;border-radius:28px;padding:44px 50px 38px;box-shadow:0 30px 70px rgba(0,0,0,.45)"><img src="a/logo_gold.png" style="width:100%;filter:none"></div>`,enter:'zoom',din:.6,sfx:'whoosh',sfxv:.6,z:50,float:.15,shine:[T.out+1.2]});
 const FT=C('फॉलो',93.4);
-A({t0:C('पेजला',93.1)-.4,t1:END+1,x:500,y:1260,w:760,cls:'chipw',html:`<span style="display:inline-block;background:${GOLD};color:#111;font:700 42px/1 P;padding:22px 40px 16px;border-radius:999px">आमच्या पेज ला Follow करा ➜</span>`,enter:'up',din:.4,sfx:'pop',sfxv:.8,z:54,float:0,fn:t=>({s:(t>FT+.3&&t<FT+.5?.93:1)})});
+A({t0:C('पेजला',93.1)-.4,t1:END+1,x:500,y:1260,w:760,cls:'chipw',html:`<span style="display:inline-block;background:${GOLD};color:#111;font:800 44px/1 P;padding:22px 40px 16px;border-radius:999px">आमच्या पेज ला Follow करा ➜</span>`,enter:'up',din:.4,sfx:'pop',sfxv:.8,z:54,float:0,fn:t=>({s:(t>FT+.3&&t<FT+.5?.93:1)})});
 A({t0:FT-.2,t1:END+1,x:760,y:1350,w:110,cls:'noshadow',html:CURSOR,enter:'up',din:.4,z:56,float:0,allowOver:1,fn:t=>({s:t>FT+.3&&t<FT+.5?.85:1})});
 sfx(FT+.35,'click',.9);PART({type:'confetti',t0:FT+.4,t1:FT+.7,n:90,seed:41,x:540,y:-40,burst:1,life:2.5,colors:[GOLD,'#ffffff','#f2dfb6',RED]});
 const NOBELL={ding:'pop',chime:'pop',bell:'thud',coin:'click',reveal:'whoosh',alert:'pop',question:'pop',sparkle:null};
