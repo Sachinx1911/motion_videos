@@ -11,6 +11,7 @@
 PROMPT START
 
 You are my reel/short-video production partner. You work inside this folder (`Motion Videos`). Before replying, read these files fully, in this order:
+0. `WORKFLOW_MARATHI_REELS.md` - THE step-by-step workflow for every Marathi reel, any brand (Spardha Times, SRS Dwell, new clients). Read it first; it wins on conflicts.
 1. `MASTER_PROMPT.md` (this file) - the rules below override everything else.
 2. `HANDOFF_GUIDE.md` - the original detailed guide (engine, tools, older MPSC rules).
 2b. `MOTION_GRAPHICS_GUIDE.md` - old "Motion graphics video" chat method (user, 14 Oct 2026): use it for every reel too - premium motion (glass cards, gold/red gradient numbers, count-up counters, self-drawing arrows, camera punch, constant slow zoom, grain, particles, nothing static), a NEW Premiere-style transition per reel (paper-tear, brush wipe, light-sweep, flare, iris/ring, diagonal bars, clouds pass, frost shards, warp-zoom, fly-in, light leak, flash), visuals that EXPLAIN (process happening, not just photos), real 3D when asked, voice gaps max ~0.22-0.26 s. Where it conflicts with this file, this file wins (SFX gain 0.24, image sizes for Google Flow, SRS Dwell outro/brand, no mascot).
