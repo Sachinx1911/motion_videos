@@ -132,7 +132,7 @@ PB('P07_laptop.jpg',T.complain,T.soc+.05,{s0:1.0,s1:1.08});SHADE(T.complain,T.so
 HN('!',T.complain+.05,T.soc,'MahaRERA कडे तक्रार');
 CHIP(C('तकरार',58.7),T.soc,540,640,'maharera.mahaonline.gov.in',{bg:NAVY,col:'#f2dfb6',fs:30,w:700});
 CARD2(C('प्रकरणात',60.6),T.soc,540,1000,760,`<div style="font:700 34px/1.2 P;color:#cfd6e4">एका प्रकरणात open parking चे</div><div class="a" style="font:900 96px/1.1 P;color:#f2dfb6">₹0</div><div style="font:700 34px/1.3 P">माफ!</div>`,{draw:(t,lt,oo)=>{oo.el.querySelector('.a').textContent='₹'+Math.round(400000*E.out(clamp((t-C('चार',62.1))/.8))).toLocaleString('en-IN')}});
-A({t0:C('माफ',63.2),t1:T.soc,x:760,y:1000,w:300,cls:'noshadow',html:`<div style="transform:rotate(-14deg);display:inline-block;border:8px solid #1f9a52;border-radius:16px;padding:10px 22px 6px;font:900 54px/1 P;color:#1f9a52;background:rgba(255,255,255,.8)">माफ ✓</div>`,enter:'stamp',din:.3,sfx:'stamp',sfxv:.9,z:72,float:0,allowOver:1});
+A({t0:C('माफ',63.2),t1:T.soc,x:800,y:1200,w:300,cls:'noshadow',html:`<div style="transform:rotate(-14deg);display:inline-block;border:8px solid #1f9a52;border-radius:16px;padding:10px 22px 6px;font:900 54px/1 P;color:#1f9a52;background:rgba(255,255,255,.8)">माफ ✓</div>`,enter:'stamp',din:.3,sfx:'stamp',sfxv:.9,z:72,float:0,allowOver:1});
 CHIP(C('परत',65.4),T.soc,540,1360,'Builder ला पैसे परत करायला लावले',{bg:'#1f9a52',col:'#fff',fs:34,w:760});
 
 // ---- SOCIETY ----
