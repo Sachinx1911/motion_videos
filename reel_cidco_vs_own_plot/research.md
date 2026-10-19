@@ -1,0 +1,14 @@
+# सिडको प्लॉट vs खाजगी प्लॉट - research (19 Oct 2026)
+
+## CIDCO plot (leasehold)
+- CIDCO leases land, does not sell. New Towns Disposal of Land Regulations 1992: lease normally 60 years; beyond 60 (max 99) only in special cases, reasons recorded. (vlex.in; Deccan Herald)
+- Transfer of leasehold needs CIDCO approval / NOC; Sub-Registrar should not register without it. Transfer charges payable (amount varies by location / date; one blog quotes Rs 75,000 - 1.5 lakh - NOT used in script, unverified).
+- Use of plot cannot be changed; owner gets own building approvals; construction within the period in the lease / scheme booklet (see reel_cidco_tender/research.md).
+- Freehold conversion: CIDCO approved a VOLUNTARY scheme to convert eligible leasehold residential plots to freehold (reported July 2025). Covers tendered plots, CIDCO housing, 12.5% / 22.5% scheme plots, only where lease deed is executed. One-time fee = % of ready reckoner rate (exact % not confirmed - not used in script). After conversion: no CIDCO transfer charges; IGR keeps records. Bombay HC upheld CIDCO's premium demand. (housing.com, therealtytoday.com, housiey.com, propnewz.com)
+
+## Private plot (freehold)
+- Checks before buying: 7/12 (ownership, occupancy class - Class I free transfer, Class II needs govt permission), mutation entries (फेरफार) ~30 years, NA order / deemed NA matching survey no. + area + use, 30-year title search at Sub-Registrar, encumbrance (loans), acquisition / reservation / zone. Lawyer's written title opinion. Unauthorised construction risk; banks refuse loans on bad-title land. (lawbhoomi, mondaq, ongrid.design, 1acre)
+- 7/12 is a revenue record, not proof of title by itself.
+
+## Not to claim
+- Exact freehold fee %, exact transfer charge amounts, "90 years ownership" (Square Yards - conflicting, unclear date).
