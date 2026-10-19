@@ -12,3 +12,11 @@
 
 ## Not to claim
 - Exact freehold fee %, exact transfer charge amounts, "90 years ownership" (Square Yards - conflicting, unclear date).
+
+## Topic changed (user, 19 Oct 2026): only CIDCO SOCIETY plot (flat in a society on CIDCO leasehold land)
+- Land leased by CIDCO to the co-op housing society (generally 60 years); building owned by society, member owns flat + shares; land stays CIDCO's.
+- Every flat transfer needs CIDCO NOC / transfer permission + transfer charges (amounts vary: forum answers quote ~Rs 25k-75k linked to carpet area, or ~Rs 37,500; a NAREDCO item reports CIDCO raised transfer fees 5-10%, 50% for registered societies - undated; NOT used in script).
+- If earlier sales were not recorded with CIDCO, current owner may have to pay charges for each earlier unrecorded transaction (lawyersclubindia, kaanoon) - script says "येऊ शकतात" (can).
+- Societies sometimes hold share certificate / membership transfer until CIDCO records are updated (moneylife, commonfloor).
+- Freehold scheme covers eligible residential leasehold plots incl. CIDCO housing, only where lease deed executed; fee = % of ready reckoner (exact % not published in sources); after conversion no CIDCO transfer charges (constructionworld, therealtytoday).
+Sources: kaanoon.com/248136, kaanoon.com/298830, lawyersclubindia.com/experts/739596, naredco.in/node/2777, moneylife.in/lrc/chs-property-related-issues/share-certificate/2375, constructionworld.in/.../76226, ilovenavimumbai.com/freehold-vs-leasehold-in-navi-mumbai
