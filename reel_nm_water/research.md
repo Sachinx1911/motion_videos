@@ -1,0 +1,12 @@
+# Navi Mumbai water crisis vs new flats (research 24 Oct 2026)
+## Confirmed
+- Morbe dam (NMMC) usable stock 69.16% on 23 Oct 2026 - lowest in a decade (FPJ). NMMC special GB 23 Oct: extraction 480 -> 400 MLD; curb potable water for gardens, CONSTRUCTION, car wash; goal drinking water till Aug 2027. Leader of House Sagar Naik: "construction permits granted without water planning". New dam project ~3 yrs.
+- NMMC 10% water cut: 25 May 2026 - cancelled late Aug (Mayor Sujata Patil) - re-announced from 16 Oct 2026 (Pudhari 14 Oct); Minister Ganesh Naik opposed (17 Oct). Status disputed - say "कपातीची चर्चा/घोषणा".
+- NMMC June 2026 (Commissioner Dr Kailas Shinde): construction water connections disconnected; only treated (STP) water for construction; pools/washing centres cut; fines Rs 25,000 / 50,000 / 1 lakh + case; per-capita 220 -> 175 LPCD; rainwater harvesting mandatory proposal. July 2026: treated water mandatory for all construction, gardens, stadiums (Morbe 40.62% then). Feb 2025: tertiary treated water mandatory for developers.
+- CIDCO nodes: 10% cut all nodes from May 2026 + weekly 24-hr node shutdown (Mon Kharghar/New Panvel E; Tue New Panvel W/old Ulwe; Wed Kalamboli/Navade; Thu Karanjade; Fri Taloja/Kamothe/Kalundre/rest Ulwe). Kharghar needs ~100 MLD gets 70-80; Taloja needs 18-20 gets 6 from MIDC; societies buying tankers for 3 yrs; Sector 35E society 3-5 units vs 14 sanctioned; borewell water unfit. Sept 2026 Panvel Mayor Nitin Patil to meet CM over CIDCO-area shortage. CIDCO: 1 lakh homes built in Panvel region + 1 lakh more planned.
+- State: drought in 265 talukas; drought cabinet sub-committee (Bawankule) ~1 Oct: 10% urban cut, buffer till June 2027; Pankaja Munde PROPOSED suspending residential/commercial permissions in drinking-water-short areas - PROPOSAL, not order. Mumbai lakes 90% (23 Oct), BMC 10% cut since 15 May.
+## NOT confirmed - do not say
+- "CC बंद" / permissions formally stopped in Navi Mumbai or Mumbai. No GR/BMC/NMMC/CIDCO order found as of 24 Oct 2026.
+## Script angle
+Navi Mumbai buyer: water is the real risk, not CC. Check: node's water source (NMMC Morbe vs CIDCO MJP/Hetawane), society's actual supply units, tanker expenses in maintenance, project STP/recycled water, rainwater harvesting, water NOC, RERA possession date + sec 18 interest.
+Sources: freepressjournal.in (23 Oct, Jul, Jun, Sept, May), pudhari.news (14, 17 Oct, 18 Jun), navarashtra.com (1 Oct), aaplamahanagar.com (Aug), newsband.in (Jul), latestly.com (May), navarashtra drought (Oct).
