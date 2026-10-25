@@ -54,6 +54,8 @@ Name - topic - audience - logo file + placement - palette (3 colours) - mascot y
 - Never: political, caste/religious, violence ("खून", "गोळीबार", blood), accusations ("भ्रष्टाचार") against bodies, celebrity faces.
 - Updated names: छत्रपती संभाजीनगर, अहिल्यानगर, धाराशिव.
 - ENGAGEMENT in every reel (user rule): one of - numbered vote ("1, 2 की 3? फक्त नंबर लिहा"), "तुमचा size/node/stage comment करा", mid-video quiz answered later, keyword comment, myth-vs-fact. Show it as a card in the last 10 s; caption ends with the same question.
+- NEWS FRESHNESS (user, 25 Oct 2026): re-verify every number/date on the day the script is written, prefer official sources (CIDCO, MahaRERA, NMMC, GR) over news; put "* माहिती दि. <date> पर्यंत" in the footer; if a scheme has closed, change the angle ("पुढची lottery येतेय", "मागच्या lottery तून शिका") instead of using stale figures.
+- INDEPENDENT VOICE (user, 25 Oct 2026): we inform the public, we do NOT work for CIDCO / builders / govt. Never sound like a promotion: no "सुवर्णसंधी", "लवकर अर्ज करा", "आत्ताच book करा"; always include the buyer's side - risks, delays, hidden costs, what to check, past complaints (water, possession, transfer charges); use "CIDCO म्हणतं..." / "योजना सांगते..." phrasing, show both sides; CTA is "तुमचा अनुभव comment करा", not "apply now". Footer "CIDCO चा अधिकृत video नाही" stays on CIDCO reels.
 - Series: if a topic goes viral, make "भाग 2" and reference भाग 1 in the voice + on screen.
 
 ---
