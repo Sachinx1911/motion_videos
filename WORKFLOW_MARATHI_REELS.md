@@ -112,6 +112,8 @@ Logo top-left x205 y300 (w~170). Key content y 250-1480, x 110-970. Between y 88
 - Fonts: Poppins; headings 800, body 600-700. Never letter-spacing on Devanagari.
 - Rejected looks: neo-brutal stickers, plain blueprint, light editorial with tiny text, dark card-only scenes with empty-room photos ("chutiya" feedback).
 
+### 7.2b VARY THE LOOK EVERY REEL (user, 25 Oct 2026)
+Two consecutive reels must never share the same design system or image style. Before S4 (prompts) pick and NAME: storyboard type (7.5), palette (not always ivory/gold/navy), card language (white icon cards / dark glass / paper cut-outs / sketch / 3D), typography accent, transition, AND image style (authentic photo / archival B&W / isometric render / flat-lay / sketch-to-render / cinematic night / halftone collage). Keep only the logo + safe area constant. Log the look used in the reel's script.md so the next reel avoids it.
 ### 7.3 Motion (never static)
 Glass/white cards, gold gradient numbers, count-ups, self-drawing arrows/lines, camera punch on key words, shake on stamps, constant slow zoom, grain + vignette, particles. Every animation is tied to a WORD (`C('word', approxTime)` from cue_words.json), not to a hard-coded time - a re-recorded line then re-times automatically.
 
