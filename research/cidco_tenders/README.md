@@ -8,7 +8,7 @@ Source: eauction.cidcoindia.com (booklets, published results), booklet PDFs save
 - Processing fee Rs 1,000 + GST; EMD 3% of base value; bid increments Rs 1,000/sq m; lease 60 yrs; agreement within 30 days of full premium; withdrawal within 3 months of result -> EMD forfeited.
 - Files: scheme51.pdf (booklet), scheme51.txt, scheme51_plots.csv (all 83), scheme51_kml.csv (lat/lon of all 83 from CIDCO's Google My Map), s51_maps/*.jpg (43 plot drawings with road widths), s51_results/*.pdf (40 result reports), scheme51_results.csv.
 
-## Results (40 of 83 plots got bids; 43 unsold incl. Ulwe 16A/3A commercial 12,981 sqm @ 2.29 lakh, Kharghar 5A/9, Kharghar 37/1B, all 5 Pushpak R+C, 24 New Panvel (E) small plots, 14 Kalamboli small plots)
+## Results (40 of 83 plots got bids; 43 unsold = Ulwe 16A/3A commercial 12,981 sqm @ 2.29 lakh, Kharghar 37/1B, all 5 Pushpak R+C, 24 New Panvel (E) small plots, 12 Kalamboli small plots. Kharghar 5A/9 was SOLD as combined 5A/6&9 - corrected 25 Oct 2026 on Windows by matching results to plots)
 - Median winning bid = 1.37x base; mean 1.73x; 14 plots >= 2x; 13 plots within 1.2x of base.
 - Hottest: Taloja 10/1&2 R+C 1,199 sqm base 76,500 -> 2,89,500 (3.8x, 56 bidders); Dronagiri 47/43 R+C 9,634 sqm 64,422 -> 1,91,700 (3.0x, 31); Taloja 11/20 R 64,000 -> 1,85,111 (2.9x, 38); Ghansoli 4 R plots 1,27,000 -> 3,45,555 (2.7x); Kharghar 5/14 R 1,78,000 -> 4,55,000 (2.6x); Kharghar 16/8B R+C 2,26,000 -> 5,76,000 (2.55x); Kharghar 15/11 R+C 3,14,000 -> 7,07,000 (2.25x) = highest rate in scheme.
 - Big plots went near base: Kharghar 37/1 (13,874 sqm) 2,74,000 -> 2,76,000 (1.01x, 2 bidders); Kamothe 52/4 (13,564 sqm) 1.42x Today Royal Developers; Kharghar 5A/6&9 1.34x; Dronagiri warehousing 1.01-1.14x.
