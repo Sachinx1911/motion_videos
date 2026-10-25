@@ -90,7 +90,7 @@ A({t0:.5,t1:T.out,x:620,y:300,w:500,cls:'noshadow',html:`<div style="text-align:
 PB('W01_low_dam.jpg',0,T.num+.05,{s0:1.0,s1:1.14,y0:0,y1:30});SHADE(0,T.num);
 BAN(C('दहा',0),T.num,520,'10 वर्षांत पहिल्यांदा!',{fs:56,w:760,rot:-3});
 CHIP(C('मोर्बे',1.7),T.num,540,680,'मोरबे धरण सगळ्यात खालच्या पातळीवर',{bg:'#fff',fs:32,w:760});
-[['घर आहे',C('घर',4.7),300],['घर घेताय',C('घेता',5.7),540],['Redevelopment',C('रीडेवलप्मेंट',6.4),780]].forEach(([s,t0,x])=>A({t0,t1:T.num,x,y:1180,w:230,cls:'noshadow',html:`<div style="width:220px;height:150px;border-radius:24px;background:linear-gradient(160deg,#1b2a45,#0d1729);border:3px solid #c9a66f;display:flex;align-items:center;justify-content:center;font:800 30px/1.15 P;color:#fff;text-align:center;box-shadow:0 18px 40px rgba(0,0,0,.45)">${s}</div>`,enter:'pop',din:.4,sfx:'pop',sfxv:.6,z:62,float:.06}));
+[['घर आहे',C('घर',4.7),215,190],['घर घेताय',C('घेता',5.7),435,210],['Redevelopment',C('रीडेवलप्मेंट',6.4),705,290]].forEach(([s,t0,x,w])=>A({t0,t1:T.num,x,y:1180,w:w+10,cls:'noshadow',html:`<div style="width:${w}px;height:150px;border-radius:24px;background:linear-gradient(160deg,#1b2a45,#0d1729);border:3px solid #c9a66f;display:flex;align-items:center;justify-content:center;font:800 28px/1.15 P;color:#fff;text-align:center;box-shadow:0 18px 40px rgba(0,0,0,.45)">${s}</div>`,enter:'pop',din:.4,sfx:'pop',sfxv:.6,z:62,float:.06}));
 BAN(C('फटका',8.2),T.num,1400,'तिघांनाही फटका!',{icon:'warn',fs:52,is:80,w:700,rot:-2});
 
 // ---- NUMBERS : 69%, 480->400 ----
