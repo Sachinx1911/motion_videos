@@ -83,3 +83,34 @@ File: research/style_refs/02_concept_diagram_steps.jpg (@archtemplatestudio). Us
 - Leader line + dot connects each label to the drawing; it draws on before the text fades up.
 - Hero image enters cropped from a frame edge, no box around it.
 - Image prompts for these drawings (Google Flow, 3:4 cut-outs on white): "isometric architectural line drawing of [subject], thin black outlines, white surfaces, soft grey shadow, pure white background, minimal, architecture diagram style" → final step: "same isometric model fully rendered in white concrete, wood and glass, small trees, pure white background".
+
+## Reference set 3: 10 more boards (user, 26 Oct 2026), files in research/style_refs/
+Common DNA across all of them = the SRS Dwell house look:
+- World = white / light-grey massing model (matte, no colour), charcoal roads, small white cars and trees.
+- ONE hero glows in warm orange/amber (#e8823a, interior light or plot surface). Orange is the house accent; nothing else is coloured.
+- Soft daylight, ambient occlusion, high isometric or 3/4 aerial camera, calm and premium.
+- Text = thin/regular + bold sans pairs, numbered callouts, dotted leader lines, lots of white space.
+
+| File | What it is | Use in our reels |
+|---|---|---|
+| 03_white_city_street | all-white city, eye-level, foggy, motion-blur cars on road | calm background for text-heavy scenes; road-width topics |
+| 04_hatched_iso_city_hero | grey stippled/hatched isometric street, people as white cut-outs, hero in beige stone + orange glowing glass, colour swatch strip | "your building among others" (redevelopment, OC, society); swatch strip as a palette motif |
+| 05_sketch_to_render_hand | half photoreal tower, half pencil line drawing, hand drawing it, white page | transition: line drawing turns into render (plan → reality, before/after redevelopment) |
+| 06_model_on_blueprint_sunset | small glowing house model on blueprints, paper roll, pencils, golden window light | hook / opening shot, outro background |
+| 07_section_diagram_case_study | bold + thin title, project metadata table (PROJECT / LOCATION / YEAR), section drawing with dotted numbered leaders, scale bar | plot fact sheet: LOCATION / AREA / FSI / ROAD / BASE RATE table + numbered callouts on a drawing |
+| 08_dark_iso_cutaway_yellow | dark slate isometric cutaway, floors highlighted in yellow, white section line, floor legend | the ONE allowed dark variant: floor-by-floor (FSI, parking floors, refuge floor) |
+| 09_graph_paper_flat_iso | cream graph paper, flat coral isometric slabs stacked, pink trees, grey shadow | simplest explainer: FSI = slabs stacking one per beat on a plot outline |
+| 10_white_iso_city_orange_tower | white isometric city, dark roads, water, one tower glowing orange, orange plot | CIDCO plot series: our plot glowing orange in a white node, road + water context |
+| 11_glowing_model_desk_wordreveal | building model on drawings, half lit facade, half glowing wireframe lines; text reveals word by word with blur | wireframe → lit animation; word-by-word blur text (already our WORDS helper) |
+| 12_white_iso_city_orange_plaza | white isometric blocks, one white tower with orange glowing bands, orange plaza, crosswalk | CIDCO plot / project location scenes, alternative angle to 10 |
+(02 concept diagram = Reference 2 above; 01 = OCTO Madison pin.)
+
+### Prompt kit (Google Flow) built from these refs
+- Node/plot (9:16): "isometric aerial view of a planned city sector, all buildings matte white clay massing blocks, dark charcoal roads with lane markings, tiny white cars, small white trees, [creek/water] on one side; one empty rectangular land plot in the centre glowing warm orange, soft daylight, ambient occlusion, architectural presentation render, no text, no logos".
+- Hero tower (9:16): same city + "one residential tower in white with warm orange glowing interior light bands as the only colour".
+- Hatched street (3:4/9:16): "architectural collage illustration, isometric street of houses drawn in grey hatching and stipple texture, white cut-out people and cars, one building in beige stone with warm orange lit windows".
+- Sketch-to-render (9:16): "a residential building half photorealistic and half pencil line sketch on white paper, a hand holding a black pen drawing the sketch side, clean white background, grass path in front".
+- Model on desk (9:16): "small architectural model of a [building] with warm glowing windows standing on architectural blueprints, rolled drawings and pencils, soft warm window light, shallow depth of field".
+- Graph paper (9:16): "flat isometric illustration on cream graph paper, a plot outline with small pink trees, [n] coral coloured floor slabs stacked, simple black outlines, grey flat shadow".
+- Dark cutaway (9:16): "dark slate grey isometric cutaway of a building, floors shown in section, [floors] highlighted in soft yellow, thin white section line, minimal".
+- Always add: "no text, no logos, no watermark". Never copy logos seen in refs (Singhania, Sarwar Khan, Archart, archtemplatestudio).
