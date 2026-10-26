@@ -83,6 +83,7 @@ Name - topic - audience - logo file + placement - palette (3 colours) - mascot y
 - Tags only: [excited] [confident] [serious] [curious] [punchy] [proud] [warmly]. NEVER [whispers] / soft tags / pause tags / "...". Loud, fast, energetic.
 - Short sentences. English terms with Marathi meaning (Carpet Area - वापरण्याजोगी जागा).
 - NUMBERS (tested): round hundreds in romanized words - "shambhar", "teenshe" (digits "100" -> "एकशे"; even Devanagari "शंभर" failed once). Decimals "27 पॉइंट 87". Rule numbers "9 पॉइंट 2 पॉइंट 1". "%" -> "टक्के". sq.ft -> "स्क्वेअर फूट", sq.m -> "चौरस मीटर". Big numbers in Marathi words ("दोन हजार सहाशे पंचवीस"). On screen keep normal digits.
+- Acronyms ElevenLabs mispronounces: write them in Devanagari in the voice script - CIDCO -> सिडको (user, 26 Oct 2026). Screen text keeps the English acronym.
 - Re-record ONE line, not the whole voice; splice with `tools/splice.py` (cuts snap to silence - never cut inside a word: the TDR "हक्क" glitch).
 
 ---
