@@ -6,11 +6,12 @@
 @font-face{font-family:P;font-weight:800;src:url(../site/a/Poppins-ExtraBold.ttf)}
 :root{--o:#ff8a2a;--ink:#17191c;--mute:#6b6f76}
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:#f4f2ee;font-family:P;color:var(--ink);padding:40px 36px;width:2900px}
-h1{font:800 46px/1.1 P;letter-spacing:-.5px}
-.sub{font:500 20px/1.5 P;color:var(--mute);margin:8px 0 26px}
+body{background:#f4f2ee;font-family:P;color:var(--ink);padding:28px 30px;max-width:1700px}
+h1{font:800 30px/1.15 P;letter-spacing:-.3px}
+.sub{font:500 14px/1.5 P;color:var(--mute);margin:6px 0 20px}
 .sub b{color:var(--o)}
-.grid{display:grid;grid-template-columns:repeat(5,540px);gap:28px 30px}
+.grid{display:grid;grid-template-columns:repeat(5,300px);gap:24px 22px}
+.f{zoom:.5556}
 .cell{display:flex;flex-direction:column;gap:10px}
 .f{position:relative;width:540px;height:960px;overflow:hidden;border-radius:6px;background:#ddd;box-shadow:0 6px 24px rgba(0,0,0,.12)}
 .f>img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
@@ -31,8 +32,8 @@ h1{font:800 46px/1.1 P;letter-spacing:-.5px}
 .pill.o{background:var(--o);color:#fff}
 .dot{position:absolute;width:12px;height:12px;border-radius:50%;background:var(--o);box-shadow:0 0 0 5px rgba(255,138,42,.3);z-index:21}
 svg.ln{position:absolute;inset:0;z-index:19;pointer-events:none}
-.cap{font:500 15px/1.45 P;color:#3a3d42}
-.cap .h{font:800 17px/1.3 P;color:var(--ink)}
+.cap{font:500 12px/1.45 P;color:#3a3d42}
+.cap .h{font:800 14px/1.3 P;color:var(--ink)}
 .cap .tm{color:var(--o);font-weight:700}
 .cap i{font-style:normal;color:var(--mute)}
 table{border-collapse:collapse;width:100%;font:600 13px/1.5 P}
