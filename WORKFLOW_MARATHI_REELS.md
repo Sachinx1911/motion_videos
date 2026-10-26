@@ -47,6 +47,7 @@ Name - topic - audience - logo file + placement - palette (3 colours) - mascot y
 ---
 
 ## 3. Content rules
+- FACT-CHECK GATE (mandatory, before voice): list every number, date, ratio and claim in the script; check each against the source file (CSV/PDF/research.md) with a calculation, recompute ratios and totals, and confirm spelled-out Marathi numbers match the digits (76,500 = शहात्तर हजार पाचशे). Never round into a false claim ("200 पटीहून जास्त" when one is 198x → "जवळपास"). Show a fact-check table with the script for approval. Voice re-recording costs the client money.
 - Hook in first 2 s: twist / shocking fact / direct question. Never "अरे थांबा!".
 - Every script = hook -> short story or example -> facts -> twist/climax -> engagement -> outro. Save-worthy (checklist / numbers).
 - Pack static facts (numbers, dates, rule numbers) so motion graphics have something to animate.
