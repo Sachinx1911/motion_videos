@@ -202,18 +202,27 @@ SC('F9.jpg',S.s9,S.s10,{ox:540,oy:1000,s0:1.0,s1:1.14});
 CRD(88.19,S.s10,540,520,960,`<div style="text-align:center;font:800 44px/1.35 P;color:${INK}">तुम्ही कधी <span style="color:${O}">online auction / tender</span> मध्ये भाग घेतला आहे?</div>`);
 A({t0:91.77,t1:S.s10,x:330,y:1160,w:300,cls:'chipw',html:`<span style="display:inline-block;background:#fff;color:#1d8a4a;font:800 44px/1 P;padding:24px 42px 20px;border-radius:999px;box-shadow:0 10px 30px rgba(0,0,0,.3)">हो ✓</span>`,enter:'pop',din:.3,sfx:'pop',sfxv:.5,z:65,float:0});
 A({t0:92.13,t1:S.s10,x:750,y:1160,w:300,cls:'chipw',html:`<span style="display:inline-block;background:#fff;color:#d6342a;font:800 44px/1 P;padding:24px 42px 20px;border-radius:999px;box-shadow:0 10px 30px rgba(0,0,0,.3)">नाही ✕</span>`,enter:'pop',din:.3,sfx:'pop',sfxv:.5,z:65,float:0});
-PL(92.39,S.s10,540,1320,'💬 Comment करा!',{or:1,w:520,fs:34,fn:t=>({s:t>92.75&&t<92.95?.92:1})});
-A({t0:92.45,t1:S.s10,x:650,y:1400,w:90,cls:'noshadow',over:1,html:CURSOR,enter:'up',din:.3,z:68,float:0,fn:t=>({s:t>92.75&&t<92.95?.85:1})});
-sfx(92.8,'click',.8);
+// Instagram-style comment box: "हो ✓" types itself on "हो", Post on "करा", comment posts with a heart
+A({t0:90.6,t1:93.5,x:480,y:1345,w:760,cls:'noshadow',enter:'up',din:.4,sfx:'whoosh',sfxv:.35,z:66,float:0,exit:'fade',dout:.2,
+ html:`<div style="position:relative;height:250px"><div class="post" style="position:absolute;left:0;right:0;top:0;opacity:0;display:flex;align-items:center;gap:18px;background:rgba(255,255,255,.96);border-radius:24px;padding:16px 22px;box-shadow:0 10px 30px rgba(0,0,0,.25)"><div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#f9ce34,#ee2a7b,#6228d7);flex:none"></div><div style="flex:1;text-align:left"><div style="font:700 24px/1.2 P;color:#17191c">you</div><div style="font:700 34px/1.3 P;color:#1d8a4a">हो ✓</div></div><div class="hr" style="font:400 40px/1 P;transform:scale(0)">❤️</div></div>
+ <div style="position:absolute;left:0;right:0;bottom:0;display:flex;align-items:center;gap:16px;background:#fff;border-radius:999px;padding:14px 16px 14px 22px;box-shadow:0 10px 30px rgba(0,0,0,.3)"><div style="width:56px;height:56px;border-radius:50%;background:#e9e6e1;flex:none"></div><div style="flex:1;text-align:left;font:600 32px/1 P;color:#17191c"><span class="ty"></span><span class="cu" style="display:inline-block;width:3px;height:34px;background:#17191c;vertical-align:middle;margin-left:3px"></span><span class="ph" style="color:#9aa0a6">Comment करा...</span></div><div class="pb" style="font:800 30px/1 P;color:#9cc7f5;padding:10px 14px">Post</div></div></div>`,
+ draw:(t,lt,oo)=>{const full='हो ✓';const n=Math.floor(clamp((t-91.77)/.4)*full.length+1e-6);const ty=oo.el.querySelector('.ty');ty.textContent=t>=91.77&&t<92.95?[...full].slice(0,Math.max(1,n)).join(''):'';
+   oo.el.querySelector('.ph').style.display=ty.textContent?'none':'inline';oo.el.querySelector('.cu').style.opacity=(t<92.95&&Math.floor(t*3)%2===0)?1:0;
+   const pb=oo.el.querySelector('.pb');pb.style.color=t>=92.2&&t<92.95?'#0095f6':'#9cc7f5';pb.style.transform=`scale(${t>92.79&&t<92.95?.88:1})`;
+   const pq=E.out(clamp((t-92.95)/.3));const po=oo.el.querySelector('.post');po.style.opacity=pq;po.style.transform=`translateY(${(1-pq)*60}px)`;
+   oo.el.querySelector('.hr').style.transform=`scale(${t>93.1?E.back(clamp((t-93.1)/.3)):0})`}});
+A({t0:92.4,t1:93.5,x:830,y:1470,w:80,cls:'noshadow',over:1,html:CURSOR,enter:'up',din:.3,z:68,float:0,exit:'fade',dout:.2,fn:t=>({s:t>92.79&&t<92.95?.85:1})});
+sfx(91.77,'ticks',.35);sfx(92.79,'click',.8);sfx(93.1,'pop',.5);
 
 // ================= S10 OUTRO =================
 SC(null,S.s10,END+1,{color:'#f7f6f3',s0:1,s1:1});
 A({t0:S.s10+.2,t1:END+1,x:540,y:900,w:500,cls:'noshadow',over:1,z:50,enter:'zoom',din:.5,float:0,sfx:'whoosh',sfxv:.4,html:`<div style="position:relative;width:500px;height:340px;background:#fff;border-radius:32px;box-shadow:0 20px 60px rgba(0,0,0,.12);display:flex;align-items:center;justify-content:center"><img src="a/logo_gold.png" style="width:410px;filter:none"></div>`,
   });
-PL(93.47,97.8,540,1250,'📤 plot घेणाऱ्या मित्रांना पाठवा',{w:760,fs:32,exit:'fade',dout:.2});
+PL(93.65,97.8,540,1250,'📤 plot घेणाऱ्या मित्रांना पाठवा',{w:760,fs:32,exit:'fade',dout:.2});
 WORDS(96.0,END+1,540,600,900,[['अशाच',96.03],['माहितीसाठी',96.45,'o1']],{st:`font:800 60px/1.2 P;color:${INK}`});
 A({t0:94.0,t1:END+1,x:540,y:1150,w:700,cls:'noshadow',enter:'fade',din:.4,z:40,float:0,html:`<div style="height:2px;background:#e2ded7"></div>`});
-PL(97.97,END+1,540,1250,'आमच्या पेजला Follow करा →',{or:1,w:720,fs:36,fn:t=>({s:t>98.4&&t<98.6?.92:1})});
+PL(97.97,END+1,540,1250,'आमच्या पेजला Follow करा →',{or:1,w:720,fs:36,fn:t=>({s:t>98.4&&t<98.6?.92:1,ry:t>98.45&&t<98.75?Math.sin((t-98.45)/.3*Math.PI)*70:0}),
+  draw:(t,lt,oo)=>{const sp=oo.el.querySelector('span');const f=t>=98.6;if(oo.f!==f){oo.f=f;sp.innerHTML=f?'Following ✓':'आमच्या पेजला Follow करा →';sp.style.background=f?'#efefef':'#ff8a2a';sp.style.color=f?'#17191c':'#fff'}}});
 A({t0:98.0,t1:END+1,x:720,y:1330,w:90,cls:'noshadow',over:1,html:CURSOR,enter:'up',din:.3,z:68,float:0,fn:t=>({s:t>98.4&&t<98.6?.85:1})});
 sfx(98.45,'click',.8);
 
