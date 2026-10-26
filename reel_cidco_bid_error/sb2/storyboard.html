@@ -6,12 +6,13 @@
 @font-face{font-family:P;font-weight:800;src:url(../site/a/Poppins-ExtraBold.ttf)}
 :root{--o:#ff8a2a;--ink:#17191c;--mute:#6b6f76}
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:#f4f2ee;font-family:P;color:var(--ink);padding:28px 30px;max-width:1700px}
+body{background:#f4f2ee;font-family:P;color:var(--ink);padding:24px 3vw;width:100%;overflow-x:hidden}
+html{overflow-x:hidden}
 h1{font:800 30px/1.15 P;letter-spacing:-.3px}
 .sub{font:500 14px/1.5 P;color:var(--mute);margin:6px 0 20px}
 .sub b{color:var(--o)}
-.grid{display:grid;grid-template-columns:repeat(5,300px);gap:24px 22px}
-.f{zoom:.5556}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:24px 20px;width:100%}
+.cell{min-width:0}
 .cell{display:flex;flex-direction:column;gap:10px}
 .f{position:relative;width:540px;height:960px;overflow:hidden;border-radius:6px;background:#ddd;box-shadow:0 6px 24px rgba(0,0,0,.12)}
 .f>img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
@@ -136,4 +137,7 @@ td.o{color:var(--o);font-weight:800}
 <div class="pill o" style="left:130px;top:620px;font-size:17px">आमच्या पेजला Follow करा →</div>
 </div><div class="cap"><div class="h">S10 · Outro <span class="tm">95–99 s</span></div>"हा video plot घेणाऱ्या मित्रांना पाठवा… आमच्या पेजला फॉलो करा!"<br><i>पांढरं पान (reference 02 सारखं) · नारिंगी रेषा logo भोवती फिरून box बनवते · Follow pill</i></div></div>
 
-</div></body></html>
+</div><script>
+function fit(){document.querySelectorAll('.cell').forEach(c=>{const f=c.querySelector('.f');f.style.zoom=c.clientWidth/540})}
+addEventListener('resize',fit);addEventListener('load',fit);fit();
+</script></body></html>
