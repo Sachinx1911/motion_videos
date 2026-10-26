@@ -37,3 +37,32 @@ Sources studied: Pinterest search "motion graphics video" (~80 pins scrolled), "
 - `ARC` background (big rotating soft ring), `DOTGRID` patch, `DOODLE` (wiggling zig-zag/arrow SVG), `LOLLIPOP` line.
 - Serif italic font: add Playfair Display Italic (supports Latin only - for Marathi use Poppins Medium Italic / Mukta with skew) to `brand/fonts/`.
 - Light theme CSS variables in index.html (`--bg`, `--ink`, `--accent`).
+
+---
+
+# SRS Dwell HOUSE THEME: "White model city" (user reference, 26 Oct 2026)
+Reference: Pinterest pin 1116329826405118815 (OCTO Bureau, "Madison", Dnipro): https://i.pinimg.com/736x/55/a5/e8/55a5e89065c384b8ea8a214bb4986c01.jpg
+User: "aplyala video madhe asa theme pahije, ekdam decent ani images pan ya sarkhya".
+
+## What the reference does
+- Whole city is a matte white clay / architectural massing model: white buildings, white roads, white trees, no colour, no signage, no people detail.
+- ONE hero building (or plot/subject) is fully rendered in real material: dark glass + bronze frames + warm interior light + red brick. It is the only colour in the frame.
+- High 3/4 aerial view (45-60 deg down), slightly isometric, vertical 9:16 crop with the hero in the centre third.
+- Soft overcast daylight, long soft shadows, ambient occlusion, very low contrast, airy and calm. No sky drama, no night, no neon.
+- Feels like an architect's presentation board: premium, quiet, trustworthy.
+
+## Video theme rules (default for SRS Dwell from now on)
+- Background: white/ivory (#f5f4f1 to #e9e7e2), faint grid allowed. Text black #151515, secondary grey #7a7a7a.
+- ONE accent colour per reel taken from the hero material (bronze #9a7348, brick #a5523a, glass teal #2f5d62 or brand gold #b8935f). Red only for a real warning, used once.
+- Typography: Poppins SemiBold/Bold for Marathi, thin weights for labels, generous spacing, small sizes. No heavy black boxes, no neon, no glow, no glitch.
+- Graphics language = architect's drawing: thin 2 px leader lines from a label to the hero, small dot markers, dimension lines with arrows (road width, plot size), hairline outlines, numbered callouts (01, 02) in small circles.
+- Cards: white with 1 px #d8d5cf border and very soft shadow, or no card at all (text straight on the white model).
+- Motion: slow push-in / orbit on the model image (Ken Burns 3-5%), labels draw-on (line grows, then text fades up), soft white wipe or blur-dissolve between scenes. Calm, eased, nothing shakes.
+- Variety still required per reel (see vary-design memory): change the accent colour, camera angle, hero subject and transition, but keep the white-model world.
+
+## Google Flow image prompt template (9:16 backgrounds)
+"Architectural presentation render, high aerial three-quarter view of a [Navi Mumbai node, e.g. Kharghar sector with wide roads and a central park], entire city shown as a matte white clay massing model: white buildings, white roads, white stylised trees, no colours, no text, no signage. One hero [subject: 12-storey residential tower / empty rectangular land plot with boundary / old 4-storey society building] rendered in realistic materials [dark glass, bronze frames, warm lit interiors / red soil plot with orange boundary line] as the only colour in the image. Soft overcast daylight, soft long shadows, ambient occlusion, low contrast, clean and calm, premium architecture studio style, photoreal 3D render, vertical 9:16, hero in the centre, empty light space in the top third for text."
+- Same seed/look for every scene of a reel; change only the hero and camera.
+- Variants: top-down plan view (for plot size / road width), eye-level street view (for buildings), close-up of the hero facade (for detail), "before/after" pair with the same white city and two different heroes.
+- Cut-outs (3:4): "single white clay architectural model of [object], one part in [material], plain white background, soft shadow, studio light".
+- Avoid in prompts: people close-up, night, neon, sunset, logos, text, flags, watermark.
