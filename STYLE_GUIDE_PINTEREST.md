@@ -66,3 +66,20 @@ User: "aplyala video madhe asa theme pahije, ekdam decent ani images pan ya sark
 - Variants: top-down plan view (for plot size / road width), eye-level street view (for buildings), close-up of the hero facade (for detail), "before/after" pair with the same white city and two different heroes.
 - Cut-outs (3:4): "single white clay architectural model of [object], one part in [material], plain white background, soft shadow, studio light".
 - Avoid in prompts: people close-up, night, neon, sunset, logos, text, flags, watermark.
+
+## Reference 2: "Step-by-step concept diagram" board (user, 26 Oct 2026)
+File: research/style_refs/02_concept_diagram_steps.jpg (@archtemplatestudio). User: "baground te bag kase ahe ekdam chan".
+- Background: pure clean white / very light warm grey (#f7f7f5), completely empty, no grid, no texture, no gradient. Lots of white space; content takes at most 60% of the frame.
+- Title block top-left: small caps lead-in ("STEP-BY-STEP:") + huge heavy condensed sans in black ("CONCEPT DIAGRAM"), a short black rule under it, then a 2-line plain sub-text. Left-aligned, not centred.
+- Steps column: big number (01, 02...) bold, small caps label (MASS, SUBTRACT...), 3-4 line grey body text, a thin black leader line ending in a dot that touches the drawing.
+- Drawings: white isometric line-art models with thin black outlines and soft grey shadow; each step adds detail (box → cut → glass → full material with trees). Only the last step gets real materials (wood, glass, concrete, greenery).
+- Hero photo: one realistic white-concrete + wood house, cut out and BLEEDING off the left/bottom edge, sitting on the white page with no frame.
+- Footer: tiny outlined pill with the handle (we use the SRS Dwell handle the same way).
+- Colour: black, greys, white, plus natural wood/green only inside the final render. No accent colour at all.
+
+### How we use it in reels
+- Default reel background = this empty white page. Text left-aligned, title in heavy black, labels in small caps grey.
+- "Process" topics (redevelopment steps, plot buying steps, FSI calculation, OC/CC steps) = numbered step column + isometric drawing that grows one stage per voice beat (outline draws on, then shading, then material in the last step).
+- Leader line + dot connects each label to the drawing; it draws on before the text fades up.
+- Hero image enters cropped from a frame edge, no box around it.
+- Image prompts for these drawings (Google Flow, 3:4 cut-outs on white): "isometric architectural line drawing of [subject], thin black outlines, white surfaces, soft grey shadow, pure white background, minimal, architecture diagram style" → final step: "same isometric model fully rendered in white concrete, wood and glass, small trees, pure white background".
