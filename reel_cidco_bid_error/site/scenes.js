@@ -87,7 +87,7 @@ const CARD2=(t0,t1,x,y,w,html,o={})=>A(Object.assign({t0,t1,x,y,w,cls:'noshadow'
 // ===== Bid-error reel v2 (storyboard v2: golden-hour photoreal + orange accent #ff8a2a) =====
 // Times = Whisper word starts of vo_t.wav (cue_words.json, 99.12 s). Coordinates = storyboard x2.
 const O='#ff8a2a',INK='#17191c',MUTE='#6b6f76';E.sine=E.sine||(p=>-(Math.cos(Math.PI*p)-1)/2);
-const WC=(inner,l)=>`<div style="background:rgba(255,255,255,.95);border-radius:28px;box-shadow:0 16px 56px rgba(0,0,0,.28);padding:24px 32px;${l?`border-left:9px solid ${O};`:''}">${inner}</div>`;
+const WC=(inner,l)=>`<div style="background:rgba(255,255,255,.95);border-radius:28px;box-shadow:0 16px 56px rgba(0,0,0,.28);padding:24px 32px;">${inner}</div>`;
 const K=t=>`<div style="font:600 24px/1.3 P;letter-spacing:2px;color:${MUTE};text-transform:uppercase">${t}</div>`;
 const CRD=(t0,t1,x,y,w,inner,o={})=>A(Object.assign({t0,t1,x,y,w,cls:'noshadow',html:WC(inner,o.l),enter:'up',din:.45,sfx:'whoosh',sfxv:.4,z:60,float:.05},o));
 const PL=(t0,t1,x,y,txt,o={})=>A(Object.assign({t0,t1,x,y,w:o.w||800,cls:'chipw',html:`<span style="display:inline-block;background:${o.or?O:'#fff'};color:${o.or?'#fff':INK};font:700 ${o.fs||30}px/1 P;padding:18px 30px 14px;border-radius:999px;box-shadow:0 8px 28px rgba(0,0,0,.3);white-space:nowrap">${txt}</span>`,enter:'pop',din:.35,sfx:'pop',sfxv:.5,z:65,float:.05},o));
@@ -103,14 +103,9 @@ function SC(img,t0,t1,o={}){const z=2+(SCN++);
   const bgc=img?`background:url(a/${img}) center/cover`:`background:${o.color||'#f7f6f3'}`;
   A({t0:t0-.001,t1:t1+.6,x:540,y:960,w:1080,cls:'noshadow',over:1,z,enter:'fade',din:.01,exit:'fade',dout:.01,float:0,
     html:`<div style="position:relative;width:1080px;height:1920px;overflow:hidden"><div class="im" style="position:absolute;inset:-8px;${bgc};transform-origin:${o.ox||540}px ${o.oy||960}px"></div>${o.dark?`<div style="position:absolute;left:0;top:0;bottom:0;width:720px;background:linear-gradient(90deg,rgba(20,23,28,.92) 62%,rgba(20,23,28,0))"></div>`:''}<div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.30),rgba(0,0,0,0) 30%,rgba(0,0,0,0) 72%,rgba(0,0,0,.25))"></div></div>`,
-    draw:(t,lt,oo)=>{const p=E.sine(clamp((t-t0)/(t1-t0)));oo.el.querySelector('.im').style.transform=`translate(${lerp(0,o.dx||0,p)}px,${lerp(0,o.dy||0,p)}px) scale(${lerp(o.s0||1,o.s1||1.08,p)})`;
-      const q=E.inout(clamp((t-t0)/.55));oo.el.style.clipPath=q<1&&t0>0?`inset(${(1-q)*50}% ${(1-q)*50}%)`:'none'}});
-  if(t0>0){ // orange line runs around the frame, then the next scene opens from the centre with the line on its edge
-    A({t0:t0-.5,t1:t0+.62,x:540,y:960,w:1080,cls:'noshadow',over:1,z:640,enter:'fade',din:.01,exit:'fade',dout:.12,float:0,
-      html:`<svg viewBox="0 0 1080 1920" width="1080" height="1920"><rect class="r" x="24" y="24" width="1032" height="1872" rx="10" fill="none" stroke="${O}" stroke-width="7" style="filter:drop-shadow(0 0 14px ${O})"/></svg>`,
-      draw:(t,lt,oo)=>{const r=oo.el.querySelector('.r');const P=2*(1032+1872);
-        if(t<t0){r.setAttribute('x',24);r.setAttribute('y',24);r.setAttribute('width',1032);r.setAttribute('height',1872);r.style.strokeDasharray=P;r.style.strokeDashoffset=P*(1-E.inout(clamp((t-(t0-.5))/.45)))}
-        else{const q=E.inout(clamp((t-t0)/.55));const ix=(1-q)*540,iy=(1-q)*960;r.style.strokeDasharray='none';r.setAttribute('x',ix);r.setAttribute('y',iy);r.setAttribute('width',Math.max(2,1080-2*ix));r.setAttribute('height',Math.max(2,1920-2*iy))}}});
+    draw:(t,lt,oo)=>{const p=E.sine(clamp((t-t0)/(t1-t0)));const q=t0>0?E.out(clamp((t-t0)/.5)):1;oo.el.querySelector('.im').style.transform=`translate(${lerp(0,o.dx||0,p)}px,${lerp(0,o.dy||0,p)}px) scale(${lerp(o.s0||1,o.s1||1.08,p)*lerp(1.07,1,q)})`;oo.el.style.opacity=q;
+      oo.el.style.filter=`brightness(${1-.55*clamp((t-t1)/.3)})`}});
+  if(t0>0){ // clean zoom-dissolve (no coloured frame - user, 26 Oct 2026)
     sfx(t0-.35,'whoosh',.55)}
 }
 const COUNT=(el,t,ta,tb,a,b,fmt)=>{const v=lerp(a,b,E.out(clamp((t-ta)/(tb-ta))));el.textContent=fmt(v)};
@@ -213,8 +208,8 @@ sfx(92.8,'click',.8);
 
 // ================= S10 OUTRO =================
 SC(null,S.s10,END+1,{color:'#f7f6f3',s0:1,s1:1});
-A({t0:S.s10+.2,t1:END+1,x:540,y:900,w:500,cls:'noshadow',over:1,z:50,enter:'zoom',din:.5,float:0,sfx:'whoosh',sfxv:.4,html:`<div style="position:relative;width:500px;height:340px;background:#fff;border-radius:32px;box-shadow:0 20px 60px rgba(0,0,0,.12);display:flex;align-items:center;justify-content:center"><img src="a/logo_gold.png" style="width:410px;filter:none"><svg viewBox="0 0 500 340" width="500" height="340" style="position:absolute;left:0;top:0;overflow:visible"><rect class="r" x="-10" y="-10" width="520" height="360" rx="40" fill="none" stroke="${O}" stroke-width="6"/></svg></div>`,
-  draw:(t,lt,oo)=>{const r=oo.el.querySelector('.r');const P=2*(520+360);r.style.strokeDasharray=P;r.style.strokeDashoffset=P*(1-E.inout(clamp((lt-.3)/1.1)))}});
+A({t0:S.s10+.2,t1:END+1,x:540,y:900,w:500,cls:'noshadow',over:1,z:50,enter:'zoom',din:.5,float:0,sfx:'whoosh',sfxv:.4,html:`<div style="position:relative;width:500px;height:340px;background:#fff;border-radius:32px;box-shadow:0 20px 60px rgba(0,0,0,.12);display:flex;align-items:center;justify-content:center"><img src="a/logo_gold.png" style="width:410px;filter:none"></div>`,
+  });
 PL(93.47,97.8,540,1250,'📤 plot घेणाऱ्या मित्रांना पाठवा',{w:760,fs:32,exit:'fade',dout:.2});
 WORDS(96.0,END+1,540,600,900,[['अशाच',96.03],['माहितीसाठी',96.45,'o1']],{st:`font:800 60px/1.2 P;color:${INK}`});
 A({t0:94.0,t1:END+1,x:540,y:1150,w:700,cls:'noshadow',enter:'fade',din:.4,z:40,float:0,html:`<div style="height:2px;background:#e2ded7"></div>`});
@@ -222,8 +217,6 @@ PL(97.97,END+1,540,1250,'आमच्या पेजला Follow करा →
 A({t0:98.0,t1:END+1,x:720,y:1330,w:90,cls:'noshadow',over:1,html:CURSOR,enter:'up',din:.3,z:68,float:0,fn:t=>({s:t>98.4&&t<98.6?.85:1})});
 sfx(98.45,'click',.8);
 
-// content stays until the next scene has started opening (it is revealed over it)
-{const starts=[S.s2,S.s3,S.s4,S.s5,S.s6,S.s7,S.s8,S.s9,S.s10];for(const o of ITEMS){if(o.z>=30&&o.z<600&&o.z!==62&&starts.some(v=>Math.abs(o.t1-v)<1e-6))o.t1+=.35}}
 // orange accent for words marked o1
 HOOKS.push(()=>{document.querySelectorAll('.wd.o1').forEach(e=>e.style.color=O)});
 

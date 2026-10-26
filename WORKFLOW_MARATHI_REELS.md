@@ -181,3 +181,5 @@ Watermark ✦ bottom-right: patch with nearby texture (best-match offset + feath
 ## 12. Delivery templates
 Caption: hook line (shown before "more") -> 3-7 short ◾-style lines of value -> engagement question with numbered options -> save/share line -> disclaimer if any -> 5 hashtags. Write like a person, not like AI.
 Pin comment: (a) the vote question, (b) link to भाग 1/भाग 2 on profile, or (c) "save करा" reminder. Tell the user to reply to comments in the first hour.
+
+- ACCENT BORDERS (user, 26 Oct 2026): the orange/accent outline is used ONLY to mark a plot or an area being pointed out (plot boundary, pins, leader line to an object). Never as a transition frame, card edge stripe or logo box outline. Transitions stay clean (zoom-dissolve / camera move).
