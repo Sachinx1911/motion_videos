@@ -17,7 +17,7 @@ h1{{font:800 28px/1.2 P}}.sub{{font:500 14px/1.6 P;color:var(--mute);margin:6px 
 .cell{{display:flex;flex-direction:column;gap:10px;min-width:0}}
 .f{{position:relative;width:540px;height:960px;overflow:hidden;border-radius:6px;background:#cfcac2;box-shadow:0 6px 24px rgba(0,0,0,.12)}}
 .f svg.bg{{position:absolute;inset:0;width:540px;height:960px}}
-.ph{{position:absolute;left:14px;bottom:200px;font:600 12px/1.4 P;color:#4a4740;background:rgba(255,255,255,.75);padding:6px 10px;border-radius:8px;z-index:30;max-width:300px}}
+.ph{{position:absolute;left:14px;bottom:170px;font:600 12px/1.4 P;color:#4a4740;background:rgba(255,255,255,.75);padding:6px 10px;border-radius:8px;z-index:30;max-width:300px}}
 .unsafe{{position:absolute;left:0;right:0;background:rgba(255,40,40,.10);border-color:rgba(255,40,40,.55);border-style:dashed;border-width:0;z-index:50}}
 .top{{top:0;height:110px;border-bottom-width:1px}}.bot{{bottom:0;height:210px;border-top-width:1px}}
 .logo{{position:absolute;left:26px;top:122px;width:70px;height:48px;background:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 10px rgba(0,0,0,.25);z-index:20}}.logo img{{width:58px}}
@@ -63,8 +63,8 @@ scene(1, '0-11 s', 'Hook', 'plot पंधराशे ते दोन हज�
       '<div class="t" style="top:200px;font-size:26px">1,500-2,000 चौ.मी. plot</div><div class="card" style="left:50px;right:50px;top:250px;text-align:center"><div class="k">redevelopment नंतर बांधकाम</div><div class="n o" style="font-size:30px">48,000-64,000 sq.ft?</div></div>',
       'जुनी सिडको इमारत, वरून (aerial)')
 scene(2, '11-19 s', 'उदाहरण', 'उदाहरण... सिडकोची 30 वर्षांपेक्षा जुनी इमारत, 15 मीटर रस्ता', 'Pills एकेक · रस्त्यावर नारिंगी पट्टी + "15 m" मोजपट्टी (marking)',
-      OLD_FRONT + f'<svg class="bg" viewBox="0 0 540 960"><rect x="0" y="640" width="540" height="10" fill="{O}"/><line x1="40" y1="700" x2="500" y2="700" stroke="#fff" stroke-width="3"/><line x1="40" y1="688" x2="40" y2="712" stroke="#fff" stroke-width="3"/><line x1="500" y1="688" x2="500" y2="712" stroke="#fff" stroke-width="3"/></svg>',
-      '<div class="pill" style="left:40px;top:200px">उदाहरण · नवी मुंबई</div><div class="pill" style="left:40px;top:245px">सिडको इमारत · 30+ वर्षं</div><div class="pill o" style="left:200px;top:715px">15 m रस्ता</div>',
+      OLD_FRONT + f'<svg class="bg" viewBox="0 0 540 960"><rect x="0" y="640" width="540" height="10" fill="{O}"/><line x1="40" y1="745" x2="500" y2="745" stroke="#fff" stroke-width="3"/><line x1="40" y1="733" x2="40" y2="757" stroke="#fff" stroke-width="3"/><line x1="500" y1="733" x2="500" y2="757" stroke="#fff" stroke-width="3"/></svg>',
+      '<div class="pill" style="left:40px;top:200px">उदाहरण · नवी मुंबई</div><div class="pill" style="left:40px;top:245px">सिडको इमारत · 30+ वर्षं</div><div class="pill o" style="left:212px;top:676px">15 m रस्ता</div>',
       'जुनी इमारत समोरून, समोर रस्ता')
 scene(3, '19-28 s', 'FSI', 'FSI तीन... पण रस्ता नऊ मीटर, तर FSI फक्त दोन!', 'दोन cards समोरासमोर येतात · FSI 2 वर लाल खूण · pop',
       EMPTY_TOP,
