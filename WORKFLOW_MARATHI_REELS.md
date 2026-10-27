@@ -48,6 +48,12 @@ Name - topic - audience - logo file + placement - palette (3 colours) - mascot y
 
 ## 3. Content rules
 - FACT-CHECK GATE (mandatory, before voice): list every number, date, ratio and claim in the script; check each against the source file (CSV/PDF/research.md) with a calculation, recompute ratios and totals, and confirm spelled-out Marathi numbers match the digits (76,500 = शहात्तर हजार पाचशे). Never round into a false claim ("200 पटीहून जास्त" when one is 198x → "जवळपास"). Show a fact-check table with the script for approval. Voice re-recording costs the client money.
+- SCRIPT CRAFT (user, 27 Oct 2026, 4 points taken from an Instagram "master prompt"): every script delivery has
+  1. AUDIENCE QUESTIONS first: 3-5 real fears/questions of the viewer about the topic (from our reels' comments where possible; label guesses as guesses). The hook and body answer these.
+  2. 5 HOOKS of 5 types - problem, curiosity, surprising fact, mistake, result/benefit - recommend one. Then 3 alternative hooks after the script.
+  3. MID-SCRIPT OPEN LOOPS: 1-2 natural curiosity lines ("पण इथे एक अट आहे…", "आणि खरा धक्का पुढे आहे…") placed before the key fact, so viewers don't drop off.
+  4. RETENTION PASS: before delivering, cut filler, repeats, generic advice and long intros; one main idea; every line easy to speak. Deliver a short caption together with the script.
+  Not used from that prompt: camera/B-roll (we do motion graphics), offers/leads/sales (independent voice), 30-60 s limit (decide from Instagram watch-time instead).
 - Hook in first 2 s: twist / shocking fact / direct question. Never "अरे थांबा!".
 - Every script = hook -> short story or example -> facts -> twist/climax -> engagement -> outro. Save-worthy (checklist / numbers).
 - Pack static facts (numbers, dates, rule numbers) so motion graphics have something to animate.
@@ -67,7 +73,7 @@ Name - topic - audience - logo file + placement - palette (3 colours) - mascot y
 |---|---|---|---|
 | S1 | Topic list (use research/udcpr/TOPICS.md or brand list) with angle + engagement idea, recommend one | 3-4 options | USER PICKS |
 | S2 | Research | research.md + sources | - |
-| S3 | Script (75-95 s, emotion tags, voice number rules) | script in chat | USER "ठीक" -> save `reel_x/script.md` + `scripts/NN_<Topic>.md`, push |
+| S3 | Script (75-95 s, emotion tags, voice number rules) + audience questions, 5 hooks, open loops, retention pass, fact-check table, short caption | script in chat | USER "ठीक" -> save `reel_x/script.md` + `scripts/NN_<Topic>.md`, push |
 | S4 | Image prompts grouped by Flow size + cut-out list + scene table | prompts in chat | - |
 | S5 | Images arrive -> rename into raw/, watermark out, cut-outs, contact sheet, report | raw/, site/a/ | - |
 | S6 | Voice arrives -> trim, Whisper check (isolated snippets for numbers), cue_words.json; wrong line -> give exact line to re-record -> splice | vo_t.wav, cue_words.json | RE-RECORD if needed |
