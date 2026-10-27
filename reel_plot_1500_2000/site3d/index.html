@@ -59,21 +59,40 @@ for(let f=1;f<=NF;f++){const g=new THREE.Group();const y0=ST+(f-1)*FH;g.position
   B.add(g);floors.push({g,f})}
 const roof=new THREE.Group();B.add(roof);roof.position.y=ST+NF*FH;box(FW+.8,.4,FD+.8,clay,0,.2,FZ,roof);box(5,3,7,clay2,0,1.9,FZ,roof);
 box(FW+.8,1.1,.3,clay,0,.95,FZ-FD/2-.25,roof);box(FW+.8,1.1,.3,clay,0,.95,FZ+FD/2+.25,roof);
+// ---- amenities (UDCPR 6.8(viii): open-to-sky terrace + swimming pool on top terrace not counted in FSI) ----
+const water=new THREE.MeshStandardMaterial({color:0x2fa6d8,roughness:.08,metalness:.2,emissive:0x0b4c6a,emissiveIntensity:.35});
+const deck=M(0xd9c3a3,.8),lawn=M(0x9fc37f,.95),leaf=M(0x7fb069,.9),path=M(0xefe9df);
+const amenRoof=new THREE.Group();roof.add(amenRoof);
+box(15,.25,10,deck,0,.52,FZ+10.5,amenRoof);                      // pool deck
+box(12,.35,6.5,water,0,.62,FZ+11,amenRoof,false);                  // open-to-sky pool
+for(let k=0;k<4;k++)box(1.1,.2,2.2,clay,-5.5+k*3.6,.75,FZ+5.6,amenRoof); // loungers
+box(16,.6,6,lawn,0,.6,FZ-11.5,amenRoof);                          // terrace garden lawn
+for(let k=0;k<6;k++){const tr=new THREE.Mesh(new THREE.SphereGeometry(1.15,12,10),leaf);tr.position.set(-7.2+k*2.9,1.9,FZ-15.6);tr.castShadow=true;amenRoof.add(tr)}
+for(let k=0;k<5;k++)box(.25,2.6,.25,clay,-6+k*3,1.9,FZ-7.4,amenRoof);box(13,.2,3.2,clay,0,3.2,FZ-7.4,amenRoof); // pergola
+const amenGround=new THREE.Group();scene.add(amenGround);
+box(4.6,.15,46,lawn,-12.4,.1,0,amenGround,false);box(4.6,.15,46,lawn,12.4,.1,0,amenGround,false);box(30,.15,4.6,lawn,0,.1,-22.4,amenGround,false);
+box(3,.17,10,path,0,.11,20,amenGround,false);                     // entrance path
+for(const [x,z] of [[-12.5,-20],[-12.5,-8],[-12.5,4],[12.5,-20],[12.5,-8],[12.5,4],[-5,-22.5],[5,-22.5]]){const tr=new THREE.Mesh(new THREE.SphereGeometry(1.7,12,10),leaf);tr.position.set(x,3.4,z);tr.castShadow=true;amenGround.add(tr);box(.35,2.4,.35,clay2,x,1.2,z,amenGround)}
+
 
 // ---- timeline ----
-const T_STILT=[.6,1.6],T_F0=1.8,T_DF=.36,T_FDUR=.5,T_TOP=T_F0+NF*T_DF+.1,T_ORB=[6.6,12.6],T_BACK=[12.6,15.0];
+const T_STILT=[.6,1.6],T_F0=1.8,T_DF=.36,T_FDUR=.5,T_TOP=T_F0+NF*T_DF+.1,T_ORB=[6.6,12.6],T_ROOF=[12.6,15.8],T_BACK=[15.8,18.8];
 function seek(t){
   // build up
   const sp=eo(clamp((t-T_STILT[0])/(T_STILT[1]-T_STILT[0])));stilt.scale.y=Math.max(.001,sp);stilt.visible=sp>0;stilt.position.y=0;
   for(const {g,f} of floors){const t0=T_F0+(f-1)*T_DF;const p=clamp((t-t0)/T_FDUR);g.visible=p>0;const e=eo(p);g.position.y=ST+(f-1)*FH+(1-e)*6;g.scale.set(1,Math.max(.001,e),1)}
   const tp=eo(clamp((t-T_TOP)/.5));roof.visible=tp>0;roof.position.y=ST+NF*FH+(1-tp)*6;
+  const ga=eo(clamp((t-(T_TOP+.2))/.8));amenGround.visible=ga>0;amenGround.scale.set(1,Math.max(.001,ga),1);
+  const ra=eo(clamp((t-(T_TOP+.5))/.7));amenRoof.visible=ra>0;amenRoof.scale.set(Math.max(.001,ra),Math.max(.001,ra),Math.max(.001,ra));amenRoof.position.z=(1-ra)*FZ;
   PLOTLINE.material.color.setHex(0xff8a2a);PLOTLINE.visible=t<T_ORB[0]+1;
   // camera
   const target=new THREE.Vector3(0,18,FZ);let pos;
   if(t<T_ORB[0]){const p=eio(clamp(t/T_ORB[0]));const a=lerp(-.85,-.6,p),r=lerp(150,120,p),h=lerp(95,62,p);pos=new THREE.Vector3(Math.sin(a)*r,h,Math.cos(a)*r);target.y=lerp(4,20,eo(clamp((t-1)/4.5)))}
   else if(t<T_ORB[1]){const p=eio(clamp((t-T_ORB[0])/(T_ORB[1]-T_ORB[0])));const a=-.6+p*Math.PI*2,r=lerp(120,112,Math.sin(p*Math.PI)),h=lerp(62,36,eo(p));pos=new THREE.Vector3(Math.sin(a)*r,h,Math.cos(a)*r);target.y=20}
+  else if(t<T_ROOF[1]){const p=eio(clamp((t-T_ROOF[0])/(T_ROOF[1]-T_ROOF[0])));const a0=-.6+Math.PI*2;const a=a0+p*.35;
+    const r=lerp(112,34,p),h=lerp(36,92,p);pos=new THREE.Vector3(Math.sin(a)*r,h,Math.cos(a)*r+FZ);target.set(0,lerp(20,ST+NF*FH,p),FZ)}
   else{const p=eio(clamp((t-T_BACK[0])/(T_BACK[1]-T_BACK[0])));
-    const a0=-.6+Math.PI*2,a=lerp(a0,Math.PI*2,eo(clamp(p*2)));const r=lerp(88,128,p),h=lerp(18,24,p);pos=new THREE.Vector3(Math.sin(a)*r,h,Math.cos(a)*r+FZ);target.y=lerp(26,22,p)}
+    const a0=-.6+Math.PI*2+.35,a=lerp(a0,Math.PI*2,eo(clamp(p*2)));const r=lerp(88,128,p),h=lerp(lerp(60,18,eo(clamp(p*2))),24,clamp(p*2-1));pos=new THREE.Vector3(Math.sin(a)*r,h,Math.cos(a)*r+FZ);target.y=lerp(26,22,p)}
   cam.position.copy(pos);cam.lookAt(target);
   renderer.render(scene,cam);
 }
