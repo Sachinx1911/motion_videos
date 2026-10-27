@@ -53,6 +53,10 @@ Name - topic - audience - logo file + placement - palette (3 colours) - mascot y
   2. 5 HOOKS of 5 types - problem, curiosity, surprising fact, mistake, result/benefit - recommend one. Then 3 alternative hooks after the script.
   3. MID-SCRIPT OPEN LOOPS: 1-2 natural curiosity lines ("पण इथे एक अट आहे…", "आणि खरा धक्का पुढे आहे…") placed before the key fact, so viewers don't drop off.
   4. RETENTION PASS: before delivering, cut filler, repeats, generic advice and long intros; one main idea; every line easy to speak. Deliver a short caption together with the script.
+  5. VISUAL HOOK (user screenshots, 27 Oct 2026): write what the first 2 s SHOW - one strong image + a big number/text that matches the spoken hook (e.g. "150 → 500 sq.ft?"), plus the first visual change by 3 s.
+  6. 5 CTA OPTIONS with every script - comment (specific question), save ("मीटिंग/सही करण्याआधी save करा"), share (who to send to), DM, keyword. Default in voice: comment + save + share; DM / keyword only if the user has someone to reply / a resource (checklist PDF) ready.
+  7. LENGTH: Bunty speaks ≈ 2.3 words/s (bid-error: 225 words = 99 s). 75-95 s = 170-220 words; never above ~260 words (115 s). Count words before delivering.
+  Audience pain-point map for SRS Dwell: research/AUDIENCE_MAP.md (use it for topics and hooks; update with real comments).
   Not used from that prompt: camera/B-roll (we do motion graphics), offers/leads/sales (independent voice), 30-60 s limit (decide from Instagram watch-time instead).
 - Hook in first 2 s: twist / shocking fact / direct question. Never "अरे थांबा!".
 - Every script = hook -> short story or example -> facts -> twist/climax -> engagement -> outro. Save-worthy (checklist / numbers).
