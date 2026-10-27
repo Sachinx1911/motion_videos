@@ -1,4 +1,5 @@
 # Plot किती, Building कशी? भाग 1 (pilot) - SAMPLE script (format approval only, NOT for voice yet)
+> SUPERSEDED: the Windows session wrote the real ep01 script (range 1,500-2,000 sq m, with setbacks) in `reel_plot_1500_2000/script_v1.md`. Use that one.
 *SRS Dwell · 27 Oct 2026 · example inputs (assumed): 1,500 sq m / 15 m road / Vashi / CIDCO building 35 yrs / 32 flats × 300 sq ft carpet*
 
 [excited] तुमच्या society चा plot पंधराशे चौरस मीटर आहे? Redevelopment नंतर इथे काय उभं राहील, ते आज बघा!
