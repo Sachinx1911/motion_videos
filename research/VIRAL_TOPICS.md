@@ -1,6 +1,6 @@
 # SRS Dwell - Viral topic list (15 Oct 2026)
 Viral test: (1) money / your right, (2) "I didn't know" shock, (3) applies to lakhs of people, (4) "must forward". ⭐ = strongest. Legal basis to be re-verified in research before each script.
-Done already: Redevelopment GR 7 नियम, Redevelopment करार 7 गोष्टी, UDCPR intro, 300 sq.ft, Carpet area, TDR, Bedroom size, CIDCO intro, CIDCO plot tender.
+Done already: Redevelopment GR 7 नियम, Redevelopment करार 7 गोष्टी, UDCPR intro, 300 sq.ft (= #9 redevelopment नंतर घर किती मोठं), Carpet area, TDR, Bedroom size, CIDCO intro, CIDCO plot tender, Stamp duty महिला (#17), Open parking (#1), मोरबे पाणी, CIDCO lease, CIDCO bid error.
 
 ## A. Flat buyer rights (हक्क series)
 1. ⭐ Parking साठी पैसे दिले? Builder open/stilt parking विकू शकत नाही - SC 2010 Nahalchand Laloochand, RERA. CTA: किती पैसे दिले?
@@ -13,7 +13,7 @@ Done already: Redevelopment GR 7 नियम, Redevelopment करार 7 ग�
 8. OC नसलेल्या building मध्ये राहताय? धोके काय (पाणी, वीज, loan, resale). CTA: तुमच्या building ला OC आहे का?
 
 ## B. Society / redevelopment (series momentum)
-9. ⭐ Redevelopment नंतर नवीन घर किती मोठं? हिशोब (FSI, incentive, 300 sq.ft किमान). CTA: आत्ताचं घर किती sq.ft?
+9. (DONE as 300 sq.ft reel) Redevelopment नंतर नवीन घर किती मोठं? हिशोब (FSI, incentive, 300 sq.ft किमान). CTA: आत्ताचं घर किती sq.ft?
 10. ⭐ एक सभासद redevelopment अडवू शकतो का? 51% नंतर विरोधकांचं काय. CTA: तुमच्या society त किती विरोधक?
 11. Builder फुकट घर का देतो? नफा कुठून - incentive FSI 30%/50%. CTA: किती मजले होणार?
 12. Self redevelopment - builder शिवाय जास्त जागा. CTA: Builder की self? 1/2
