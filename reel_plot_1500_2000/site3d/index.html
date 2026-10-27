@@ -1,0 +1,81 @@
+<!doctype html><html><head><meta charset="utf-8">
+<style>html,body{margin:0;background:#000}#c{display:block;width:1080px;height:1920px}</style></head><body>
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="three.min.js"></script>
+<script>
+// 3D building test: plot 30 x 50 m, 15 m road in front, side/rear margin 6 m, front 3 m,
+// stilt + 12 floors (3 m each), refuge floor = first floor above 24 m. White clay "model city" look.
+const W=1080,H=1920;
+const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v)),lerp=(a,b,p)=>a+(b-a)*p;
+const eo=p=>1-Math.pow(1-p,3),eio=p=>p<.5?4*p*p*p:1-Math.pow(-2*p+2,3)/2;
+const renderer=new THREE.WebGLRenderer({canvas:document.getElementById('c'),antialias:true,preserveDrawingBuffer:true});
+renderer.setSize(W,H,false);renderer.setPixelRatio(1);
+renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+renderer.outputEncoding=THREE.sRGBEncoding;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=.92;
+const scene=new THREE.Scene();
+// warm golden-hour sky gradient
+{const cv=document.createElement('canvas');cv.width=4;cv.height=256;const g=cv.getContext('2d');const gr=g.createLinearGradient(0,0,0,256);
+ gr.addColorStop(0,'#6f8fae');gr.addColorStop(.6,'#e9b98a');gr.addColorStop(1,'#f3d3ad');g.fillStyle=gr;g.fillRect(0,0,4,256);
+ const tx=new THREE.CanvasTexture(cv);tx.encoding=THREE.sRGBEncoding;scene.background=tx}
+scene.fog=new THREE.Fog(0xf0cfa8,320,800);
+const cam=new THREE.PerspectiveCamera(38,W/H,1,2000);
+scene.add(new THREE.HemisphereLight(0xffeeda,0x8f877b,.42));
+const sun=new THREE.DirectionalLight(0xffc68a,2.3);sun.position.set(-110,60,70);sun.castShadow=true;
+sun.shadow.mapSize.set(2048,2048);const sc=sun.shadow.camera;sc.left=-130;sc.right=130;sc.top=130;sc.bottom=-130;sc.near=10;sc.far=400;sun.shadow.bias=-.0004;scene.add(sun);
+
+const M=(c,r=.92,m=0)=>new THREE.MeshStandardMaterial({color:c,roughness:r,metalness:m});
+const clay=M(0xf3efe8),clay2=M(0xe8e3da),road=M(0x3e4145,.95),ground=M(0xd9d0c2),glass=M(0x8ea2ae,.25,.15),soil=M(0xb79d78),green=M(0xe9eee4);
+const box=(w,h,d,mat,x,y,z,parent=scene,cast=true)=>{const m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),mat);m.position.set(x,y,z);m.castShadow=cast;m.receiveShadow=true;parent.add(m);return m};
+// ground + roads
+const g0=box(3000,.2,3000,ground,0,-.1,0,scene,false);
+box(3000,.12,15,road,0,0,32.5,scene,false);          // 15 m road in front (z 25..40)
+box(12,.12,3000,road,-27,0,0,scene,false);           // side lane
+for(let x=-280;x<280;x+=9)box(4,.02,.35,M(0xffffff),x,.08,32.5,scene,false);
+box(600,.25,2.2,clay2,0,.12,24,scene,false);         // footpath
+// plot soil + orange boundary (marking)
+const plot=box(30,.06,50,soil,0,.04,0,scene,false);
+{const pts=[[-15,-25],[15,-25],[15,25],[-15,25],[-15,-25]].map(([x,z])=>new THREE.Vector3(x,.35,z));
+ const ln=new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts,false,'catmullrom',0),200,.28,8,false),new THREE.MeshBasicMaterial({color:0xff8a2a,toneMapped:false}));scene.add(ln);window.PLOTLINE=ln}
+// neighbouring white blocks + trees (context)
+const R=(s=>()=>{s=(s*16807)%2147483647;return s/2147483647})(7);
+const blocks=[[-150,-20,26,30,15],[-150,40,24,22,12],[150,-10,26,40,18],[150,50,22,24,12],[0,-150,40,24,21],[-120,-130,28,26,12],[120,-130,26,28,18],[0,150,50,20,9],[-120,140,26,24,15],[120,150,28,26,12],[-70,-90,20,20,9],[70,-90,20,20,12],[-75,75,22,18,9],[75,80,22,18,9]];
+for(const [x,z,w,d,h] of blocks){const b=box(w,h,d,clay,x,h/2,z);for(let y=3;y<h;y+=3)box(w+.3,.18,d+.3,clay2,x,y,z)}
+for(let i=0;i<40;i++){const x=(R()-.5)*240,z=(R()-.5)*240;if(Math.abs(x)<40&&Math.abs(z)<55)continue;if(Math.abs(z-32.5)<10)continue;
+ const t=new THREE.Mesh(new THREE.SphereGeometry(2.2+R()*1.6,12,10),green);t.position.set(x,4+R(),z);t.castShadow=true;scene.add(t);box(.4,3,.4,clay2,x,1.5,z)}
+
+// ---- the new building: footprint inside margins (x -9..9, z -16..18), stilt 3.5 m + 12 floors x 3 m ----
+const B=new THREE.Group();scene.add(B);
+const FW=18,FD=34,FZ=1,ST=3.5,FH=3,NF=12,REF=8;
+const stilt=new THREE.Group();B.add(stilt);
+for(let i=0;i<4;i++)for(let j=0;j<6;j++)box(.7,ST,.7,clay,-8.5+i*(17/3),ST/2,FZ-16.5+j*(33/5),stilt);
+box(5,ST,7,clay2,0,ST/2,FZ,stilt);                  // lift + stair core
+const floors=[];
+for(let f=1;f<=NF;f++){const g=new THREE.Group();const y0=ST+(f-1)*FH;g.position.y=y0;
+  box(FW+.8,.3,FD+.8,clay,0,.15,FZ,g);                                   // slab
+  if(f===REF){box(5,FH,7,clay2,0,FH/2,FZ,g);for(const [x,z] of [[-8.5,FZ-16.5],[8.5,FZ-16.5],[-8.5,FZ+16.5],[8.5,FZ+16.5]])box(.7,FH,.7,clay,x,FH/2,z,g)}
+  else{box(FW-1.2,FH-.3,FD-1.2,glass,0,FH/2+.15,FZ,g);
+    for(let k=0;k<5;k++){box(.5,FH-.3,.9,clay,-FW/2+.3,FH/2+.15,FZ-FD/2+3+k*7,g);box(.5,FH-.3,.9,clay,FW/2-.3,FH/2+.15,FZ-FD/2+3+k*7,g)}
+    for(let k=0;k<4;k++){box(3.6,.22,1.6,clay,-6.6+k*4.4,.12,FZ+FD/2+.8,g);box(3.6,1,.12,glass,-6.6+k*4.4,.7,FZ+FD/2+1.55,g)}}  // front balconies
+  B.add(g);floors.push({g,f})}
+const roof=new THREE.Group();B.add(roof);roof.position.y=ST+NF*FH;box(FW+.8,.4,FD+.8,clay,0,.2,FZ,roof);box(5,3,7,clay2,0,1.9,FZ,roof);
+box(FW+.8,1.1,.3,clay,0,.95,FZ-FD/2-.25,roof);box(FW+.8,1.1,.3,clay,0,.95,FZ+FD/2+.25,roof);
+
+// ---- timeline ----
+const T_STILT=[.6,1.6],T_F0=1.8,T_DF=.36,T_FDUR=.5,T_TOP=T_F0+NF*T_DF+.1,T_ORB=[6.6,12.6],T_BACK=[12.6,15.0];
+function seek(t){
+  // build up
+  const sp=eo(clamp((t-T_STILT[0])/(T_STILT[1]-T_STILT[0])));stilt.scale.y=Math.max(.001,sp);stilt.visible=sp>0;stilt.position.y=0;
+  for(const {g,f} of floors){const t0=T_F0+(f-1)*T_DF;const p=clamp((t-t0)/T_FDUR);g.visible=p>0;const e=eo(p);g.position.y=ST+(f-1)*FH+(1-e)*6;g.scale.set(1,Math.max(.001,e),1)}
+  const tp=eo(clamp((t-T_TOP)/.5));roof.visible=tp>0;roof.position.y=ST+NF*FH+(1-tp)*6;
+  PLOTLINE.material.color.setHex(0xff8a2a);PLOTLINE.visible=t<T_ORB[0]+1;
+  // camera
+  const target=new THREE.Vector3(0,18,FZ);let pos;
+  if(t<T_ORB[0]){const p=eio(clamp(t/T_ORB[0]));const a=lerp(-.85,-.6,p),r=lerp(150,120,p),h=lerp(95,62,p);pos=new THREE.Vector3(Math.sin(a)*r,h,Math.cos(a)*r);target.y=lerp(4,20,eo(clamp((t-1)/4.5)))}
+  else if(t<T_ORB[1]){const p=eio(clamp((t-T_ORB[0])/(T_ORB[1]-T_ORB[0])));const a=-.6+p*Math.PI*2,r=lerp(120,112,Math.sin(p*Math.PI)),h=lerp(62,36,eo(p));pos=new THREE.Vector3(Math.sin(a)*r,h,Math.cos(a)*r);target.y=20}
+  else{const p=eio(clamp((t-T_BACK[0])/(T_BACK[1]-T_BACK[0])));
+    const a0=-.6+Math.PI*2,a=lerp(a0,Math.PI*2,eo(clamp(p*2)));const r=lerp(88,128,p),h=lerp(18,24,p);pos=new THREE.Vector3(Math.sin(a)*r,h,Math.cos(a)*r+FZ);target.y=lerp(26,22,p)}
+  cam.position.copy(pos);cam.lookAt(target);
+  renderer.render(scene,cam);
+}
+window.SFX=[];seek(0);window.READY=true;
+</script></body></html>
