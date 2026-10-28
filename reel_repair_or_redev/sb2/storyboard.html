@@ -1,0 +1,89 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:P;font-weight:400;src:url(../site/a/Poppins-Regular.ttf)}
+@font-face{font-family:P;font-weight:500;src:url(../site/a/Poppins-Medium.ttf)}
+@font-face{font-family:P;font-weight:600;src:url(../site/a/Poppins-SemiBold.ttf)}
+@font-face{font-family:P;font-weight:700;src:url(../site/a/Poppins-Bold.ttf)}
+@font-face{font-family:P;font-weight:800;src:url(../site/a/Poppins-ExtraBold.ttf)}
+:root{--o:#ff8a2a;--ink:#17191c;--mute:#6b6f76}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#f4f2ee;font-family:P;color:var(--ink);padding:24px 3vw;width:100%;overflow-x:hidden}
+html{overflow-x:hidden}
+h1{font:800 30px/1.15 P;letter-spacing:-.3px}
+.sub{font:500 14px/1.5 P;color:var(--mute);margin:6px 0 20px}
+.sub b{color:var(--o)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:24px 20px;width:100%}
+.cell{min-width:0}
+.cell{display:flex;flex-direction:column;gap:10px}
+.f{position:relative;width:540px;height:960px;overflow:hidden;border-radius:6px;background:#ddd;box-shadow:0 6px 24px rgba(0,0,0,.12)}
+.f>img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.unsafe{position:absolute;left:0;right:0;background:rgba(255,40,40,.10);border-color:rgba(255,40,40,.55);border-style:dashed;border-width:0;z-index:50;pointer-events:none}
+.top{top:0;height:110px;border-bottom-width:1px}.bot{bottom:0;height:190px;border-top-width:1px}
+.logo{position:absolute;left:26px;top:122px;width:70px;height:48px;background:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 10px rgba(0,0,0,.25);z-index:20}
+.logo img{width:58px}
+.src{position:absolute;left:106px;top:126px;font:500 10.5px/1.35 P;color:#fff;background:rgba(20,22,26,.55);padding:5px 9px;border-radius:6px;z-index:20}
+.t{position:absolute;left:0;right:0;text-align:center;font:800 34px/1.15 P;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.55);z-index:20}
+.t .o{color:var(--o)}
+.card{position:absolute;background:rgba(255,255,255,.95);border-radius:14px;box-shadow:0 8px 28px rgba(0,0,0,.25);z-index:20;padding:12px 16px}
+.card.l{}
+.k{font:600 12px/1.3 P;letter-spacing:1.2px;color:var(--mute);text-transform:uppercase}
+.n{font:800 30px/1.1 P;color:var(--ink)}
+.n.o{color:var(--o)}
+.row{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.pill{position:absolute;background:#fff;color:var(--ink);font:700 15px/1 P;padding:9px 14px;border-radius:999px;z-index:20;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+.pill.o{background:var(--o);color:#fff}
+.dot{position:absolute;width:12px;height:12px;border-radius:50%;background:var(--o);box-shadow:0 0 0 5px rgba(255,138,42,.3);z-index:21}
+svg.ln{position:absolute;left:0;top:0;width:540px;height:960px;overflow:visible;z-index:19;pointer-events:none}
+.cap{font:500 12px/1.45 P;color:#3a3d42}
+.cap .h{font:800 14px/1.3 P;color:var(--ink)}
+.cap .tm{color:var(--o);font-weight:700}
+.cap i{font-style:normal;color:var(--mute)}
+table{border-collapse:collapse;width:100%;font:600 13px/1.5 P}
+th{font:600 10.5px/1.4 P;letter-spacing:1px;color:var(--mute);text-align:left;padding:2px 4px}
+td{padding:3px 4px;border-top:1px solid #ece8e2}
+td.o{color:var(--o);font-weight:800}
+.step{display:flex;align-items:center;gap:12px;margin:0 0 30px}
+.circ{width:44px;height:44px;border-radius:50%;border:2px solid var(--o);color:#fff;font:800 16px/40px P;text-align:center;background:rgba(255,138,42,.18);flex:none}
+.stx{font:700 16px/1.3 P;color:#fff}
+.btn{position:absolute;font:800 20px/1 P;padding:13px 22px;border-radius:999px;z-index:20;box-shadow:0 6px 18px rgba(0,0,0,.3)}
+.red{color:#e5483b}.amb{color:#ffb020}
+.stamp{position:absolute;z-index:22;border:5px solid #e5483b;color:#e5483b;font:800 30px/1.1 P;padding:10px 18px;border-radius:10px;background:rgba(255,255,255,.88);transform:rotate(-8deg)}
+.bar{position:absolute;left:40px;right:40px;height:34px;border-radius:8px;overflow:hidden;display:flex;z-index:20;box-shadow:0 6px 18px rgba(0,0,0,.3)}
+.card3{position:absolute;width:150px;height:150px;border-radius:14px;z-index:20;background:linear-gradient(160deg,#a9a299,#7f786f);border:3px solid #ffb020;display:flex;align-items:center;justify-content:center;text-align:center;font:700 13px/1.3 P;color:#f1ece4;box-shadow:0 8px 22px rgba(0,0,0,.35)}
+</style></head><body>
+<body>
+<h1>SRS Dwell · Repair की Redevelopment · Storyboard</h1>
+<div class="sub">placeholder &nbsp; Look: पावसानंतरची सकाळ, ओल्या भिंती · लाल/पिवळा फक्त धोका दाखवायला · Poppins · लाल पट्टी = Instagram unsafe area · transition: zoom-dissolve</div>
+<div class="grid">
+<div class="cell"><div class="f"><img class="bg" src="S1.jpg"><div class="unsafe top"></div><div class="unsafe bot"></div><div class="logo"><img src="logo_gold.png"></div><div class="src">* NMMC धोकादायक इमारती यादी 2026-27<br>Model bye-law 76(a) · दि. 27 ऑक्टो 2026</div><div class="t" style="top:205px">तीस वर्षं झाली, <span class="o">म्हणजे पाडा?</span></div>
+<div class="stamp" style="left:120px;top:420px">30 वर्षं = पाडा?</div>
+<div class="pill o" style="left:200px;top:640px;font-size:20px">गैरसमज!</div></div><div class="cap"><div class="h">S1 · Hook <span class="tm">0–6 s</span></div>"तीस वर्षं झाली, म्हणजे building पाडायलाच हवी? हा सगळ्यात मोठा गैरसमज!"<br><i>R1 जुनी building · लाल शिक्का आपटतो (thud) · प्रश्नचिन्ह शिक्का पुसतो → "गैरसमज!"</i></div></div>
+<div class="cell"><div class="f"><img class="bg" src="S2.jpg"><div class="unsafe top"></div><div class="unsafe bot"></div><div class="logo"><img src="logo_gold.png"></div><div class="src">* NMMC धोकादायक इमारती यादी 2026-27<br>Model bye-law 76(a) · दि. 27 ऑक्टो 2026</div><div class="t" style="top:200px;font-size:30px">NMMC यादी 2026-27</div>
+<div class="card" style="left:110px;right:110px;top:262px;text-align:center"><div class="k">धोकादायक इमारती</div><div class="n" style="font-size:54px">504</div></div>
+<div class="bar" style="top:420px"><div style="width:10.3%;background:#e5483b"></div><div style="flex:1;background:#ffb020"></div></div>
+<div class="pill" style="left:40px;top:470px;color:#e5483b">52 · पाडायच्या</div><div class="pill" style="right:40px;top:470px;color:#b07400">452 · दुरुस्ती</div></div><div class="cap"><div class="h">S2 · आकडा <span class="tm">6–16 s</span></div>"महापालिकेने पाचशे चार इमारती धोकादायक जाहीर केल्या. पण फक्त बावन्न पाडायच्या."<br><i>R2 drone, हळू push-in · counter 0→504 · bar दोन भागांत फुटतो: 52 लाल / 452 पिवळा</i></div></div>
+<div class="cell"><div class="f"><img class="bg" src="S3.jpg"><div class="unsafe top"></div><div class="unsafe bot"></div><div class="logo"><img src="logo_gold.png"></div><div class="src">* NMMC धोकादायक इमारती यादी 2026-27<br>Model bye-law 76(a) · दि. 27 ऑक्टो 2026</div><div class="t" style="top:200px;font-size:30px">बाकीच्यांना <span class="o">दुरुस्ती!</span></div>
+<div class="card" style="left:30px;right:30px;top:262px;padding:10px 14px"><table><tr><th>गट</th><th>अर्थ</th><th>इमारती</th></tr>
+<tr><td class="red" style="font-weight:800">C-1</td><td>रिकामी करून पाडा</td><td>52</td></tr>
+<tr><td class="amb" style="font-weight:800">C-2A</td><td>घर सोडून दुरुस्ती</td><td>102</td></tr>
+<tr><td style="font-weight:800">C-2B</td><td>घर न सोडता दुरुस्ती</td><td>297</td></tr>
+<tr><td style="font-weight:800">C-3</td><td>छोटी दुरुस्ती</td><td>53</td></tr></table></div></div><div class="cap"><div class="h">S3 · गट <span class="tm">16–25 s</span></div>"बाकीच्या साडेचारशेहून जास्त? दुरुस्ती! एकशे दोन मध्ये घर रिकामं करून, उरलेल्यांमध्ये घर न सोडता."<br><i>R3 scaffolding · table च्या rows voice सोबत एक-एक येतात</i></div></div>
+<div class="cell"><div class="f"><img class="bg" src="S4.jpg"><div class="unsafe top"></div><div class="unsafe bot"></div><div class="logo"><img src="logo_gold.png"></div><div class="src">* NMMC धोकादायक इमारती यादी 2026-27<br>Model bye-law 76(a) · दि. 27 ऑक्टो 2026</div><div class="t" style="top:200px;font-size:30px">30 वर्षं = <span class="o">पर्याय</span></div>
+<div class="pill" style="left:70px;top:640px;font-size:20px;color:#1d8a4a">पर्याय ✓</div><div class="pill" style="right:70px;top:640px;font-size:20px;color:#e5483b">सक्ती ✗</div>
+<div class="card" style="left:60px;right:60px;top:262px;text-align:center"><div style="font:700 15px/1.4 P">सिडको building 30+ वर्षं → redevelopment <b>करू शकता</b></div><div class="k" style="margin-top:4px">UDCPR 10.10.2</div></div></div><div class="cap"><div class="h">S4 · नियम <span class="tm">25–36 s</span></div>"सिडकोने बांधलेली building तीस वर्षांपेक्षा जुनी झाली, की पर्याय खुला होतो. पण पर्याय आहे, सक्ती नाही."<br><i>R4 जुनी vs नवी building · camera डावीकडून उजवीकडे pan</i></div></div>
+<div class="cell"><div class="f"><img class="bg" src="S5.jpg"><div class="unsafe top"></div><div class="unsafe bot"></div><div class="logo"><img src="logo_gold.png"></div><div class="src">* NMMC धोकादायक इमारती यादी 2026-27<br>Model bye-law 76(a) · दि. 27 ऑक्टो 2026</div><div class="t" style="top:200px;font-size:30px">खरं उत्तर: <span class="o">audit</span></div>
+<div class="card" style="left:40px;right:40px;top:600px"><div class="row"><span style="font:700 16px P">15–30 वर्षं</span><span class="n" style="font-size:22px">दर 5 वर्षांनी</span></div><div style="height:1px;background:#ece8e2;margin:8px 0"></div><div class="row"><span style="font:700 16px P">30+ वर्षं</span><span class="n o" style="font-size:22px">दर 3 वर्षांनी</span></div><div class="k" style="margin-top:6px">Model bye-law 76(a)</div></div></div><div class="cap"><div class="h">S5 · Audit <span class="tm">36–49 s</span></div>"पंधरा ते तीस वर्षांच्या building चा audit दर पाच वर्षांनी, तीसपेक्षा जुन्यांचा दर तीन वर्षांनी."<br><i>R5 engineer चा hammer column वर · timeline card खालून</i></div></div>
+<div class="cell"><div class="f"><img class="bg" src="S6.jpg"><div class="unsafe top"></div><div class="unsafe bot"></div><div class="logo"><img src="logo_gold.png"></div><div class="src">* NMMC धोकादायक इमारती यादी 2026-27<br>Model bye-law 76(a) · दि. 27 ऑक्टो 2026</div><div class="t" style="top:200px;font-size:30px">धोक्याची <span class="o">लक्षणं</span></div>
+<div class="card3" style="left:30px;top:300px">🖼 R6a<br>भिंतीला भेगा<br>1:1</div><div class="card3" style="left:195px;top:420px">🖼 R6b<br>गंजलेल्या सळ्या<br>1:1</div><div class="card3" style="left:360px;top:540px">🖼 R6c<br>छताचं plaster<br>1:1</div></div><div class="cap"><div class="h">S6 · लक्षणं <span class="tm">49–60 s</span></div>"चर्चा वर्षानुवर्षं, दुरुस्ती थांबते. भेगा, गंजलेल्या सळ्या, plaster पडणं, ही धोक्याची लक्षणं."<br><i>Background R1 blur + गडद · 3 close-up cards एका-एका शब्दावर pop, पिवळी ring</i></div></div>
+<div class="cell"><div class="f"><img class="bg" src="S7.jpg"><div class="unsafe top"></div><div class="unsafe bot"></div><div class="logo"><img src="logo_gold.png"></div><div class="src">* NMMC धोकादायक इमारती यादी 2026-27<br>Model bye-law 76(a) · दि. 27 ऑक्टो 2026</div><div class="t" style="top:200px;font-size:30px">आधी audit, <span class="o">मग निर्णय</span></div>
+<svg class="ln"><path d="M270 520 L270 580 M270 580 L150 650 M270 580 L390 650" stroke="#ffffff" stroke-width="3" fill="none"/></svg>
+<div class="pill" style="left:60px;top:660px">दुरुस्ती → थांबू नका</div><div class="pill o" style="right:40px;top:660px">पाडा → निर्णय वेगाने</div></div><div class="cap"><div class="h">S7 · निर्णय <span class="tm">60–69 s</span></div>"Report मध्ये दुरुस्ती, तर वाट बघू नका. पाडायची, तर निर्णय वेगाने."<br><i>R7 audit report वरून · रेषा दोन फाट्यांत</i></div></div>
+<div class="cell"><div class="f"><img class="bg" src="S8.jpg"><div class="unsafe top"></div><div class="unsafe bot"></div><div class="logo"><img src="logo_gold.png"></div><div class="src">* NMMC धोकादायक इमारती यादी 2026-27<br>Model bye-law 76(a) · दि. 27 ऑक्टो 2026</div><div class="card" style="left:40px;right:40px;top:215px;text-align:center"><div style="font:800 21px/1.35 P">तुमची building <span style="color:var(--o)">किती वर्षांची</span>, शेवटचा audit कधी?</div></div>
+<div class="card" style="left:60px;right:60px;top:600px;padding:10px 14px"><div class="k">comment</div><div style="font:600 16px P">32 वर्षं, audit 2024 ▍</div></div></div><div class="cap"><div class="h">S8 · Comment <span class="tm">69–78 s</span></div>"किती वर्षांची, audit कधी? Comment करा! society group वर पाठवा."<br><i>R8 संध्याकाळ · standard CTA: comment box type → Post → ❤</i></div></div>
+<div class="cell"><div class="f" style="background:#f7f6f3"><div class="unsafe top"></div><div class="unsafe bot"></div>
+<div style="position:absolute;left:0;right:0;top:300px;text-align:center;font:800 30px P">अशाच <span style="color:var(--o)">माहितीसाठी</span></div>
+<div style="position:absolute;left:150px;top:370px;width:240px;height:166px;background:#fff;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.12);display:flex;align-items:center;justify-content:center"><img src="logo_gold.png" style="width:200px"></div>
+<div class="pill o" style="left:150px;top:620px;font-size:17px">Follow → Following ✓</div></div><div class="cap"><div class="h">S9 · Outro <span class="tm">78–81 s</span></div>"अशाच माहितीसाठी फॉलो करा!"<br><i>Follow flip (engine/cta.js)</i></div></div>
+</div><script>
+function fit(){document.querySelectorAll('.cell').forEach(c=>{const f=c.querySelector('.f');f.style.zoom=c.clientWidth/540})}
+addEventListener('resize',fit);addEventListener('load',fit);fit();
+</script></body></html>
