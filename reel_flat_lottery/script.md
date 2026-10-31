@@ -1,5 +1,5 @@
 # Redevelopment नंतर flat lottery नेच मिळणार? (follower चा प्रश्न)
-*SRS Dwell · 31 Oct 2026 · reel folder: `reel_flat_lottery` · draft v1 · approval pending · OPEN: 2026 GR allotment clause*
+*SRS Dwell · 31 Oct 2026 · reel folder: `reel_flat_lottery` · v1 approved 31 Oct 2026 (user asked for image prompts; "बातम्यांनुसार" line kept)*
 
 ## Audience questions (from real comments)
 1. Lottery बंधनकारक आहे का? (@surekhapatil1672, +2 replies)
