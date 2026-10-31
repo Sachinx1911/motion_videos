@@ -115,27 +115,15 @@ const INR=v=>Math.round(v).toLocaleString('en-IN');
 
 function buildScenes(){
 window.ANIM_SLOW=1.4;
-// Flat lottery (follower question). Look: evening, warm society-hall light. ALWAYS-ON MOTION (user 31 Oct 2026): ambient bokeh/dust layer, progress line, strong Ken Burns, bobbing + shimmering cards, scene-specific motion.
+// Flat lottery (follower question). Rule (user 31 Oct 2026): motion only where it explains the word; every element at cue-0.12 s.
 const END=67.4;window.END=END;
 const RD='#e5483b',GRN='#1d8a4a';
+const L=t=>t-.12; // lead: appear 0.12 s before the spoken word
 const S={s1:0,s2:8.6,s3:19.0,s4:27.6,s5:37.7,s6:50.9,s7:59.1,s8:64.0};
-
-// ---------- ALWAYS-ON AMBIENT LAYER (z 55: above photos, below cards) ----------
-{const R=rnd(31);const P=[];for(let i=0;i<46;i++)P.push({x:R()*1080,y:R()*1920,r:3+R()*26,sp:14+R()*40,ph:R()*9,a:.08+R()*.22,warm:R()<.8});
- A({t0:0,t1:S.s8,x:540,y:960,w:1080,cls:'noshadow',over:1,z:55,enter:'fade',din:.6,float:0,exit:'fade',dout:.3,
-  html:`<canvas width="1080" height="1920" style="display:block;mix-blend-mode:screen"></canvas>`,
-  draw:(t,lt,oo)=>{const c=oo.el.querySelector('canvas').getContext('2d');c.clearRect(0,0,1080,1920);
-   for(const p of P){const y=((p.y-t*p.sp)%2100+2100)%2100-90,x=p.x+Math.sin(t*.4+p.ph)*40;const g=c.createRadialGradient(x,y,0,x,y,p.r);
-    const col=p.warm?'255,196,120':'170,200,255';g.addColorStop(0,`rgba(${col},${p.a*(.6+.4*Math.sin(t*2+p.ph))})`);g.addColorStop(1,`rgba(${col},0)`);c.fillStyle=g;c.beginPath();c.arc(x,y,p.r,0,7);c.fill()}
-   // slow light-leak band sweeping diagonally every 6 s
-   const q=(t%6)/6;const gx=-600+q*2400;const lg=c.createLinearGradient(gx-300,0,gx+300,600);lg.addColorStop(0,'rgba(255,170,90,0)');lg.addColorStop(.5,'rgba(255,170,90,.10)');lg.addColorStop(1,'rgba(255,170,90,0)');c.fillStyle=lg;c.fillRect(0,0,1080,1920)}})}
-// progress line just under the top unsafe band - always moving
-A({t0:0,t1:END+1,x:540,y:232,w:1080,cls:'noshadow',over:1,z:610,enter:'fade',din:.3,float:0,html:`<div style="height:6px;background:rgba(255,255,255,.18)"><div class="b" style="height:6px;width:0;background:${O};box-shadow:0 0 10px ${O}"></div></div>`,
-  draw:(t,lt,oo)=>{oo.el.querySelector('.b').style.width=(100*clamp(t/END))+'%'}});
-// card shimmer: a soft light sweep across every white card every 3.2 s
-const SHINE=`<div class="sh" style="position:absolute;inset:0;border-radius:28px;overflow:hidden;pointer-events:none"><div style="position:absolute;top:-20%;bottom:-20%;width:120px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.75),transparent);transform:skewX(-20deg)" class="sb"></div></div>`;
-const SHN=(t,oo)=>{const b=oo.el.querySelector('.sb');if(b){const q=((t+oo.ph0)%3.2)/3.2;b.style.left=(-30+q*160)+'%'}};
-const CRD2=(t0,t1,x,y,w,inner,o={})=>{const d=o.draw;return A(Object.assign({t0,t1,x,y,w,cls:'noshadow',html:`<div style="position:relative">${WC(inner)}${SHINE}</div>`,enter:'up',din:.45,sfx:'whoosh',sfxv:.4,z:60,float:.35},o,{draw:(t,lt,oo)=>{oo.ph0=oo.ph0||(t0*.7%3);SHN(t,oo);if(d)d(t,lt,oo)}}))};
+const W=(arr)=>arr.map(([w,t,c])=>[w,L(t),c]);
+// card whose lines reveal one by one at their own cue
+const LINES=(t1,x,y,w,head,rows,o={})=>CRD(L(rows[0][1]),t1,x,y,w,`<div style="text-align:left">${head?K(head):''}${rows.map(([h,t])=>`<div class="ln" data-t="${L(t)}" style="opacity:0">${h}</div>`).join('')}</div>`,Object.assign({float:.05,
+  draw:(t,lt,oo)=>{oo.el.querySelectorAll('.ln').forEach(e=>{const q=E.out(clamp((t-(+e.dataset.t))/.3));e.style.display=t>=+e.dataset.t?'block':'none';e.style.opacity=q;e.style.transform=`translateY(${(1-q)*16}px)`})}},o));
 const PULSE=(t0,t1,x,y,size,col)=>A({t0,t1,x,y,w:size,cls:'noshadow',over:1,z:58,enter:'fade',din:.1,float:0,html:`<div class="rg" style="width:${size}px;height:${size}px;border-radius:50%;border:6px solid ${col};box-sizing:border-box"></div>`,
   draw:(t,lt,oo)=>{const q=(lt%1.2)/1.2;const r=oo.el.querySelector('.rg');r.style.transform=`scale(${.35+q*.9})`;r.style.opacity=1-q}});
 
@@ -144,71 +132,80 @@ A({t0:0,t1:S.s8,x:122,y:292,w:140,cls:'noshadow',html:`<div style="background:#f
 A({t0:.3,t1:S.s8,x:500,y:296,w:580,cls:'noshadow',html:`<div style="text-align:left"><span style="display:inline-block;font:500 21px/1.4 P;color:#fff;background:rgba(20,22,26,.55);padding:9px 16px 7px;border-radius:12px">* 79अ निर्देश 2009/2019 (cl. 11) · GR 30 सप्टें 2026<br>कायदेशीर सल्ला नाही · माहिती दि. 31 ऑक्टो 2026</span></div>`,enter:'fade',din:.4,float:0,z:600});
 
 // ================= S1 HOOK =================
-SC('L1_balcony_floors.jpg',S.s1,S.s2,{ox:600,oy:1150,s0:1.0,s1:1.18,dy:-40});
-TT(0,S.s2,420,[['"मी',0],['5',0.2,'o1'],['व्या',0.2,'o1'],['मजल्यावर…<br>',0.7],['lottery',3.0],['मध्ये',3.3],['1',3.5,'o1'],['ला',3.5,'o1'],['आला',4.2],['तर?"',4.4]],{fs:52,w:960});
-// floor stack 7..1 : bobbing, 5 glows, then rolls like a slot machine to 1
-A({t0:.2,t1:S.s2,x:130,y:1030,w:130,cls:'noshadow',enter:'left',din:.5,float:0,z:62,
+SC('L1_balcony_floors.jpg',S.s1,S.s2,{ox:600,oy:1150,s0:1.0,s1:1.08});
+TT(0,S.s2,400,W([['"मी',0.12],['5',0.2,'o1'],['व्या',0.2,'o1'],['मजल्यावर…',0.7]]),{fs:54,w:960});
+TT(0,S.s2,470,W([['lottery',3.0],['मध्ये',3.3],['1',3.5,'o1'],['ला',3.5,'o1'],['आला',4.2],['तर?"',4.4]]),{fs:54,w:960});
+// floor stack: appears with "पाचव्या", 5 lit; rolls down on "पहिला", lands on 1 at "मजला"
+A({t0:L(0.2),t1:S.s2,x:130,y:1030,w:130,cls:'noshadow',enter:'left',din:.35,float:0,z:62,
   html:`<div>${[7,6,5,4,3,2,1].map(k=>`<div class="fl" data-k="${k}" style="height:62px;margin:8px 0;border-radius:12px;background:rgba(255,255,255,.92);color:${INK};font:800 32px/62px P;text-align:center;box-shadow:0 6px 18px rgba(0,0,0,.3)">${k}</div>`).join('')}</div>`,
-  draw:(t,lt,oo)=>{const hi=t<3.5?5:(t<4.4?(7-Math.floor((t-3.5)*14)%7):1);oo.el.querySelectorAll('.fl').forEach((e,i)=>{const k=+e.dataset.k;const on=k===hi;e.style.background=on?O:'rgba(255,255,255,.92)';e.style.color=on?'#fff':INK;e.style.transform=`translateX(${Math.sin(t*2.2+i*.6)*6+(on?16:0)}px) scale(${on?1.12:1})`;e.style.boxShadow=on?`0 0 ${18+10*Math.sin(t*6)}px ${O}`:'0 6px 18px rgba(0,0,0,.3)'})}});
-PL(3.5,S.s2,560,1030,'5 वा → 1 ला?',{or:1,w:460,fs:46,float:.4});
-PULSE(.4,S.s2,690,1180,260,O);
-PL(5.3,S.s2,540,1390,'💬 एका follower चा प्रश्न',{w:640,fs:34,float:.4});
-sfx(3.5,'ticks',.5);sfx(4.4,'impact',.55);shake(4.45,8);
+  draw:(t,lt,oo)=>{const a=L(3.5),b=L(3.9);const hi=t<a?5:(t<b?5-Math.min(4,Math.floor((t-a)/(b-a)*4)):1);oo.el.querySelectorAll('.fl').forEach(e=>{const on=+e.dataset.k===hi;e.style.background=on?O:'rgba(255,255,255,.92)';e.style.color=on?'#fff':INK;e.style.transform=`translateX(${on?16:0}px) scale(${on?1.12:1})`})}});
+PULSE(L(0.2),L(3.5),690,1180,260,O); // marks the 5th-floor balcony only while "पाचव्या मजल्यावर" is relevant
+PL(L(3.9),S.s2,560,1030,'5 वा → 1 ला?',{or:1,w:460,fs:46,float:.05});
+PL(L(5.3),S.s2,540,1390,'💬 एका follower चा प्रश्न',{w:640,fs:34,float:.05});
+sfx(L(3.5),'ticks',.45);sfx(L(3.9),'impact',.5);
 
 // ================= S2 OLD RULE =================
-SC('L2_new_tower_keys.jpg',S.s2,S.s3,{ox:540,oy:1200,s0:1.05,s1:1.2,dy:-30});
-TT(S.s2,S.s3,400,[['नियम',8.9],['काय',9.2,'o1'],['सांगतो?',9.2,'o1']],{fs:62});
-CRD2(10.2,S.s3,500,640,860,`<div style="text-align:left">${K('79अ निर्देश · clause 11')}<div style="font:700 40px/1.4 P;color:${INK};margin-top:6px">OC मिळाल्यावर flats<br><span class="hl" style="color:${O};background:linear-gradient(${O},${O}) no-repeat 0 100%/0% 6px">शक्यतो आत्ताच्या मजल्याप्रमाणे</span></div></div>`,{
-  draw:(t,lt,oo)=>{oo.el.querySelector('.hl').style.backgroundSize=`${100*E.out(clamp((t-16.7)/.8))}% 6px`}});
-A({t0:12.1,t1:S.s3,x:330,y:930,w:420,cls:'noshadow',enter:'pop',din:.35,sfx:'pop',sfxv:.5,z:62,float:.4,html:`<span style="display:inline-block;background:#fff;color:${INK};font:800 40px/1 P;padding:18px 30px 14px;border-radius:999px;box-shadow:0 8px 28px rgba(0,0,0,.3)" class="y">2009</span>`,
-  draw:(t,lt,oo)=>{const v=Math.round(lerp(2009,2019,E.inout(clamp((t-13.4)/1.2))));oo.el.querySelector('.y').textContent=t<13.4?'2009':(v<2019?v:'2009 → 2019')}});
-PULSE(14.3,S.s3,560,1030,300,'#fff');sfx(14.3,'click',.5);
+SC('L2_new_tower_keys.jpg',S.s2,S.s3,{ox:540,oy:1200,s0:1.02,s1:1.1});
+TT(S.s2,S.s3,400,W([['नियम',8.9],['काय',9.2,'o1'],['सांगतो?',9.2,'o1']]),{fs:62});
+LINES(S.s3,500,660,860,'79अ निर्देश · clause 11',[
+  [`<div style="font:800 40px/1.5 P;color:${INK}">2009 पासून</div>`,12.1],
+  [`<div style="font:700 40px/1.4 P;color:${INK}">OC मिळाल्यावर flats</div>`,14.3],
+  [`<div style="font:800 40px/1.4 P;color:${O}"><span class="hl" style="background:linear-gradient(${O},${O}) no-repeat 0 100%/0% 6px;padding-bottom:4px">शक्यतो आत्ताच्या मजल्याप्रमाणे</span></div>`,16.7]],
+  {draw:(t,lt,oo)=>{oo.el.querySelectorAll('.ln').forEach(e=>{const q=E.out(clamp((t-(+e.dataset.t))/.3));e.style.display=t>=+e.dataset.t?'block':'none';e.style.opacity=q;e.style.transform=`translateY(${(1-q)*16}px)`});
+    oo.el.querySelector('.hl').style.backgroundSize=`${100*E.inout(clamp((t-L(16.7))/(18.9-16.7)))}% 6px`}});
+sfx(L(12.1),'pop',.4);sfx(L(14.3),'pop',.4);sfx(L(16.7),'whoosh',.35);
 
 // ================= S3 WHEN LOTTERY =================
-SC('L3_lottery_bowl.jpg',S.s3,S.s4,{ox:560,oy:1250,s0:1.0,s1:1.16});
-TT(S.s3,S.s4,400,[['Lottery',19.5],['फक्त',20.3,'o1'],['गरज',20.7,'o1'],['पडली',21.2,'o1'],['तर',21.5,'o1']],{fs:60});
-PART({type:'confetti',t0:19.2,t1:S.s4-.5,n:70,seed:12,x:540,y:-60,spread:1100,life:5,colors:['#ffffff','#f4efe6','#ffe2c4']});
-[['🏢 building पूर्ण झाल्यावर',22.7],['👤 निबंधकाचा प्रतिनिधी',24.0],['🎥 video recording',26.6]].forEach(([s,t0],i)=>PL(t0,S.s4,420,1160+i*120,s,{w:640,fs:36,float:.45}));
-PULSE(26.6,S.s4,600,860,220,'#ff3b30');
+SC('L3_lottery_bowl.jpg',S.s3,S.s4,{ox:560,oy:1250,s0:1.0,s1:1.08});
+TT(S.s3,S.s4,400,W([['Lottery',19.5],['कधी?',19.9],['फक्त',20.3,'o1'],['गरज',20.7,'o1'],['पडली',21.2,'o1'],['तर',21.5,'o1']]),{fs:58});
+[['🏢 building पूर्ण झाल्यावर',22.7],['👤 निबंधकाचा प्रतिनिधी',24.0],['🎥 video recording',26.6]].forEach(([s,t0],i)=>PL(L(t0),S.s4,420,1160+i*120,s,{w:640,fs:36,float:.05}));
+PULSE(L(26.6),S.s4,600,860,220,'#ff3b30'); // the camera in the photo, on "video"
 
 // ================= S4 NEW GR =================
-SC('L4_gr_newspaper.jpg',S.s4,S.s5,{ox:500,oy:1100,s0:1.04,s1:1.2,dx:-30,dy:20});
-TT(S.s4,S.s5,400,[['30',28.1,'o1'],['सप्टें',28.3,'o1'],['·',29.0],['नवा',29.0],['GR',29.4]],{fs:62});
-CRD2(29.9,S.s5,500,640,860,`<div style="text-align:left"><div style="display:flex;align-items:center;gap:12px">${K('बातम्यांनुसार')}<span class="w" style="font-size:34px;display:inline-block">⚠</span></div><div class="ty" style="font:700 40px/1.4 P;color:${INK};margin-top:6px;min-height:112px"></div></div>`,{
-  draw:(t,lt,oo)=>{const full='नवीन flats चं वाटप पारदर्शक सोडतीने';const ch=[...full];const n=Math.floor(clamp((t-30.4)/2.6)*ch.length);oo.el.querySelector('.ty').innerHTML=ch.slice(0,n).join('').replace('पारदर्शक सोडतीने',`<span style="color:${O}">पारदर्शक सोडतीने</span>`)+(t<33.3&&Math.floor(t*3)%2?'▍':'');oo.el.querySelector('.w').style.transform=`scale(${1+.15*Math.sin(t*5)})`}});
-sfx(30.4,'ticks',.35);
-PL(37.0,S.s5,430,1000,'जुना मजला = हमी नाही',{w:620,fs:40,float:.4,draw:(t,lt,oo)=>{const s=oo.el.querySelector('span');s.style.color=RD;s.style.transform=`translateX(${lt<.5?Math.sin(lt*60)*8:0}px)`}});
-sfx(37.0,'buzz',.45);
+SC('L4_gr_newspaper.jpg',S.s4,S.s5,{ox:500,oy:1100,s0:1.02,s1:1.1});
+TT(S.s4,S.s5,400,W([['30',28.1,'o1'],['सप्टें',28.3,'o1'],['·',29.0],['नवा',29.0],['GR',29.4]]),{fs:62});
+CRD(L(29.9),S.s5,500,660,860,`<div style="text-align:left">${K('बातम्यांनुसार ⚠')}<div style="font:700 40px/1.45 P;color:${INK};margin-top:6px">${[['नवीन',31.1],['flats',31.6],['चं',31.9],['वाटप',32.1],['<span style="color:'+O+'">पारदर्शक</span>',32.4],['<span style="color:'+O+'">सोडतीने</span>',33.1]].map(([w,t])=>`<span class="wv" data-t="${L(t)}" style="opacity:0;display:inline-block">${w}</span>`).join(' ')}</div></div>`,{float:.05,
+  draw:(t,lt,oo)=>{oo.el.querySelectorAll('.wv').forEach(e=>{const q=E.out(clamp((t-(+e.dataset.t))/.25));e.style.opacity=q;e.style.transform=`translateY(${(1-q)*10}px)`})}});
+A({t0:L(35.0),t1:S.s5,x:430,y:1000,w:640,cls:'chipw',enter:'pop',din:.3,sfx:'pop',sfxv:.45,z:65,float:.05,
+  html:`<span style="display:inline-block;background:#fff;color:${INK};font:800 40px/1 P;padding:18px 30px 14px;border-radius:999px;box-shadow:0 8px 28px rgba(0,0,0,.3);white-space:nowrap">जुना मजला <span class="h" style="color:${RD};opacity:0">= हमी नाही</span></span>`,
+  draw:(t,lt,oo)=>{const k=L(37.0);const h=oo.el.querySelector('.h');h.style.opacity=t>=k?1:0;oo.el.firstElementChild.style.transform=`translateX(${t>=k&&t<k+.4?Math.sin((t-k)*60)*8:0}px)`}});
+sfx(L(37.0),'buzz',.45);
 
 // ================= S5 PAAA =================
-SC('L5_signing_paaa.jpg',S.s5,S.s6,{ox:600,oy:1250,s0:1.0,s1:1.16});
+SC('L5_signing_paaa.jpg',S.s5,S.s6,{ox:600,oy:1250,s0:1.0,s1:1.08});
 TINT(S.s5,S.s6,'linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.15) 40%,rgba(0,0,0,0) 60%,rgba(0,0,0,.3))',.3);
-TT(S.s5,S.s6,400,[['करारातच',42.0],['लिहून',47.2,'o1'],['घ्या',47.9,'o1']],{fs:62});
-CRD2(43.1,S.s6,480,700,820,`<div style="text-align:left">${K('PAAA · flat कसा ठरणार?')}${[['जुना मजला',48.1],['lottery',49.2],['ठरलेला फॉर्म्युला',50.0]].map(([s,k])=>`<div class="o" data-k="${k}" style="display:flex;align-items:center;gap:16px;font:700 40px/1.7 P;color:${INK}"><span class="bx" style="display:inline-block;width:40px;height:40px;border:4px solid ${INK};border-radius:8px;text-align:center;font:800 30px/34px P;color:#fff"></span>${s}</div>`).join('')}</div>`,{
-  draw:(t,lt,oo)=>{oo.el.querySelectorAll('.o').forEach(e=>{const on=t>=+e.dataset.k;const b=e.querySelector('.bx');b.textContent=on?'✓':'';b.style.background=on?O:'transparent';b.style.borderColor=on?O:INK;b.style.transform=`scale(${on&&t-+e.dataset.k<.25?1.3:1})`})}});
-[48.1,49.2,50.0].forEach(k=>sfx(k,'pop',.45));
+[['मजला',37.9],['दिशा',38.7],['view',39.3]].forEach(([s,t0],i)=>PL(L(t0),41.8,250+i*230,430,s,{w:220,fs:40,float:.05,exit:'fade',dout:.2}));
+PL(L(41.3),41.8+.1,540,560,'बोलायची वेळ: आत्ता!',{or:1,w:600,fs:38,exit:'fade',dout:.2});
+TT(42.0,S.s6,400,W([['करारातच',42.0],['लिहून',47.6,'o1'],['घ्या',47.9,'o1']]),{fs:62});
+LINES(S.s6,480,720,820,'PAAA · flat कसा ठरणार?',[
+  [`<div style="font:700 40px/1.7 P;color:${INK}">✅ जुना मजला</div>`,48.1],
+  [`<div style="font:700 40px/1.7 P;color:${INK}">✅ lottery</div>`,49.2],
+  [`<div style="font:700 40px/1.7 P;color:${INK}">✅ ठरलेला फॉर्म्युला</div>`,50.0]],{t0:L(43.1),
+  draw:(t,lt,oo)=>{oo.el.querySelectorAll('.ln').forEach(e=>{const q=E.out(clamp((t-(+e.dataset.t))/.3));e.style.display=t>=+e.dataset.t?'block':'none';e.style.opacity=q;e.style.transform=`translateX(${(1-q)*-24}px)`})}});
+[37.9,38.7,39.3,48.1,49.2,50.0].forEach(k=>sfx(L(k),'pop',.4));
 
 // ================= S6 3 CHECKS =================
-SC('L6_society_hall.jpg',S.s6,S.s7,{ox:540,oy:820,s0:1.0,s1:1.15});
-TT(S.s6,S.s7,400,[['Lottery',51.3],['झाली',51.7],['तर',52.2],['3',52.6,'o1'],['तपासा',53.2,'o1']],{fs:58});
-CRD2(52.9,S.s7,480,660,820,`<div style="text-align:left">${[['निबंधकाचा प्रतिनिधी हजर',53.6],['video होतोय',56.1],['सगळे सभासद हजर',57.8]].map(([s,k])=>`<div class="o" data-k="${k}" style="display:flex;align-items:center;gap:16px;font:700 38px/1.8 P;color:${INK};opacity:.35"><span class="bx" style="display:inline-block;width:44px;height:44px;border-radius:50%;background:#ddd;text-align:center;font:800 30px/44px P;color:#fff"></span>${s}</div>`).join('')}</div>`,{
-  draw:(t,lt,oo)=>{oo.el.querySelectorAll('.o').forEach(e=>{const k=+e.dataset.k,on=t>=k;e.style.opacity=on?1:.35;const b=e.querySelector('.bx');b.textContent=on?'✓':'';b.style.background=on?GRN:'#ddd';b.style.transform=`scale(${on&&t-k<.25?1.3:1})`})}});
-[53.6,56.1,57.8].forEach(k=>sfx(k,'pop',.5));
-PULSE(56.1,S.s7,550,1080,200,'#ff3b30');
+SC('L6_society_hall.jpg',S.s6,S.s7,{ox:540,oy:820,s0:1.0,s1:1.08});
+TT(S.s6,S.s7,400,W([['Lottery',51.3],['झाली',51.7],['तर',52.2],['3',52.6,'o1'],['तपासा',53.2,'o1']]),{fs:58});
+LINES(S.s7,480,640,820,'',[
+  [`<div style="font:700 38px/1.8 P;color:${INK}"><span style="color:${GRN}">✔</span> निबंधकाचा प्रतिनिधी हजर</div>`,53.6],
+  [`<div style="font:700 38px/1.8 P;color:${INK}"><span style="color:${GRN}">✔</span> video होतोय</div>`,56.1],
+  [`<div style="font:700 38px/1.8 P;color:${INK}"><span style="color:${GRN}">✔</span> सगळे सभासद हजर</div>`,57.8]]);
+[53.6,56.1,57.8].forEach(k=>sfx(L(k),'pop',.45));
 
 // ================= S7 COMMENT =================
-SC('L7_balcony_view.jpg',S.s7,S.s8,{ox:540,oy:1000,s0:1.0,s1:1.14,dx:-20});
-CRD2(59.2,S.s8,540,520,960,`<div style="text-align:center;font:800 44px/1.35 P;color:${INK}">तुम्ही <span style="color:${O}">कितव्या मजल्यावर</span> राहता?</div>`);
-PL(62.6,S.s8,540,700,'📤 society च्या group वर पाठवा',{w:760,fs:32,float:.4});
-COMMENT_BOX(59.8,S.s8-.05,60.3,61.3,'5 वा मजला',{y:1320,typeDur:.5});
+SC('L7_balcony_view.jpg',S.s7,S.s8,{ox:540,oy:1000,s0:1.0,s1:1.08});
+CRD(L(59.1),S.s8,540,520,960,`<div style="text-align:center;font:800 44px/1.35 P;color:${INK}">तुम्ही <span style="color:${O}">कितव्या मजल्यावर</span> राहता?</div>`,{float:.05});
+COMMENT_BOX(L(60.6),S.s8-.05,L(60.9),61.3,'5 वा मजला',{y:1320,typeDur:.35});
+PL(L(62.2),S.s8,540,700,'📤 society च्या group वर पाठवा',{w:760,fs:32,float:.05});
 
 // ================= S8 OUTRO =================
 SC(null,S.s8,END+1,{color:'#f7f6f3',s0:1,s1:1});
-A({t0:S.s8+.2,t1:END+1,x:540,y:900,w:500,cls:'noshadow',over:1,z:50,enter:'zoom',din:.5,float:.3,sfx:'whoosh',sfxv:.4,html:`<div style="position:relative;width:500px;height:340px;background:#fff;border-radius:32px;box-shadow:0 20px 60px rgba(0,0,0,.12);display:flex;align-items:center;justify-content:center;overflow:hidden"><img src="a/logo_gold.png" style="width:410px;filter:none"><div class="sb" style="position:absolute;top:-20%;bottom:-20%;width:120px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.8),transparent);transform:skewX(-20deg)"></div></div>`,
-  draw:(t,lt,oo)=>{oo.el.querySelector('.sb').style.left=(-30+((t%2.2)/2.2)*160)+'%'}});
-WORDS(64.0,END+1,540,600,900,[['अशाच',64.0],['माहितीसाठी',64.3,'o1']],{st:`font:800 60px/1.2 P;color:${INK}`});
+A({t0:S.s8+.1,t1:END+1,x:540,y:900,w:500,cls:'noshadow',over:1,z:50,enter:'zoom',din:.5,float:0,sfx:'whoosh',sfxv:.4,html:`<div style="position:relative;width:500px;height:340px;background:#fff;border-radius:32px;box-shadow:0 20px 60px rgba(0,0,0,.12);display:flex;align-items:center;justify-content:center"><img src="a/logo_gold.png" style="width:410px;filter:none"></div>`});
+WORDS(L(64.0),END+1,540,600,900,W([['अशाच',64.0],['माहितीसाठी',64.3,'o1']]),{st:`font:800 60px/1.2 P;color:${INK}`});
 A({t0:64.3,t1:END+1,x:540,y:1150,w:700,cls:'noshadow',enter:'fade',din:.4,z:40,float:0,html:`<div style="height:2px;background:#e2ded7"></div>`});
-FOLLOW_FLIP(64.6,END+1,65.9,{y:1250});
+FOLLOW_FLIP(L(65.4),END+1,65.9,{y:1250});
+
 // orange accent for words marked o1
 HOOKS.push(()=>{document.querySelectorAll('.wd.o1').forEach(e=>e.style.color=O)});
 
