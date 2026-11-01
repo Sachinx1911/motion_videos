@@ -86,7 +86,7 @@ Name - topic - audience - logo file + placement - palette (3 colours) - mascot y
 | S9 | Render: sfx -> audio -> parallel parts -> concat -> 2-pass | out/<Brand>_<Topic>.mp4 | - |
 | S10 | QC (section 10) - fix and re-render parts | - | - |
 | S11 | Deliver: file link, ◾/➢ summary, corrections, sources; then caption + pin comments when asked | - | - |
-| S12 | Commit + push (raw, voice, site, final mp4; never intermediates) | git | - |
+| S12 | Commit locally (raw, voice, site, final mp4; never intermediates). PUSH ONLY when the user says "push" (user, 28 Oct 2026) | git | USER "push" |
 
 ---
 
