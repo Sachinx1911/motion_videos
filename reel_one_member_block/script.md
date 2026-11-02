@@ -1,5 +1,5 @@
 # एक सभासद redevelopment अडवू शकतो का?
-*SRS Dwell · 2 Nov 2026 · reel folder: `reel_one_member_block` · draft v1 · approval pending*
+*SRS Dwell · 2 Nov 2026 · reel folder: `reel_one_member_block` · v1 approved 2 Nov 2026 (user asked for image prompts)*
 
 ## Audience questions (guesses + our earlier comments)
 1. 90% तयार, काही जण नाही म्हणतात: काम थांबणार का?
