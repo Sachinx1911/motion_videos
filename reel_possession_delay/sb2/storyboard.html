@@ -1,0 +1,72 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:P;font-weight:400;src:url(../site/a/Poppins-Regular.ttf)}
+@font-face{font-family:P;font-weight:500;src:url(../site/a/Poppins-Medium.ttf)}
+@font-face{font-family:P;font-weight:600;src:url(../site/a/Poppins-SemiBold.ttf)}
+@font-face{font-family:P;font-weight:700;src:url(../site/a/Poppins-Bold.ttf)}
+@font-face{font-family:P;font-weight:800;src:url(../site/a/Poppins-ExtraBold.ttf)}
+:root{--o:#ff8a2a;--ink:#17191c;--mute:#6b6f76}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#f4f2ee;font-family:P;color:var(--ink);padding:24px 3vw;width:100%;overflow-x:hidden}
+html{overflow-x:hidden}
+h1{font:800 30px/1.15 P;letter-spacing:-.3px}
+.sub{font:500 14px/1.5 P;color:var(--mute);margin:6px 0 20px}
+.sub b{color:var(--o)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:24px 20px;width:100%}
+.cell{min-width:0}
+.cell{display:flex;flex-direction:column;gap:10px}
+.f{position:relative;width:540px;height:960px;overflow:hidden;border-radius:6px;background:#ddd;box-shadow:0 6px 24px rgba(0,0,0,.12)}
+.f>img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.unsafe{position:absolute;left:0;right:0;background:rgba(255,40,40,.10);border-color:rgba(255,40,40,.55);border-style:dashed;border-width:0;z-index:50;pointer-events:none}
+.top{top:0;height:110px;border-bottom-width:1px}.bot{bottom:0;height:190px;border-top-width:1px}
+.logo{position:absolute;left:26px;top:122px;width:70px;height:48px;background:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 10px rgba(0,0,0,.25);z-index:20}
+.logo img{width:58px}
+.src{position:absolute;left:106px;top:126px;font:500 10.5px/1.35 P;color:#fff;background:rgba(20,22,26,.55);padding:5px 9px;border-radius:6px;z-index:20}
+.t{position:absolute;left:0;right:0;text-align:center;font:800 34px/1.15 P;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.55);z-index:20}
+.t .o{color:var(--o)}
+.card{position:absolute;background:rgba(255,255,255,.95);border-radius:14px;box-shadow:0 8px 28px rgba(0,0,0,.25);z-index:20;padding:12px 16px}
+.card.l{}
+.k{font:600 12px/1.3 P;letter-spacing:1.2px;color:var(--mute);text-transform:uppercase}
+.n{font:800 30px/1.1 P;color:var(--ink)}
+.n.o{color:var(--o)}
+.row{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.pill{position:absolute;background:#fff;color:var(--ink);font:700 15px/1 P;padding:9px 14px;border-radius:999px;z-index:20;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+.pill.o{background:var(--o);color:#fff}
+.dot{position:absolute;width:12px;height:12px;border-radius:50%;background:var(--o);box-shadow:0 0 0 5px rgba(255,138,42,.3);z-index:21}
+svg.ln{position:absolute;left:0;top:0;width:540px;height:960px;overflow:visible;z-index:19;pointer-events:none}
+.cap{font:500 12px/1.45 P;color:#3a3d42}
+.cap .h{font:800 14px/1.3 P;color:var(--ink)}
+.cap .tm{color:var(--o);font-weight:700}
+.cap i{font-style:normal;color:var(--mute)}
+table{border-collapse:collapse;width:100%;font:600 13px/1.5 P}
+th{font:600 10.5px/1.4 P;letter-spacing:1px;color:var(--mute);text-align:left;padding:2px 4px}
+td{padding:3px 4px;border-top:1px solid #ece8e2}
+td.o{color:var(--o);font-weight:800}
+.step{display:flex;align-items:center;gap:12px;margin:0 0 30px}
+.circ{width:44px;height:44px;border-radius:50%;border:2px solid var(--o);color:#fff;font:800 16px/40px P;text-align:center;background:rgba(255,138,42,.18);flex:none}
+.stx{font:700 16px/1.3 P;color:#fff}
+.btn{position:absolute;font:800 20px/1 P;padding:13px 22px;border-radius:999px;z-index:20;box-shadow:0 6px 18px rgba(0,0,0,.3)}
+.red{color:#e5483b}.amb{color:#ffb020}
+.stamp{position:absolute;z-index:22;border:5px solid #e5483b;color:#e5483b;font:800 30px/1.1 P;padding:10px 18px;border-radius:10px;background:rgba(255,255,255,.88);white-space:nowrap}
+.bar{position:absolute;left:40px;right:40px;height:34px;border-radius:8px;overflow:hidden;display:flex;z-index:20;box-shadow:0 6px 18px rgba(0,0,0,.3)}
+.card3{position:absolute;overflow:visible;width:150px;height:150px;border-radius:14px;z-index:20;background:linear-gradient(160deg,#a9a299,#7f786f);border:3px solid #ffb020;display:flex;align-items:center;justify-content:center;text-align:center;font:700 13px/1.3 P;color:#f1ece4;box-shadow:0 8px 22px rgba(0,0,0,.35)}
+.card{background:linear-gradient(145deg,rgba(13,23,41,.88),rgba(6,11,22,.78))!important;color:#fff!important;border:2px solid rgba(232,207,159,.35)}.card .k{color:rgba(255,255,255,.7)!important}.pill{background:linear-gradient(180deg,#f2dfb6,#c9a66f)!important;color:#1a1206!important}.g{color:#e8cf9f}</style></head><body>
+<body>
+<h1>SRS Dwell · ताबा उशिरा? RERA 18 व्याज · Storyboard</h1>
+<div class="sub">placeholder &nbsp; Look: navy + gold logo look ("7 नवे नियम" सारखा) · photos मागे navy छटेसह · प्रत्येक घटक शब्दाआधी 0.12 s</div>
+<div class="grid">
+<div class="cell"><div class="f"><img class="bg" src="S1.jpg"><div class="unsafe top"></div><div class="unsafe bot"></div><div class="logo"><img src="logo_gold.png"></div><div class="src">* RERA कलम 18 · महा. RERA नियम 18 · SBI MCLR 15 ऑक्टो 2026<br>कायदेशीर सल्ला नाही · दि. 3 नोव्हें 2026</div><div class="pill" style="left:150px;top:210px;font-size:22px">ताबा उशिरा?</div><div class="card" style="left:40px;right:110px;top:300px"><div style="text-align:center"><div class="k">₹50 लाख भरले असतील तर</div><div style="font:900 44px/1.1 P" class="g">₹45,625</div><div style="font:700 16px P">दर महिन्याला व्याज</div></div></div></div><div class="cap"><div class="h">S1 · Hook <span class="tm">0–10.6 s</span></div>"पन्नास लाख भरले… जवळपास पंचेचाळीस हजार, दर महिन्याला"<br><i>P1 अर्धवट tower · gold counter "पंचेचाळीस" वर, calendar महिने उलटतात</i></div></div>
+<div class="cell"><div class="f"><img class="bg" src="S2.jpg"><div class="unsafe top"></div><div class="unsafe bot"></div><div class="logo"><img src="logo_gold.png"></div><div class="src">* RERA कलम 18 · महा. RERA नियम 18 · SBI MCLR 15 ऑक्टो 2026<br>कायदेशीर सल्ला नाही · दि. 3 नोव्हें 2026</div><div class="pill" style="left:130px;top:210px;font-size:20px">RERA · कलम 18</div><div class="card" style="left:40px;right:110px;top:560px"><div style="font:700 17px/1.5 P">करारातल्या तारखेला ताबा नाही → <span class="g">2 पर्याय</span></div></div></div><div class="cap"><div class="h">S2 · कायदा <span class="tm">10.6–19.4 s</span></div>"उपकार नाही… कलम अठरा… दोन पर्याय"<br><i>P2 वाट पाहणारं जोडपं · pill "अठरा" वर</i></div></div>
+<div class="cell"><div class="f"><img class="bg" src="S3.jpg"><div class="unsafe top"></div><div class="unsafe bot"></div><div class="logo"><img src="logo_gold.png"></div><div class="src">* RERA कलम 18 · महा. RERA नियम 18 · SBI MCLR 15 ऑक्टो 2026<br>कायदेशीर सल्ला नाही · दि. 3 नोव्हें 2026</div><div class="card" style="left:40px;right:110px;top:260px"><div style="font:700 17px/1.8 P"><span class="g">1</span> project सोडा → पैसे + व्याज परत<br><span class="g">2</span> project मध्ये रहा → दर महिना व्याज</div></div></div><div class="cap"><div class="h">S3 · पर्याय <span class="tm">19.4–28.2 s</span></div>"एक, project सोडायचा… दोन, राहायचं…"<br><i>P3 पैसे vs चाव्या · ओळी "एक"/"दोन" वर</i></div></div>
+<div class="cell"><div class="f"><img class="bg" src="S4.jpg"><div class="unsafe top"></div><div class="unsafe bot"></div><div class="logo"><img src="logo_gold.png"></div><div class="src">* RERA कलम 18 · महा. RERA नियम 18 · SBI MCLR 15 ऑक्टो 2026<br>कायदेशीर सल्ला नाही · दि. 3 नोव्हें 2026</div><div class="pill" style="left:150px;top:210px;font-size:20px">व्याज किती?</div><div class="card" style="left:40px;right:110px;top:300px"><div style="text-align:center"><div style="font:700 16px P">SBI MCLR 8.95% + 2%</div><div style="font:900 44px/1.1 P" class="g">10.95%</div><div class="k">भरलेल्या रकमेवर · stamp duty/tax सोडून</div></div></div></div><div class="cap"><div class="h">S4 · दर <span class="tm">28.2–41 s</span></div>"SBI चा MCLR अधिक दोन टक्के… दहा पॉइंट नऊ पाच"<br><i>P4 calculator · counter "दहा पॉइंट" वर</i></div></div>
+<div class="cell"><div class="f"><img class="bg" src="S5.jpg"><div class="unsafe top"></div><div class="unsafe bot"></div><div class="logo"><img src="logo_gold.png"></div><div class="src">* RERA कलम 18 · महा. RERA नियम 18 · SBI MCLR 15 ऑक्टो 2026<br>कायदेशीर सल्ला नाही · दि. 3 नोव्हें 2026</div><div class="card" style="left:40px;right:110px;top:560px"><div style="text-align:center;font:700 16px P">"उशीर आमच्या हातात नव्हता"?</div></div><div class="pill" style="left:120px;top:650px;font-size:20px">High Court: हक्क बिनशर्त</div></div><div class="cap"><div class="h">S5 · कोर्ट <span class="tm">41–49.3 s</span></div>"High Court… हक्क बिनशर्त"<br><i>P5 judgment file · gold stamp "बिनशर्त" वर</i></div></div>
+<div class="cell"><div class="f"><img class="bg" src="S6.jpg"><div class="unsafe top"></div><div class="unsafe bot"></div><div class="logo"><img src="logo_gold.png"></div><div class="src">* RERA कलम 18 · महा. RERA नियम 18 · SBI MCLR 15 ऑक्टो 2026<br>कायदेशीर सल्ला नाही · दि. 3 नोव्हें 2026</div><div class="card" style="left:40px;right:110px;top:260px"><div style="text-align:center"><div class="k">MahaRERA आदेशानंतर</div><div style="font:900 40px/1.1 P" class="g">60 दिवस</div><div style="font:700 15px P">नाहीतर वसुली warrant</div></div></div></div><div class="cap"><div class="h">S6 · 60 दिवस <span class="tm">49.3–57.3 s</span></div>"साठ दिवसांत पैसे… वसुलीचं warrant"<br><i>P6 cheque · 60 चा ring countdown</i></div></div>
+<div class="cell"><div class="f"><img class="bg" src="S7.jpg"><div class="unsafe top"></div><div class="unsafe bot"></div><div class="logo"><img src="logo_gold.png"></div><div class="src">* RERA कलम 18 · महा. RERA नियम 18 · SBI MCLR 15 ऑक्टो 2026<br>कायदेशीर सल्ला नाही · दि. 3 नोव्हें 2026</div><div class="card" style="left:40px;right:110px;top:260px"><div style="font:700 17px/1.8 P"><span class="g">1</span> करारातली तारीख तपासा<br><span class="g">2</span> पावत्या जपा<br><span class="g">3</span> MahaRERA online तक्रार</div></div></div><div class="cap"><div class="h">S7 · काय करायचं <span class="tm">57.3–63.9 s</span></div>"तारीख तपासा, पावत्या जपा, तक्रार करा"<br><i>P7 laptop · steps शब्दावर</i></div></div>
+<div class="cell"><div class="f"><img class="bg" src="S8.jpg"><div class="unsafe top"></div><div class="unsafe bot"></div><div class="logo"><img src="logo_gold.png"></div><div class="src">* RERA कलम 18 · महा. RERA नियम 18 · SBI MCLR 15 ऑक्टो 2026<br>कायदेशीर सल्ला नाही · दि. 3 नोव्हें 2026</div><div class="card" style="left:40px;right:40px;top:215px;text-align:center"><div style="font:800 21px/1.35 P">तुमचा ताबा <span class="g">किती महिने उशिरा?</span></div></div><div class="card" style="left:40px;right:110px;top:620px;padding:10px 14px"><div class="k">comment</div><div style="font:600 16px P">18 महिने ▍</div></div></div><div class="cap"><div class="h">S8 · Comment <span class="tm">63.9–70 s</span></div>"किती महिने उशिरा? Comment करा!"<br><i>P8 नवं घर, कुटुंब · comment box</i></div></div>
+<div class="cell"><div class="f" style="background:radial-gradient(ellipse 90% 60% at 50% 38%,#1b2a45 0%,#0d1729 50%,#060b16 100%)"><div class="unsafe top"></div><div class="unsafe bot"></div>
+<div style="position:absolute;left:0;right:0;top:300px;text-align:center;font:800 30px P;color:#fff">अशाच <span class="g">माहितीसाठी</span></div>
+<div style="position:absolute;left:150px;top:370px;width:240px;height:166px;background:#fff;border-radius:16px;display:flex;align-items:center;justify-content:center"><img src="logo_gold.png" style="width:200px"></div>
+<div class="pill" style="left:150px;top:620px;font-size:17px">Follow → Following ✓</div></div><div class="cap"><div class="h">S9 · Outro <span class="tm">70–73 s</span></div>Follow flip</div></div>
+</div><script>
+function fit(){document.querySelectorAll('.cell').forEach(c=>{const f=c.querySelector('.f');f.style.zoom=c.clientWidth/540})}
+addEventListener('resize',fit);addEventListener('load',fit);fit();
+</script></body></html>

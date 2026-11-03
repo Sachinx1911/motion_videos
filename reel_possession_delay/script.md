@@ -1,5 +1,5 @@
 # ताबा उशिरा? Builder ने दर महिन्याला व्याज द्यायलाच हवं (RERA कलम 18)
-*SRS Dwell · 3 Nov 2026 · reel folder: `reel_possession_delay` · post 5 Nov 10:00 · draft v1 · approval pending*
+*SRS Dwell · 3 Nov 2026 · reel folder: `reel_possession_delay` · post 5 Nov 10:00 · v1 approved 3 Nov 2026 (user asked for image prompts)*
 
 ## Audience questions
 1. ताबा 1-2 वर्षं उशिरा, मला काही मिळतं का?
