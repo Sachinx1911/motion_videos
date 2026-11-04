@@ -58,6 +58,7 @@ Name - topic - audience - logo file + placement - palette (3 colours) - mascot y
   7. LENGTH: Bunty speaks ≈ 2.3 words/s (bid-error: 225 words = 99 s). 75-95 s = 170-220 words; never above ~260 words (115 s). Count words before delivering.
   Audience pain-point map for SRS Dwell: research/AUDIENCE_MAP.md (use it for topics and hooks; update with real comments).
   Not used from that prompt: camera/B-roll (we do motion graphics), offers/leads/sales (independent voice), 30-60 s limit (decide from Instagram watch-time instead).
+- FAST-PACED EDITING (user, 4 Nov 2026): background/camera changes every 2-4 s (2-3 crops per image: wide/close/side, fast zoom-pan between), new image every ~6-8 s; hook number/question on frame 1; zoom-punch + short sfx on every key number/word; cuts 0.15-0.25 s (no long dissolves); voice pauses trimmed to ~0.15 s (target 55-60 s). Text stays readable and voice-synced; only background/camera is fast.
 - Hook in first 2 s: twist / shocking fact / direct question. Never "अरे थांबा!".
 - Every script = hook -> short story or example -> facts -> twist/climax -> engagement -> outro. Save-worthy (checklist / numbers).
 - Pack static facts (numbers, dates, rule numbers) so motion graphics have something to animate.
