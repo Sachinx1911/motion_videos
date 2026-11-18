@@ -20,8 +20,8 @@ A({t0:.3,t1:S.s9,x:600,y:300,w:640,cls:'noshadow',enter:'fade',din:.5,float:0,z:
 // ===== S1 HOOK (0-8.26) : 70 लाख vs 78 लाख =====
 CROPS('P1_vashi_building.jpg',[[S.s1,3.3,1.0,1.08],[3.3,6.0,1.5,1.58,-160,-120,260,220],[6.0,S.s2,1.25,1.32,200,160,-160,-120]]);
 HEAD(L(0.46),S.s2,'घराची किंमत?');
-A({t0:L(1.12),t1:S.s2,x:540,y:820,w:420,img:'O01_price_tag.png',enter:'pop',din:.4,sfx:'pop',sfxv:.6,float:.2,z:40,
-  html:`<div style="position:absolute;left:0;right:0;top:250px;text-align:center"><div style="font:600 30px P;color:#555">Agreement</div><div style="font:900 70px/1.05 P;color:#0d1729">₹70 लाख</div></div>`});
+A({t0:L(1.12),t1:S.s2,x:500,y:900,w:560,img:'O01_price_tag.png',enter:'pop',din:.4,sfx:'pop',sfxv:.6,float:.2,z:40,
+  html:`<div style="position:absolute;left:3%;width:41%;top:255px;text-align:center"><div style="font:600 24px P;color:#666">Agreement</div><div style="font:900 70px/1.05 P;color:#0d1729">₹70</div><div style="font:800 40px/1.1 P;color:#0d1729">लाख</div></div>`});
 A({t0:L(3.94),t1:S.s2,x:560,y:1080,w:860,cls:'chipw',html:`<span class="stampbox" style="color:#e0392b;background:rgba(255,255,255,.9);font-size:72px;transform:rotate(-7deg);display:inline-block">सरकार: ₹78 लाख</span>`,enter:'stamp',din:.3,sfx:'stamp',sfxv:.85,z:60,float:0,over:1});
 shake(L(3.94)+.05,10);
 PILL(L(5.56),S.s2,540,1330,'Stamp duty 78 लाखावर!','p-red',{st:'font-size:40px',float:0});
