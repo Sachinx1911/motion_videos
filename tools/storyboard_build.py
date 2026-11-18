@@ -31,10 +31,11 @@ def placeholder(m):
     dark = 'गडद' in labels.get(n, '')
     bg = 'linear-gradient(160deg,#3a3f47,#23272d)' if dark else 'linear-gradient(160deg,#a9a299,#7f786f)'
     col = '#c9ccd1' if dark else '#f1ece4'
-    return (f'<div class="bg" style="position:absolute;inset:0;background:{bg};display:flex;align-items:center;'
-            f'justify-content:center"><div style="border:2px dashed {col};border-radius:14px;padding:18px 22px;'
-            f'margin:0 40px;text-align:center;font:700 22px/1.4 P;color:{col}">🖼 {labels.get(n, "F" + n)}<br>'
-            f'<span style="font:500 15px P">image इथे · 9:16</span></div></div>')
+    # label sits in the top unsafe band (y 12-100), so it never collides with on-screen text
+    return (f'<div class="bg" style="position:absolute;inset:0;background:{bg}">'
+            f'<div style="position:absolute;left:24px;right:24px;top:14px;border:2px dashed {col};border-radius:10px;'
+            f'padding:8px 12px;text-align:center;font:700 17px/1.3 P;color:{col};white-space:nowrap;overflow:hidden;'
+            f'text-overflow:ellipsis">🖼 {labels.get(n, "F" + n)} · 9:16</div></div>')
 
 
 title = re.search(r'<h1>(.*?)</h1>', tpl).group(1).split('· Storyboard')[0].strip()

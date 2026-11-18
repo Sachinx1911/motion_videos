@@ -1,5 +1,5 @@
 # Redevelopment की दुरुस्ती? 30 वर्षं झाली म्हणजे building पाडायलाच हवी का?
-*SRS Dwell · 27 Oct 2026 · reel folder: `reel_repair_or_redev` · draft v1 · approval pending*
+*SRS Dwell · 27 Oct 2026 · reel folder: `reel_repair_or_redev` · v1 approved 28 Oct 2026 (user asked for image prompts)*
 
 ## Audience questions (guesses)
 1. आमची building 30 वर्षांची झाली, आता पाडायलाच लागेल का?

@@ -72,7 +72,7 @@ Golden-hour aerial of an old 4-storey CIDCO block cluster; a tiny "150 sq.ft" fl
 #NaviMumbai #Redevelopment #ClusterRedevelopment #CIDCO #SRSDwell
 
 ---
-Footer: "* माहिती दि. 27 ऑक्टोबर 2026 पर्यंत · स्रोत: नगरविकास विभाग आदेश (15 ऑक्टो), UDCPR 14.8 · सरकारी video नाही".
+Footer: "* माहिती दि. 31 ऑक्टोबर 2026 पर्यंत · स्रोत: नगरविकास विभाग आदेश (15 ऑक्टो), UDCPR 14.8 · सरकारी video नाही".
 Screen notes: "10,000 चौ.मी. ≈ 2.5 एकर" · "दाट भागात 4,000 चौ.मी." · "30 चौ.मी. = 323 sq.ft" · "अंतिम मंजुरी बाकी".
 Not in video: politics/names of ministers; Pudhari's 12-society / 3,264 / 700 families on rent (single source, differs from FPJ).
 

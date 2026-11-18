@@ -26,3 +26,4 @@
 - Pudhari 21 Oct 2026: https://pudhari.news/maharashtra/mumbai/navi-mumbai-cluster-redevelopment-stay-cancelled-for-12-housing-societies-sb97
 - UrbanAcres ~23 Oct 2026: https://urbanacres.in/navi-mumbai-cluster-redevelopment-exposes-a-dangerous-planning-gap/
 - UDCPR 2020 Reg. 14.8 (local copy research/udcpr/udcpr.txt)
+- 323 voice check: user confirmed 'तीनशे तेवीस' correct (31 Oct 2026); whisper misheard 303.
