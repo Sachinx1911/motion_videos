@@ -66,6 +66,19 @@ Then reply in Marathi with a 3-line summary of what you understood and ask me fo
 - Output: 1080x1920, 30 fps, H.264 + AAC, **under 29 MB** (2-pass encode).
 
 
+
+### 4d. Rules from 21 Nov 2026 (Index II reel) - rule book, check before EVERY render
+1. ONE idea per reel, 55-65 s, 130-150 words; voice speed-up atempo 1.12, pauses 0.15 s; URLs never spoken.
+2. First style only: navy + gold (Index II v3b `reel_index2/site` = template), big real cut-outs centre stage, numbered pills, progress bar, big transitions, stage zoom. Ivory / photo+card format is rejected.
+3. FRESH look: navy no darker than #15264a, weak vignette, bokeh on; reds bright coral; hook photo in daylight with a navy glass behind the text.
+4. Text is white (dark bg) or ink (white card). NO gradient-clip coloured words; a stressed word goes on a gold/red pill.
+5. NO overlaps anywhere, especially HUD chips vs section pills - overlap.py + look at the top band of every section.
+6. Text and animation land ON the spoken word, never before. Word-driven sequences (rows, fields, ticks) must finish before the next cue word: duration = min(0.45, gap - 0.05).
+7. NO invented code-drawn props (pen, magnifier, icons). Props are the user's cut-outs; if one is needed, ask for it in the cut-out list.
+8. Everything moves; nothing static for more than ~3 s. Footer/source only in the outro. Nothing below y 1600 except the CTA comment box (to 1730). Caption: exactly 5 hashtags.
+9. Fix everything in ONE pre-render pass (6-10 check frames) - each re-render costs 10 minutes.
+10. Scripts and prompts always in copy boxes; image prompts category-wise + separate cut-out list.
+
 ## 4b. Storyboard types (user's list, 8 Oct 2026) - pick 2-4 per video and name them in the proposal
 | # | Type | Looks like | Best for |
 |---|---|---|---|
