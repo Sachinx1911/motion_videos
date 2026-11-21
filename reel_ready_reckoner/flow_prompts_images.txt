@@ -1,0 +1,35 @@
+#P1 Low-angle photo of a typical 7-storey cream-and-brown residential building in Vashi, Navi Mumbai, with balconies and a small compound gate, late afternoon sun, a few parked two-wheelers, palm tree at the edge, clear sky, 24 mm lens, building filling the upper two-thirds, empty lower third. Realistic, no CGI look. No text, no signboards, no logo, no watermark.
+
+#P2 High aerial photo of Navi Mumbai nodes at golden hour, dense blocks of mid-rise residential buildings separated by straight roads and green strips, Palm Beach road and creek water at one edge, long shadows, haze towards the horizon, 35 mm lens. Realistic, no CGI look. No text, no labels, no logo, no watermark.
+
+#P3 Wide photo of an empty, freshly finished 2 BHK living room in a Navi Mumbai apartment, vitrified tile floor, white walls, open balcony door showing neighbouring buildings and sky, afternoon light, a measuring tape lying on the floor near the door, 20 mm lens. Realistic, no CGI look. No text, no labels, no logo, no watermark.
+
+#P4 Photo inside a busy Indian sub-registrar office: a wooden counter, stacks of document files, a man in a shirt handing a bundle of papers across the counter, fluorescent light, people waiting on plastic chairs blurred in the background, 35 mm lens. Faces not visible, not famous people. Realistic, no CGI look. No text, no readable writing, no logo, no watermark.
+
+#P5 Top-down photo of a wooden table with a flat sale agreement in the centre, one hand from the left side and one hand from the right side each holding a pen above it, a cup of tea and a set of keys at the edge, soft window light, symmetrical composition, 35 mm lens. Faces not visible. Realistic, no CGI look. No text, no readable writing, no logo, no watermark.
+
+#P6 Close-up of a worried Indian man's hands holding an opened envelope and a printed letter at a kitchen table, a calculator and a home-loan passbook beside it, evening lamp light, shallow depth of field, 50 mm lens. Face not visible. Realistic, no CGI look. No text, no readable writing, no logo, no watermark.
+
+#P7 Over-the-shoulder photo of a woman sitting on a sofa holding a smartphone upright, the screen blank white, a printed flat agreement on her lap, warm living-room light, 35 mm lens. Face not visible, not famous people. Realistic, no CGI look. No text, no logo, no watermark.
+
+#P8 Close-up of a young Indian couple's hands receiving a pair of new flat keys with a plain key tag at a bright apartment doorway, sunlight from a balcony behind, smiling mood, 50 mm lens, empty lower third. Faces not visible, not famous people. Realistic, no CGI look. No text, no labels, no logo, no watermark.
+
+#O01 Product photo of a plain white paper price tag with a string, blank, isolated on a solid pure green background, soft studio light, no shadow on background. No text, no logo.
+
+#O02 Product photo of a wooden-handle round rubber stamp seen from the side at 30 degrees, no text on it, isolated on a solid pure green background, soft studio light. No text, no logo.
+
+#O03 Product photo of a desk calendar block showing a single blank page, isolated on a solid pure green background, soft studio light. No text, no logo.
+
+#O04 Product photo of a yellow steel measuring tape slightly pulled out, isolated on a solid pure green background, soft studio light. No text, no logo.
+
+#O05 Product photo of a basic grey desk calculator with a blank display, isolated on a solid pure green background, soft studio light. No text, no logo.
+
+#O06 Product photo of a bundle of Indian 500 rupee notes with a bank band, isolated on a solid pure green background, soft studio light. No logo, no watermark.
+
+#O07 Product photo of a black smartphone, front view, blank white screen, isolated on a solid pure green background, soft studio light. No text, no logo.
+
+#O08 Straight-on front elevation photo of a simple 7-storey cream residential building with balconies, isolated on a solid pure green background, flat daylight. No text, no signboards, no logo.
+
+#O09 Product photo of a chrome gauge needle like a speedometer pointer, isolated on a solid pure green background, soft studio light. No text, no logo.
+
+#O10 Product photo of a single flat key with a plain blank key tag, isolated on a solid pure green background, soft studio light. No text, no logo.
