@@ -22,7 +22,7 @@ A({t0:0,t1:SEC[7],x:128,y:108,w:190,img:'logo_white.png',cls:'noshadow',enter:'f
 A({t0:SEC[1],t1:SEC[6],x:680,y:104,w:660,cls:'noshadow',enter:'fade',din:.5,float:0,z:600,
   html:`<div style="display:flex;gap:12px">${[1,2,3,4].map(i=>`<div class="sg" style="flex:1;height:14px;border-radius:7px;background:rgba(255,255,255,.18);overflow:hidden"><div style="height:100%;width:0;background:linear-gradient(90deg,#f2dfb6,#c9a66f);box-shadow:0 0 12px #e8cf9f"></div></div>`).join('')}</div>`,
   draw:(t,lt,oo)=>{const st=[SEC[1],SEC[2],SEC[3],SEC[4],SEC[5]];oo.el.querySelectorAll('.sg>div').forEach((d,i)=>{d.style.width=(clamp((t-st[i])/(st[i+1]-st[i]))*100)+'%'})}});
-A({t0:0,t1:SEC[7],x:860,y:200,w:360,cls:'noshadow',enter:'fade',din:.5,float:0,z:600,html:`<div style="display:inline-block;font:700 22px/1 P;color:#fff;background:rgba(255,255,255,.14);border:2px solid rgba(232,207,159,.5);border-radius:999px;padding:10px 20px">उदाहरण · राहुल</div>`});
+A({t0:0,t1:SEC[7],x:900,y:162,w:320,cls:'noshadow',enter:'fade',din:.5,float:0,z:600,html:`<div style="display:inline-block;font:700 20px/1 P;color:#fff;background:rgba(255,255,255,.14);border:2px solid rgba(232,207,159,.5);border-radius:999px;padding:10px 20px">उदाहरण · राहुल</div>`});
 
 // ================= HOOK 0 - 7.56 =================
 BG({img:'B01_building_day.jpg',t0:0,t1:SEC[1],s0:1.2,s1:1.04,y0:-60,y1:20,fade:.2,filter:'brightness(.95) saturate(1.0)'});
