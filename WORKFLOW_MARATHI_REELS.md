@@ -185,6 +185,7 @@ Watermark ✦ bottom-right: patch with nearby texture (best-match offset + feath
 ---
 
 ## 10. QC checklist (before telling the user it is done)
+- [ ] PRE-RENDER PASS (user, 21 Nov 2026 - fix everything in ONE pass, each re-render costs 10 min): top band of every section (HUD chips never touch pills/titles), no gradient-clip coloured words, fresh navy (not black/maroon), daylight hook photo with glass behind text, text only on its spoken word, every object moving.
 - [ ] 2 fps frame sheets of the FINAL mp4 - no empty frames, no clipped/overlapping text, everything in the safe area.
 - [ ] overlap.py clean (only intended overlays).
 - [ ] Splice joints: no double words / clicks (check 1 s around each cut).
