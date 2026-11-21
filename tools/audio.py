@@ -177,14 +177,14 @@ def ramp(a,b,v0,v1):
     i,j=int(a*SR),int(b*SR); g[i:j]=np.linspace(v0,v1,j-i)
 g[:]=1
 
-mus*=0
+mus*=float(os.environ.get('BED','0'))  # optional low tone bed (user approved 21 Nov 2026), e.g. BED=0.06
 vo=np.fromfile('vo_t.f32',np.float32).astype(np.float64)
 vo=np.resize(np.concatenate([vo,np.zeros(max(0,N-len(vo)))]),N) if len(vo)<N else vo[:N]
 # sidechain duck music under VO
 envv=np.convolve(np.abs(vo),np.ones(2205)/2205,'same'); duck=1-0.45*np.clip(envv*12,0,1)
 FXG=float(os.environ.get('FXG','0.16')); DUCK=float(os.environ.get('DUCK','0.5'))  # SFX gain / duck depth under voice
 fxd=1-DUCK*np.clip(envv*12,0,1)
-mix=vo*1.0+fx*FXG*fxd
+mix=vo*1.0+fx*FXG*fxd+mus*fxd
 sp=np.abs(vo)>0.02
 g=0.17/np.sqrt((mix[sp]**2).mean()); mix*=g
 th=0.8; a=np.abs(mix); over=a>th
