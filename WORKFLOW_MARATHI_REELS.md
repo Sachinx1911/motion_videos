@@ -69,6 +69,17 @@ Name - topic - audience - logo file + placement - palette (3 colours) - mascot y
 - NEWS FRESHNESS (user, 25 Oct 2026): re-verify every number/date on the day the script is written, prefer official sources (CIDCO, MahaRERA, NMMC, GR) over news; put "* माहिती दि. <date> पर्यंत" in the footer; if a scheme has closed, change the angle ("पुढची lottery येतेय", "मागच्या lottery तून शिका") instead of using stale figures.
 - INDEPENDENT VOICE (user, 25 Oct 2026): we inform the public, we do NOT work for CIDCO / builders / govt. Never sound like a promotion: no "सुवर्णसंधी", "लवकर अर्ज करा", "आत्ताच book करा"; always include the buyer's side - risks, delays, hidden costs, what to check, past complaints (water, possession, transfer charges); use "CIDCO म्हणतं..." / "योजना सांगते..." phrasing, show both sides; CTA is "तुमचा अनुभव comment करा", not "apply now". Footer "CIDCO चा अधिकृत video नाही" stays on CIDCO reels.
 - Series: if a topic goes viral, make "भाग 2" and reference भाग 1 in the voice + on screen.
+- INTERESTING REELS (user approved all, 21 Nov 2026 - after Ready Reckoner v1b, 99 s, felt like a presentation):
+  1. ONE idea per reel, 55-65 s, 130-150 words. A script with 5-6 points is 2 reels (RR example: "सरकारी किंमत कशी ठरते" + "10% चा नियम").
+  2. RESULT-FIRST HOOK on frame 1, before the voice starts: big number/line on screen ("₹48,000 जास्त भरले. कारण?"), zoom-punch, 2 cuts in the first 3 s. First 10 s very strong: shocking fact, big text, camera zoom, punch, shake.
+  3. SHOW THE PROCESS, don't decorate: visuals must explain - every number gets a movement (tape pulled -> 650 -> 72.5, notes leave the bundle, needle crosses into red, stamp hits the person). "Photo + glass card with numbers" is the biggest weakness - cut-outs act like characters, never static.
+  4. ONE PERSON, ONE STORY: "राहुलने वाशीत 2 BHK घेतला..." instead of "उदाहरण: वाशी, 2 BHK". A simple silhouette/avatar stays through the reel and things happen to him.
+  5. ONE THING ON SCREEN at a time: one number, one line (6-8 words, 60 px+). Tables appear row by row, the previous row leaves. Camera always drifting (slow push-in), never fully static.
+  6. PATTERN INTERRUPT mid-reel (25-30 s): dark frame, one line ("हेच 90% लोक विसरतात"). PAYOFF at the end: one-line answer to the opening question, then CTA. No long disclaimer + 3 pills before the CTA.
+  7. FOOTER/SOURCE only at the end (2 s) or in the caption - not on screen for the whole reel.
+  8. REAL FEEL: 1-2 real clips from the user's phone (office exterior, building, real screen recording of the govt site) beat AI stock photos; ask for a 20 s screen recording when a website is shown.
+  9. SERIES IDENT: same 0.5 s logo sting + sound at the start and end of every reel; "भाग 1/3"; the ending asks the next reel's question.
+  10. VOICE ERROR fallback: if a line cannot be re-recorded, keep the voice, show the correct fact on screen and say so in the delivery summary (never ship a wrong fact silently).
 
 ---
 
@@ -97,6 +108,9 @@ Name - topic - audience - logo file + placement - palette (3 colours) - mascot y
 - NUMBERS (tested): round hundreds in romanized words - "shambhar", "teenshe" (digits "100" -> "एकशे"; even Devanagari "शंभर" failed once). Decimals "27 पॉइंट 87". Rule numbers "9 पॉइंट 2 पॉइंट 1". "%" -> "टक्के". sq.ft -> "स्क्वेअर फूट", sq.m -> "चौरस मीटर". Big numbers in Marathi words ("दोन हजार सहाशे पंचवीस"). On screen keep normal digits.
 - Acronyms ElevenLabs mispronounces: write them in Devanagari in the voice script - CIDCO -> सिडको (user, 26 Oct 2026). Screen text keeps the English acronym.
 - Re-record ONE line, not the whole voice; splice with `tools/splice.py` (cuts snap to silence - never cut inside a word: the TDR "हक्क" glitch).
+- SPEED-UP (user approved 21 Nov 2026): before trim, `ffmpeg -i vo.mp3 -af atempo=1.12 -ac 1 -ar 44100 -c:a pcm_s16le vo.wav` (1.10-1.15 range; 1.06 too slow, 1.25 rushed). Then `trim.py` with pauses capped ~0.15 s. Target 50-60 s.
+- WORD TIMING: when the voice matches the script, `tools/align.py` (script.txt, numbers written in words) is the PRIMARY cue source - clean words to cue on. Whisper (`tools/whisper_win.py` on Windows, mlx-whisper on Mac) is the CHECK: numbers on 2-4 s snippets in mr + hi, and any line that differs from the script (e.g. a URL read letter by letter -> re-record that line).
+- URLs are never spoken (ElevenLabs spells them letter by letter - RR reel lost 6 s): say "IGR महाराष्ट्रच्या free search website वर" and show the URL on screen.
 
 ---
 
@@ -112,7 +126,7 @@ Name - topic - audience - logo file + placement - palette (3 colours) - mascot y
 
 ## 7. Design system
 ### 7.1 Instagram safe area (1080x1920)
-Logo top-left x205 y300 (w~170). Key content y 250-1480, x 110-970. Between y 880-1700 nothing right of x 860. No text below y 1480. Footer next to logo row (y~300-370). Check with `site/index_safe.html`.
+Logo top-left x205 y300 (w~170). Key content y 250-1480, x 110-970. Between y 880-1700 nothing right of x 860. No text below y 1480; NOTHING at all below y 1600 (22 % bottom band = Instagram UI) except the standard CTA comment box, which may go to y 1730 (user, 21 Nov 2026). Footer next to logo row (y~300-370). Check with `site/index_safe.html`.
 
 ### 7.2 Look that the user approved (reference board, 14 Oct 2026)
 - Full-bleed real photo per scene (slow push-in) + light top/bottom shade.
@@ -128,6 +142,7 @@ Logo top-left x205 y300 (w~170). Key content y 250-1480, x 110-970. Between y 88
 ### 7.2b VARY THE LOOK EVERY REEL (user, 25 Oct 2026)
 Two consecutive reels must never share the same design system or image style. Before S4 (prompts) pick and NAME: storyboard type (7.5), palette (not always ivory/gold/navy), card language (white icon cards / dark glass / paper cut-outs / sketch / 3D), typography accent, transition, AND image style (authentic photo / archival B&W / isometric render / flat-lay / sketch-to-render / cinematic night / halftone collage). Keep only the logo + safe area constant. Log the look used in the reel's script.md so the next reel avoids it.
 ### 7.3 Motion (never static)
+- DEVANAGARI TEXT: never `letter-spacing` (matras break); titles `white-space:nowrap`; max 6-8 words per on-screen line.
 Glass/white cards, gold gradient numbers, count-ups, self-drawing arrows/lines, camera punch on key words, shake on stamps, constant slow zoom, grain + vignette, particles. Every animation is tied to a WORD (`C('word', approxTime)` from cue_words.json), not to a hard-coded time - a re-recorded line then re-times automatically.
 
 ### 7.4 Transitions
@@ -145,6 +160,7 @@ Maps only from real data (`brand/geo/`, Natural Earth, district data) + NASA/Esr
 - Voice + synthesized SFX, NO music. `FXG=0.24 DUCK=0.4 END=<len> python3 ../tools/audio.py` -> about -15 LUFS, voice clearly louder.
 - No bell-type sounds (ding, chime, bell, coin, sparkle). One sound per beat (none within 0.15 s). Sound lands on its word, visual on the same frame.
 - Voice gaps capped ~0.25 s (`tools/trim.py`).
+- UNDERSCORE (user approved 21 Nov 2026): a very low tone/pulse bed is allowed (about -28 dB under the voice, not a song) plus a tick/thud on every number and a riser into the hook; music tracks are still not used.
 
 ---
 
@@ -159,6 +175,8 @@ Maps only from real data (`brand/geo/`, Natural Earth, district data) + NASA/Esr
 | `overlap.py 0.1 END` | no text/object may cross another (mark intended overlays `allowOver:1`) |
 | `render.py sfx 0 0 out/sfx.json` -> `audio.py` | SFX list + mix |
 | `render.py video a b out/pN.mp4` | parallel parts |
+| `tools/keygreen.py` | green-screen jpg (raw/O*.jpg) -> transparent png (site/a/), despilled and cropped |
+| 2-pass encode | bitrate from length so the file lands just under 29 MB: `BR=$(python -c "print(int(28.3*8*1024/<len>-160))")`, then pass 1 `-b:v ${BR}k -an -f null NUL`, pass 2 with `mix.m4a`, `-vf "scale=in_range=full:out_range=tv,format=yuv420p" -color_range tv -movflags +faststart` |
 | encode | concat -> 2-pass x264 with `-vf "scale=in_range=full:out_range=tv,format=yuv420p" -color_range tv`, bitrate for ~27-28 MB (2250k for 95 s, 2800k for 75 s), AAC 128k, `-movflags +faststart` |
 
 Watermark ✦ bottom-right: patch with nearby texture (best-match offset + feathered mask), never blurry inpaint.
@@ -190,7 +208,7 @@ Watermark ✦ bottom-right: patch with nearby texture (best-match offset + feath
 ---
 
 ## 12. Delivery templates
-Caption: hook line (shown before "more") -> 3-7 short ◾-style lines of value -> engagement question with numbered options -> save/share line -> disclaimer if any -> 5 hashtags. Write like a person, not like AI.
+Caption: hook line (shown before "more") -> 3-7 short ◾-style lines of value -> engagement question with numbered options -> save/share line -> disclaimer if any -> EXACTLY 5 hashtags (user, 21 Nov 2026). Write like a person, not like AI.
 Pin comment: (a) the vote question, (b) link to भाग 1/भाग 2 on profile, or (c) "save करा" reminder. Tell the user to reply to comments in the first hour.
 
 - ACCENT BORDERS (user, 26 Oct 2026): the orange/accent outline is used ONLY to mark a plot or an area being pointed out (plot boundary, pins, leader line to an object). Never as a transition frame, card edge stripe or logo box outline. Transitions stay clean (zoom-dissolve / camera move).
