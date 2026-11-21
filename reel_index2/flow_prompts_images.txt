@@ -17,3 +17,7 @@
 #O13 A classic magnifying glass with a black handle, tilted 30 degrees, centered with 15% empty margin on all sides, isolated on a solid pure green background, flat even studio light, no shadow on the background, sharp edges. No text, no logo.
 
 #O14 A bundle of old cream-coloured documents tied with red cotton tape, seen from slightly above, centered with 15% empty margin on all sides, isolated on a solid pure green background, flat even studio light, no shadow on the background, sharp edges. No text, no logo.
+
+#O15 Full-body photo of a young Indian man, about 30, in a plain light-blue shirt and dark trousers, standing in three-quarter view, holding a smartphone and looking at it, neutral expression, full body visible from head to shoes, centered with 10% empty margin, isolated on a solid pure green background, flat even studio light, no shadow on the background, sharp edges. Not a famous person. No text, no logo.
+
+#O16 Full-body photo of the same young Indian man, about 30, plain light-blue shirt and dark trousers, three-quarter view, holding a smartphone, surprised expression with raised eyebrows and open mouth, full body visible, centered with 10% empty margin, isolated on a solid pure green background, flat even studio light, no shadow on the background, sharp edges. Not a famous person. No text, no logo.
