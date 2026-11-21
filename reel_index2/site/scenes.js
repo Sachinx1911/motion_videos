@@ -6,7 +6,7 @@ const END=70.5;window.END=END;
 const L=t=>t-.12;
 const SEC=[0,7.56,12.8,25.41,41.84,56.59,62.16,67.6,END];
 HOOKS.push(t=>{let i=0;while(i<SEC.length-2&&t>=SEC[i+1])i++;const p=clamp((t-SEC[i])/(SEC[i+1]-SEC[i]));document.getElementById('stage').style.transform=`scale(${1+.04*E.inout(p)})`});
-BOKEH_ON=t=>(t<7.5||(t>56.5&&t<62.1))?0:1;
+BOKEH_ON=t=>(t<7.5)?0:1;
 const INK='#0d1729';
 const BAN=(t0,t1,y,txt,o={})=>{A({t0,t1,x:540,y,w:1000,cls:'chipw',html:`<span class="pill p-red" style="font:900 ${o.fs||52}px/1.15 P;padding:24px 44px 18px;transform:rotate(${o.rot||-3}deg);display:inline-block;white-space:normal">⚠ ${txt}</span>`,enter:'stamp',din:.3,sfx:'stamp',sfxv:.85,z:60,float:0,allowOver:1,over:1});shake(t0+.05,10)};
 const CARD=(t0,t1,y,icon,title,sub,o={})=>GL(t0,t1,o.x||540,y,o.w||900,`<div style="display:flex;align-items:center;gap:24px;text-align:left"><div style="width:96px;height:96px;flex:none;border-radius:22px;background:${o.col||'linear-gradient(180deg,#f2dfb6,#c9a66f)'};display:flex;align-items:center;justify-content:center;font-size:52px">${icon}</div><div><div style="font:800 ${o.fs||44}px/1.25 P;color:${INK}">${title}</div>${sub?`<div style="font:600 30px/1.3 P;color:#6b5a45;margin-top:4px">${sub}</div>`:''}</div></div>`,Object.assign({white:true,pad:'20px 28px',enter:'left',din:.4,float:.05},o));
@@ -25,10 +25,10 @@ A({t0:SEC[1],t1:SEC[6],x:680,y:104,w:660,cls:'noshadow',enter:'fade',din:.5,floa
 A({t0:0,t1:SEC[7],x:860,y:200,w:360,cls:'noshadow',enter:'fade',din:.5,float:0,z:600,html:`<div style="display:inline-block;font:700 22px/1 P;color:#fff;background:rgba(255,255,255,.14);border:2px solid rgba(232,207,159,.5);border-radius:999px;padding:10px 20px">उदाहरण · राहुल</div>`});
 
 // ================= HOOK 0 - 7.56 =================
-BG({img:'B01_building_dusk.jpg',t0:0,t1:SEC[1],s0:1.18,s1:1.02,y0:-40,y1:30,fade:.2,filter:'brightness(.85) saturate(.9)'});
-TINT(0,SEC[1],'linear-gradient(180deg,rgba(6,11,22,.75),rgba(6,11,22,0) 35%,rgba(6,11,22,0) 55%,rgba(6,11,22,.9))',.2);
-TXT(L(0.03),L(1.71),540,520,`<div style="font:800 70px/1.25 P;color:#fff;text-shadow:0 10px 30px rgba(0,0,0,.8)">राहुलने <span class="gold">वाशीत</span><br>flat ठरवला</div>`,{enter:'up',din:.35,sfx:'whoosh',sfxv:.5});
-TXT(L(1.71),L(3.50),540,520,`<div style="font:800 70px/1.25 P;color:#fff;text-shadow:0 10px 30px rgba(0,0,0,.8)">पण त्याच flat वर<br><span class="gold">2 वर्षांपूर्वी…</span></div>`,{enter:'up',din:.3,sfx:'swoosh',sfxv:.4});
+BG({img:'B01_building_day.jpg',t0:0,t1:SEC[1],s0:1.2,s1:1.04,y0:-60,y1:20,fade:.2,filter:'brightness(.95) saturate(1.0)'});
+TINT(0,SEC[1],'linear-gradient(180deg,rgba(13,26,51,.72),rgba(13,26,51,.25) 40%,rgba(13,26,51,.15) 60%,rgba(13,26,51,.8))',.2);
+TXT(L(0.03),L(1.71),540,520,`<div style="display:inline-block;font:800 66px/1.25 P;color:#fff;background:rgba(13,26,51,.72);padding:22px 40px 16px;border-radius:28px;backdrop-filter:blur(8px)">राहुलने वाशीत<br>flat ठरवला</div>`,{enter:'up',din:.35,sfx:'whoosh',sfxv:.5});
+TXT(L(1.71),L(3.50),540,520,`<div style="display:inline-block;font:800 66px/1.25 P;color:#fff;background:rgba(13,26,51,.72);padding:22px 40px 16px;border-radius:28px;backdrop-filter:blur(8px)">पण त्याच flat वर<br>2 वर्षांपूर्वी…</div>`,{enter:'up',din:.3,sfx:'swoosh',sfxv:.4});
 A({t0:L(3.50),t1:SEC[1],x:300,y:1230,w:460,img:'O16_rahul_shock.png',enter:'pop',din:.3,sfx:null,float:.2,z:40});
 BAN(L(3.50),SEC[1],620,'दुसऱ्याचं नाव!',{fs:66,rot:-6});flash(L(3.50),.5,'#ff5a4a');
 GL(L(4.68),SEC[1],720,980,520,`<div style="font:800 40px/1.3 P;color:${INK}">घरबसल्या<br><span style="color:#b8935f">फुकट</span> कळलं</div>`,{white:true,pad:'20px 26px',enter:'right',din:.35,float:.1});
@@ -106,20 +106,20 @@ BAN(L(53.55),SEC[5],1000,'मालकीचा पुरावा नाही!
 CARD(L(55.88),SEC[5],1420,'🏛️','Bank / कोर्ट → प्रमाणित प्रत','दुय्यम निबंधकांकडून',{w:900,fs:38});
 
 // ================= 5. Pattern interrupt (56.59-62.16) =================
-TINT(SEC[5],SEC[6],'linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.55))',.2);
+TINT(SEC[5],SEC[6],'linear-gradient(180deg,rgba(13,26,51,.35),rgba(13,26,51,.35))',.2);
 TXT(L(56.59),L(57.95),540,860,`<div style="font:800 64px/1.3 P;color:#fff;text-shadow:0 8px 30px rgba(0,0,0,.8)">Builder किंवा मालक</div>`,{enter:'up',din:.3,sfx:null});
-TXT(L(57.95),SEC[6],540,860,`<div style="font:900 76px/1.2 P;color:#fff;text-shadow:0 8px 30px rgba(0,0,0,.8)">कागद दाखवायला<br><span class="red">टाळाटाळ?</span></div>`,{enter:'pop',din:.3,sfx:'impact',sfxv:.5});
+TXT(L(57.95),SEC[6],540,860,`<div style="font:900 76px/1.2 P;color:#fff;text-shadow:0 8px 30px rgba(0,0,0,.8)">कागद दाखवायला</div><div style="margin-top:14px"><span class="pill p-red" style="font:900 80px/1 P;padding:26px 52px 20px;color:#fff">टाळाटाळ?</span></div>`,{enter:'pop',din:.3,sfx:'impact',sfxv:.5});
 A({t0:L(60.34),t1:SEC[6],x:540,y:1200,w:900,cls:'chipw',html:`<span class="pill p-gold" style="font:900 56px/1 P;padding:24px 48px 18px">सही आधी · 2 मिनिटं</span>`,enter:'zoom',din:.3,sfx:'impact',sfxv:.6,z:60,float:0});
 punch(L(60.34),.07);
 A({t0:L(61.03),t1:SEC[6],x:540,y:1480,w:200,img:'O10_house_key.png',enter:'pop',din:.3,sfx:'pop',sfxv:.4,float:.3,z:45,fn:(t,lt)=>({r:Math.sin(lt*3)*8})});
 
 // ================= 6. CTA (62.16-67.6) =================
-GL(L(62.16),SEC[7],540,560,940,`<div style="font:800 54px/1.35 P;color:${INK}">तुम्ही कधी<br><span style="color:#b8935f">Index II काढलाय का?</span></div>`,{white:true,pad:'30px 36px',float:0,sfx:null});
+GL(L(62.16),SEC[7],540,560,940,`<div style="font:800 54px/1.35 P;color:${INK}">तुम्ही कधी<br>Index II काढलाय का?</div>`,{white:true,pad:'30px 36px',float:0,sfx:null});
 COMMENT_BOX(L(64.04),SEC[7]-.05,64.3,64.95,'हो, bank loan साठी',{y:1300,typeDur:.45});
 PILL(L(65.64),SEC[7],540,820,'📤 घर घेणाऱ्या मित्रांना पाठवा','p-gold',{st:'font-size:36px',float:0});
 
 // ================= OUTRO (67.6-70.5) =================
-TXT(L(67.6),END+1,540,420,`<div style="font:800 62px/1.3 P;color:#fff">अशाच <span class="gold">माहितीसाठी</span></div>`,{enter:'down',din:.4,float:0,sfx:null});
+TXT(L(67.6),END+1,540,420,`<div style="font:800 62px/1.3 P;color:#fff">अशाच <span style="color:#fff">माहितीसाठी</span></div>`,{enter:'down',din:.4,float:0,sfx:null});
 A({t0:67.6,t1:END+1,x:540,y:900,w:820,cls:'gl w',html:`<div style="padding:44px 56px 38px"><img src="a/logo_gold.png" style="width:100%;filter:none"></div>`,enter:'zoom',din:.5,sfx:null,z:50,float:0});
 FOLLOW_FLIP(L(68.3),END+1,68.8,{y:1380,col:'#c9a66f'});
 A({t0:68.3,t1:END+1,x:540,y:1540,w:980,cls:'chipw',enter:'fade',din:.4,float:0,z:40,html:`<div style="font:600 22px/1.5 P;color:rgba(255,255,255,.8)">* स्रोत: IGR महाराष्ट्र free search (14 नोव्हें 2026) · नोंदणी कायदा 1908 कलम 55<br>उदाहरणातील नावे, आकडे काल्पनिक · कायदेशीर सल्ला नाही</div>`});
