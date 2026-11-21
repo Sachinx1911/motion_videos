@@ -141,6 +141,8 @@ Logo top-left x205 y300 (w~170). Key content y 250-1480, x 110-970. Between y 88
 
 ### 7.2b VARY THE LOOK EVERY REEL (user, 25 Oct 2026)
 Two consecutive reels must never share the same design system or image style. Before S4 (prompts) pick and NAME: storyboard type (7.5), palette (not always ivory/gold/navy), card language (white icon cards / dark glass / paper cut-outs / sketch / 3D), typography accent, transition, AND image style (authentic photo / archival B&W / isometric render / flat-lay / sketch-to-render / cinematic night / halftone collage). Keep only the logo + safe area constant. Log the look used in the reel's script.md so the next reel avoids it.
+- APPROVED REFERENCE (user, 21 Nov 2026): Index II v3b (`reel_index2/site`, fresh navy + gold, first style) is the template for the next reels - copy its engine/index.html/lib.js/cta.js and keep its look rules.
+
 ### 7.3 Motion (never static)
 - TEXT COLOUR (user, 21 Nov 2026, Index II v2): on-screen text is plain white (on dark) or ink (on white cards). NO gradient-clip coloured words (the old .gold / .red text classes) - they vanish on photos and navy. A word to stress goes on a gold or red PILL/banner. Look must stay FRESH: navy no darker than #15264a at the bottom, weak vignette, bokeh on; hook photo in daylight, text on a photo gets a translucent navy glass behind it.
 - DEVANAGARI TEXT: never `letter-spacing` (matras break); titles `white-space:nowrap`; max 6-8 words per on-screen line.
