@@ -7,7 +7,7 @@ const TXT=(t0,t1,x,y,html,o={})=>A(Object.assign({t0,t1,x,y,w:o.w||1000,cls:'chi
 const IMG=(t0,t1,x,y,w,img,o={})=>A(Object.assign({t0,t1,x,y,w,img,enter:'pop',din:.5,sfx:'whoosh',sfxv:.6,z:35,float:.4},o));
 // light sweep transition (champagne)
 function SWEEP(t){A({t0:t-.45,t1:t+.5,x:540,y:960,w:1080,cls:'noshadow',html:`<div style="width:900px;height:2600px;margin:-340px 0 0 90px;background:linear-gradient(90deg,rgba(236,214,170,0),rgba(236,214,170,.55) 40%,rgba(255,255,255,.95) 50%,rgba(236,214,170,.55) 60%,rgba(236,214,170,0));filter:blur(30px);transform:skewX(-16deg)"></div>`,enter:'fade',din:.01,exit:'fade',dout:.01,float:0,z:700,
-  fn:(tt,lt)=>({dx:lerp(-1700,1700,E.inout(clamp(lt/.95))),o:Math.sin(clamp(lt/.95)*Math.PI)})});flash(t,.35,'#fff4dc');punch(t,.04);sfx(t-.4,'whoosh',.8);sfx(t,'sparkle',.45)}
+  fn:(tt,lt)=>({dx:lerp(-1700,1700,E.inout(clamp(lt/.95))),o:Math.sin(clamp(lt/.95)*Math.PI)})});flash(t,.35,'#fff4dc');punch(t,.04);sfx(t-.4,'whoosh',.8);sfx(t,'swoosh',.45)}
 // coloured diagonal bars
 function BARS(t,cols=['#e8cf9f','#0d1729','#faf7f2','#b8935f']){for(let i=0;i<6;i++){const col=cols[i%cols.length];const d=i*.04;
   A({t0:t-.5+d,t1:t+.5+d,x:540,y:-80+i*420,w:3200,cls:'noshadow',html:`<div style="height:470px;background:${col};box-shadow:0 0 60px rgba(0,0,0,.45)"></div>`,enter:'fade',din:.01,exit:'fade',dout:.01,float:0,z:700+i,rot:-14,
@@ -15,7 +15,7 @@ function BARS(t,cols=['#e8cf9f','#0d1729','#faf7f2','#b8935f']){for(let i=0;i<6;
 // iris ring
 function RINGT(t){A({t0:t-.4,t1:t+.45,x:540,y:960,w:1080,cls:'noshadow',html:`<div class="ir" style="width:1080px;height:1920px;background:#060b16"></div><div class="irr" style="position:absolute;left:50%;top:50%;border-radius:50%;border:16px solid #e8cf9f;box-shadow:0 0 60px #c9a66f,inset 0 0 40px #c9a66f"></div>`,enter:'fade',din:.01,exit:'fade',dout:.01,float:0,z:700,
   draw:(tt,lt,oo)=>{const r=tt<t?lerp(1250,0,E.inout(clamp((tt-t+.4)/.4))):lerp(0,1250,E.inout(clamp((tt-t)/.45)));oo.el.querySelector('.ir').style.webkitMaskImage=`radial-gradient(circle at 50% 50%,transparent ${r}px,#000 ${r+2}px)`;
-    const rr=oo.el.querySelector('.irr');rr.style.width=rr.style.height=(2*r)+'px';rr.style.marginLeft=rr.style.marginTop=(-r)+'px';rr.style.opacity=r>4?1:0}});sfx(t-.35,'whoosh',.9);sfx(t,'reveal',.6)}
+    const rr=oo.el.querySelector('.irr');rr.style.width=rr.style.height=(2*r)+'px';rr.style.marginLeft=rr.style.marginTop=(-r)+'px';rr.style.opacity=r>4?1:0}});sfx(t-.35,'whoosh',.9);sfx(t,'whoosh',.6)}
 // blinds: vertical slats close then open (new for this reel)
 function BLINDS(t,col='#0d1729'){const n=9;for(let i=0;i<n;i++){const d=Math.abs(i-(n-1)/2)*.035;
   A({t0:t-.42,t1:t+.5,x:60+i*120,y:960,w:122,cls:'noshadow',html:`<div style="height:1920px;background:linear-gradient(90deg,${col},#1b2a45 60%,${col});border-left:2px solid rgba(232,207,159,.5)"></div>`,enter:'fade',din:.01,exit:'fade',dout:.01,float:0,z:700,
