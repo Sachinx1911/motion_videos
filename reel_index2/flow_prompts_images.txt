@@ -1,0 +1,19 @@
+#P1 Photo of a closed new apartment door in an Indian residential building corridor, warm wood door with a steel handle and a blank nameplate, soft daylight from a corridor window, slight low angle, 35 mm lens, empty lower third. Realistic, no CGI look. No text, no readable writing, no logo, no watermark.
+
+#P2 Close-up of a sub-registrar office desk in India: a bound register open, a stack of stapled documents, a round rubber stamp and ink pad, a pen, warm tube light, shallow depth of field, 50 mm lens. No readable writing. Realistic, no CGI look. No text, no logo, no watermark.
+
+#P3 Over-the-shoulder photo of an Indian man at a home dining table using a laptop, the laptop screen blank white, a property file and a cup of tea beside it, evening warm light, 35 mm lens. Face not visible, not famous people. Realistic, no CGI look. No text, no logo, no watermark.
+
+#P4 Photo of tall wooden shelves in an Indian government record room packed with old cloth-bound registers and bundled files tied with red tape, dusty window light, 24 mm lens. No readable writing. Realistic, no CGI look. No text, no logo, no watermark.
+
+#P5 Close-up of a hand pressing a round rubber stamp onto a single sheet of paper on a wooden desk, red ink pad beside it, a brass seal softly blurred behind, warm side light, 50 mm lens. No readable writing. Realistic, no CGI look. No text, no logo, no watermark.
+
+#P6 Indian couple seen from behind standing in the doorway of a bright new empty apartment, sunlight from the balcony, hopeful mood, 24 mm lens, empty lower third. Faces not visible, not famous people. Realistic, no CGI look. No text, no labels, no logo, no watermark.
+
+#O11 A single blank white A4 sheet of paper with slightly curled bottom corner, straight-on, filling 85% of the frame height, isolated on a solid pure green background, flat even studio light, no shadow on the background, sharp edges. No text, no logo.
+
+#O12 A silver laptop open at 100 degrees, exact front view, blank pure white screen, filling 85% of the frame width, centered, isolated on a solid pure green background, flat even studio light, no reflections on the screen, no shadow on the background, sharp edges. No text, no logo.
+
+#O13 A classic magnifying glass with a black handle, tilted 30 degrees, centered with 15% empty margin on all sides, isolated on a solid pure green background, flat even studio light, no shadow on the background, sharp edges. No text, no logo.
+
+#O14 A bundle of old cream-coloured documents tied with red cotton tape, seen from slightly above, centered with 15% empty margin on all sides, isolated on a solid pure green background, flat even studio light, no shadow on the background, sharp edges. No text, no logo.

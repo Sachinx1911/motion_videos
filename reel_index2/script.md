@@ -1,5 +1,5 @@
 # Index II म्हणजे काय, आणि online कसा काढायचा?
-*SRS Dwell · 14 Nov 2026 · reel folder: `reel_index2` · draft v1 · informative series · logo look (ivory + champagne) · fast-paced · approval pending*
+*SRS Dwell · 14 Nov 2026 · reel folder: `reel_index2` · draft v1 · informative series · logo look (ivory + champagne) · fast-paced · approved 21 Nov 2026 ("बनव")*
 
 ## Audience questions
 1. Index II म्हणजे नेमकं काय? 7/12 किंवा property card सारखंच का?
