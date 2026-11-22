@@ -1,0 +1,4 @@
+file 'D:/website projects/Video Creation/reels/reel_ready_vs_uc/out/p1.mp4'
+file 'D:/website projects/Video Creation/reels/reel_ready_vs_uc/out/p2.mp4'
+file 'D:/website projects/Video Creation/reels/reel_ready_vs_uc/out/p3.mp4'
+file 'D:/website projects/Video Creation/reels/reel_ready_vs_uc/out/p4.mp4'

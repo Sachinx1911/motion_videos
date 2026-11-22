@@ -1,0 +1,215 @@
+{
+ "duration": 96,
+ "events": [
+  {
+   "t": 0,
+   "name": "whoosh_soft",
+   "gain": 0.8
+  },
+  {
+   "t": 0.5,
+   "name": "pop",
+   "gain": 0.7
+  },
+  {
+   "t": 3.46,
+   "name": "tick",
+   "gain": 1
+  },
+  {
+   "t": 4.82,
+   "name": "hit_soft",
+   "gain": 1
+  },
+  {
+   "t": 5.4,
+   "name": "paper",
+   "gain": 1
+  },
+  {
+   "t": 6.72,
+   "name": "stamp",
+   "gain": 1
+  },
+  {
+   "t": 7.76,
+   "name": "whoosh",
+   "gain": 1
+  },
+  {
+   "t": 10.54,
+   "name": "tick",
+   "gain": 0.6
+  },
+  {
+   "t": 10.84,
+   "name": "tick",
+   "gain": 0.6
+  },
+  {
+   "t": 11.14,
+   "name": "tick",
+   "gain": 0.6
+  },
+  {
+   "t": 11.44,
+   "name": "tick",
+   "gain": 0.6
+  },
+  {
+   "t": 11.9,
+   "name": "whoosh",
+   "gain": 1
+  },
+  {
+   "t": 15.18,
+   "name": "pop",
+   "gain": 1
+  },
+  {
+   "t": 19.14,
+   "name": "tick",
+   "gain": 0.7
+  },
+  {
+   "t": 20.98,
+   "name": "tick",
+   "gain": 0.7
+  },
+  {
+   "t": 23.24,
+   "name": "stamp",
+   "gain": 0.8
+  },
+  {
+   "t": 26.96,
+   "name": "click",
+   "gain": 1
+  },
+  {
+   "t": 27.24,
+   "name": "whoosh",
+   "gain": 1
+  },
+  {
+   "t": 31.42,
+   "name": "whoosh_soft",
+   "gain": 0.5
+  },
+  {
+   "t": 32.96,
+   "name": "tick",
+   "gain": 0.5
+  },
+  {
+   "t": 37.4,
+   "name": "hit_soft",
+   "gain": 1
+  },
+  {
+   "t": 38.26,
+   "name": "whoosh",
+   "gain": 1
+  },
+  {
+   "t": 41.8,
+   "name": "flip",
+   "gain": 0.8
+  },
+  {
+   "t": 43.6,
+   "name": "pop",
+   "gain": 0.7
+  },
+  {
+   "t": 44.46,
+   "name": "pop",
+   "gain": 0.7
+  },
+  {
+   "t": 46.78,
+   "name": "rise",
+   "gain": 0.8
+  },
+  {
+   "t": 53.38,
+   "name": "click",
+   "gain": 1
+  },
+  {
+   "t": 55.88,
+   "name": "coin",
+   "gain": 0.7
+  },
+  {
+   "t": 56.1,
+   "name": "coin",
+   "gain": 0.5
+  },
+  {
+   "t": 56.32,
+   "name": "coin",
+   "gain": 0.4
+  },
+  {
+   "t": 59.94,
+   "name": "flip",
+   "gain": 0.7
+  },
+  {
+   "t": 60.46,
+   "name": "flip",
+   "gain": 0.7
+  },
+  {
+   "t": 60.94,
+   "name": "flip",
+   "gain": 0.7
+  },
+  {
+   "t": 62.5,
+   "name": "whoosh",
+   "gain": 1
+  },
+  {
+   "t": 66.92,
+   "name": "click",
+   "gain": 1
+  },
+  {
+   "t": 67.9,
+   "name": "click",
+   "gain": 1
+  },
+  {
+   "t": 70.52,
+   "name": "rise",
+   "gain": 0.6
+  },
+  {
+   "t": 71.74,
+   "name": "whoosh_soft",
+   "gain": 0.7
+  },
+  {
+   "t": 79.52,
+   "name": "click",
+   "gain": 1
+  },
+  {
+   "t": 81.32,
+   "name": "click",
+   "gain": 1
+  },
+  {
+   "t": 86.88,
+   "name": "hit_soft",
+   "gain": 1
+  },
+  {
+   "t": 90.9,
+   "name": "whoosh_soft",
+   "gain": 0.8
+  }
+ ]
+}

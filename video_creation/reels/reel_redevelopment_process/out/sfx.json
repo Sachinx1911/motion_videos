@@ -1,0 +1,470 @@
+{
+ "duration": 114.6,
+ "events": [
+  {
+   "t": 0,
+   "name": "pop",
+   "gain": 0.6
+  },
+  {
+   "t": 0.45,
+   "name": "pop",
+   "gain": 0.8
+  },
+  {
+   "t": 1.05,
+   "name": "whoosh_soft",
+   "gain": 0.7
+  },
+  {
+   "t": 1.8,
+   "name": "pop",
+   "gain": 0.6
+  },
+  {
+   "t": 2.85,
+   "name": "whoosh_soft",
+   "gain": 0.6
+  },
+  {
+   "t": 3.65,
+   "name": "hit_soft",
+   "gain": 1
+  },
+  {
+   "t": 3.8,
+   "name": "paper",
+   "gain": 0.5
+  },
+  {
+   "t": 4.65,
+   "name": "whoosh",
+   "gain": 1
+  },
+  {
+   "t": 5.6,
+   "name": "tick",
+   "gain": 0.4
+  },
+  {
+   "t": 5.7,
+   "name": "tick",
+   "gain": 0.4
+  },
+  {
+   "t": 5.8,
+   "name": "tick",
+   "gain": 0.4
+  },
+  {
+   "t": 5.9,
+   "name": "tick",
+   "gain": 0.4
+  },
+  {
+   "t": 6,
+   "name": "tick",
+   "gain": 0.4
+  },
+  {
+   "t": 6.1,
+   "name": "tick",
+   "gain": 0.4
+  },
+  {
+   "t": 6.68,
+   "name": "whoosh",
+   "gain": 1
+  },
+  {
+   "t": 10.6,
+   "name": "stamp",
+   "gain": 1
+  },
+  {
+   "t": 11.1,
+   "name": "stamp",
+   "gain": 0.7
+  },
+  {
+   "t": 13.4,
+   "name": "whoosh_soft",
+   "gain": 0.7
+  },
+  {
+   "t": 13.6,
+   "name": "click",
+   "gain": 1
+  },
+  {
+   "t": 16.1,
+   "name": "click",
+   "gain": 1
+  },
+  {
+   "t": 16.86,
+   "name": "whoosh",
+   "gain": 1
+  },
+  {
+   "t": 18.55,
+   "name": "pop",
+   "gain": 0.4
+  },
+  {
+   "t": 18.64,
+   "name": "pop",
+   "gain": 0.4
+  },
+  {
+   "t": 18.73,
+   "name": "pop",
+   "gain": 0.4
+  },
+  {
+   "t": 18.82,
+   "name": "pop",
+   "gain": 0.4
+  },
+  {
+   "t": 18.91,
+   "name": "pop",
+   "gain": 0.4
+  },
+  {
+   "t": 19.45,
+   "name": "rise",
+   "gain": 0.5
+  },
+  {
+   "t": 21.5,
+   "name": "whoosh_soft",
+   "gain": 0.7
+  },
+  {
+   "t": 22.6,
+   "name": "pop",
+   "gain": 0.6
+  },
+  {
+   "t": 25.1,
+   "name": "click",
+   "gain": 1
+  },
+  {
+   "t": 25.7,
+   "name": "hit_soft",
+   "gain": 0.7
+  },
+  {
+   "t": 26.8,
+   "name": "rise",
+   "gain": 0.4
+  },
+  {
+   "t": 29.5,
+   "name": "tick",
+   "gain": 1
+  },
+  {
+   "t": 30.9,
+   "name": "whoosh",
+   "gain": 1
+  },
+  {
+   "t": 31.4,
+   "name": "whoosh_soft",
+   "gain": 0.5
+  },
+  {
+   "t": 35,
+   "name": "rise",
+   "gain": 0.5
+  },
+  {
+   "t": 38.6,
+   "name": "hit_soft",
+   "gain": 0.8
+  },
+  {
+   "t": 39.7,
+   "name": "tick",
+   "gain": 1
+  },
+  {
+   "t": 41.24,
+   "name": "whoosh",
+   "gain": 1
+  },
+  {
+   "t": 41.3,
+   "name": "pop",
+   "gain": 0.6
+  },
+  {
+   "t": 42.45,
+   "name": "pop",
+   "gain": 0.6
+  },
+  {
+   "t": 43.15,
+   "name": "pop",
+   "gain": 0.6
+  },
+  {
+   "t": 44.2,
+   "name": "whoosh_soft",
+   "gain": 0.6
+  },
+  {
+   "t": 44.8,
+   "name": "click",
+   "gain": 1
+  },
+  {
+   "t": 46.3,
+   "name": "rise",
+   "gain": 0.5
+  },
+  {
+   "t": 49.6,
+   "name": "whoosh",
+   "gain": 1
+  },
+  {
+   "t": 49.7,
+   "name": "hit_soft",
+   "gain": 0.7
+  },
+  {
+   "t": 50.6,
+   "name": "hit_soft",
+   "gain": 0.7
+  },
+  {
+   "t": 51.9,
+   "name": "flip",
+   "gain": 0.6
+  },
+  {
+   "t": 52.15,
+   "name": "flip",
+   "gain": 0.6
+  },
+  {
+   "t": 52.4,
+   "name": "flip",
+   "gain": 0.6
+  },
+  {
+   "t": 52.9,
+   "name": "stamp",
+   "gain": 0.7
+  },
+  {
+   "t": 54.19,
+   "name": "whoosh",
+   "gain": 1
+  },
+  {
+   "t": 57,
+   "name": "paper",
+   "gain": 0.4
+  },
+  {
+   "t": 57.12,
+   "name": "paper",
+   "gain": 0.4
+  },
+  {
+   "t": 57.24,
+   "name": "paper",
+   "gain": 0.4
+  },
+  {
+   "t": 61,
+   "name": "whoosh_soft",
+   "gain": 0.6
+  },
+  {
+   "t": 61.5,
+   "name": "rise",
+   "gain": 0.5
+  },
+  {
+   "t": 63.6,
+   "name": "click",
+   "gain": 0.6
+  },
+  {
+   "t": 64.5,
+   "name": "click",
+   "gain": 0.6
+  },
+  {
+   "t": 65,
+   "name": "click",
+   "gain": 0.6
+  },
+  {
+   "t": 66.4,
+   "name": "click",
+   "gain": 0.6
+  },
+  {
+   "t": 67.3,
+   "name": "click",
+   "gain": 0.6
+  },
+  {
+   "t": 68.29,
+   "name": "whoosh",
+   "gain": 1
+  },
+  {
+   "t": 70.8,
+   "name": "whoosh_soft",
+   "gain": 0.6
+  },
+  {
+   "t": 71.7,
+   "name": "whoosh_soft",
+   "gain": 0.6
+  },
+  {
+   "t": 73.7,
+   "name": "pop",
+   "gain": 0.5
+  },
+  {
+   "t": 73.9,
+   "name": "pop",
+   "gain": 0.5
+  },
+  {
+   "t": 74.1,
+   "name": "pop",
+   "gain": 0.5
+  },
+  {
+   "t": 75.8,
+   "name": "tick",
+   "gain": 1
+  },
+  {
+   "t": 77.2,
+   "name": "tick",
+   "gain": 1
+  },
+  {
+   "t": 81.09,
+   "name": "whoosh",
+   "gain": 1
+  },
+  {
+   "t": 84.4,
+   "name": "whoosh_soft",
+   "gain": 0.6
+  },
+  {
+   "t": 84.85,
+   "name": "hit_soft",
+   "gain": 0.5
+  },
+  {
+   "t": 87.3,
+   "name": "pop",
+   "gain": 0.6
+  },
+  {
+   "t": 87.6,
+   "name": "rise",
+   "gain": 0.4
+  },
+  {
+   "t": 88.5,
+   "name": "tick",
+   "gain": 1
+  },
+  {
+   "t": 90.04,
+   "name": "whoosh",
+   "gain": 1
+  },
+  {
+   "t": 91.8,
+   "name": "rise",
+   "gain": 0.5
+  },
+  {
+   "t": 93.2,
+   "name": "pop",
+   "gain": 0.7
+  },
+  {
+   "t": 98,
+   "name": "paper",
+   "gain": 0.5
+  },
+  {
+   "t": 99.6,
+   "name": "click",
+   "gain": 1
+  },
+  {
+   "t": 101.3,
+   "name": "whoosh_soft",
+   "gain": 0.6
+  },
+  {
+   "t": 102.58,
+   "name": "whoosh",
+   "gain": 1
+  },
+  {
+   "t": 102.6,
+   "name": "paper",
+   "gain": 0.4
+  },
+  {
+   "t": 103.3,
+   "name": "paper",
+   "gain": 0.4
+  },
+  {
+   "t": 104.2,
+   "name": "paper",
+   "gain": 0.4
+  },
+  {
+   "t": 105.2,
+   "name": "paper",
+   "gain": 0.4
+  },
+  {
+   "t": 106.1,
+   "name": "paper",
+   "gain": 0.4
+  },
+  {
+   "t": 107.35,
+   "name": "stamp",
+   "gain": 1
+  },
+  {
+   "t": 107.45,
+   "name": "coin",
+   "gain": 0.5
+  },
+  {
+   "t": 108.64,
+   "name": "whoosh",
+   "gain": 1
+  },
+  {
+   "t": 110.3,
+   "name": "whoosh_soft",
+   "gain": 0.8
+  }
+ ]
+}

@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+# render intermediates (rebuildable)
+reels/*/out/joined.mp4
+reels/*/out/p[0-9].mp4
+reels/*/out/p[0-9].log
+reels/*/out/x264_2pass.log*
+reels/*/out/mix_raw.wav
+reels/*/out/FINAL.mp4
+reels/*/out/fq_*.png
+reels/*/out/sh_*.png
