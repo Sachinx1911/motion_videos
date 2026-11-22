@@ -1,6 +1,6 @@
-# Caption - चीन vs आपण redevelopment (short)
+# Caption - China redevelopment vs India redevelopment (short)
 
-चीनमध्ये लोक स्वतःचे पैसे भरून इमारत पाडतायत, मुंबईत builder मोफत मोठं घर देतो. असं का? 🇨🇳🇮🇳
+China redevelopment vs India redevelopment 🇨🇳🇮🇳
 
 चीनमध्ये वेग आहे पण आवाज नाही, आपल्याकडे आवाज आहे पण वेग नाही.
 
