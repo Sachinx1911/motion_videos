@@ -77,6 +77,7 @@ Then reply in Marathi with a 3-line summary of what you understood and ask me fo
 7. NO invented code-drawn props (pen, magnifier, icons). Props are the user's cut-outs; if one is needed, ask for it in the cut-out list.
 8. Everything moves; nothing static for more than ~3 s. Footer/source only in the outro. Nothing below y 1600 except the CTA comment box (to 1730). Caption: exactly 5 hashtags.
 9. Fix everything in ONE pre-render pass (6-10 check frames) - each re-render costs 10 minutes.
+11. One theme end to end: outro/CTA/transitions match the body look (never plain navy). 12. Highlight = blur + darken the background behind the highlighted element so it pops; release after.
 10. Scripts and prompts always in copy boxes; image prompts category-wise + separate cut-out list.
 
 ## 4b. Storyboard types (user's list, 8 Oct 2026) - pick 2-4 per video and name them in the proposal
