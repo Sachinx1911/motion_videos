@@ -4,9 +4,9 @@ const CURSOR=`<svg viewBox="0 0 120 140" width="100%"><path d="M45 10c8 0 12 6 1
 // Never more than one element per slot; a new caption replaces the old one. Cuts only on sentence boundaries, camera push on every cut.
 // SOUND: 3 sounds only - soft pop (labels), swoosh (cuts), impact/stamp (reveals). FXG 0.17 (-30 %).
 function buildScenes(){
-const END=63.9;window.END=END;
+const END=62.3;window.END=END;
 const L=t=>t-.12;
-const SEC=[0,12.27,19.65,27.31,37.22,49.00,60.9,END];
+const SEC=[0,12.27,19.65,27.31,37.22,49.00,59.99,END];
 HOOKS.push(t=>{let i=0;while(i<SEC.length-2&&t>=SEC[i+1])i++;const p=clamp((t-SEC[i])/(SEC[i+1]-SEC[i]));document.getElementById('stage').style.transform=`scale(${1+.03*E.inout(p)})`});
 BOKEH_ON=t=>0;
 const INK='#0d1729',YEL='#ffd23f',RED='#e8382a';
@@ -118,13 +118,13 @@ HERO(L(51.41),L(55.14),'C3_agreement.png',440);
 CAP(L(52.76),L(53.32),'ASK BEFORE YOU SIGN');
 CAP(L(53.32),L(55.14),'DELAY = ₹ ? / WEEK',{red:1,rot:2,sfx:null});
 // ===== H14 55.14-60.9 : comment + follow =====
-COMMENT_BOX(L(55.14),SEC[6]-.05,54.5,55.2,'हाँ, हमारे agreement में है',{y:1300,typeDur:.45});
+COMMENT_BOX(L(55.14),SEC[6]-.05,55.64,57.3,'हाँ, हमारे agreement में है',{y:1300,typeDur:1.2,placeholder:'Comment करो...'});
 LBL(L(58.28),SEC[6],760,'TRUE CASES EVERY WEEK',{fs:38});
-FOLLOW_FLIP(L(60.11),SEC[6],60.7,{y:1560,col:'#e8382a',label:'Follow करो →'});
 
-// ===== OUTRO 60.9-63.9 =====
+// ===== OUTRO 59.99-62.3 : logo + Follow under it =====
 CUT('B1_old_society_b.jpg',SEC[6],END+1,{s:1.08,fx:540,fy:700,q:1,filter:'brightness(.9) saturate(.95)'});
 LBL(L(60.9),END+1,460,'ऐसी ही सच्ची कहानियाँ',{fs:46,sfx:null});
-A({t0:60.9,t1:END+1,x:540,y:900,w:820,cls:'gl w',html:`<div style="padding:44px 56px 38px"><img src="a/logo_gold.png" style="width:100%;filter:none"></div>`,enter:'zoom',din:.5,sfx:null,z:50,float:0});
-A({t0:61.4,t1:END+1,x:540,y:1500,w:980,cls:'chipw',enter:'fade',din:.4,float:0,z:40,html:`<div style="display:inline-block;background:rgba(250,247,242,.92);border-radius:14px;padding:14px 22px;font:600 22px/1.5 P;color:#2b2620">* स्रोत: Bombay High Court orders, Oct 2026 (FPJ, LiveLaw) · नाम हटाए गए<br>कानूनी सलाह नहीं · SRS Dwell</div>`});
+A({t0:SEC[6],t1:END+1,x:540,y:900,w:820,cls:'gl w',html:`<div style="padding:44px 56px 38px"><img src="a/logo_gold.png" style="width:100%;filter:none"></div>`,enter:'zoom',din:.5,sfx:null,z:50,float:0});
+FOLLOW_FLIP(L(60.11),END+1,60.7,{y:1300,fs:40,col:'#e8382a',label:'Follow करो →'});
+A({t0:61.2,t1:END+1,x:540,y:1540,w:980,cls:'chipw',enter:'fade',din:.4,float:0,z:40,html:`<div style="display:inline-block;background:rgba(250,247,242,.92);border-radius:14px;padding:14px 22px;font:600 22px/1.5 P;color:#2b2620">* स्रोत: Bombay High Court orders, Oct 2026 (FPJ, LiveLaw) · नाम हटाए गए<br>कानूनी सलाह नहीं · SRS Dwell</div>`});
 }

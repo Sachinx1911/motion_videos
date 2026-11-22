@@ -21,7 +21,7 @@ function COMMENT_BOX(t0, t1, tType, tPost, txt, o = {}) {
     }});
   A({t0: tPost - .4, t1, x: x + w / 2 - 50, y: y + 125, w: 80, cls: 'noshadow', over: 1, html: CURSOR, enter: 'up', din: .3, z: 68, float: 0, exit: 'fade', dout: .2,
     fn: t => ({s: t > tPost && t < tDone ? .85 : 1})});
-  sfx(tType, 'ticks', .35); sfx(tPost, 'click', .8); sfx(tHeart, 'pop', .5);
+  sfx(tType, 'ticks', .35); sfx(tPost, 'click', 1.0); sfx(tHeart, 'pop', .7);
 }
 
 // Follow pill that is clicked at tClick and flips to "Following ✓".
