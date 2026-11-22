@@ -12,11 +12,13 @@ const INK='#0d1729',YEL='#ffd23f',RED='#e8382a';
 const LBL=(t0,t1,x,y,txt,o={})=>A(Object.assign({t0,t1,x,y,w:o.w||900,cls:'chipw',enter:'pop',din:.28,sfx:'pop',sfxv:.55,z:60,float:0,
   html:`<span style="display:inline-block;background:${o.red?RED:YEL};color:${o.red?'#fff':INK};font:900 ${o.fs||46}px/1.1 P;padding:18px 34px 14px;border-radius:12px;transform:rotate(${o.rot===undefined?-2:o.rot}deg);box-shadow:0 10px 24px rgba(0,0,0,.28);white-space:nowrap">${txt}</span>`},o));
 const BIG=(t0,t1,y,html,o={})=>TXT(t0,t1,540,y,`<div style="display:inline-block;font:900 ${o.fs||70}px/1.2 P;color:#fff;background:rgba(13,23,41,.78);padding:22px 40px 16px;border-radius:26px">${html}</div>`,Object.assign({enter:'up',din:.3,float:0,z:58},o));
+const FOCUS=[];const focusAt=t=>{let k=0;for(const [a,b] of FOCUS){if(t>=a-.25&&t<=b+.25)k=Math.max(k,Math.min(clamp((t-(a-.25))/.3),clamp(((b+.25)-t)/.3)))}return k};
 const CUT=(img,t0,t1,o={})=>{const s=o.s||1.0,s1=s+(o.ds===undefined?.06:o.ds),fx=o.fx===undefined?540:o.fx,fy=o.fy===undefined?960:o.fy;
   const cx=v=>Math.max(-540*(v-1),Math.min(540*(v-1),-(fx-540)*v)),cy=v=>Math.max(-960*(v-1),Math.min(960*(v-1),-(fy-960)*v));
-  BG({img,t0,t1,s0:s,s1,x0:cx(s),x1:cx(s1),y0:cy(s),y1:cy(s1),fade:o.fade||.14,filter:o.filter||'none'});
+  const base=o.filter||'none';BG({img,t0,t1,s0:s,s1,x0:cx(s),x1:cx(s1),y0:cy(s),y1:cy(s1),fade:o.fade||.14,filter:t=>{const k=focusAt(t);return k>0?`${base==='none'?'':base} blur(${(3.5*k).toFixed(1)}px) brightness(${(1-.18*k).toFixed(2)})`:base}});
   if(o.cut!==false&&t0>0){punch(t0,.03);if(!o.q)sfx(t0,'swoosh',.2)}};
 const STAMPR=(t0,t1,x,y,txt,fs=56)=>{A({t0,t1,x,y,w:960,cls:'chipw',html:`<span style="display:inline-block;border:8px solid ${RED};color:${RED};background:rgba(255,255,255,.92);font:900 ${fs}px/1.1 P;padding:16px 30px 10px;border-radius:14px;transform:rotate(-7deg)">${txt}</span>`,enter:'stamp',din:.3,sfx:'stamp',sfxv:.85,z:62,float:0,allowOver:1,over:1});shake(t0+.05,10)};
+FOCUS.push([L(34.49),L(36.8)],[L(38.45),L(46.42)],[L(48.06),SEC[5]]);  // only the key reveals: ₹6.20 CR, the answer, the missing line
 // transitions
 BARS(SEC[1],['#ffd23f','#0d1729','#faf7f2','#e8382a']);SWEEP(SEC[2]);BLINDS(SEC[3],'#15264a');RINGT(SEC[4]);BARS(SEC[5],['#ffd23f','#0d1729','#faf7f2','#e8382a']);SWEEP(SEC[6]);
 
@@ -110,8 +112,10 @@ COMMENT_BOX(L(54.27),SEC[6]-.05,54.5,55.2,'हाँ, हमारे agreement 
 LBL(L(58.40),SEC[6],540,760,'TRUE CASES EVERY WEEK',{w:900,fs:38,rot:-2});
 FOLLOW_FLIP(L(60.21),SEC[6],60.7,{y:1560,col:'#e8382a',label:'Follow करो →'});
 
-// ===== OUTRO 60.9-63.9 =====
-TXT(L(60.9),END+1,540,420,`<div style="font:800 62px/1.3 P;color:#fff">ऐसी ही सच्ची कहानियाँ</div>`,{enter:'down',din:.4,float:0,sfx:null});
+// ===== OUTRO 60.9-63.9 : same cartoon theme =====
+CUT('B1_old_society_b.jpg',SEC[6],END+1,{s:1.08,fx:540,fy:700,q:1,filter:'brightness(.9) saturate(.95)'});
+TINT(SEC[6],END+1,'linear-gradient(180deg,rgba(13,23,41,.5),rgba(13,23,41,.2) 40%,rgba(13,23,41,.2) 60%,rgba(13,23,41,.55))',.2);
+LBL(L(60.9),END+1,540,460,'ऐसी ही सच्ची कहानियाँ',{w:980,fs:46,rot:-2,sfx:null});
 A({t0:60.9,t1:END+1,x:540,y:900,w:820,cls:'gl w',html:`<div style="padding:44px 56px 38px"><img src="a/logo_gold.png" style="width:100%;filter:none"></div>`,enter:'zoom',din:.5,sfx:null,z:50,float:0});
-A({t0:61.4,t1:END+1,x:540,y:1540,w:980,cls:'chipw',enter:'fade',din:.4,float:0,z:40,html:`<div style="font:600 22px/1.5 P;color:rgba(255,255,255,.85)">* स्रोत: Bombay High Court orders, Oct 2026 (FPJ, LiveLaw) · नाम हटाए गए<br>कानूनी सलाह नहीं · SRS Dwell</div>`});
+A({t0:61.4,t1:END+1,x:540,y:1500,w:980,cls:'chipw',enter:'fade',din:.4,float:0,z:40,html:`<div style="display:inline-block;background:rgba(250,247,242,.92);border-radius:14px;padding:14px 22px;font:600 22px/1.5 P;color:#2b2620">* स्रोत: Bombay High Court orders, Oct 2026 (FPJ, LiveLaw) · नाम हटाए गए<br>कानूनी सलाह नहीं · SRS Dwell</div>`});
 }
