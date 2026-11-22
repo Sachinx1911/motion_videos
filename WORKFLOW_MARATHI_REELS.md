@@ -149,6 +149,7 @@ Two consecutive reels must never share the same design system or image style. Be
 - NO INVENTED PROPS (user, 21 Nov 2026): never draw props in code (SVG pen, magnifier, icons) to fill a scene. Props are real cut-outs from the user; if one is needed, put it in the cut-out list and ask - the user supplies it.
 - ONE THEME END TO END (user, 22 Nov 2026): outro, CTA and transitions use the same backgrounds/palette as the body - never the engine's plain navy.
 - FOCUS = BLUR BEHIND (user, 22 Nov 2026): only at the 2-3 key reveals of a reel (big number, the answer, final stamp): mild blur 3-4 px + brightness -15% on the background; never on every highlight, never heavy (user corrected 22 Nov 2026).
+- SLOT GRID + 3-SOUND RULE (user, 22 Nov 2026): at most 3 things on screen - TITLE slot (y 430), HERO slot (centre y 1000), CAPTION slot (y 1480); a new caption replaces the old; cut-outs only on the word that names them. Sounds: soft pop (labels .35), swoosh (cuts .15), impact/stamp (3-4 reveals); FXG 0.17.
 - DEVANAGARI TEXT: never `letter-spacing` (matras break); titles `white-space:nowrap`; max 6-8 words per on-screen line.
 Glass/white cards, gold gradient numbers, count-ups, self-drawing arrows/lines, camera punch on key words, shake on stamps, constant slow zoom, grain + vignette, particles. Every animation is tied to a WORD (`C('word', approxTime)` from cue_words.json), not to a hard-coded time - a re-recorded line then re-times automatically.
 
