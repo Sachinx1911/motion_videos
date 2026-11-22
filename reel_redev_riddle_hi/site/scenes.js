@@ -6,7 +6,7 @@ const CURSOR=`<svg viewBox="0 0 120 140" width="100%"><path d="M45 10c8 0 12 6 1
 function buildScenes(){
 const END=63.9;window.END=END;
 const L=t=>t-.12;
-const SEC=[0,12.33,22.30,29.52,38.26,48.66,60.9,END];
+const SEC=[0,12.27,19.65,27.31,37.22,49.00,60.9,END];
 HOOKS.push(t=>{let i=0;while(i<SEC.length-2&&t>=SEC[i+1])i++;const p=clamp((t-SEC[i])/(SEC[i+1]-SEC[i]));document.getElementById('stage').style.transform=`scale(${1+.03*E.inout(p)})`});
 BOKEH_ON=t=>0;
 const INK='#0d1729',YEL='#ffd23f',RED='#e8382a';
@@ -23,104 +23,104 @@ const CUT=(img,t0,t1,o={})=>{const s=o.s||1.0,s1=s+(o.ds===undefined?.06:o.ds),f
   const cx=v=>Math.max(-540*(v-1),Math.min(540*(v-1),-(fx-540)*v)),cy=v=>Math.max(-960*(v-1),Math.min(960*(v-1),-(fy-960)*v));
   const base=o.filter||'none';BG({img,t0,t1,s0:s,s1,x0:cx(s),x1:cx(s1),y0:cy(s),y1:cy(s1),fade:o.fade||.14,filter:t=>{const k=focusAt(t);return k>0?`${base==='none'?'':base} blur(${(3.5*k).toFixed(1)}px) brightness(${(1-.18*k).toFixed(2)})`:base}});
   TINT(t0,t1,TOPTINT,.15);if(t0>0){punch(t0,.03);if(!o.q)sfx(t0,'swoosh',.15)}};
-FOCUS.push([L(34.32),L(36.82)],[L(38.45),L(46.42)],[L(48.06),SEC[5]],[SEC[6],END+1]);
+FOCUS.push([L(32.76),L(35.59)],[L(37.44),L(46.62)],[L(47.97),SEC[5]],[SEC[6],END+1]);
 
 // HUD
 A({t0:0,t1:SEC[6],x:128,y:108,w:190,img:'logo_white.png',cls:'noshadow',enter:'fade',din:.6,float:0,z:600});
 A({t0:0,t1:SEC[6],x:900,y:120,w:320,cls:'noshadow',enter:'fade',din:.5,float:0,z:600,html:`<div style="display:inline-block;font:900 24px/1 P;color:${INK};background:${YEL};border-radius:10px;padding:12px 20px;transform:rotate(-2deg)">TRUE CASE</div>`});
 
-// ===== H1 0-5.45 : two societies signed =====
-CUT('B1_old_society_a.jpg',-.3,5.45,{s:1.04,fx:520,fy:1000});
-TITLE(L(0.42),L(5.45),'2 SOCIETIES');
-HERO(L(3.16),L(5.45),'C1_builder.png',420);
-CAP(L(3.88),L(5.45),'AGREEMENT SIGNED');
-// ===== H2 5.45-8.72 : builder late, one got ₹6.20 cr =====
-CUT('B1_old_society_a.jpg',5.45,8.72,{s:1.22,fx:600,fy:800,q:1});
-TITLE(L(5.45),L(8.72),'BUILDER LATE',{red:1,rot:2});
-HERO(L(7.17),L(8.72),'C4_money_bag.png',420,{enter:'rise',din:.4});
-A({t0:L(7.38),t1:L(8.72),x:540,y:1480,w:1000,cls:'chipw',enter:'pop',din:.26,exit:'fade',dout:.2,sfx:'pop',sfxv:.35,z:60,float:0,
+// ===== H1 0-4.94 : two societies signed =====
+CUT('B1_old_society_a.jpg',-.3,4.94,{s:1.04,fx:520,fy:1000});
+TITLE(L(0.42),L(4.94),'2 SOCIETIES');
+HERO(L(3.12),L(4.94),'C1_builder.png',420);
+CAP(L(3.60),L(4.94),'AGREEMENT SIGNED');
+// ===== H2 4.94-8.06 : builder late, one got ₹6.20 cr =====
+CUT('B1_old_society_a.jpg',4.94,8.06,{s:1.22,fx:600,fy:800,q:1});
+TITLE(L(4.94),L(8.06),'BUILDER LATE',{red:1,rot:2});
+HERO(L(6.10),L(8.06),'C4_money_bag.png',420,{enter:'rise',din:.4});
+A({t0:L(6.35),t1:L(8.06),x:540,y:1480,w:1000,cls:'chipw',enter:'pop',din:.26,exit:'fade',dout:.2,sfx:'pop',sfxv:.35,z:60,float:0,
   html:`<span class="v" style="display:inline-block;background:${YEL};color:${INK};font:900 50px/1.1 P;padding:18px 36px 14px;border-radius:12px;transform:rotate(-2deg);box-shadow:0 10px 24px rgba(0,0,0,.28)">₹0 CR</span>`,
-  draw:(t,lt,oo)=>{oo.el.querySelector('.v').textContent='₹'+(6.2*E.out(clamp((t-L(7.38))/.9))).toFixed(2)+' CR'}});
-sfx(L(8.43),'impact',.4);punch(L(8.43),.05);
-// ===== H3 8.72-12.33 : the other one, 12 years on rent, question =====
-CUT('B1_old_society_b.jpg',8.72,SEC[1],{s:1.08,fx:600,fy:900});
-HERO(L(8.72),L(11.78),'C2_members.png',560,{enter:'up'});
-TITLE(L(9.98),SEC[1],'12 YEARS ON RENT',{red:1,fs:48,rot:2});
-A({t0:L(11.78),t1:SEC[1],x:540,y:1000,w:960,cls:'chipw',enter:'zoom',din:.3,sfx:'impact',sfxv:.45,z:62,float:0,
+  draw:(t,lt,oo)=>{oo.el.querySelector('.v').textContent='₹'+(6.2*E.out(clamp((t-L(6.35))/.9))).toFixed(2)+' CR'}});
+sfx(L(7.64),'impact',.4);punch(L(7.64),.05);
+// ===== H3 8.06-12.27 : the other one, 12 years on rent, question =====
+CUT('B1_old_society_b.jpg',8.06,SEC[1],{s:1.08,fx:600,fy:900});
+HERO(L(8.06),L(11.62),'C2_members.png',560,{enter:'up'});
+TITLE(L(9.39),SEC[1],'12 YEARS ON RENT',{red:1,fs:48,rot:2});
+A({t0:L(11.62),t1:SEC[1],x:540,y:1000,w:960,cls:'chipw',enter:'zoom',din:.3,sfx:'impact',sfxv:.45,z:62,float:0,
   html:`<span style="display:inline-block;font:900 80px/1.2 P;color:#fff;background:rgba(13,23,41,.82);padding:22px 44px 16px;border-radius:26px">फर्क क्या था?</span>`});
-punch(L(11.78),.06);
+punch(L(11.62),.06);
 
-// ===== H4 12.33-19.51 : Chembur 2013, 24 months =====
-CUT('B1_old_society_b.jpg',SEC[1],19.51,{s:1.0,fx:540,fy:900,q:1});
-TITLE(L(13.37),L(19.51),'CHEMBUR · 2013');
-HERO(L(16.89),L(19.51),'C1_builder.png',420);
-CAP(L(17.88),L(19.51),'24 MONTHS');
-// ===== H5 19.51-22.30 : everyone moved out =====
-CUT('B1_old_society_b.jpg',19.51,SEC[2],{s:1.25,fx:400,fy:900});
-TITLE(L(19.51),SEC[2],'CHEMBUR · 2013',{sfx:null});
-A({t0:L(19.51),t1:SEC[2],x:540,y:1000,w:560,img:'C2_members.png',enter:'pop',din:.3,exit:'fade',dout:.15,sfx:null,float:0,z:40,
-  fn:(t)=>({dx:lerp(0,760,E.inout(clamp((t-L(20.97))/1.1)))})});
-CAP(L(20.97),SEC[2],'MOVED OUT ON RENT',{red:1,rot:2});
+// ===== H4 12.27-17.86 : Chembur 2013, 24 months =====
+CUT('B1_old_society_b.jpg',SEC[1],17.86,{s:1.0,fx:540,fy:900,q:1});
+TITLE(L(13.28),L(17.86),'CHEMBUR · 2013');
+HERO(L(15.81),L(17.86),'C1_builder.png',420);
+CAP(L(16.54),L(17.86),'24 MONTHS');
+// ===== H5 17.86-19.65 : everyone moved out =====
+CUT('B1_old_society_b.jpg',17.86,SEC[2],{s:1.25,fx:400,fy:900});
+TITLE(L(17.86),SEC[2],'CHEMBUR · 2013',{sfx:null});
+A({t0:L(17.86),t1:SEC[2],x:540,y:1000,w:560,img:'C2_members.png',enter:'pop',din:.3,exit:'fade',dout:.15,sfx:null,float:0,z:40,
+  fn:(t)=>({dx:lerp(0,760,E.inout(clamp((t-L(18.86))/1.1)))})});
+CAP(L(18.86),SEC[2],'MOVED OUT ON RENT',{red:1,rot:2});
 
-// ===== H6 22.30-26.19 : 8 years, empty structure =====
-CUT('B2_half_built.jpg',SEC[2],26.19,{s:1.0,fx:540,fy:800});
-TITLE(L(22.30),L(26.19),'8 YEARS',{sfx:null});
-CAP(L(23.51),L(26.19),'EMPTY STRUCTURE',{red:1,rot:2});
-// ===== H7 26.19-28.52 : rent stopped, ₹7 cr due =====
-CUT('B2_half_built.jpg',26.19,28.52,{s:1.35,fx:540,fy:1000,q:1});
-TITLE(L(26.19),L(28.52),'8 YEARS',{sfx:null});
-STAMP(L(26.19),L(28.52),'RENT STOPPED',52);
-CAP(L(26.91),L(28.52),'₹7 CR+ RENT DUE');
-// ===== H8 28.52-29.52 : still outside =====
-CUT('B3_rented_room.jpg',28.52,SEC[3],{s:1.05,fx:620,fy:1100,q:1});
-CAP(L(28.52),SEC[3],'STILL OUTSIDE',{red:1});
+// ===== H6 19.65-23.76 : 8 years, empty structure =====
+CUT('B2_half_built.jpg',SEC[2],23.76,{s:1.0,fx:540,fy:800});
+TITLE(L(19.65),L(23.76),'8 YEARS',{sfx:null});
+CAP(L(21.34),L(23.76),'EMPTY STRUCTURE',{red:1,rot:2});
+// ===== H7 23.76-26.16 : rent stopped, ₹7 cr due =====
+CUT('B2_half_built.jpg',23.76,26.16,{s:1.35,fx:540,fy:1000,q:1});
+TITLE(L(23.76),L(26.16),'8 YEARS',{sfx:null});
+STAMP(L(23.76),L(26.16),'RENT STOPPED',52);
+CAP(L(24.36),L(26.16),'₹7 CR+ RENT DUE');
+// ===== H8 26.16-27.31 : still outside =====
+CUT('B3_rented_room.jpg',26.16,SEC[3],{s:1.05,fx:620,fy:1100,q:1});
+CAP(L(26.16),SEC[3],'STILL OUTSIDE',{red:1});
 
-// ===== H9 29.52-33.85 : Goregaon, same story, 62 weeks late =====
-CUT('B1_old_society_a.jpg',SEC[3],33.85,{s:1.1,fx:560,fy:900});
-TITLE(L(29.69),L(33.85),'GOREGAON',{sfx:null});
-CAP(L(31.06),L(31.99),'SAME STORY');
-HERO(L(31.99),L(33.85),'C5_calendar_weeks.png',500);
-CAP(L(31.99),L(33.85),'62 WEEKS LATE',{red:1,rot:2,sfx:null});
-// ===== H10 33.85-38.26 : court gave ₹6.20 cr - how? comments =====
-CUT('B4_court.jpg',33.85,SEC[4],{s:1.0,fx:540,fy:900});
-TITLE(L(33.85),SEC[4],'COURT',{sfx:null});
-HERO(L(34.32),L(36.82),'C4_money_bag.png',420,{enter:'rise',din:.4});
-CAP(L(34.49),L(36.82),'₹6.20 CR',{fs:50});
-A({t0:L(35.22),t1:L(36.82),x:540,y:640,w:600,cls:'chipw',enter:'zoom',din:.3,sfx:'impact',sfxv:.4,z:62,float:0,
+// ===== H9 27.31-32.22 : Goregaon, same story, 62 weeks late =====
+CUT('B1_old_society_a.jpg',SEC[3],32.22,{s:1.1,fx:560,fy:900});
+TITLE(L(27.50),L(32.22),'GOREGAON',{sfx:null});
+CAP(L(29.05),L(30.11),'SAME STORY');
+HERO(L(30.11),L(32.22),'C5_calendar_weeks.png',500);
+CAP(L(30.11),L(32.22),'62 WEEKS LATE',{red:1,rot:2,sfx:null});
+// ===== H10 32.22-37.22 : court gave ₹6.20 cr - how? comments =====
+CUT('B4_court.jpg',32.22,SEC[4],{s:1.0,fx:540,fy:900});
+TITLE(L(32.22),SEC[4],'COURT',{sfx:null});
+HERO(L(32.76),L(35.59),'C4_money_bag.png',420,{enter:'rise',din:.4});
+CAP(L(32.94),L(35.59),'₹6.20 CR',{fs:50});
+A({t0:L(33.77),t1:L(35.59),x:540,y:640,w:600,cls:'chipw',enter:'zoom',din:.3,sfx:'impact',sfxv:.4,z:62,float:0,
   html:`<span style="display:inline-block;font:900 84px/1.2 P;color:#fff;background:rgba(13,23,41,.82);padding:18px 44px 12px;border-radius:26px">कैसे?</span>`});
-A({t0:L(36.82),t1:SEC[4],x:540,y:1000,w:960,cls:'chipw',enter:'pop',din:.3,sfx:'pop',sfxv:.35,z:60,float:0,
+A({t0:L(35.59),t1:SEC[4],x:540,y:1000,w:960,cls:'chipw',enter:'pop',din:.3,sfx:'pop',sfxv:.35,z:60,float:0,
   html:`<span style="display:inline-block;background:${YEL};color:${INK};font:900 44px/1.15 P;padding:22px 40px 16px;border-radius:14px;transform:rotate(-2deg);box-shadow:0 10px 24px rgba(0,0,0,.28)">TELL US IN THE<br>COMMENTS</span>`});
 
-// ===== H11 38.26-46.42 : the answer =====
-CUT('B4_court.jpg',SEC[4],46.42,{s:1.2,fx:540,fy:600,filter:'brightness(.6) saturate(.8)'});
-TITLE(L(38.26),L(46.42),'THE ANSWER',{sfx:null});
-A({t0:L(38.45),t1:L(46.42),x:540,y:1040,w:520,img:'C3_agreement.png',enter:'zoom',din:.4,exit:'fade',dout:.2,sfx:null,float:.05,z:40,
+// ===== H11 37.22-46.62 : the answer =====
+CUT('B4_court.jpg',SEC[4],46.62,{s:1.2,fx:540,fy:600,filter:'brightness(.6) saturate(.8)'});
+TITLE(L(37.22),L(46.62),'THE ANSWER',{sfx:null});
+A({t0:L(37.44),t1:L(46.62),x:540,y:1040,w:520,img:'C3_agreement.png',enter:'zoom',din:.4,exit:'fade',dout:.2,sfx:null,float:.05,z:40,
   html:`<div class="hl" style="position:absolute;left:12%;right:12%;top:44%;height:7%;background:rgba(255,210,63,0);border-radius:8px;transform-origin:0 50%"></div>`,
-  draw:(t,lt,oo)=>{const p=clamp((t-L(39.44))/.4);const h=oo.el.querySelector('.hl');h.style.background=`rgba(255,210,63,${.85*p})`;h.style.transform=`scaleX(${p})`}});
-CAP(L(39.06),L(40.04),'ONE LINE');
-CAP(L(40.04),L(43.40),'₹10 LAKH / WEEK',{red:1,rot:2});
-A({t0:L(41.03),t1:L(46.42),x:540,y:580,w:960,cls:'chipw',enter:'pop',din:.25,sfx:'pop',sfxv:.35,z:62,float:0,
+  draw:(t,lt,oo)=>{const p=clamp((t-L(38.56))/.4);const h=oo.el.querySelector('.hl');h.style.background=`rgba(255,210,63,${.85*p})`;h.style.transform=`scaleX(${p})`}});
+CAP(L(38.13),L(39.25),'ONE LINE');
+CAP(L(39.25),L(43.06),'₹10 LAKH / WEEK',{red:1,rot:2});
+A({t0:L(40.37),t1:L(46.62),x:540,y:580,w:960,cls:'chipw',enter:'pop',din:.25,sfx:'pop',sfxv:.35,z:62,float:0,
   html:`<div style="display:inline-block;background:#fff;border-radius:18px;padding:18px 36px 14px;box-shadow:0 10px 24px rgba(0,0,0,.3);font:900 54px/1.1 P;color:${INK}"><span>62</span> <span class="b" style="visibility:hidden">× 10 LAKH</span> <span class="c" style="visibility:hidden;color:${RED}">= ₹6.20 CR</span></div>`,
-  draw:(t,lt,oo)=>{oo.el.querySelector('.b').style.visibility=t>=L(41.72)?'visible':'hidden';oo.el.querySelector('.c').style.visibility=t>=L(42.68)?'visible':'hidden'}});
-sfx(L(41.72),'pop',.3);sfx(L(42.68),'impact',.5);punch(L(42.68),.06);
-A({t0:L(43.40),t1:L(46.42),x:800,y:1250,w:260,img:'C6_gavel.png',enter:'stamp',din:.3,sfx:'stamp',sfxv:.5,float:0,z:55,allowOver:1,over:1});shake(L(43.40)+.05,7);
-CAP(L(44.90),L(46.42),'HIGH COURT ✓');
-// ===== H12 46.42-48.66 : Chembur agreement - that line missing =====
-CUT('B1_old_society_b.jpg',46.42,SEC[5],{s:1.3,fx:600,fy:700,filter:'brightness(.75) saturate(.8)'});
-TITLE(L(46.70),SEC[5],'CHEMBUR AGREEMENT',{fs:44,sfx:null});
-HERO(L(46.70),SEC[5],'C3_agreement.png',520);
-STAMP(L(48.06),SEC[5],'THAT LINE: MISSING',46);
+  draw:(t,lt,oo)=>{oo.el.querySelector('.b').style.visibility=t>=L(41.16)?'visible':'hidden';oo.el.querySelector('.c').style.visibility=t>=L(42.24)?'visible':'hidden'}});
+sfx(L(41.16),'pop',.3);sfx(L(42.24),'impact',.5);punch(L(42.24),.06);
+A({t0:L(43.06),t1:L(46.62),x:800,y:1250,w:260,img:'C6_gavel.png',enter:'stamp',din:.3,sfx:'stamp',sfxv:.5,float:0,z:55,allowOver:1,over:1});shake(L(43.06)+.05,7);
+CAP(L(44.76),L(46.62),'HIGH COURT ✓');
+// ===== H12 46.62-49.00 : Chembur agreement - that line missing =====
+CUT('B1_old_society_b.jpg',46.62,SEC[5],{s:1.3,fx:600,fy:700,filter:'brightness(.75) saturate(.8)'});
+TITLE(L(46.85),SEC[5],'CHEMBUR AGREEMENT',{fs:44,sfx:null});
+HERO(L(46.85),SEC[5],'C3_agreement.png',520);
+STAMP(L(47.97),SEC[5],'THAT LINE: MISSING',46);
 
-// ===== H13 48.66-54.27 : your society - ask before you sign =====
+// ===== H13 49.00-55.14 : your society - ask before you sign =====
 CUT('B1_old_society_a.jpg',SEC[5],SEC[6],{s:1.0,fx:540,fy:900});
-TITLE(L(49.35),SEC[6],'YOUR SOCIETY?',{sfx:null});
-HERO(L(51.49),L(54.27),'C3_agreement.png',440);
-CAP(L(52.56),L(52.98),'ASK BEFORE YOU SIGN');
-CAP(L(52.98),L(54.27),'DELAY = ₹ ? / WEEK',{red:1,rot:2,sfx:null});
-// ===== H14 54.27-60.9 : comment + follow =====
-COMMENT_BOX(L(54.27),SEC[6]-.05,54.5,55.2,'हाँ, हमारे agreement में है',{y:1300,typeDur:.45});
-LBL(L(58.40),SEC[6],760,'TRUE CASES EVERY WEEK',{fs:38});
-FOLLOW_FLIP(L(60.21),SEC[6],60.7,{y:1560,col:'#e8382a',label:'Follow करो →'});
+TITLE(L(49.53),SEC[6],'YOUR SOCIETY?',{sfx:null});
+HERO(L(51.41),L(55.14),'C3_agreement.png',440);
+CAP(L(52.76),L(53.32),'ASK BEFORE YOU SIGN');
+CAP(L(53.32),L(55.14),'DELAY = ₹ ? / WEEK',{red:1,rot:2,sfx:null});
+// ===== H14 55.14-60.9 : comment + follow =====
+COMMENT_BOX(L(55.14),SEC[6]-.05,54.5,55.2,'हाँ, हमारे agreement में है',{y:1300,typeDur:.45});
+LBL(L(58.28),SEC[6],760,'TRUE CASES EVERY WEEK',{fs:38});
+FOLLOW_FLIP(L(60.11),SEC[6],60.7,{y:1560,col:'#e8382a',label:'Follow करो →'});
 
 // ===== OUTRO 60.9-63.9 =====
 CUT('B1_old_society_b.jpg',SEC[6],END+1,{s:1.08,fx:540,fy:700,q:1,filter:'brightness(.9) saturate(.95)'});
