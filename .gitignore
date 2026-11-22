@@ -16,3 +16,19 @@ research/reference_styles/videos/
 */out/sheet.jpg
 */raw/orig/
 */out/chk/
+# scratch from render / QC (22 Nov 2026)
+*/out/parts/
+*/out/wparts/
+*/out/shw/
+*/out/sh3d/
+*/out/chk*.jpg
+*/out/*_sheet.jpg
+*/out/sheet2.jpg
+*/out/*_check.jpg
+*/out/*_crop.jpg
+*/out/wm_*.jpg
+*/out/shw_log.txt
+*/out/cues_dump.txt
+*/out/_*
+*/x/
+*/vo_t.wav
