@@ -18,7 +18,7 @@ const CUT=(img,t0,t1,o={})=>{const s=o.s||1.0,s1=s+(o.ds===undefined?.06:o.ds),f
   const base=o.filter||'none';BG({img,t0,t1,s0:s,s1,x0:cx(s),x1:cx(s1),y0:cy(s),y1:cy(s1),fade:o.fade||.14,filter:t=>{const k=focusAt(t);return k>0?`${base==='none'?'':base} blur(${(3.5*k).toFixed(1)}px) brightness(${(1-.18*k).toFixed(2)})`:base}});
   if(o.cut!==false&&t0>0){punch(t0,.03);if(!o.q)sfx(t0,'swoosh',.2)}};
 const STAMPR=(t0,t1,x,y,txt,fs=56)=>{A({t0,t1,x,y,w:960,cls:'chipw',html:`<span style="display:inline-block;border:8px solid ${RED};color:${RED};background:rgba(255,255,255,.92);font:900 ${fs}px/1.1 P;padding:16px 30px 10px;border-radius:14px;transform:rotate(-7deg)">${txt}</span>`,enter:'stamp',din:.3,sfx:'stamp',sfxv:.85,z:62,float:0,allowOver:1,over:1});shake(t0+.05,10)};
-FOCUS.push([L(34.49),L(36.8)],[L(38.45),L(46.42)],[L(48.06),SEC[5]]);  // only the key reveals: ₹6.20 CR, the answer, the missing line
+FOCUS.push([L(34.49),L(36.8)],[L(38.45),L(46.42)],[L(48.06),SEC[5]],[SEC[6],END+1]);  // only the key reveals: ₹6.20 CR, the answer, the missing line
 // transitions
 BARS(SEC[1],['#ffd23f','#0d1729','#faf7f2','#e8382a']);SWEEP(SEC[2]);BLINDS(SEC[3],'#15264a');RINGT(SEC[4]);BARS(SEC[5],['#ffd23f','#0d1729','#faf7f2','#e8382a']);SWEEP(SEC[6]);
 
